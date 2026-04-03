@@ -6,23 +6,47 @@ releases:
         package:
           platform: windows
           target: msix
+        config:
+          display_name: Mapia
+          publisher_display_name: Allensandiego
+          identity_name: com.allensandiego.mapia
+          msix_config:
+            install_scope: user
       - name: windows-exe
         package:
           platform: windows
           target: exe
+        config:
+          display_name: Mapia
+          publisher_display_name: Allensandiego
       - name: linux-deb
         package:
           platform: linux
           target: deb
+        config:
+          display_name: Mapia
+          package_name: com.allensandiego.mapia
+          maintainer:
+            name: Allen San Diego
+            email: allensandiego@example.com
       - name: linux-rpm
         package:
           platform: linux
           target: rpm
+        config:
+          display_name: Mapia
+          package_name: com.allensandiego.mapia
       - name: linux-appimage
         package:
           platform: linux
           target: appimage
+        config:
+          display_name: Mapia
+          package_name: com.allensandiego.mapia
       - name: macos-dmg
         package:
           platform: macos
           target: dmg
+        config:
+          display_name: Mapia
+          package_name: com.allensandiego.mapia
