@@ -46,7 +46,7 @@ jobs:
         run: |
           # Install toolkits for DEB, RPM, and AppImage
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm rpm-build binutils patchelf
+          sudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm binutils patchelf
           sudo gem install fpm
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
