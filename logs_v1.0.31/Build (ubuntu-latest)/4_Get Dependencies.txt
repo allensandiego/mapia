@@ -1,0 +1,129 @@
+﻿2026-04-03T15:48:52.7176060Z ##[group]Run flutter pub get
+2026-04-03T15:48:52.7176371Z [36;1mflutter pub get[0m
+2026-04-03T15:48:52.7176627Z [36;1mdart pub global activate fastforge[0m
+2026-04-03T15:48:52.7205607Z shell: /usr/bin/bash -e {0}
+2026-04-03T15:48:52.7205850Z env:
+2026-04-03T15:48:52.7206052Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:48:52.7206453Z   FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter
+2026-04-03T15:48:52.7206828Z   PUB_CACHE: /home/runner/.pub-cache
+2026-04-03T15:48:52.7207072Z ##[endgroup]
+2026-04-03T15:48:53.0967656Z Resolving dependencies...
+2026-04-03T15:48:53.4123493Z Downloading packages...
+2026-04-03T15:48:53.4983717Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T15:48:53.4984342Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T15:48:53.4984768Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T15:48:53.4985165Z   build 2.5.4 (4.0.5 available)
+2026-04-03T15:48:53.4985559Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T15:48:53.4986008Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T15:48:53.4986548Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T15:48:53.4987009Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T15:48:53.4987515Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T15:48:53.4988130Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T15:48:53.4988775Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T15:48:53.4989261Z > characters 1.4.1 (was 1.4.0)
+2026-04-03T15:48:53.4989669Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T15:48:53.4990096Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T15:48:53.4990518Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T15:48:53.4991250Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T15:48:53.4991760Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T15:48:53.4992266Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T15:48:53.4992768Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T15:48:53.4993232Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T15:48:53.5019570Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T15:48:53.5020135Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T15:48:53.5020594Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T15:48:53.5021280Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T15:48:53.5021753Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:48:53.5022205Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:48:53.5022652Z   image 4.3.0 (4.8.0 available)
+2026-04-03T15:48:53.5023111Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T15:48:53.5023628Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T15:48:53.5024114Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T15:48:53.5024498Z > matcher 0.12.19 (was 0.12.17)
+2026-04-03T15:48:53.5024918Z > material_color_utilities 0.13.0 (was 0.11.1)
+2026-04-03T15:48:53.5025374Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T15:48:53.5025792Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T15:48:53.5026242Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:48:53.5026688Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:48:53.5027133Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T15:48:53.5027540Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T15:48:53.5027955Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T15:48:53.5028684Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T15:48:53.5029108Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T15:48:53.5029533Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T15:48:53.5029972Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T15:48:53.5030444Z > test_api 0.7.10 (was 0.7.7) (0.7.11 available)
+2026-04-03T15:48:53.5031227Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T15:48:53.5031750Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:48:53.5032206Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T15:48:53.5032653Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T15:48:53.5033084Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T15:48:53.5033572Z Changed 4 dependencies!
+2026-04-03T15:48:53.5034466Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T15:48:53.5035182Z Try `flutter pub outdated` for more information.
+2026-04-03T15:48:54.0641836Z Resolving dependencies...
+2026-04-03T15:48:54.3496220Z Downloading packages...
+2026-04-03T15:48:54.4669806Z + _discoveryapis_commons 1.0.7
+2026-04-03T15:48:54.4670340Z + ansicolor 2.0.3
+2026-04-03T15:48:54.4670748Z + archive 3.6.1 (4.0.9 available)
+2026-04-03T15:48:54.4671401Z + args 2.7.0
+2026-04-03T15:48:54.4671748Z + async 2.13.1
+2026-04-03T15:48:54.4672101Z + buffer 1.2.3
+2026-04-03T15:48:54.4672438Z + charset 2.0.1
+2026-04-03T15:48:54.4672683Z + checked_yaml 2.0.4
+2026-04-03T15:48:54.4672937Z + cli_util 0.4.2
+2026-04-03T15:48:54.4673170Z + clock 1.1.2
+2026-04-03T15:48:54.4673430Z + collection 1.19.1
+2026-04-03T15:48:54.4673674Z + console 4.1.0
+2026-04-03T15:48:54.4673907Z + convert 3.1.2
+2026-04-03T15:48:54.4674130Z + crypto 3.0.7
+2026-04-03T15:48:54.4674354Z + dio 5.9.2
+2026-04-03T15:48:54.4674615Z + dio_web_adapter 2.1.2
+2026-04-03T15:48:54.4674881Z + fastforge 0.6.6
+2026-04-03T15:48:54.4675120Z + file 7.0.1
+2026-04-03T15:48:54.4675355Z + flutter_app_builder 0.6.0
+2026-04-03T15:48:54.4675652Z + flutter_app_packager 0.6.5
+2026-04-03T15:48:54.4675954Z + flutter_app_publisher 0.6.6
+2026-04-03T15:48:54.4676248Z + get_it 9.2.1
+2026-04-03T15:48:54.4676467Z + glob 2.1.3
+2026-04-03T15:48:54.4676718Z + google_identity_services_web 0.3.3+1
+2026-04-03T15:48:54.4677053Z + googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:48:54.4677400Z + googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:48:54.4677725Z + http 1.6.0
+2026-04-03T15:48:54.4677956Z + http_parser 4.1.2
+2026-04-03T15:48:54.4678207Z + image 4.3.0 (4.8.0 available)
+2026-04-03T15:48:54.4678483Z + intl 0.20.2
+2026-04-03T15:48:54.4678706Z + io 1.0.5
+2026-04-03T15:48:54.4678937Z + json_annotation 4.11.0
+2026-04-03T15:48:54.4679218Z + liquid_engine 0.2.2
+2026-04-03T15:48:54.4679474Z + logging 1.3.0
+2026-04-03T15:48:54.4679708Z + meta 1.18.2
+2026-04-03T15:48:54.4679935Z + mime 2.0.0
+2026-04-03T15:48:54.4680162Z + minio 3.5.8
+2026-04-03T15:48:54.4680383Z + msix 3.16.13
+2026-04-03T15:48:54.4680628Z + mustache_template 2.0.4
+2026-04-03T15:48:54.4681139Z + package_config 2.2.0
+2026-04-03T15:48:54.4681408Z + parse_app_package 0.6.0
+2026-04-03T15:48:54.4681662Z + path 1.9.1
+2026-04-03T15:48:54.4681855Z + petitparser 7.0.2
+2026-04-03T15:48:54.4682079Z + plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:48:54.4682346Z + pub_semver 2.2.0
+2026-04-03T15:48:54.4682550Z + pubspec_parse 1.5.0
+2026-04-03T15:48:54.4682766Z + qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:48:54.4683019Z + recase 4.1.0
+2026-04-03T15:48:54.4683205Z + shell_executor 0.3.0
+2026-04-03T15:48:54.4683418Z + shell_uikit 0.3.0
+2026-04-03T15:48:54.4683616Z + source_span 1.10.2
+2026-04-03T15:48:54.4683816Z + string_scanner 1.4.1
+2026-04-03T15:48:54.4684027Z + term_glyph 1.2.2
+2026-04-03T15:48:54.4684221Z + typed_data 1.4.0
+2026-04-03T15:48:54.4684423Z + unified_distributor 0.2.6
+2026-04-03T15:48:54.4684663Z + uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:48:54.4684895Z + vector_math 2.3.0
+2026-04-03T15:48:54.4685079Z + web 1.1.1
+2026-04-03T15:48:54.4685252Z + xml 6.6.1
+2026-04-03T15:48:54.4685426Z + yaml 3.1.3
+2026-04-03T15:48:54.4699557Z Building package executables...
+2026-04-03T15:48:57.8936983Z Built fastforge:main.
+2026-04-03T15:48:57.8988400Z Installed executable fastforge.
+2026-04-03T15:48:57.9023825Z Activated fastforge 0.6.6.

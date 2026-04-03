@@ -48,20 +48,30 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm binutils patchelf
           sudo gem install fpm
-          wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
-          chmod +x appimagetool
-          sudo mv appimagetool /usr/local/bin/
+          wget --no-check-certificate -O appimagetool.real https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool.real
+          sudo mv appimagetool.real /usr/local/bin/appimagetool.real
           
-          # 1. Build the application
-          fastforge package --platform linux --targets deb --skip-clean || echo "Initial build to generate files"
+          # Create wrapper to inject Categories before appimagetool validation
+          sudo tee /usr/local/bin/appimagetool <<EOF
+          #!/bin/bash
+          # Find the desktop file in the AppDir (the first argument is usually the AppDir)
+          # We search for it within the provided directory argument
+          for arg in "\$@"; do
+            if [ -d "\$arg" ] && [ -f "\$arg/mapia.desktop" ]; then
+              echo "Wrapper: Injecting Categories into \$arg/mapia.desktop"
+              grep -q "Categories=" "\$arg/mapia.desktop" || sed -i '/^Type=Application$/a Categories=Utility;Network;Development' "\$arg/mapia.desktop"
+              break
+            fi
+          done
+          exec /usr/local/bin/appimagetool.real "\$@"
+          EOF
+          sudo chmod +x /usr/local/bin/appimagetool
           
-          # 2. Patch ALL potential desktop files in the build artifacts
-          find dist -name "*.desktop" -exec echo "Patching {}" \; -exec sed -i '/^Type=Application$/a Categories=Utility;Network;Development' {} \;
+          # Build and Package
+          fastforge release --name release --jobs linux-deb,linux-appimage
           
-          # 3. Package everything else
-          fastforge release --name release --jobs linux-deb,linux-appimage --skip-clean
-          
-          # 4. Build RPM with manual fix
+          # Build RPM with manual fix
           fastforge release --name release --jobs linux-rpm --skip-clean || {
             echo "RPM build failed, attempting fix..."
             for spec_file in dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null; do

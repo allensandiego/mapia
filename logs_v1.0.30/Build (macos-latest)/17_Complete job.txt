@@ -1,5 +1,0 @@
-﻿2026-04-03T15:42:23.2874140Z Cleaning up orphan processes
-2026-04-03T15:42:23.3929110Z Terminate orphan process: pid (6007) (swift-frontend)
-2026-04-03T15:42:23.6952640Z Terminate orphan process: pid (5683) (swift-frontend)
-2026-04-03T15:42:26.3110620Z Terminate orphan process: pid (5336) (ibtoold)
-2026-04-03T15:42:26.4002610Z Terminate orphan process: pid (5335) (ibtoold)
