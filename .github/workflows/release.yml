@@ -86,10 +86,8 @@ jobs:
 
                 sed -i '/^cp -r %{name}\.png /s/$/ || :/' "$spec_file"
                 sed -i '/^cp -r %{name}\.desktop /s/$/ || :/' "$spec_file"  
-                sed -i '/%attr.*%{_datadir}\/pixmaps.*png/d' "$spec_file"
 
                 rpmbuild --define "_topdir $topdir" -bb "$spec_file" 
-
                 # Move the manually built RPM to where fastforge (and the upload step) expects it
                 mkdir -p "$(dirname "$topdir")/release"
                 find "$topdir/RPMS" -name "*.rpm" -exec cp {} "$(dirname "$topdir")/release/" \;
