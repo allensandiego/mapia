@@ -1,8 +1,0 @@
-2026-04-03T15:57:42.9880000Z Requested labels: ubuntu-latest
-2026-04-03T15:57:42.9880000Z Job defined at: allensandiego/mapia/.github/workflows/release.yml@refs/tags/v1.0.33
-2026-04-03T15:57:42.9880000Z Waiting for a runner to pick up this job...
-2026-04-03T15:57:42.9830000Z Evaluating build.if
-2026-04-03T15:57:42.9830000Z Evaluating: success()
-2026-04-03T15:57:42.9830000Z Result: true
-2026-04-03T15:57:43.4460000Z Job is about to start running on the hosted runner: GitHub Actions 1000000878
-2026-04-03T15:57:43.4460000Z Job is waiting for a hosted runner to come online.
