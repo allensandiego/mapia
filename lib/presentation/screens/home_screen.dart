@@ -54,7 +54,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       autofocus: true,
       onKeyEvent: (node, event) {
         // Prevent tab from moving focus when Ctrl is pressed
-        if (event.logicalKey == LogicalKeyboardKey.tab && HardwareKeyboard.instance.isControlPressed) {
+        if (event.logicalKey == LogicalKeyboardKey.tab &&
+            HardwareKeyboard.instance.isControlPressed) {
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -79,13 +80,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ref.read(tabsProvider.notifier).closeTab(activeTabId);
             }
           },
-          const SingleActivator(LogicalKeyboardKey.tab, control: true): _nextTab,
-          const SingleActivator(LogicalKeyboardKey.tab, control: true, shift: true): _previousTab,
+          const SingleActivator(LogicalKeyboardKey.tab, control: true):
+              _nextTab,
+          const SingleActivator(LogicalKeyboardKey.tab,
+              control: true, shift: true): _previousTab,
           const SingleActivator(LogicalKeyboardKey.keyE, control: true): () {
-            showDialog(context: context, builder: (_) => const EnvironmentScreen());
+            showDialog(
+                context: context, builder: (_) => const EnvironmentScreen());
           },
           const SingleActivator(LogicalKeyboardKey.comma, control: true): () {
-            showDialog(context: context, builder: (_) => const SettingsScreen());
+            showDialog(
+                context: context, builder: (_) => const SettingsScreen());
           },
         },
         child: Scaffold(
@@ -172,7 +177,8 @@ class _TopBar extends ConsumerWidget {
                     ),
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  child: const Icon(Icons.api_outlined, size: 14, color: Colors.white),
+                  child: const Icon(Icons.api_outlined,
+                      size: 14, color: Colors.white),
                 ),
                 const SizedBox(width: 10),
                 Text(
@@ -191,7 +197,8 @@ class _TopBar extends ConsumerWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: context.colors.border)),
+                border:
+                    Border(bottom: BorderSide(color: context.colors.border)),
               ),
               child: Row(
                 children: [
@@ -213,7 +220,8 @@ class _TopBar extends ConsumerWidget {
                       width: 48,
                       height: 48,
                       alignment: Alignment.center,
-                      child: Icon(Icons.add, size: 18, color: context.colors.textSecondary),
+                      child: Icon(Icons.add,
+                          size: 18, color: context.colors.textSecondary),
                     ),
                   ),
                 ],
@@ -235,13 +243,20 @@ class _TabChip extends ConsumerWidget {
   Color _getMethodColor(BuildContext context, HttpMethod method) {
     final colors = context.colors;
     switch (method) {
-      case HttpMethod.get: return colors.methodGet;
-      case HttpMethod.post: return colors.methodPost;
-      case HttpMethod.put: return colors.methodPut;
-      case HttpMethod.patch: return colors.methodPatch;
-      case HttpMethod.delete: return colors.methodDelete;
-      case HttpMethod.head: return colors.methodHead;
-      case HttpMethod.options: return colors.methodOptions;
+      case HttpMethod.get:
+        return colors.methodGet;
+      case HttpMethod.post:
+        return colors.methodPost;
+      case HttpMethod.put:
+        return colors.methodPut;
+      case HttpMethod.patch:
+        return colors.methodPatch;
+      case HttpMethod.delete:
+        return colors.methodDelete;
+      case HttpMethod.head:
+        return colors.methodHead;
+      case HttpMethod.options:
+        return colors.methodOptions;
     }
   }
 
@@ -283,7 +298,9 @@ class _TabChip extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 14,
-                  color: isActive ? context.colors.textPrimary : context.colors.textSecondary,
+                  color: isActive
+                      ? context.colors.textPrimary
+                      : context.colors.textSecondary,
                   fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                 ),
               ),
@@ -304,7 +321,8 @@ class _TabChip extends ConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: Padding(
                 padding: const EdgeInsets.all(4),
-                child: Icon(Icons.close, size: 14, color: context.colors.textMuted),
+                child: Icon(Icons.close,
+                    size: 14, color: context.colors.textMuted),
               ),
             ),
           ],
@@ -334,7 +352,8 @@ class _EmptyState extends ConsumerWidget {
               ),
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Icon(Icons.api_outlined, size: 36, color: Colors.white),
+            child:
+                const Icon(Icons.api_outlined, size: 36, color: Colors.white),
           ),
           const SizedBox(height: 24),
           Text(

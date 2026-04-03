@@ -68,13 +68,15 @@ class HttpService {
     List<Variable> requestVars,
   ) {
     final resolvedUrl = _resolveVars(url, envVars, collectionVars, requestVars);
-    final activeParams = queryParams.where((p) => p.enabled && p.key.isNotEmpty);
+    final activeParams =
+        queryParams.where((p) => p.enabled && p.key.isNotEmpty);
     if (activeParams.isEmpty) return resolvedUrl;
 
     final uri = Uri.tryParse(resolvedUrl) ?? Uri.parse(resolvedUrl);
     final existingParams = Map<String, dynamic>.from(uri.queryParameters);
     for (final p in activeParams) {
-      existingParams[_resolveVars(p.key, envVars, collectionVars, requestVars)] =
+      existingParams[
+              _resolveVars(p.key, envVars, collectionVars, requestVars)] =
           _resolveVars(p.value, envVars, collectionVars, requestVars);
     }
     return uri.replace(queryParameters: existingParams).toString();
@@ -109,7 +111,9 @@ class HttpService {
   bool _isTokenExpired(OAuth2Config oauth2) {
     if (oauth2.tokenExpiry == null) return false;
     // Consider token expired if less than 30 seconds remain
-    return DateTime.now().add(const Duration(seconds: 30)).isAfter(oauth2.tokenExpiry!);
+    return DateTime.now()
+        .add(const Duration(seconds: 30))
+        .isAfter(oauth2.tokenExpiry!);
   }
 
   Future<OAuth2Config> refreshOAuth2IfNeeded(
@@ -142,7 +146,8 @@ class HttpService {
       if (tokenResponse != null) {
         final accessToken = tokenResponse['access_token'] ?? '';
         final expiresIn = tokenResponse['expires_in'] ?? 0;
-        final newRefreshToken = tokenResponse['refresh_token'] ?? oauth2.refreshToken;
+        final newRefreshToken =
+            tokenResponse['refresh_token'] ?? oauth2.refreshToken;
 
         final tokenExpiry = expiresIn > 0
             ? DateTime.now().add(Duration(seconds: expiresIn as int))
@@ -170,8 +175,8 @@ class HttpService {
     int timeoutMs = 30000,
   }) async {
     final dio = _buildDio(verifySsl: verifySsl, timeoutMs: timeoutMs);
-    final url = _buildUrl(
-        request.url, request.queryParams, envVars, collectionVars, request.variables);
+    final url = _buildUrl(request.url, request.queryParams, envVars,
+        collectionVars, request.variables);
     final headers = _resolveHeaders(
         request.headers, envVars, collectionVars, request.variables);
 
@@ -196,8 +201,10 @@ class HttpService {
       headers['Authorization'] =
           'Bearer ${_resolveVars(request.auth.token, envVars, collectionVars, request.variables)}';
     } else if (request.auth.type == AuthType.basic) {
-      final username = _resolveVars(request.auth.username, envVars, collectionVars, request.variables);
-      final password = _resolveVars(request.auth.password, envVars, collectionVars, request.variables);
+      final username = _resolveVars(
+          request.auth.username, envVars, collectionVars, request.variables);
+      final password = _resolveVars(
+          request.auth.password, envVars, collectionVars, request.variables);
       final creds = '$username:$password';
       final encoded = base64Encode(utf8.encode(creds));
       headers['Authorization'] = 'Basic $encoded';
@@ -227,8 +234,8 @@ class HttpService {
         final formMap = <String, String>{};
         for (final f in request.formDataFields.where((f) => f.enabled)) {
           formMap[_resolveVars(
-              f.key, envVars, collectionVars, request.variables)] = _resolveVars(
-              f.value, envVars, collectionVars, request.variables);
+                  f.key, envVars, collectionVars, request.variables)] =
+              _resolveVars(f.value, envVars, collectionVars, request.variables);
         }
         data = formMap;
         break;
@@ -267,8 +274,8 @@ class HttpService {
 
       final body = response.data ?? '';
       final sizeBytes = body.length;
-      final contentType = responseHeaders['content-type'] ??
-          responseHeaders['Content-Type'];
+      final contentType =
+          responseHeaders['content-type'] ?? responseHeaders['Content-Type'];
 
       return ApiResponse(
         statusCode: response.statusCode ?? 0,

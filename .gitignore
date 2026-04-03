@@ -79,6 +79,7 @@ migrate_working_dir/
 .issues
 .agents
 .docs
+.temp
 
 # Symbols
 app.*.symbols

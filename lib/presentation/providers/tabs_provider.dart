@@ -94,7 +94,8 @@ class TabsNotifier extends Notifier<List<RequestTab>> {
 
   void updateRequest(String tabId, ApiRequest request) {
     state = state
-        .map((t) => t.id == tabId ? t.copyWith(request: request, isDirty: true) : t)
+        .map((t) =>
+            t.id == tabId ? t.copyWith(request: request, isDirty: true) : t)
         .toList();
   }
 
@@ -117,8 +118,9 @@ class TabsNotifier extends Notifier<List<RequestTab>> {
 
   void setResponse(String tabId, ApiResponse response) {
     state = state
-        .map((t) =>
-            t.id == tabId ? t.copyWith(response: response, isLoading: false) : t)
+        .map((t) => t.id == tabId
+            ? t.copyWith(response: response, isLoading: false)
+            : t)
         .toList();
   }
 
@@ -144,10 +146,11 @@ class TabsNotifier extends Notifier<List<RequestTab>> {
           collections.where((c) => c.id == tab.collectionId).firstOrNull;
       if (collection != null) {
         collectionVars = collection.variables;
-        
+
         if (collection.environmentId != null) {
           final envs = ref.read(environmentsProvider).value ?? [];
-          final linkedEnv = envs.where((e) => e.id == collection.environmentId).firstOrNull;
+          final linkedEnv =
+              envs.where((e) => e.id == collection.environmentId).firstOrNull;
           if (linkedEnv != null) {
             envVarsList = linkedEnv.variables.where((v) => v.enabled).toList();
           }
@@ -198,10 +201,10 @@ class TabsNotifier extends Notifier<List<RequestTab>> {
 
     if (tab.collectionId != null) {
       ref.read(collectionsProvider.notifier).saveRequest(
-        tab.collectionId!,
-        tab.folderId,
-        tab.request,
-      );
+            tab.collectionId!,
+            tab.folderId,
+            tab.request,
+          );
       markClean(tabId);
     } else {
       showDialog(

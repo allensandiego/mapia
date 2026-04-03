@@ -35,7 +35,8 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: context.colors.border)),
+                border:
+                    Border(bottom: BorderSide(color: context.colors.border)),
               ),
               child: Row(
                 children: [
@@ -50,7 +51,8 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
                     icon: const Icon(Icons.close, size: 16),
                     color: context.colors.textMuted,
                     padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minWidth: 28, minHeight: 28),
+                    constraints:
+                        const BoxConstraints(minWidth: 28, minHeight: 28),
                   ),
                 ],
               ),
@@ -133,8 +135,8 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
                                       color: context.colors.textMuted)))
                           : _EnvironmentEditor(
                               key: ValueKey(_selectedId),
-                              environment: envs
-                                  .firstWhere((e) => e.id == _selectedId),
+                              environment:
+                                  envs.firstWhere((e) => e.id == _selectedId),
                             ),
                     ),
                   ],
@@ -163,8 +165,7 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
         ),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('Cancel')),
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
           ElevatedButton(
               onPressed: () => Navigator.pop(ctx, ctrl.text),
               child: const Text('Create')),
@@ -211,8 +212,7 @@ class _EnvironmentEditorState extends ConsumerState<_EnvironmentEditor> {
         ),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('Cancel')),
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
           ElevatedButton(
               onPressed: () => Navigator.pop(ctx, ctrl.text),
               child: const Text('Save')),

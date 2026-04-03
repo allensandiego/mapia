@@ -28,7 +28,8 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
       width: ref.watch(sidebarWidthProvider),
       decoration: BoxDecoration(
         color: context.colors.sidebarBg,
-        border: Border(right: BorderSide(color: context.colors.border, width: 0.5)),
+        border:
+            Border(right: BorderSide(color: context.colors.border, width: 0.5)),
       ),
       child: Row(
         children: [
@@ -37,7 +38,8 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
             width: 44, // Slightly slimmer rail
             decoration: BoxDecoration(
               color: context.colors.sidebarRail,
-              border: Border(right: BorderSide(color: context.colors.border, width: 0.5)),
+              border: Border(
+                  right: BorderSide(color: context.colors.border, width: 0.5)),
             ),
             child: Column(
               children: [
@@ -94,7 +96,9 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
                   child: Row(
                     children: [
                       Text(
-                        (_tab == _SidebarTab.collections ? 'COLLECTIONS' : 'HISTORY'),
+                        (_tab == _SidebarTab.collections
+                            ? 'COLLECTIONS'
+                            : 'HISTORY'),
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w800,
@@ -153,8 +157,7 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
         ),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('Cancel')),
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
           ElevatedButton(
               onPressed: () => Navigator.pop(ctx, ctrl.text),
               child: const Text('Create')),
@@ -191,13 +194,16 @@ class _RailBtn extends StatelessWidget {
           height: 32,
           margin: const EdgeInsets.symmetric(vertical: 4),
           decoration: BoxDecoration(
-            color: active ? context.colors.accent.withValues(alpha: 0.1) : Colors.transparent,
+            color: active
+                ? context.colors.accent.withValues(alpha: 0.1)
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
             active ? activeIcon : icon,
             size: 20,
-            color: active ? context.colors.accent : context.colors.textSecondary,
+            color:
+                active ? context.colors.accent : context.colors.textSecondary,
           ),
         ),
       ),
@@ -210,7 +216,8 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onTap;
   final String tooltip;
 
-  const _ActionButton({required this.icon, required this.onTap, required this.tooltip});
+  const _ActionButton(
+      {required this.icon, required this.onTap, required this.tooltip});
 
   @override
   Widget build(BuildContext context) {

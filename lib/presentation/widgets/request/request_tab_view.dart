@@ -34,7 +34,8 @@ class RequestTabView extends ConsumerWidget {
               // URL bar
               UrlBar(
                 tab: tab,
-                onSend: () => ref.read(tabsProvider.notifier).sendRequest(tab.id),
+                onSend: () =>
+                    ref.read(tabsProvider.notifier).sendRequest(tab.id),
               ),
               const Divider(height: 1),
               // Request Editor + Response Panel (vertical split)
@@ -92,7 +93,8 @@ class _VerticalSplitState extends ConsumerState<_VerticalSplit> {
       builder: (context, constraints) {
         final totalH = constraints.maxHeight;
         const dragHandleHeight = 5.0;
-        final availableH = (totalH - dragHandleHeight).clamp(0.0, double.infinity);
+        final availableH =
+            (totalH - dragHandleHeight).clamp(0.0, double.infinity);
 
         final topH = availableH * _splitRatio;
 
@@ -107,8 +109,8 @@ class _VerticalSplitState extends ConsumerState<_VerticalSplit> {
             GestureDetector(
               onVerticalDragUpdate: (details) {
                 setState(() {
-                  _splitRatio =
-                      (_splitRatio + details.delta.dy / availableH).clamp(0.2, 0.8);
+                  _splitRatio = (_splitRatio + details.delta.dy / availableH)
+                      .clamp(0.2, 0.8);
                 });
               },
               child: Container(

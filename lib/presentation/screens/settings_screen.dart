@@ -21,7 +21,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final s = ref.read(settingsProvider);
     _proxyHostCtrl = TextEditingController(text: s.proxyHost);
     _proxyPortCtrl = TextEditingController(text: s.proxyPort.toString());
-    _timeoutCtrl = TextEditingController(text: (s.requestTimeoutMs ~/ 1000).toString());
+    _timeoutCtrl =
+        TextEditingController(text: (s.requestTimeoutMs ~/ 1000).toString());
   }
 
   @override
@@ -51,7 +52,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               padding: const EdgeInsets.fromLTRB(24, 20, 16, 0),
               child: Row(
                 children: [
-                  Icon(Icons.settings_outlined, size: 20, color: context.colors.accent),
+                  Icon(Icons.settings_outlined,
+                      size: 20, color: context.colors.accent),
                   const SizedBox(width: 10),
                   Text(
                     'Settings',
@@ -90,11 +92,24 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       dropdownColor: context.colors.bgElevated,
                       style: TextStyle(color: context.colors.textPrimary),
                       items: [
-                        DropdownMenuItem(value: ThemeMode.system, child: Text('System', style: TextStyle(color: context.colors.textPrimary))),
-                        DropdownMenuItem(value: ThemeMode.dark, child: Text('Dark', style: TextStyle(color: context.colors.textPrimary))),
-                        DropdownMenuItem(value: ThemeMode.light, child: Text('Light', style: TextStyle(color: context.colors.textPrimary))),
+                        DropdownMenuItem(
+                            value: ThemeMode.system,
+                            child: Text('System',
+                                style: TextStyle(
+                                    color: context.colors.textPrimary))),
+                        DropdownMenuItem(
+                            value: ThemeMode.dark,
+                            child: Text('Dark',
+                                style: TextStyle(
+                                    color: context.colors.textPrimary))),
+                        DropdownMenuItem(
+                            value: ThemeMode.light,
+                            child: Text('Light',
+                                style: TextStyle(
+                                    color: context.colors.textPrimary))),
                       ],
-                      onChanged: (v) => v != null ? notifier.setThemeMode(v) : null,
+                      onChanged: (v) =>
+                          v != null ? notifier.setThemeMode(v) : null,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -123,10 +138,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         style: TextStyle(color: context.colors.textPrimary),
                         decoration: InputDecoration(
                           isDense: true,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 8),
                           border: const OutlineInputBorder(),
                           suffixText: 's',
-                          suffixStyle: TextStyle(color: context.colors.textMuted),
+                          suffixStyle:
+                              TextStyle(color: context.colors.textMuted),
                         ),
                         onSubmitted: (v) {
                           final secs = int.tryParse(v) ?? 30;
@@ -142,7 +159,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   const SizedBox(height: 12),
                   _SettingRow(
                     label: 'Proxy Host',
-                    description: 'HTTP proxy hostname (leave blank to disable).',
+                    description:
+                        'HTTP proxy hostname (leave blank to disable).',
                     child: SizedBox(
                       width: 200,
                       child: TextField(
@@ -150,10 +168,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         style: TextStyle(color: context.colors.textPrimary),
                         decoration: InputDecoration(
                           isDense: true,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 8),
                           border: const OutlineInputBorder(),
                           hintText: 'e.g. 127.0.0.1',
-                          hintStyle: TextStyle(color: context.colors.textDisabled),
+                          hintStyle:
+                              TextStyle(color: context.colors.textDisabled),
                         ),
                         onSubmitted: (_) => _saveProxy(notifier),
                         onEditingComplete: () => _saveProxy(notifier),
@@ -173,7 +193,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         style: TextStyle(color: context.colors.textPrimary),
                         decoration: const InputDecoration(
                           isDense: true,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           border: OutlineInputBorder(),
                         ),
                         onSubmitted: (_) => _saveProxy(notifier),

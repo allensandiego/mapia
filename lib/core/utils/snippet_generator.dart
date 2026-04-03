@@ -13,8 +13,10 @@ class SnippetGenerator {
     // Add query params to URL
     String url = r.url;
     if (r.queryParams.isNotEmpty) {
-      final enabledParams =
-          r.queryParams.where((p) => p.enabled).map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}').toList();
+      final enabledParams = r.queryParams
+          .where((p) => p.enabled)
+          .map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}')
+          .toList();
       if (enabledParams.isNotEmpty) {
         url += '?${enabledParams.join('&')}';
       }
@@ -34,7 +36,9 @@ class SnippetGenerator {
     }
 
     // Add body if present
-    if (r.body.isNotEmpty && r.method != HttpMethod.get && r.method != HttpMethod.head) {
+    if (r.body.isNotEmpty &&
+        r.method != HttpMethod.get &&
+        r.method != HttpMethod.head) {
       final bodyStr = r.body.replaceAll("'", "'\\''");
       lines.add('  --data-raw \'$bodyStr\'');
     }
@@ -66,7 +70,8 @@ class SnippetGenerator {
       lines.add('auth = (\'${r.auth.username}\', \'${r.auth.password}\')');
       authStr = 'auth';
     } else if (r.auth.type == AuthType.apiKey) {
-      lines.add('headers[\'${r.auth.apiKeyHeader}\'] = \'${r.auth.apiKeyValue}\'');
+      lines.add(
+          'headers[\'${r.auth.apiKeyHeader}\'] = \'${r.auth.apiKeyValue}\'');
     }
     lines.add('');
 
@@ -85,7 +90,9 @@ class SnippetGenerator {
 
     // Body
     String dataArg = '';
-    if (r.body.isNotEmpty && r.method != HttpMethod.get && r.method != HttpMethod.head) {
+    if (r.body.isNotEmpty &&
+        r.method != HttpMethod.get &&
+        r.method != HttpMethod.head) {
       if (r.bodyType == BodyType.json) {
         dataArg = ', json=${_escapeJsonBody(r.body)}';
       } else {
@@ -119,7 +126,8 @@ class SnippetGenerator {
     if (r.auth.type == AuthType.bearer) {
       lines.add('  \'Authorization\': \'Bearer ${r.auth.token}\',');
     } else if (r.auth.type == AuthType.basic) {
-      final auth = base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'));
+      final auth =
+          base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'));
       lines.add('  \'Authorization\': \'Basic $auth\',');
     } else if (r.auth.type == AuthType.apiKey) {
       lines.add('  \'${r.auth.apiKeyHeader}\': \'${r.auth.apiKeyValue}\',');
@@ -131,8 +139,10 @@ class SnippetGenerator {
     // Build URL with query params
     String url = r.url;
     if (r.queryParams.isNotEmpty) {
-      final enabledParams =
-          r.queryParams.where((p) => p.enabled).map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}').toList();
+      final enabledParams = r.queryParams
+          .where((p) => p.enabled)
+          .map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}')
+          .toList();
       if (enabledParams.isNotEmpty) {
         url += '?${enabledParams.join('&')}';
       }
@@ -144,7 +154,9 @@ class SnippetGenerator {
     lines.add('  headers,');
 
     // Add body if present
-    if (r.body.isNotEmpty && r.method != HttpMethod.get && r.method != HttpMethod.head) {
+    if (r.body.isNotEmpty &&
+        r.method != HttpMethod.get &&
+        r.method != HttpMethod.head) {
       final bodyStr = r.body.replaceAll("'", "\\'").replaceAll('\n', '\\n');
       lines.add('  body: \'$bodyStr\',');
     }
@@ -169,8 +181,10 @@ class SnippetGenerator {
     // Build URL with query params
     String url = r.url;
     if (r.queryParams.isNotEmpty) {
-      final enabledParams =
-          r.queryParams.where((p) => p.enabled).map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}').toList();
+      final enabledParams = r.queryParams
+          .where((p) => p.enabled)
+          .map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}')
+          .toList();
       if (enabledParams.isNotEmpty) {
         url += '?${enabledParams.join('&')}';
       }
@@ -192,7 +206,8 @@ class SnippetGenerator {
     if (r.auth.type == AuthType.bearer) {
       lines.add('    \'Authorization\': \'Bearer ${r.auth.token}\',');
     } else if (r.auth.type == AuthType.basic) {
-      lines.add('    \'Authorization\': \'Basic ${base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'))}\',');
+      lines.add(
+          '    \'Authorization\': \'Basic ${base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'))}\',');
     } else if (r.auth.type == AuthType.apiKey) {
       lines.add('    \'${r.auth.apiKeyHeader}\': \'${r.auth.apiKeyValue}\',');
     }
@@ -200,7 +215,9 @@ class SnippetGenerator {
     lines.add('  },');
 
     // Body/Data
-    if (r.body.isNotEmpty && r.method != HttpMethod.get && r.method != HttpMethod.head) {
+    if (r.body.isNotEmpty &&
+        r.method != HttpMethod.get &&
+        r.method != HttpMethod.head) {
       if (r.bodyType == BodyType.json) {
         lines.add('  data: ${r.body},');
       } else {
@@ -232,8 +249,10 @@ class SnippetGenerator {
     // Build URL with query params
     String url = r.url;
     if (r.queryParams.isNotEmpty) {
-      final enabledParams =
-          r.queryParams.where((p) => p.enabled).map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}').toList();
+      final enabledParams = r.queryParams
+          .where((p) => p.enabled)
+          .map((p) => '${p.key}=${Uri.encodeQueryComponent(p.value)}')
+          .toList();
       if (enabledParams.isNotEmpty) {
         url += '?${enabledParams.join('&')}';
       }
@@ -250,7 +269,8 @@ class SnippetGenerator {
     if (r.auth.type == AuthType.bearer) {
       lines.add('    \'Authorization\': \'Bearer ${r.auth.token}\',');
     } else if (r.auth.type == AuthType.basic) {
-      lines.add('    \'Authorization\': \'Basic ${base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'))}\',');
+      lines.add(
+          '    \'Authorization\': \'Basic ${base64Encode(utf8.encode('${r.auth.username}:${r.auth.password}'))}\',');
     } else if (r.auth.type == AuthType.apiKey) {
       lines.add('    \'${r.auth.apiKeyHeader}\': \'${r.auth.apiKeyValue}\',');
     }
@@ -260,7 +280,9 @@ class SnippetGenerator {
 
     // Body
     String dataArg = '';
-    if (r.body.isNotEmpty && r.method != HttpMethod.get && r.method != HttpMethod.head) {
+    if (r.body.isNotEmpty &&
+        r.method != HttpMethod.get &&
+        r.method != HttpMethod.head) {
       if (r.bodyType == BodyType.json) {
         dataArg = ', data: ${r.body}';
       } else {
@@ -288,7 +310,8 @@ class SnippetGenerator {
       case AuthType.bearer:
         return 'Bearer ${auth.token}';
       case AuthType.basic:
-        final credentials = base64Encode(utf8.encode('${auth.username}:${auth.password}'));
+        final credentials =
+            base64Encode(utf8.encode('${auth.username}:${auth.password}'));
         return 'Basic $credentials';
       case AuthType.apiKey:
         return auth.apiKeyValue;

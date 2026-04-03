@@ -41,8 +41,7 @@ class CollectionTree extends ConsumerWidget {
         }
         return ListView.builder(
           itemCount: collections.length,
-          itemBuilder: (ctx, i) =>
-              _CollectionItem(collection: collections[i]),
+          itemBuilder: (ctx, i) => _CollectionItem(collection: collections[i]),
         );
       },
     );
@@ -101,7 +100,8 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
                   borderRadius: BorderRadius.circular(3),
                   child: Padding(
                     padding: const EdgeInsets.all(3),
-                    child: Icon(Icons.add, size: 13, color: context.colors.textMuted),
+                    child: Icon(Icons.add,
+                        size: 13, color: context.colors.textMuted),
                   ),
                 ),
               ],
@@ -139,11 +139,16 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
     final copy = col.copyWith(
       id: const Uuid().v4(),
       name: '${col.name} (Copy)',
-      requests: col.requests.map((r) => r.copyWith(id: const Uuid().v4())).toList(),
-      folders: col.folders.map((f) => f.copyWith(
-        id: const Uuid().v4(),
-        requests: f.requests.map((r) => r.copyWith(id: const Uuid().v4())).toList(),
-      )).toList(),
+      requests:
+          col.requests.map((r) => r.copyWith(id: const Uuid().v4())).toList(),
+      folders: col.folders
+          .map((f) => f.copyWith(
+                id: const Uuid().v4(),
+                requests: f.requests
+                    .map((r) => r.copyWith(id: const Uuid().v4()))
+                    .toList(),
+              ))
+          .toList(),
     );
     ref.read(collectionsProvider.notifier).addCollection(copy);
   }
@@ -202,10 +207,13 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
         PopupMenuItem(
           child: ListTile(
             dense: true,
-            leading: Icon(Icons.delete_outline, size: 16, color: context.colors.error),
-            title: Text('Delete', style: TextStyle(color: context.colors.error)),
+            leading: Icon(Icons.delete_outline,
+                size: 16, color: context.colors.error),
+            title:
+                Text('Delete', style: TextStyle(color: context.colors.error)),
           ),
-          onTap: () => ref.read(collectionsProvider.notifier).deleteCollection(col.id),
+          onTap: () =>
+              ref.read(collectionsProvider.notifier).deleteCollection(col.id),
         ),
       ],
     );
@@ -218,7 +226,8 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
   }
 
   Future<void> _renameCollection(BuildContext context, Collection col) async {
-    final name = await _showRenameDialog(context, 'Rename Collection', col.name);
+    final name =
+        await _showRenameDialog(context, 'Rename Collection', col.name);
     if (name != null) {
       ref.read(collectionsProvider.notifier).renameCollection(col.id, name);
     }
@@ -231,13 +240,15 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
     );
   }
 
-  Future<String?> _showRenameDialog(BuildContext context, String title, String current) {
+  Future<String?> _showRenameDialog(
+      BuildContext context, String title, String current) {
     final ctrl = TextEditingController(text: current);
     return showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: context.colors.bgElevated,
-        title: Text(title, style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
+        title: Text(title,
+            style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
         content: TextField(
           controller: ctrl,
           autofocus: true,
@@ -248,8 +259,11 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
           ),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, ctrl.text), child: const Text('Save')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(ctx, ctrl.text),
+              child: const Text('Save')),
         ],
       ),
     );
@@ -277,21 +291,26 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
           onTap: () => setState(() => _expanded = !_expanded),
           onSecondaryTap: () => _showContextMenu(context),
           child: Container(
-            padding: const EdgeInsets.only(left: 24, right: 8, top: 5, bottom: 5),
+            padding:
+                const EdgeInsets.only(left: 24, right: 8, top: 5, bottom: 5),
             child: Row(
               children: [
                 Icon(
-                  _expanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
+                  _expanded
+                      ? Icons.keyboard_arrow_down
+                      : Icons.keyboard_arrow_right,
                   size: 12,
                   color: context.colors.textMuted,
                 ),
                 const SizedBox(width: 4),
-                Icon(Icons.folder_outlined, size: 13, color: context.colors.accent),
+                Icon(Icons.folder_outlined,
+                    size: 13, color: context.colors.accent),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     widget.folder.name,
-                    style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
+                    style: TextStyle(
+                        fontSize: 12, color: context.colors.textSecondary),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -313,17 +332,26 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
   void _showContextMenu(BuildContext context) {
     final box = context.findRenderObject() as RenderBox;
     final pos = box.localToGlobal(Offset.zero);
-    final rect = RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx + 200, pos.dy + 100);
+    final rect =
+        RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx + 200, pos.dy + 100);
     showMenu(
       context: context,
       position: rect,
       items: [
         PopupMenuItem(
-          child: const ListTile(dense: true, leading: Icon(Icons.drive_file_rename_outline, size: 16), title: Text('Rename')),
+          child: const ListTile(
+              dense: true,
+              leading: Icon(Icons.drive_file_rename_outline, size: 16),
+              title: Text('Rename')),
           onTap: () => _rename(context),
         ),
         PopupMenuItem(
-          child: ListTile(dense: true, leading: Icon(Icons.delete_outline, size: 16, color: context.colors.error), title: Text('Delete', style: TextStyle(color: context.colors.error))),
+          child: ListTile(
+              dense: true,
+              leading: Icon(Icons.delete_outline,
+                  size: 16, color: context.colors.error),
+              title: Text('Delete',
+                  style: TextStyle(color: context.colors.error))),
           onTap: () => _delete(),
         ),
       ],
@@ -336,7 +364,8 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: context.colors.bgElevated,
-        title: Text('Rename Folder', style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
+        title: Text('Rename Folder',
+            style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
         content: TextField(
           controller: ctrl,
           autofocus: true,
@@ -344,8 +373,11 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
           decoration: const InputDecoration(hintText: 'Enter name'),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, ctrl.text), child: const Text('Save')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(ctx, ctrl.text),
+              child: const Text('Save')),
         ],
       ),
     );
@@ -354,7 +386,10 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
       final col = cols.where((c) => c.id == widget.collectionId).firstOrNull;
       if (col == null) return;
       final updated = col.copyWith(
-        folders: col.folders.map((f) => f.id == widget.folder.id ? f.copyWith(name: newName.trim()) : f).toList(),
+        folders: col.folders
+            .map((f) =>
+                f.id == widget.folder.id ? f.copyWith(name: newName.trim()) : f)
+            .toList(),
       );
       ref.read(collectionsProvider.notifier).updateCollection(updated);
     }
@@ -394,7 +429,8 @@ class _RequestItem extends ConsumerWidget {
         final tabsNotifier = ref.read(tabsProvider.notifier);
         // Check if already open
         final tabs = ref.read(tabsProvider);
-        final existing = tabs.where((t) => t.request.id == request.id).firstOrNull;
+        final existing =
+            tabs.where((t) => t.request.id == request.id).firstOrNull;
         if (existing != null) {
           tabsNotifier.activateTab(existing.id);
         } else {
@@ -409,10 +445,11 @@ class _RequestItem extends ConsumerWidget {
       child: Container(
         padding: EdgeInsets.only(left: indent, right: 8, top: 5, bottom: 5),
         decoration: BoxDecoration(
-          color: isActive ? context.colors.accent.withValues(alpha: 0.1) : Colors.transparent,
+          color: isActive
+              ? context.colors.accent.withValues(alpha: 0.1)
+              : Colors.transparent,
           border: isActive
-              ? Border(
-                  left: BorderSide(color: context.colors.accent, width: 2))
+              ? Border(left: BorderSide(color: context.colors.accent, width: 2))
               : null,
         ),
         child: Row(
@@ -440,32 +477,49 @@ class _RequestItem extends ConsumerWidget {
   void _showContextMenu(BuildContext context, WidgetRef ref) {
     final box = context.findRenderObject() as RenderBox;
     final pos = box.localToGlobal(Offset.zero);
-    final rect = RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx + 200, pos.dy + 100);
+    final rect =
+        RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx + 200, pos.dy + 100);
 
     showMenu<void>(
       context: context,
       position: rect,
       items: [
         PopupMenuItem<void>(
-          child: const ListTile(dense: true, leading: Icon(Icons.drive_file_rename_outline, size: 16), title: Text('Rename')),
+          child: const ListTile(
+              dense: true,
+              leading: Icon(Icons.drive_file_rename_outline, size: 16),
+              title: Text('Rename')),
           onTap: () => _rename(context, ref),
         ),
         PopupMenuItem<void>(
-          child: const ListTile(dense: true, leading: Icon(Icons.copy_outlined, size: 16), title: Text('Duplicate')),
+          child: const ListTile(
+              dense: true,
+              leading: Icon(Icons.copy_outlined, size: 16),
+              title: Text('Duplicate')),
           onTap: () => _duplicate(ref),
         ),
         const PopupMenuDivider(),
         PopupMenuItem<void>(
-          child: ListTile(dense: true, leading: Icon(Icons.delete_outline, size: 16, color: context.colors.error), title: Text('Delete', style: TextStyle(color: context.colors.error))),
-          onTap: () => ref.read(collectionsProvider.notifier).deleteRequest(collectionId, folderId, request.id),
+          child: ListTile(
+              dense: true,
+              leading: Icon(Icons.delete_outline,
+                  size: 16, color: context.colors.error),
+              title: Text('Delete',
+                  style: TextStyle(color: context.colors.error))),
+          onTap: () => ref
+              .read(collectionsProvider.notifier)
+              .deleteRequest(collectionId, folderId, request.id),
         ),
       ],
     );
   }
 
   void _duplicate(WidgetRef ref) {
-    final copy = request.copyWith(id: const Uuid().v4(), name: '${request.name} (Copy)');
-    ref.read(collectionsProvider.notifier).saveRequest(collectionId, folderId, copy);
+    final copy =
+        request.copyWith(id: const Uuid().v4(), name: '${request.name} (Copy)');
+    ref
+        .read(collectionsProvider.notifier)
+        .saveRequest(collectionId, folderId, copy);
   }
 
   Future<void> _rename(BuildContext context, WidgetRef ref) async {
@@ -474,27 +528,34 @@ class _RequestItem extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: context.colors.bgSurface,
-        title: Text('Rename Request', style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
+        title: Text('Rename Request',
+            style: TextStyle(fontSize: 16, color: context.colors.textPrimary)),
         content: TextField(
           controller: ctrl,
           autofocus: true,
           onSubmitted: (v) => Navigator.pop(ctx, v),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, ctrl.text), child: const Text('Save')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(ctx, ctrl.text),
+              child: const Text('Save')),
         ],
       ),
     );
 
     if (newName != null && newName.trim().isNotEmpty) {
-      ref.read(collectionsProvider.notifier).renameRequest(collectionId, folderId, request.id, newName.trim());
+      ref
+          .read(collectionsProvider.notifier)
+          .renameRequest(collectionId, folderId, request.id, newName.trim());
       // Also update open tabs
       final tabsNotifier = ref.read(tabsProvider.notifier);
       final tabs = ref.read(tabsProvider);
       final openTab = tabs.where((t) => t.request.id == request.id).firstOrNull;
       if (openTab != null) {
-        tabsNotifier.updateRequest(openTab.id, openTab.request.copyWith(name: newName.trim()));
+        tabsNotifier.updateRequest(
+            openTab.id, openTab.request.copyWith(name: newName.trim()));
       }
     }
   }
@@ -539,11 +600,11 @@ class _CollectionSettingsDialogState
   @override
   Widget build(BuildContext context) {
     return Dialog(
-        backgroundColor: context.colors.bgElevated,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-          side: BorderSide(color: context.colors.border),
-        ),
+      backgroundColor: context.colors.bgElevated,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: context.colors.border),
+      ),
       child: SizedBox(
         width: 600,
         height: 500,
@@ -574,7 +635,10 @@ class _CollectionSettingsDialogState
             // Tabs
             TabBar(
               controller: _tabCtrl,
-              labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: context.colors.textPrimary),
+              labelStyle: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                  color: context.colors.textPrimary),
               labelColor: context.colors.accent,
               unselectedLabelColor: context.colors.textSecondary,
               tabs: const [
@@ -605,7 +669,8 @@ class _CollectionSettingsDialogState
                             controller: _nameCtrl,
                             decoration: InputDecoration(
                               hintText: 'Collection Name',
-                              hintStyle: TextStyle(color: context.colors.textDisabled),
+                              hintStyle:
+                                  TextStyle(color: context.colors.textDisabled),
                               border: const OutlineInputBorder(),
                             ),
                             style: TextStyle(color: context.colors.textPrimary),
@@ -622,7 +687,8 @@ class _CollectionSettingsDialogState
                             maxLines: 3,
                             decoration: InputDecoration(
                               hintText: 'Optional description...',
-                              hintStyle: TextStyle(color: context.colors.textDisabled),
+                              hintStyle:
+                                  TextStyle(color: context.colors.textDisabled),
                               border: const OutlineInputBorder(),
                             ),
                             style: TextStyle(color: context.colors.textPrimary),
@@ -643,27 +709,34 @@ class _CollectionSettingsDialogState
                                     DropdownMenuItem<String?>(
                                       value: null,
                                       child: Text('No Environment (Use Active)',
-                                          style: TextStyle(color: context.colors.textMuted)),
+                                          style: TextStyle(
+                                              color: context.colors.textMuted)),
                                     ),
-                                    ...envs.map((e) => DropdownMenuItem<String?>(
-                                          value: e.id,
-                                          child: Text(e.name),
-                                        )),
+                                    ...envs
+                                        .map((e) => DropdownMenuItem<String?>(
+                                              value: e.id,
+                                              child: Text(e.name),
+                                            )),
                                   ];
                                   return DropdownButtonFormField<String?>(
                                     initialValue: _envId,
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 12, vertical: 0),
                                     ),
-                                    style: TextStyle(color: context.colors.textPrimary),
+                                    style: TextStyle(
+                                        color: context.colors.textPrimary),
                                     dropdownColor: context.colors.bgElevated,
                                     items: items,
-                                    onChanged: (v) => setState(() => _envId = v),
+                                    onChanged: (v) =>
+                                        setState(() => _envId = v),
                                   );
                                 },
-                                loading: () => const CircularProgressIndicator(),
-                                error: (_, __) => const Text('Error loading environments'),
+                                loading: () =>
+                                    const CircularProgressIndicator(),
+                                error: (_, __) =>
+                                    const Text('Error loading environments'),
                               );
                             },
                           ),

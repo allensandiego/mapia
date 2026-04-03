@@ -17,7 +17,8 @@ class EnvironmentSelector extends ConsumerWidget {
         child: SizedBox(
           width: 32,
           height: 32,
-          child: Icon(Icons.tune_outlined, size: 20, color: context.colors.textSecondary),
+          child: Icon(Icons.tune_outlined,
+              size: 20, color: context.colors.textSecondary),
         ),
       );
     }
@@ -58,12 +59,12 @@ class EnvironmentSelector extends ConsumerWidget {
                     value: '__manage__',
                     child: Row(
                       children: [
-                        Icon(Icons.settings_outlined, size: 12, color: context.colors.accent),
+                        Icon(Icons.settings_outlined,
+                            size: 12, color: context.colors.accent),
                         const SizedBox(width: 8),
                         Text('Manage Environments...',
                             style: TextStyle(
-                                fontSize: 12,
-                                color: context.colors.accent)),
+                                fontSize: 12, color: context.colors.accent)),
                       ],
                     ),
                   ),

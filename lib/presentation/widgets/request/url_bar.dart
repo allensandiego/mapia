@@ -8,7 +8,6 @@ import '../../../core/utils/variable_parser.dart';
 import '../../providers/ui_provider.dart';
 import '../../../core/theme/mapia_colors.dart';
 
-
 const double _kRowHeight = 48.0;
 
 class UrlBar extends ConsumerStatefulWidget {
@@ -61,11 +60,13 @@ class _UrlBarState extends ConsumerState<UrlBar> {
 
     if (widget.tab.collectionId != null) {
       final collections = ref.watch(collectionsProvider).value ?? [];
-      final col = collections.where((c) => c.id == widget.tab.collectionId).firstOrNull;
+      final col =
+          collections.where((c) => c.id == widget.tab.collectionId).firstOrNull;
       if (col != null) {
         if (col.environmentId != null) {
           final envs = ref.watch(environmentsProvider).value ?? [];
-          final linkedEnv = envs.where((e) => e.id == col.environmentId).firstOrNull;
+          final linkedEnv =
+              envs.where((e) => e.id == col.environmentId).firstOrNull;
           if (linkedEnv != null) {
             for (final v in linkedEnv.variables.where((v) => v.enabled)) {
               allVars.add(v.key);
@@ -83,7 +84,6 @@ class _UrlBarState extends ConsumerState<UrlBar> {
       allVars.add(v.key);
       resolvedVars.putIfAbsent(v.key, () => v.value);
     }
-
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -120,7 +120,8 @@ class _UrlBarState extends ConsumerState<UrlBar> {
                   borderColor: borderColor,
                   onChanged: (m) => ref
                       .read(tabsProvider.notifier)
-                      .updateRequest(widget.tab.id, request.copyWith(method: m)),
+                      .updateRequest(
+                          widget.tab.id, request.copyWith(method: m)),
                 ),
                 const SizedBox(width: 8),
                 // ── URL field with {{var}} autocomplete ──────────────────
@@ -142,7 +143,9 @@ class _UrlBarState extends ConsumerState<UrlBar> {
                 SizedBox(
                   width: _kRowHeight,
                   child: OutlinedButton(
-                    onPressed: () => ref.read(tabsProvider.notifier).saveRequest(widget.tab.id, context),
+                    onPressed: () => ref
+                        .read(tabsProvider.notifier)
+                        .saveRequest(widget.tab.id, context),
                     style: OutlinedButton.styleFrom(
                       padding: EdgeInsets.zero,
                       side: BorderSide(color: borderColor),
@@ -153,7 +156,8 @@ class _UrlBarState extends ConsumerState<UrlBar> {
                     child: Icon(
                       Icons.save_outlined,
                       size: 20,
-                      color: widget.tab.isDirty ? colors.accent : colors.textMuted,
+                      color:
+                          widget.tab.isDirty ? colors.accent : colors.textMuted,
                     ),
                   ),
                 ),
@@ -193,23 +197,33 @@ class _UrlBarState extends ConsumerState<UrlBar> {
                 const SizedBox(width: 8),
                 // ── Code toggle ──────────────────────────────────────────
                 Tooltip(
-                  message: ref.watch(showCodePanelProvider) ? 'Hide code snippet' : 'Generate code snippet',
+                  message: ref.watch(showCodePanelProvider)
+                      ? 'Hide code snippet'
+                      : 'Generate code snippet',
                   child: OutlinedButton(
-                    onPressed: () => ref.read(showCodePanelProvider.notifier).state = !ref.read(showCodePanelProvider),
+                    onPressed: () => ref
+                        .read(showCodePanelProvider.notifier)
+                        .state = !ref.read(showCodePanelProvider),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       side: BorderSide(
-                        color: ref.watch(showCodePanelProvider) ? colors.accent : borderColor,
+                        color: ref.watch(showCodePanelProvider)
+                            ? colors.accent
+                            : borderColor,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      backgroundColor: ref.watch(showCodePanelProvider) ? colors.accent.withValues(alpha: 0.1) : null,
+                      backgroundColor: ref.watch(showCodePanelProvider)
+                          ? colors.accent.withValues(alpha: 0.1)
+                          : null,
                     ),
                     child: Icon(
                       Icons.code_outlined,
                       size: 20,
-                      color: ref.watch(showCodePanelProvider) ? colors.accent : colors.textMuted,
+                      color: ref.watch(showCodePanelProvider)
+                          ? colors.accent
+                          : colors.textMuted,
                     ),
                   ),
                 ),
@@ -240,13 +254,20 @@ class _MethodDropdown extends StatelessWidget {
   Color _getMethodColor(BuildContext context, HttpMethod method) {
     final colors = context.colors;
     switch (method) {
-      case HttpMethod.get: return colors.methodGet;
-      case HttpMethod.post: return colors.methodPost;
-      case HttpMethod.put: return colors.methodPut;
-      case HttpMethod.patch: return colors.methodPatch;
-      case HttpMethod.delete: return colors.methodDelete;
-      case HttpMethod.head: return colors.methodHead;
-      case HttpMethod.options: return colors.methodOptions;
+      case HttpMethod.get:
+        return colors.methodGet;
+      case HttpMethod.post:
+        return colors.methodPost;
+      case HttpMethod.put:
+        return colors.methodPut;
+      case HttpMethod.patch:
+        return colors.methodPatch;
+      case HttpMethod.delete:
+        return colors.methodDelete;
+      case HttpMethod.head:
+        return colors.methodHead;
+      case HttpMethod.options:
+        return colors.methodOptions;
     }
   }
 
@@ -272,7 +293,11 @@ class _MethodDropdown extends StatelessWidget {
         items: HttpMethod.values.map((m) {
           return DropdownMenuItem(
             value: m,
-            child: Text(m.label, style: TextStyle(color: _getMethodColor(context, m), fontWeight: FontWeight.bold, fontSize: 13)),
+            child: Text(m.label,
+                style: TextStyle(
+                    color: _getMethodColor(context, m),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13)),
           );
         }).toList(),
         onChanged: (m) => m != null ? onChanged(m) : null,
@@ -316,7 +341,9 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
   void initState() {
     super.initState();
     widget.controller.addListener(_onTextChanged);
-    _focus.addListener(() { if (!_focus.hasFocus) _hideOverlay(); });
+    _focus.addListener(() {
+      if (!_focus.hasFocus) _hideOverlay();
+    });
   }
 
   @override
@@ -335,19 +362,30 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
     // Find the last {{ before the cursor
     final before = text.substring(0, pos);
     final openIdx = before.lastIndexOf('{{');
-    if (openIdx == -1) { _hideOverlay(); return; }
+    if (openIdx == -1) {
+      _hideOverlay();
+      return;
+    }
 
     // If there's a closing }} between {{ and cursor, don't show
-    if (before.substring(openIdx).contains('}}')) { _hideOverlay(); return; }
+    if (before.substring(openIdx).contains('}}')) {
+      _hideOverlay();
+      return;
+    }
 
     final query = before.substring(openIdx + 2).toLowerCase();
-    final matches = widget.envVars.where((k) => k.toLowerCase().startsWith(query)).toList();
+    final matches =
+        widget.envVars.where((k) => k.toLowerCase().startsWith(query)).toList();
 
-    if (matches.isEmpty) { _hideOverlay(); return; }
+    if (matches.isEmpty) {
+      _hideOverlay();
+      return;
+    }
     _showOverlay(matches, openIdx, pos, query.length);
   }
 
-  void _showOverlay(List<String> matches, int openIdx, int cursorPos, int queryLen) {
+  void _showOverlay(
+      List<String> matches, int openIdx, int cursorPos, int queryLen) {
     _hideOverlay();
     final colors = context.colors;
     _overlay = OverlayEntry(
@@ -364,33 +402,52 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
             child: ListView(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
-              children: matches.map((varKey) => InkWell(
-                onTap: () {
-                  final text = widget.controller.text;
-                  // Rebuild full text replacing the partial {{query with {{varKey}}
-                  final prefix = text.substring(0, openIdx);
-                  final suffix = text.substring(cursorPos);
-                  final inserted = '$prefix{{$varKey}}$suffix';
-                  widget.controller.value = TextEditingValue(
-                    text: inserted,
-                    selection: TextSelection.collapsed(offset: openIdx + varKey.length + 4),
-                  );
-                  widget.onChanged(inserted);
-                  _hideOverlay();
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(text: '{{', style: TextStyle(color: colors.warning, fontFamily: 'monospace', fontSize: 12)),
-                        TextSpan(text: varKey, style: TextStyle(color: colors.textPrimary, fontFamily: 'monospace', fontSize: 12)),
-                        TextSpan(text: '}}', style: TextStyle(color: colors.warning, fontFamily: 'monospace', fontSize: 12)),
-                      ],
-                    ),
-                  ),
-                ),
-              )).toList(),
+              children: matches
+                  .map((varKey) => InkWell(
+                        onTap: () {
+                          final text = widget.controller.text;
+                          // Rebuild full text replacing the partial {{query with {{varKey}}
+                          final prefix = text.substring(0, openIdx);
+                          final suffix = text.substring(cursorPos);
+                          final inserted = '$prefix{{$varKey}}$suffix';
+                          widget.controller.value = TextEditingValue(
+                            text: inserted,
+                            selection: TextSelection.collapsed(
+                                offset: openIdx + varKey.length + 4),
+                          );
+                          widget.onChanged(inserted);
+                          _hideOverlay();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 9),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: '{{',
+                                    style: TextStyle(
+                                        color: colors.warning,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                                TextSpan(
+                                    text: varKey,
+                                    style: TextStyle(
+                                        color: colors.textPrimary,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                                TextSpan(
+                                    text: '}}',
+                                    style: TextStyle(
+                                        color: colors.warning,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ))
+                  .toList(),
             ),
           ),
         ),
@@ -409,7 +466,8 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
     final colors = context.colors;
     final text = widget.controller.text;
     final hasVars = text.contains('{{');
-    final resolvedText = hasVars ? VariableParser.resolve(text, widget.resolvedEnvVars) : null;
+    final resolvedText =
+        hasVars ? VariableParser.resolve(text, widget.resolvedEnvVars) : null;
 
     Widget field = TextField(
       controller: widget.controller,
@@ -422,12 +480,16 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 12),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: hasVars ? colors.warning.withValues(alpha: 0.4) : widget.borderColor,
+            color: hasVars
+                ? colors.warning.withValues(alpha: 0.4)
+                : widget.borderColor,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: hasVars ? colors.warning.withValues(alpha: 0.4) : widget.borderColor,
+            color: hasVars
+                ? colors.warning.withValues(alpha: 0.4)
+                : widget.borderColor,
           ),
         ),
         focusedBorder: OutlineInputBorder(

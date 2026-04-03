@@ -20,7 +20,9 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     final repo = ref.read(collectionRepositoryProvider);
     await repo.save(collection);
     state = AsyncValue.data(
-      (state.value ?? []).map((c) => c.id == collection.id ? collection : c).toList(),
+      (state.value ?? [])
+          .map((c) => c.id == collection.id ? collection : c)
+          .toList(),
     );
   }
 
@@ -32,7 +34,8 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     );
   }
 
-  Future<void> saveRequest(String collectionId, String? folderId, ApiRequest request) async {
+  Future<void> saveRequest(
+      String collectionId, String? folderId, ApiRequest request) async {
     final cols = state.value ?? [];
     final col = cols.where((c) => c.id == collectionId).firstOrNull;
     if (col == null) return;
@@ -65,7 +68,8 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     await updateCollection(newCol);
   }
 
-  Future<void> deleteRequest(String collectionId, String? folderId, String requestId) async {
+  Future<void> deleteRequest(
+      String collectionId, String? folderId, String requestId) async {
     final cols = state.value ?? [];
     final col = cols.where((c) => c.id == collectionId).firstOrNull;
     if (col == null) return;
@@ -92,7 +96,8 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     await updateCollection(col.copyWith(name: newName));
   }
 
-  Future<void> renameRequest(String collectionId, String? folderId, String requestId, String newName) async {
+  Future<void> renameRequest(String collectionId, String? folderId,
+      String requestId, String newName) async {
     final cols = state.value ?? [];
     final col = cols.where((c) => c.id == collectionId).firstOrNull;
     if (col == null) return;
@@ -101,12 +106,16 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     if (folderId != null) {
       final folders = col.folders.map((f) {
         if (f.id != folderId) return f;
-        final reqs = f.requests.map((r) => r.id == requestId ? r.copyWith(name: newName) : r).toList();
+        final reqs = f.requests
+            .map((r) => r.id == requestId ? r.copyWith(name: newName) : r)
+            .toList();
         return f.copyWith(requests: reqs);
       }).toList();
       newCol = col.copyWith(folders: folders);
     } else {
-      final reqs = col.requests.map((r) => r.id == requestId ? r.copyWith(name: newName) : r).toList();
+      final reqs = col.requests
+          .map((r) => r.id == requestId ? r.copyWith(name: newName) : r)
+          .toList();
       newCol = col.copyWith(requests: reqs);
     }
 

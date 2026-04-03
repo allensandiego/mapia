@@ -79,7 +79,8 @@ class _SnippetPanelState extends State<SnippetPanel> {
                     .map((type) => DropdownMenuItem(
                           value: type,
                           child: Text(type.label,
-                              style: TextStyle(fontSize: 12, color: colors.textPrimary)),
+                              style: TextStyle(
+                                  fontSize: 12, color: colors.textPrimary)),
                         ))
                     .toList(),
                 underline: Container(),
@@ -108,7 +109,8 @@ class _SnippetPanelState extends State<SnippetPanel> {
                 snippet,
                 language: _selectedType.highlightLanguage,
                 theme: atomOneDarkTheme,
-                textStyle: const TextStyle(fontFamily: 'monospace', fontSize: 12),
+                textStyle:
+                    const TextStyle(fontFamily: 'monospace', fontSize: 12),
                 padding: const EdgeInsets.all(12),
               ),
             ),

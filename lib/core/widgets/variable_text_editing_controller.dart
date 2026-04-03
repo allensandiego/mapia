@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// Variables are highlighted in orange, while non-variable text remains in the default color.
 class VariableTextEditingController extends TextEditingController {
   static final _variablePattern = RegExp(r'\{\{([^}]+)\}\}');
-  
+
   final Color variableColor;
   final Color defaultColor;
   final TextStyle? baseTextStyle;
@@ -25,8 +25,9 @@ class VariableTextEditingController extends TextEditingController {
     TextStyle? style,
     required bool withComposing,
   }) {
-    style ??= baseTextStyle ?? const TextStyle(fontSize: 13, color: Color(0xFFF1F5F9));
-    
+    style ??= baseTextStyle ??
+        const TextStyle(fontSize: 13, color: Color(0xFFF1F5F9));
+
     final text = this.text;
     if (text.isEmpty) {
       return TextSpan(style: style, text: '');

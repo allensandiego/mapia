@@ -8,23 +8,40 @@ class HttpUtils {
 
   static String statusLabel(int statusCode) {
     switch (statusCode) {
-      case 200: return '200 OK';
-      case 201: return '201 Created';
-      case 204: return '204 No Content';
-      case 301: return '301 Moved Permanently';
-      case 302: return '302 Found';
-      case 304: return '304 Not Modified';
-      case 400: return '400 Bad Request';
-      case 401: return '401 Unauthorized';
-      case 403: return '403 Forbidden';
-      case 404: return '404 Not Found';
-      case 405: return '405 Method Not Allowed';
-      case 422: return '422 Unprocessable Entity';
-      case 429: return '429 Too Many Requests';
-      case 500: return '500 Internal Server Error';
-      case 502: return '502 Bad Gateway';
-      case 503: return '503 Service Unavailable';
-      default: return '$statusCode';
+      case 200:
+        return '200 OK';
+      case 201:
+        return '201 Created';
+      case 204:
+        return '204 No Content';
+      case 301:
+        return '301 Moved Permanently';
+      case 302:
+        return '302 Found';
+      case 304:
+        return '304 Not Modified';
+      case 400:
+        return '400 Bad Request';
+      case 401:
+        return '401 Unauthorized';
+      case 403:
+        return '403 Forbidden';
+      case 404:
+        return '404 Not Found';
+      case 405:
+        return '405 Method Not Allowed';
+      case 422:
+        return '422 Unprocessable Entity';
+      case 429:
+        return '429 Too Many Requests';
+      case 500:
+        return '500 Internal Server Error';
+      case 502:
+        return '502 Bad Gateway';
+      case 503:
+        return '503 Service Unavailable';
+      default:
+        return '$statusCode';
     }
   }
 
@@ -79,32 +96,34 @@ class HttpUtils {
       // Very basic formatting for raw HTML/XML to make it readable without strict parsing.
       // Breaks tags onto new lines and adds naive indentation.
       String formatted = raw.replaceAllMapped(RegExp(r'>\s*<'), (m) => '>\n<');
-      
+
       final buffer = StringBuffer();
       int indent = 0;
-      
+
       for (final line in formatted.split('\n')) {
         final trimLine = line.trim();
         if (trimLine.isEmpty) continue;
-        
+
         if (trimLine.startsWith('</')) {
           indent = (indent - 1).clamp(0, 999);
           buffer.write('  ' * indent);
           buffer.writeln(trimLine);
-        } else if (trimLine.startsWith('<') && 
-                   !trimLine.startsWith('<?') && 
-                   !trimLine.startsWith('<!') && 
-                   !trimLine.contains('</') && 
-                   !trimLine.endsWith('/>')) {
-          
+        } else if (trimLine.startsWith('<') &&
+            !trimLine.startsWith('<?') &&
+            !trimLine.startsWith('<!') &&
+            !trimLine.contains('</') &&
+            !trimLine.endsWith('/>')) {
           // Heuristic: Is it a common self-closing HTML tag?
-          bool isSelfClosingHtml = RegExp(r'^<(meta|link|br|hr|img|input|base)[ >]', caseSensitive: false).hasMatch(trimLine);
-          
+          bool isSelfClosingHtml = RegExp(
+                  r'^<(meta|link|br|hr|img|input|base)[ >]',
+                  caseSensitive: false)
+              .hasMatch(trimLine);
+
           buffer.write('  ' * indent);
           buffer.writeln(trimLine);
-          
+
           if (!isSelfClosingHtml) {
-             indent++;
+            indent++;
           }
         } else {
           buffer.write('  ' * indent);
@@ -145,10 +164,12 @@ class HttpUtils {
         headers.add(const MapEntry('Content-Type', 'application/json'));
         break;
       case BodyType.urlEncoded:
-        headers.add(const MapEntry('Content-Type', 'application/x-www-form-urlencoded'));
+        headers.add(const MapEntry(
+            'Content-Type', 'application/x-www-form-urlencoded'));
         break;
       case BodyType.formData:
-        headers.add(const MapEntry('Content-Type', 'multipart/form-data; boundary=...'));
+        headers.add(const MapEntry(
+            'Content-Type', 'multipart/form-data; boundary=...'));
         break;
       default:
         break;

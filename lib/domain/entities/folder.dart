@@ -13,6 +13,5 @@ class Folder with _$Folder {
     @Default('') String description,
   }) = _Folder;
 
-  factory Folder.fromJson(Map<String, dynamic> json) =>
-      _$FolderFromJson(json);
+  factory Folder.fromJson(Map<String, dynamic> json) => _$FolderFromJson(json);
 }

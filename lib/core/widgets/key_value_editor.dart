@@ -254,7 +254,8 @@ class _KVRowState extends State<_KVRow> {
     _showOverlay(matches, openIdx, pos, query.length);
   }
 
-  void _showOverlay(List<String> matches, int openIdx, int cursorPos, int queryLen) {
+  void _showOverlay(
+      List<String> matches, int openIdx, int cursorPos, int queryLen) {
     _hideOverlay();
     _overlay = OverlayEntry(
       builder: (_) => Positioned(
@@ -271,47 +272,48 @@ class _KVRowState extends State<_KVRow> {
               shrinkWrap: true,
               children: matches
                   .map((varKey) => InkWell(
-                onTap: () {
-                  final text = _valCtrl.text;
-                  final prefix = text.substring(0, openIdx);
-                  final suffix = text.substring(cursorPos);
-                  final inserted = '$prefix{{$varKey}}$suffix';
-                  _valCtrl.value = TextEditingValue(
-                    text: inserted,
-                    selection: TextSelection.collapsed(
-                        offset: openIdx + varKey.length + 4),
-                  );
-                  _notify();
-                  _hideOverlay();
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: '{{',
-                            style: TextStyle(
-                                color: context.colors.warning,
-                                fontFamily: 'monospace',
-                                fontSize: 12)),
-                        TextSpan(
-                            text: varKey,
-                            style: TextStyle(
-                                color: context.colors.textPrimary,
-                                fontFamily: 'monospace',
-                                fontSize: 12)),
-                        TextSpan(
-                            text: '}}',
-                            style: TextStyle(
-                                color: context.colors.warning,
-                                fontFamily: 'monospace',
-                                fontSize: 12)),
-                      ],
-                    ),
-                  ),
-                ),
-              ))
+                        onTap: () {
+                          final text = _valCtrl.text;
+                          final prefix = text.substring(0, openIdx);
+                          final suffix = text.substring(cursorPos);
+                          final inserted = '$prefix{{$varKey}}$suffix';
+                          _valCtrl.value = TextEditingValue(
+                            text: inserted,
+                            selection: TextSelection.collapsed(
+                                offset: openIdx + varKey.length + 4),
+                          );
+                          _notify();
+                          _hideOverlay();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 9),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: '{{',
+                                    style: TextStyle(
+                                        color: context.colors.warning,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                                TextSpan(
+                                    text: varKey,
+                                    style: TextStyle(
+                                        color: context.colors.textPrimary,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                                TextSpan(
+                                    text: '}}',
+                                    style: TextStyle(
+                                        color: context.colors.warning,
+                                        fontFamily: 'monospace',
+                                        fontSize: 12)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ))
                   .toList(),
             ),
           ),
@@ -329,8 +331,8 @@ class _KVRowState extends State<_KVRow> {
   @override
   Widget build(BuildContext context) {
     final resolvedValue = _resolveVars(_valCtrl.text, widget.resolvedEnvVars);
-    final resolvedKey   = _resolveVars(_keyCtrl.text, widget.resolvedEnvVars);
-    
+    final resolvedKey = _resolveVars(_keyCtrl.text, widget.resolvedEnvVars);
+
     final hasValueVars = _valCtrl.text.contains('{{');
     final hasKeyVars = _keyCtrl.text.contains('{{');
 
@@ -364,7 +366,8 @@ class _KVRowState extends State<_KVRow> {
         decoration: BoxDecoration(
           color: context.colors.bgElevated,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: context.colors.warning.withValues(alpha: 0.5)),
+          border:
+              Border.all(color: context.colors.warning.withValues(alpha: 0.5)),
         ),
         textStyle: TextStyle(
           fontSize: 12,
@@ -385,8 +388,7 @@ class _KVRowState extends State<_KVRow> {
         border: InputBorder.none,
         enabledBorder: InputBorder.none,
         focusedBorder: InputBorder.none,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
         filled: false,
       ),
     );
@@ -400,7 +402,8 @@ class _KVRowState extends State<_KVRow> {
         decoration: BoxDecoration(
           color: context.colors.bgElevated,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: context.colors.warning.withValues(alpha: 0.5)),
+          border:
+              Border.all(color: context.colors.warning.withValues(alpha: 0.5)),
         ),
         textStyle: TextStyle(
           fontSize: 12,
@@ -419,9 +422,9 @@ class _KVRowState extends State<_KVRow> {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: (hasKeyVars || hasValueVars) 
-                  ? context.colors.warning.withValues(alpha: 0.4)
-                  : context.colors.border,
+                color: (hasKeyVars || hasValueVars)
+                    ? context.colors.warning.withValues(alpha: 0.4)
+                    : context.colors.border,
                 width: 0.5,
               ),
             ),
@@ -433,8 +436,8 @@ class _KVRowState extends State<_KVRow> {
                 width: 32,
                 child: Checkbox(
                   value: widget.item.enabled,
-                  onChanged: (v) =>
-                      widget.onChanged(widget.item.copyWith(enabled: v ?? true)),
+                  onChanged: (v) => widget
+                      .onChanged(widget.item.copyWith(enabled: v ?? true)),
                   side: BorderSide(color: context.colors.border),
                   activeColor: context.colors.accent,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -450,14 +453,18 @@ class _KVRowState extends State<_KVRow> {
               if (widget.showSecretToggle)
                 IconButton(
                   icon: Icon(
-                    widget.item.isSecret ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    widget.item.isSecret
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
                     size: 14,
                   ),
-                  onPressed: () => widget.onChanged(widget.item.copyWith(isSecret: !widget.item.isSecret)),
+                  onPressed: () => widget.onChanged(
+                      widget.item.copyWith(isSecret: !widget.item.isSecret)),
                   color: context.colors.textMuted,
                   tooltip: 'Toggle Secret',
                   padding: const EdgeInsets.all(8),
-                  constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                  constraints:
+                      const BoxConstraints(minWidth: 32, minHeight: 32),
                 ),
               // Remove button
               IconButton(
@@ -478,7 +485,7 @@ class _KVRowState extends State<_KVRow> {
             padding: const EdgeInsets.only(left: 40, right: 48, bottom: 4),
             child: Row(
               children: [
-                const Expanded(child: SizedBox()),  // aligns under Value column
+                const Expanded(child: SizedBox()), // aligns under Value column
                 Expanded(
                   child: Text(
                     '→ $resolvedValue',

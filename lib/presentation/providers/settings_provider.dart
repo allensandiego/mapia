@@ -80,10 +80,14 @@ class SettingsNotifier extends Notifier<AppSettings> {
     await _save();
   }
 
-  Future<void> setThemeMode(ThemeMode mode) => update(state.copyWith(themeMode: mode));
-  Future<void> setSslVerification(bool v) => update(state.copyWith(sslVerification: v));
-  Future<void> setRequestTimeout(int ms) => update(state.copyWith(requestTimeoutMs: ms));
-  Future<void> setProxy(String host, int port) => update(state.copyWith(proxyHost: host, proxyPort: port));
+  Future<void> setThemeMode(ThemeMode mode) =>
+      update(state.copyWith(themeMode: mode));
+  Future<void> setSslVerification(bool v) =>
+      update(state.copyWith(sslVerification: v));
+  Future<void> setRequestTimeout(int ms) =>
+      update(state.copyWith(requestTimeoutMs: ms));
+  Future<void> setProxy(String host, int port) =>
+      update(state.copyWith(proxyHost: host, proxyPort: port));
 }
 
 final settingsProvider = NotifierProvider<SettingsNotifier, AppSettings>(

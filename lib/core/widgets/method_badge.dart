@@ -15,13 +15,20 @@ class MethodBadge extends StatelessWidget {
   Color _getColor(BuildContext context) {
     final colors = context.colors;
     switch (method) {
-      case HttpMethod.get: return colors.methodGet;
-      case HttpMethod.post: return colors.methodPost;
-      case HttpMethod.put: return colors.methodPut;
-      case HttpMethod.patch: return colors.methodPatch;
-      case HttpMethod.delete: return colors.methodDelete;
-      case HttpMethod.head: return colors.methodHead;
-      case HttpMethod.options: return colors.methodOptions;
+      case HttpMethod.get:
+        return colors.methodGet;
+      case HttpMethod.post:
+        return colors.methodPost;
+      case HttpMethod.put:
+        return colors.methodPut;
+      case HttpMethod.patch:
+        return colors.methodPatch;
+      case HttpMethod.delete:
+        return colors.methodDelete;
+      case HttpMethod.head:
+        return colors.methodHead;
+      case HttpMethod.options:
+        return colors.methodOptions;
     }
   }
 

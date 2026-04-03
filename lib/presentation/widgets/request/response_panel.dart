@@ -51,12 +51,10 @@ class _ResponsePanelState extends ConsumerState<ResponsePanel>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CircularProgressIndicator(
-                strokeWidth: 2, color: colors.accent),
+            CircularProgressIndicator(strokeWidth: 2, color: colors.accent),
             const SizedBox(height: 12),
             Text('Sending request...',
-                style: TextStyle(
-                    fontSize: 12, color: colors.textSecondary)),
+                style: TextStyle(fontSize: 12, color: colors.textSecondary)),
           ],
         ),
       );
@@ -67,12 +65,10 @@ class _ResponsePanelState extends ConsumerState<ResponsePanel>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.send_outlined,
-                size: 36, color: colors.textDisabled),
+            Icon(Icons.send_outlined, size: 36, color: colors.textDisabled),
             const SizedBox(height: 12),
             Text('Send a request to see the response',
-                style: TextStyle(
-                    fontSize: 13, color: colors.textSecondary)),
+                style: TextStyle(fontSize: 13, color: colors.textSecondary)),
           ],
         ),
       );
@@ -90,8 +86,7 @@ class _ResponsePanelState extends ConsumerState<ResponsePanel>
             children: [
               // Status
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
                   color: statusColor.withAlpha(26),
                   borderRadius: BorderRadius.circular(4),
@@ -124,8 +119,8 @@ class _ResponsePanelState extends ConsumerState<ResponsePanel>
                 message: 'Copy response body',
                 child: IconButton(
                   icon: const Icon(Icons.copy_outlined, size: 14),
-                  onPressed: () => Clipboard.setData(
-                      ClipboardData(text: response.body)),
+                  onPressed: () =>
+                      Clipboard.setData(ClipboardData(text: response.body)),
                   color: colors.textMuted,
                   padding: const EdgeInsets.all(6),
                   constraints: const BoxConstraints(),
@@ -141,7 +136,8 @@ class _ResponsePanelState extends ConsumerState<ResponsePanel>
             controller: _tabCtrl,
             isScrollable: true,
             tabAlignment: TabAlignment.start,
-            labelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            labelStyle:
+                const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             tabs: const [
               Tab(text: 'Body'),
               Tab(text: 'Headers'),
@@ -181,8 +177,7 @@ class _MetaChip extends StatelessWidget {
         Icon(icon, size: 12, color: colors.textMuted),
         const SizedBox(width: 4),
         Text(label,
-            style: TextStyle(
-                fontSize: 12, color: colors.textSecondary)),
+            style: TextStyle(fontSize: 12, color: colors.textSecondary)),
       ],
     );
   }
@@ -223,9 +218,16 @@ class _ResponseBodyState extends State<_ResponseBody> {
     String formatLabel = 'TEXT';
     String displayBody = body;
 
-    if (isJson) { language = 'json'; formatLabel = 'JSON'; }
-    else if (isXml)  { language = 'xml';  formatLabel = 'XML'; }
-    else if (isHtml) { language = 'html'; formatLabel = 'HTML'; }
+    if (isJson) {
+      language = 'json';
+      formatLabel = 'JSON';
+    } else if (isXml) {
+      language = 'xml';
+      formatLabel = 'XML';
+    } else if (isHtml) {
+      language = 'html';
+      formatLabel = 'HTML';
+    }
 
     if (_mode == _ViewMode.pretty) {
       if (isJson) {
@@ -252,7 +254,7 @@ class _ResponseBodyState extends State<_ResponseBody> {
               ),
               const SizedBox(width: 4),
               // Only show Rendered toggle for HTML
-              if (isHtml) ...[  
+              if (isHtml) ...[
                 _ToggleBtn(
                   label: 'Rendered',
                   active: _mode == _ViewMode.rendered,
@@ -268,7 +270,8 @@ class _ResponseBodyState extends State<_ResponseBody> {
               const Spacer(),
               if (body.isNotEmpty)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: colors.accentSubtle,
                     borderRadius: BorderRadius.circular(3),
@@ -393,11 +396,10 @@ class _ResponseHeaders extends StatelessWidget {
           final key = headers.keys.elementAt(i);
           final value = headers[key]!;
           return Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: colors.border, width: 0.5)),
+              border:
+                  Border(bottom: BorderSide(color: colors.border, width: 0.5)),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -412,8 +414,8 @@ class _ResponseHeaders extends StatelessWidget {
                 ),
                 Expanded(
                   child: SelectableText(value,
-                      style: TextStyle(
-                          fontSize: 12, color: colors.textPrimary)),
+                      style:
+                          TextStyle(fontSize: 12, color: colors.textPrimary)),
                 ),
               ],
             ),
@@ -444,11 +446,9 @@ class _ResponseCookies extends StatelessWidget {
         final cookie = cookies[i];
         return ListTile(
           title: Text(cookie['name'] ?? '',
-              style: TextStyle(
-                  fontSize: 13, color: colors.textPrimary)),
+              style: TextStyle(fontSize: 13, color: colors.textPrimary)),
           subtitle: Text(cookie['value'] ?? '',
-              style: TextStyle(
-                  fontSize: 12, color: colors.textSecondary)),
+              style: TextStyle(fontSize: 12, color: colors.textSecondary)),
         );
       },
     );

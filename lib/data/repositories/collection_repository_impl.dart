@@ -90,16 +90,14 @@ class CollectionRepositoryImpl implements CollectionRepository {
     if (folderId != null) {
       final folders = col.folders.map((f) {
         if (f.id != folderId) return f;
-        final reqs = f.requests
-            .map((r) => r.id == request.id ? request : r)
-            .toList();
+        final reqs =
+            f.requests.map((r) => r.id == request.id ? request : r).toList();
         return f.copyWith(requests: reqs);
       }).toList();
       all[idx] = col.copyWith(folders: folders);
     } else {
-      final reqs = col.requests
-          .map((r) => r.id == request.id ? request : r)
-          .toList();
+      final reqs =
+          col.requests.map((r) => r.id == request.id ? request : r).toList();
       all[idx] = col.copyWith(requests: reqs);
     }
     await _saveAll(all);

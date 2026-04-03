@@ -53,13 +53,20 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
   Color _getMethodColor(HttpMethod method) {
     final colors = context.colors;
     switch (method) {
-      case HttpMethod.get: return colors.methodGet;
-      case HttpMethod.post: return colors.methodPost;
-      case HttpMethod.put: return colors.methodPut;
-      case HttpMethod.patch: return colors.methodPatch;
-      case HttpMethod.delete: return colors.methodDelete;
-      case HttpMethod.head: return colors.methodHead;
-      case HttpMethod.options: return colors.methodOptions;
+      case HttpMethod.get:
+        return colors.methodGet;
+      case HttpMethod.post:
+        return colors.methodPost;
+      case HttpMethod.put:
+        return colors.methodPut;
+      case HttpMethod.patch:
+        return colors.methodPatch;
+      case HttpMethod.delete:
+        return colors.methodDelete;
+      case HttpMethod.head:
+        return colors.methodHead;
+      case HttpMethod.options:
+        return colors.methodOptions;
     }
   }
 
@@ -90,7 +97,8 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
                         controller: _searchCtrl,
                         onChanged: (v) =>
                             setState(() => _searchQuery = v.toLowerCase()),
-                        style: TextStyle(fontSize: 12, color: context.colors.textPrimary),
+                        style: TextStyle(
+                            fontSize: 12, color: context.colors.textPrimary),
                         decoration: InputDecoration(
                           hintText: 'Search history…',
                           hintStyle: TextStyle(
@@ -104,7 +112,8 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
                                     setState(() => _searchQuery = '');
                                   },
                                   child: Icon(Icons.close,
-                                      size: 12, color: context.colors.textMuted),
+                                      size: 12,
+                                      color: context.colors.textMuted),
                                 )
                               : null,
                           isDense: true,
@@ -134,9 +143,8 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
                   Tooltip(
                     message: 'Clear all history',
                     child: InkWell(
-                      onTap: entries.isEmpty
-                          ? null
-                          : () => _confirmClear(context),
+                      onTap:
+                          entries.isEmpty ? null : () => _confirmClear(context),
                       borderRadius: BorderRadius.circular(4),
                       child: Padding(
                         padding: const EdgeInsets.all(4),
@@ -166,8 +174,8 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
                       label: m.label,
                       color: _getMethodColor(m),
                       selected: _methodFilter == m,
-                      onTap: () => setState(() =>
-                          _methodFilter = _methodFilter == m ? null : m),
+                      onTap: () => setState(
+                          () => _methodFilter = _methodFilter == m ? null : m),
                     )),
               ],
             ),
@@ -250,16 +258,19 @@ class _HistoryPanelState extends ConsumerState<HistoryPanel> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: context.colors.bgElevated,
-        title: Text('Clear History', style: TextStyle(fontSize: 15, color: context.colors.textPrimary)),
+        title: Text('Clear History',
+            style: TextStyle(fontSize: 15, color: context.colors.textPrimary)),
         content: Text('Remove all history entries?',
-            style: TextStyle(fontSize: 13, color: context.colors.textSecondary)),
+            style:
+                TextStyle(fontSize: 13, color: context.colors.textSecondary)),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(ctx, false),
               child: const Text('Cancel')),
           FilledButton(
               onPressed: () => Navigator.pop(ctx, true),
-              style: FilledButton.styleFrom(backgroundColor: context.colors.error),
+              style:
+                  FilledButton.styleFrom(backgroundColor: context.colors.error),
               child: const Text('Clear All')),
         ],
       ),
@@ -293,8 +304,8 @@ class _HistoryRow extends ConsumerWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         decoration: BoxDecoration(
-          border:
-              Border(bottom: BorderSide(color: context.colors.border, width: 0.5)),
+          border: Border(
+              bottom: BorderSide(color: context.colors.border, width: 0.5)),
         ),
         child: Row(
           children: [
@@ -355,9 +366,7 @@ class _FilterRow extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       child: Row(
-        children: children
-            .expand((w) => [w, const SizedBox(width: 4)])
-            .toList()
+        children: children.expand((w) => [w, const SizedBox(width: 4)]).toList()
           ..removeLast(),
       ),
     );
