@@ -7,3 +7,4 @@ maintainer:
 priority: optional
 section: x11
 installed_size: 250000
+icon_path: mapia.png
