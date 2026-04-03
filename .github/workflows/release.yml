@@ -27,17 +27,19 @@ jobs:
           cache: true
 
       - name: Get Dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
+          dart pub global activate flutter_distributor
 
       - name: Build and Package (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          dart run flutter_distributor:distribute --name release --jobs windows-msix,windows-exe
+          flutter_distributor distribute --name release --jobs windows-msix,windows-exe
 
       - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          dart run flutter_distributor:distribute --name release --jobs macos-dmg
+          flutter_distributor distribute --name release --jobs macos-dmg
 
       - name: Build and Package (Linux)
         if: matrix.os == 'ubuntu-latest'
@@ -49,7 +51,7 @@ jobs:
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
-          dart run flutter_distributor:distribute --name release --jobs linux-deb,linux-rpm,linux-appimage
+          flutter_distributor distribute --name release --jobs linux-deb,linux-rpm,linux-appimage
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2.6.0
