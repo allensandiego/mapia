@@ -18,10 +18,10 @@ jobs:
     
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: 'stable'
           cache: true
@@ -51,7 +51,7 @@ jobs:
           dart run flutter_distributor:distribute --name release --jobs linux-deb,linux-rpm,linux-appimage
 
       - name: Upload Binaries to Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.6.0
         with:
           files: |
             dist/*/release/*.msix
