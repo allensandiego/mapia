@@ -74,7 +74,8 @@ jobs:
           # Build RPM with manual fix
           fastforge release --name release --jobs linux-rpm --skip-clean || {
             echo "RPM build failed, attempting fix..."
-            for spec_file in dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null; do
+            # Use a subshell with ls to avoid syntax errors with 2>/dev/null in the for loop
+            for spec_file in $(ls dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null); do
               if [ -f "$spec_file" ]; then
                 sed -i '/^cp -r %{name}\.png /s/$/ || :/' "$spec_file"
                 sed -i '/^cp -r %{name}\.desktop /s/$/ || :/' "$spec_file"  

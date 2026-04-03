@@ -1,0 +1,491 @@
+﻿2026-04-03T15:52:08.1247810Z Current runner version: '2.333.1'
+2026-04-03T15:52:08.1263810Z ##[group]Runner Image Provisioner
+2026-04-03T15:52:08.1264300Z Hosted Compute Agent
+2026-04-03T15:52:08.1264680Z Version: 20260213.493
+2026-04-03T15:52:08.1265080Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T15:52:08.1265540Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T15:52:08.1265970Z Worker ID: {b076f2a9-9b4f-43ba-862e-fe000acf9d1b}
+2026-04-03T15:52:08.1266400Z Azure Region: westus
+2026-04-03T15:52:08.1266740Z ##[endgroup]
+2026-04-03T15:52:08.1267620Z ##[group]Operating System
+2026-04-03T15:52:08.1267980Z macOS
+2026-04-03T15:52:08.1268250Z 15.7.4
+2026-04-03T15:52:08.1268520Z 24G517
+2026-04-03T15:52:08.1268790Z ##[endgroup]
+2026-04-03T15:52:08.1269080Z ##[group]Runner Image
+2026-04-03T15:52:08.1269400Z Image: macos-15-arm64
+2026-04-03T15:52:08.1269710Z Version: 20260330.0243.1
+2026-04-03T15:52:08.1270480Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260330.0243/images/macos/macos-15-arm64-Readme.md
+2026-04-03T15:52:08.1271420Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260330.0243
+2026-04-03T15:52:08.1272010Z ##[endgroup]
+2026-04-03T15:52:08.1272690Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T15:52:08.1273720Z Contents: read
+2026-04-03T15:52:08.1274020Z Metadata: read
+2026-04-03T15:52:08.1274310Z Packages: read
+2026-04-03T15:52:08.1274600Z ##[endgroup]
+2026-04-03T15:52:08.1276010Z Secret source: Actions
+2026-04-03T15:52:08.1276390Z Prepare workflow directory
+2026-04-03T15:52:08.1532260Z Prepare all required actions
+2026-04-03T15:52:08.1560760Z Getting action download info
+2026-04-03T15:52:09.3184000Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T15:52:09.5366890Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T15:52:10.0903400Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T15:52:10.7222930Z Getting action download info
+2026-04-03T15:52:10.9010010Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T15:52:11.0029280Z Complete job name: Build (macos-latest)
+2026-04-03T15:52:11.0392700Z ##[group]Run actions/checkout@v6
+2026-04-03T15:52:11.0393070Z with:
+2026-04-03T15:52:11.0393240Z   repository: allensandiego/mapia
+2026-04-03T15:52:11.0393630Z   token: ***
+2026-04-03T15:52:11.0393780Z   ssh-strict: true
+2026-04-03T15:52:11.0393940Z   ssh-user: git
+2026-04-03T15:52:11.0394100Z   persist-credentials: true
+2026-04-03T15:52:11.0394290Z   clean: true
+2026-04-03T15:52:11.0394450Z   sparse-checkout-cone-mode: true
+2026-04-03T15:52:11.0394660Z   fetch-depth: 1
+2026-04-03T15:52:11.0394810Z   fetch-tags: false
+2026-04-03T15:52:11.0394970Z   show-progress: true
+2026-04-03T15:52:11.0395130Z   lfs: false
+2026-04-03T15:52:11.0395280Z   submodules: false
+2026-04-03T15:52:11.0395440Z   set-safe-directory: true
+2026-04-03T15:52:11.0395730Z env:
+2026-04-03T15:52:11.0395900Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:52:11.0396110Z ##[endgroup]
+2026-04-03T15:52:11.3671530Z Syncing repository: allensandiego/mapia
+2026-04-03T15:52:11.3672900Z ##[group]Getting Git version info
+2026-04-03T15:52:11.3673240Z Working directory is '/Users/runner/work/mapia/mapia'
+2026-04-03T15:52:11.3679600Z [command]/opt/homebrew/bin/git version
+2026-04-03T15:52:11.3974740Z git version 2.53.0
+2026-04-03T15:52:11.4026120Z ##[endgroup]
+2026-04-03T15:52:11.4037410Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/0443cb4d-2269-4d6a-9600-395360b09c67/.gitconfig'
+2026-04-03T15:52:11.4042130Z Temporarily overriding HOME='/Users/runner/work/_temp/0443cb4d-2269-4d6a-9600-395360b09c67' before making global git config changes
+2026-04-03T15:52:11.4043000Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T15:52:11.4043670Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/mapia/mapia
+2026-04-03T15:52:11.4116320Z Deleting the contents of '/Users/runner/work/mapia/mapia'
+2026-04-03T15:52:11.4119670Z ##[group]Initializing the repository
+2026-04-03T15:52:11.4123300Z [command]/opt/homebrew/bin/git init /Users/runner/work/mapia/mapia
+2026-04-03T15:52:11.4326040Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-03T15:52:11.4326800Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-03T15:52:11.4327290Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-03T15:52:11.4327610Z hint: call:
+2026-04-03T15:52:11.4327790Z hint:
+2026-04-03T15:52:11.4328030Z hint: 	git config --global init.defaultBranch <name>
+2026-04-03T15:52:11.4328320Z hint:
+2026-04-03T15:52:11.4328570Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-03T15:52:11.4329000Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-03T15:52:11.4329360Z hint:
+2026-04-03T15:52:11.4329540Z hint: 	git branch -m <name>
+2026-04-03T15:52:11.4329730Z hint:
+2026-04-03T15:52:11.4330000Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-03T15:52:11.4330480Z Initialized empty Git repository in /Users/runner/work/mapia/mapia/.git/
+2026-04-03T15:52:11.4336190Z [command]/opt/homebrew/bin/git remote add origin https://github.com/allensandiego/mapia
+2026-04-03T15:52:11.4405960Z ##[endgroup]
+2026-04-03T15:52:11.4406340Z ##[group]Disabling automatic garbage collection
+2026-04-03T15:52:11.4408230Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-04-03T15:52:11.4469080Z ##[endgroup]
+2026-04-03T15:52:11.4469470Z ##[group]Setting up auth
+2026-04-03T15:52:11.4469980Z Removing SSH command configuration
+2026-04-03T15:52:11.4476790Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T15:52:11.4551750Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T15:52:11.5496260Z Removing HTTP extra header
+2026-04-03T15:52:11.5500800Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T15:52:11.5553980Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T15:52:11.6216360Z Removing includeIf entries pointing to credentials config files
+2026-04-03T15:52:11.6219880Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T15:52:11.6272470Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T15:52:11.6933760Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-03T15:52:11.6995950Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/mapia/mapia/.git.path /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:52:11.7051230Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/mapia/mapia/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:52:11.7106470Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:52:11.7160910Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:52:11.7230590Z ##[endgroup]
+2026-04-03T15:52:11.7231200Z ##[group]Fetching the repository
+2026-04-03T15:52:11.7234960Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.32:refs/tags/v1.0.32
+2026-04-03T15:52:12.4477900Z From https://github.com/allensandiego/mapia
+2026-04-03T15:52:12.4479210Z  * [new tag]         v1.0.32    -> v1.0.32
+2026-04-03T15:52:12.4556990Z [command]/opt/homebrew/bin/git tag --list v1.0.32
+2026-04-03T15:52:12.4624330Z v1.0.32
+2026-04-03T15:52:12.4629570Z [command]/opt/homebrew/bin/git rev-parse refs/tags/v1.0.32^{commit}
+2026-04-03T15:52:12.4783200Z 37e2cdea08161c7567b3c94eb30d7032da5ede32
+2026-04-03T15:52:12.4867170Z ##[endgroup]
+2026-04-03T15:52:12.4867780Z ##[group]Determining the checkout info
+2026-04-03T15:52:12.4868280Z ##[endgroup]
+2026-04-03T15:52:12.4868740Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-04-03T15:52:12.5050790Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-03T15:52:12.5118800Z ##[group]Checking out the ref
+2026-04-03T15:52:12.5121200Z [command]/opt/homebrew/bin/git checkout --progress --force refs/tags/v1.0.32
+2026-04-03T15:52:12.5409020Z HEAD is now at 37e2cde fix(release): use appimagetool wrapper to fix categories missing in desktop file
+2026-04-03T15:52:12.5415240Z ##[endgroup]
+2026-04-03T15:52:12.5495120Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-04-03T15:52:12.5571090Z 37e2cdea08161c7567b3c94eb30d7032da5ede32
+2026-04-03T15:52:12.5837860Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T15:52:12.5838150Z with:
+2026-04-03T15:52:12.5838300Z   channel: stable
+2026-04-03T15:52:12.5838450Z   cache: true
+2026-04-03T15:52:12.5838590Z   architecture: ARM64
+2026-04-03T15:52:12.5838770Z   pub-cache-path: default
+2026-04-03T15:52:12.5838950Z   dry-run: false
+2026-04-03T15:52:12.5839150Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T15:52:12.5839390Z env:
+2026-04-03T15:52:12.5839550Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:52:12.5839770Z ##[endgroup]
+2026-04-03T15:52:12.5935500Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T15:52:12.5935880Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T15:52:12.5976470Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:52:12.5976770Z env:
+2026-04-03T15:52:12.5976940Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:52:12.5977160Z ##[endgroup]
+2026-04-03T15:52:12.6878640Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T15:52:12.6879010Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T15:52:12.6879250Z [36;1m  -n '' \[0m
+2026-04-03T15:52:12.6879420Z [36;1m  -f '' \[0m
+2026-04-03T15:52:12.6879600Z [36;1m  -a 'ARM64' \[0m
+2026-04-03T15:52:12.6879770Z [36;1m  -k '' \[0m
+2026-04-03T15:52:12.6879950Z [36;1m  -c '' \[0m
+2026-04-03T15:52:12.6880110Z [36;1m  -l '' \[0m
+2026-04-03T15:52:12.6880320Z [36;1m  -d 'default' \[0m
+2026-04-03T15:52:12.6880610Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T15:52:12.6880930Z [36;1m  stable[0m
+2026-04-03T15:52:12.6915850Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:52:12.6916140Z env:
+2026-04-03T15:52:12.6916340Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:52:12.6916570Z ##[endgroup]
+2026-04-03T15:52:13.3377820Z ##[group]Run actions/cache@v5
+2026-04-03T15:52:13.3378080Z with:
+2026-04-03T15:52:13.3378290Z   path: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64
+2026-04-03T15:52:13.3378710Z   key: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:52:13.3379080Z   enableCrossOsArchive: false
+2026-04-03T15:52:13.3379270Z   fail-on-cache-miss: false
+2026-04-03T15:52:13.3379470Z   lookup-only: false
+2026-04-03T15:52:13.3379640Z   save-always: false
+2026-04-03T15:52:13.3379820Z env:
+2026-04-03T15:52:13.3379990Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:52:13.3380210Z ##[endgroup]
+2026-04-03T15:52:14.3677530Z Cache hit for: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:52:15.8151850Z Received 0 of 2109788074 (0.0%), 0.0 MBs/sec
+2026-04-03T15:52:16.8250450Z Received 92274688 of 2109788074 (4.4%), 43.9 MBs/sec
+2026-04-03T15:52:17.8167960Z Received 134217728 of 2109788074 (6.4%), 42.6 MBs/sec
+2026-04-03T15:52:18.8320010Z Received 218103808 of 2109788074 (10.3%), 51.7 MBs/sec
+2026-04-03T15:52:19.8327390Z Received 264241152 of 2109788074 (12.5%), 50.2 MBs/sec
+2026-04-03T15:52:20.8323660Z Received 285212672 of 2109788074 (13.5%), 45.2 MBs/sec
+2026-04-03T15:52:21.8330970Z Received 364904448 of 2109788074 (17.3%), 49.6 MBs/sec
+2026-04-03T15:52:22.8334370Z Received 406847488 of 2109788074 (19.3%), 48.4 MBs/sec
+2026-04-03T15:52:23.8341510Z Received 486539264 of 2109788074 (23.1%), 51.4 MBs/sec
+2026-04-03T15:52:24.8371400Z Received 536870912 of 2109788074 (25.4%), 51.1 MBs/sec
+2026-04-03T15:52:25.8393380Z Received 587202560 of 2109788074 (27.8%), 50.8 MBs/sec
+2026-04-03T15:52:26.8403580Z Received 662700032 of 2109788074 (31.4%), 52.5 MBs/sec
+2026-04-03T15:52:27.8458530Z Received 708837376 of 2109788074 (33.6%), 51.9 MBs/sec
+2026-04-03T15:52:28.8531960Z Received 796917760 of 2109788074 (37.8%), 54.2 MBs/sec
+2026-04-03T15:52:29.8489470Z Received 838860800 of 2109788074 (39.8%), 53.2 MBs/sec
+2026-04-03T15:52:30.8504300Z Received 910163968 of 2109788074 (43.1%), 54.1 MBs/sec
+2026-04-03T15:52:31.8522250Z Received 973078528 of 2109788074 (46.1%), 54.5 MBs/sec
+2026-04-03T15:52:32.8668540Z Received 1048576000 of 2109788074 (49.7%), 55.4 MBs/sec
+2026-04-03T15:52:33.8680240Z Received 1107296256 of 2109788074 (52.5%), 55.4 MBs/sec
+2026-04-03T15:52:34.8684240Z Received 1170210816 of 2109788074 (55.5%), 55.6 MBs/sec
+2026-04-03T15:52:35.8688120Z Received 1220542464 of 2109788074 (57.9%), 55.3 MBs/sec
+2026-04-03T15:52:36.8697150Z Received 1287651328 of 2109788074 (61.0%), 55.7 MBs/sec
+2026-04-03T15:52:37.8720810Z Received 1342177280 of 2109788074 (63.6%), 55.5 MBs/sec
+2026-04-03T15:52:38.8741790Z Received 1405091840 of 2109788074 (66.6%), 55.7 MBs/sec
+2026-04-03T15:52:39.8774130Z Received 1472200704 of 2109788074 (69.8%), 56.0 MBs/sec
+2026-04-03T15:52:40.8797320Z Received 1514143744 of 2109788074 (71.8%), 55.4 MBs/sec
+2026-04-03T15:52:41.8807720Z Received 1572864000 of 2109788074 (74.6%), 55.4 MBs/sec
+2026-04-03T15:52:42.8838300Z Received 1614807040 of 2109788074 (76.5%), 54.9 MBs/sec
+2026-04-03T15:52:43.8828120Z Received 1681915904 of 2109788074 (79.7%), 55.2 MBs/sec
+2026-04-03T15:52:44.8839940Z Received 1744830464 of 2109788074 (82.7%), 55.3 MBs/sec
+2026-04-03T15:52:45.8857460Z Received 1782579200 of 2109788074 (84.5%), 54.7 MBs/sec
+2026-04-03T15:52:46.8912670Z Received 1862270976 of 2109788074 (88.3%), 55.4 MBs/sec
+2026-04-03T15:52:47.8940740Z Received 1908408320 of 2109788074 (90.5%), 55.0 MBs/sec
+2026-04-03T15:52:48.8934050Z Received 1975517184 of 2109788074 (93.6%), 55.3 MBs/sec
+2026-04-03T15:52:49.8960950Z Received 2021654528 of 2109788074 (95.8%), 55.0 MBs/sec
+2026-04-03T15:52:50.9043160Z Received 2093010858 of 2109788074 (99.2%), 55.3 MBs/sec
+2026-04-03T15:52:51.0168440Z Received 2109788074 of 2109788074 (100.0%), 55.6 MBs/sec
+2026-04-03T15:52:51.0251870Z Cache Size: ~2012 MB (2109788074 B)
+2026-04-03T15:52:51.0254110Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/05e6af8c-8e37-46bb-a1e8-3d52d4ab1e3b/cache.tzst -P -C /Users/runner/work/mapia/mapia --delay-directory-restore --use-compress-program unzstd
+2026-04-03T15:53:00.7990650Z Cache restored successfully
+2026-04-03T15:53:01.1316910Z Cache restored from key: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:53:01.4708740Z ##[group]Run actions/cache@v5
+2026-04-03T15:53:01.4709060Z with:
+2026-04-03T15:53:01.4709490Z   path: /Users/runner/.pub-cache
+2026-04-03T15:53:01.4710210Z   key: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:53:01.4710930Z   enableCrossOsArchive: false
+2026-04-03T15:53:01.4716870Z   fail-on-cache-miss: false
+2026-04-03T15:53:01.4717180Z   lookup-only: false
+2026-04-03T15:53:01.4717490Z   save-always: false
+2026-04-03T15:53:01.4717930Z env:
+2026-04-03T15:53:01.4718150Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:53:01.4718420Z ##[endgroup]
+2026-04-03T15:53:01.8531720Z Cache hit for: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:53:03.1522690Z Received 0 of 158979347 (0.0%), 0.0 MBs/sec
+2026-04-03T15:53:04.1481510Z Received 96468992 of 158979347 (60.7%), 45.9 MBs/sec
+2026-04-03T15:53:05.1552850Z Received 154785043 of 158979347 (97.4%), 49.0 MBs/sec
+2026-04-03T15:53:05.1731180Z Received 158979347 of 158979347 (100.0%), 50.0 MBs/sec
+2026-04-03T15:53:05.1739210Z Cache Size: ~152 MB (158979347 B)
+2026-04-03T15:53:05.1795750Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/d193bcba-f44b-4537-9ae5-9fb4f7a41fc9/cache.tzst -P -C /Users/runner/work/mapia/mapia --delay-directory-restore --use-compress-program unzstd
+2026-04-03T15:53:09.8907830Z Cache restored successfully
+2026-04-03T15:53:09.9020520Z Cache restored from key: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:53:09.9099300Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T15:53:09.9099590Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T15:53:09.9102990Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T15:53:09.9103260Z [36;1m  -a 'arm64' \[0m
+2026-04-03T15:53:09.9103600Z [36;1m  -c '/Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64' \[0m
+2026-04-03T15:53:09.9104040Z [36;1m  -d '/Users/runner/.pub-cache' \[0m
+2026-04-03T15:53:09.9104320Z [36;1m  stable[0m
+2026-04-03T15:53:09.9268150Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:53:09.9268500Z env:
+2026-04-03T15:53:09.9268800Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:53:09.9269130Z ##[endgroup]
+2026-04-03T15:53:10.1707760Z ##[group]Run flutter pub get
+2026-04-03T15:53:10.1708050Z [36;1mflutter pub get[0m
+2026-04-03T15:53:10.1708270Z [36;1mdart pub global activate fastforge[0m
+2026-04-03T15:53:10.1740240Z shell: /bin/bash -e {0}
+2026-04-03T15:53:10.1740480Z env:
+2026-04-03T15:53:10.1740770Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:53:10.1741160Z   FLUTTER_ROOT: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter
+2026-04-03T15:53:10.1741580Z   PUB_CACHE: /Users/runner/.pub-cache
+2026-04-03T15:53:10.1741850Z ##[endgroup]
+2026-04-03T15:53:10.6089220Z Resolving dependencies...
+2026-04-03T15:53:10.8592950Z Downloading packages...
+2026-04-03T15:53:10.9280660Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T15:53:10.9280950Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T15:53:10.9281240Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T15:53:10.9281570Z   build 2.5.4 (4.0.5 available)
+2026-04-03T15:53:10.9281770Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T15:53:10.9282150Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T15:53:10.9282390Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T15:53:10.9282620Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T15:53:10.9282880Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T15:53:10.9283250Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T15:53:10.9283560Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T15:53:10.9283810Z > characters 1.4.1 (was 1.4.0)
+2026-04-03T15:53:10.9284010Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T15:53:10.9284220Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T15:53:10.9284430Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T15:53:10.9284660Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T15:53:10.9284920Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T15:53:10.9285160Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T15:53:10.9285400Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T15:53:10.9286190Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T15:53:10.9286410Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T15:53:10.9286640Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T15:53:10.9286850Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T15:53:10.9287080Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T15:53:10.9287320Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:53:10.9287540Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:53:10.9287750Z   image 4.3.0 (4.8.0 available)
+2026-04-03T15:53:10.9287950Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T15:53:10.9288190Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T15:53:10.9288420Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T15:53:10.9288600Z > matcher 0.12.19 (was 0.12.17)
+2026-04-03T15:53:10.9288820Z > material_color_utilities 0.13.0 (was 0.11.1)
+2026-04-03T15:53:10.9289050Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T15:53:10.9289270Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T15:53:10.9289500Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:53:10.9289710Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:53:10.9289960Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T15:53:10.9290160Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T15:53:10.9290370Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T15:53:10.9290590Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T15:53:10.9290820Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T15:53:10.9291020Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T15:53:10.9291230Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T15:53:10.9291460Z > test_api 0.7.10 (was 0.7.7) (0.7.11 available)
+2026-04-03T15:53:10.9291710Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T15:53:10.9291940Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:53:10.9292130Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T15:53:10.9292350Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T15:53:10.9292560Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T15:53:10.9293150Z Changed 4 dependencies!
+2026-04-03T15:53:10.9293460Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T15:53:10.9293800Z Try `flutter pub outdated` for more information.
+2026-04-03T15:53:12.2591440Z Resolving dependencies...
+2026-04-03T15:53:12.5200720Z Downloading packages...
+2026-04-03T15:53:12.6242980Z + _discoveryapis_commons 1.0.7
+2026-04-03T15:53:12.6243240Z + ansicolor 2.0.3
+2026-04-03T15:53:12.6243580Z + archive 3.6.1 (4.0.9 available)
+2026-04-03T15:53:12.6243890Z + args 2.7.0
+2026-04-03T15:53:12.6244140Z + async 2.13.1
+2026-04-03T15:53:12.6244410Z + buffer 1.2.3
+2026-04-03T15:53:12.6244650Z + charset 2.0.1
+2026-04-03T15:53:12.6244950Z + checked_yaml 2.0.4
+2026-04-03T15:53:12.6245210Z + cli_util 0.4.2
+2026-04-03T15:53:12.6245450Z + clock 1.1.2
+2026-04-03T15:53:12.6245690Z + collection 1.19.1
+2026-04-03T15:53:12.6245850Z + console 4.1.0
+2026-04-03T15:53:12.6246040Z + convert 3.1.2
+2026-04-03T15:53:12.6246180Z + crypto 3.0.7
+2026-04-03T15:53:12.6246370Z + dio 5.9.2
+2026-04-03T15:53:12.6246510Z + dio_web_adapter 2.1.2
+2026-04-03T15:53:12.6246680Z + fastforge 0.6.6
+2026-04-03T15:53:12.6246830Z + file 7.0.1
+2026-04-03T15:53:12.6246980Z + flutter_app_builder 0.6.0
+2026-04-03T15:53:12.6247160Z + flutter_app_packager 0.6.5
+2026-04-03T15:53:12.6247340Z + flutter_app_publisher 0.6.6
+2026-04-03T15:53:12.6247530Z + get_it 9.2.1
+2026-04-03T15:53:12.6247650Z + glob 2.1.3
+2026-04-03T15:53:12.6247820Z + google_identity_services_web 0.3.3+1
+2026-04-03T15:53:12.6248020Z + googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:53:12.6248240Z + googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:53:12.6248460Z + http 1.6.0
+2026-04-03T15:53:12.6248610Z + http_parser 4.1.2
+2026-04-03T15:53:12.6248790Z + image 4.3.0 (4.8.0 available)
+2026-04-03T15:53:12.6249010Z + intl 0.20.2
+2026-04-03T15:53:12.6249150Z + io 1.0.5
+2026-04-03T15:53:12.6249300Z + json_annotation 4.11.0
+2026-04-03T15:53:12.6249480Z + liquid_engine 0.2.2
+2026-04-03T15:53:12.6249650Z + logging 1.3.0
+2026-04-03T15:53:12.6250080Z + meta 1.18.2
+2026-04-03T15:53:12.6250220Z + mime 2.0.0
+2026-04-03T15:53:12.6250360Z + minio 3.5.8
+2026-04-03T15:53:12.6250500Z + msix 3.16.13
+2026-04-03T15:53:12.6250660Z + mustache_template 2.0.4
+2026-04-03T15:53:12.6250840Z + package_config 2.2.0
+2026-04-03T15:53:12.6251030Z + parse_app_package 0.6.0
+2026-04-03T15:53:12.6251200Z + path 1.9.1
+2026-04-03T15:53:12.6251340Z + petitparser 7.0.2
+2026-04-03T15:53:12.6251530Z + plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:53:12.6251730Z + pub_semver 2.2.0
+2026-04-03T15:53:12.6251900Z + pubspec_parse 1.5.0
+2026-04-03T15:53:12.6252070Z + qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:53:12.6252270Z + recase 4.1.0
+2026-04-03T15:53:12.6252430Z + shell_executor 0.3.0
+2026-04-03T15:53:12.6252580Z + shell_uikit 0.3.0
+2026-04-03T15:53:12.6252730Z + source_span 1.10.2
+2026-04-03T15:53:12.6252890Z + string_scanner 1.4.1
+2026-04-03T15:53:12.6253060Z + term_glyph 1.2.2
+2026-04-03T15:53:12.6253220Z + typed_data 1.4.0
+2026-04-03T15:53:12.6253380Z + unified_distributor 0.2.6
+2026-04-03T15:53:12.6253580Z + uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:53:12.6253760Z + vector_math 2.3.0
+2026-04-03T15:53:12.6253910Z + web 1.1.1
+2026-04-03T15:53:12.6254040Z + xml 6.6.1
+2026-04-03T15:53:12.6254180Z + yaml 3.1.3
+2026-04-03T15:53:12.6270450Z Building package executables...
+2026-04-03T15:53:14.7939000Z Built fastforge:main.
+2026-04-03T15:53:14.7998770Z Installed executable fastforge.
+2026-04-03T15:53:14.8049130Z Activated fastforge 0.6.6.
+2026-04-03T15:53:14.8122930Z ##[group]Run fastforge release --name release --jobs macos-dmg
+2026-04-03T15:53:14.8123320Z [36;1mfastforge release --name release --jobs macos-dmg[0m
+2026-04-03T15:53:14.8157420Z shell: /bin/bash -e {0}
+2026-04-03T15:53:14.8157630Z env:
+2026-04-03T15:53:14.8157850Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:53:14.8158190Z   FLUTTER_ROOT: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter
+2026-04-03T15:53:14.8158540Z   PUB_CACHE: /Users/runner/.pub-cache
+2026-04-03T15:53:14.8158760Z ##[endgroup]
+2026-04-03T15:53:15.0210180Z 
+2026-04-03T15:53:15.0210870Z 
+2026-04-03T15:53:15.0899930Z ⠋ Checking for updates...
+2026-04-03T15:53:15.0928110Z                                  
+2026-04-03T15:53:15.0928920Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T15:53:15.0929330Z 
+2026-04-03T15:53:15.1063420Z 
+2026-04-03T15:53:15.1068980Z ===> [1mReleasing[0m release:[1mmacos-dmg[0m
+2026-04-03T15:53:15.1154440Z $ flutter clean
+2026-04-03T15:53:20.0121440Z Cleaning Xcode workspace...                                         4.7s
+2026-04-03T15:53:20.0129090Z Deleting .dart_tool...                                               0ms
+2026-04-03T15:53:20.0146160Z Deleting ephemeral...                                                0ms
+2026-04-03T15:53:20.0152200Z Deleting ephemeral...                                                0ms
+2026-04-03T15:53:20.0153190Z Deleting ephemeral...                                                0ms
+2026-04-03T15:53:20.0153760Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T15:53:20.0405400Z Packaging mapia 1.0.0+1 as dmg:
+2026-04-03T15:53:20.0589460Z $ /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter/bin/flutter build macos --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T15:53:20.3403310Z Resolving dependencies...
+2026-04-03T15:53:20.6253910Z Downloading packages...
+2026-04-03T15:53:20.7479590Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T15:53:20.7549020Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T15:53:20.7549470Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T15:53:20.7549790Z   build 2.5.4 (4.0.5 available)
+2026-04-03T15:53:20.7550080Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T15:53:20.7550410Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T15:53:20.7550750Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T15:53:20.7551060Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T15:53:20.7551420Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T15:53:20.7552190Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T15:53:20.7552600Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T15:53:20.7552940Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T15:53:20.7553240Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T15:53:20.7553550Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T15:53:20.7553910Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T15:53:20.7554260Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T15:53:20.7554610Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T15:53:20.7554960Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T15:53:20.7555290Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T15:53:20.7555620Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T15:53:20.7555920Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T15:53:20.7556230Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T15:53:20.7556570Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T15:53:20.7556870Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:53:20.7557190Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:53:20.7557490Z   image 4.3.0 (4.8.0 available)
+2026-04-03T15:53:20.7557800Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T15:53:20.7558120Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T15:53:20.7558430Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T15:53:20.7559050Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T15:53:20.7559380Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T15:53:20.7559740Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:53:20.7560050Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:53:20.7560390Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T15:53:20.7560700Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T15:53:20.7561010Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T15:53:20.7561330Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T15:53:20.7561620Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T15:53:20.7561940Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T15:53:20.7562240Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T15:53:20.7562560Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T15:53:20.7562870Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T15:53:20.7563210Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:53:20.7563490Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T15:53:20.7563780Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T15:53:20.7564100Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T15:53:20.7565310Z Got dependencies!
+2026-04-03T15:53:20.7571610Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T15:53:20.7572060Z Try `flutter pub outdated` for more information.
+2026-04-03T15:53:26.8611740Z Running pod install...                                           1,416ms
+2026-04-03T15:54:05.6737330Z Building macOS application...                                   
+2026-04-03T15:54:05.6823950Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T15:54:05.6931770Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T15:54:05.7051560Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T15:54:05.7154200Z 1 warning generated.
+2026-04-03T15:54:06.1436650Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T15:54:06.1559590Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T15:54:06.1785670Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T15:54:06.1888240Z 1 warning generated.
+2026-04-03T15:54:43.1261560Z ##[error]The operation was canceled.
+2026-04-03T15:54:43.1476950Z Post job cleanup.
+2026-04-03T15:54:43.1601140Z Post job cleanup.
+2026-04-03T15:54:43.6741220Z [command]/opt/homebrew/bin/git version
+2026-04-03T15:54:43.7055590Z git version 2.53.0
+2026-04-03T15:54:43.7399160Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/10f60c54-73f8-4fbf-96cd-273bde4cae6d/.gitconfig'
+2026-04-03T15:54:43.7434830Z Temporarily overriding HOME='/Users/runner/work/_temp/10f60c54-73f8-4fbf-96cd-273bde4cae6d' before making global git config changes
+2026-04-03T15:54:43.7512220Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T15:54:43.7595000Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/mapia/mapia
+2026-04-03T15:54:43.7789400Z Removing SSH command configuration
+2026-04-03T15:54:43.7891040Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T15:54:43.8050510Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T15:54:43.8671250Z Removing HTTP extra header
+2026-04-03T15:54:43.8674670Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T15:54:43.8734720Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T15:54:43.9815430Z Removing includeIf entries pointing to credentials config files
+2026-04-03T15:54:43.9830400Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T15:54:43.9893520Z includeif.gitdir:/Users/runner/work/mapia/mapia/.git.path
+2026-04-03T15:54:43.9955460Z includeif.gitdir:/Users/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T15:54:44.0011140Z includeif.gitdir:/github/workspace/.git.path
+2026-04-03T15:54:44.0071480Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T15:54:44.0243620Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/mapia/mapia/.git.path
+2026-04-03T15:54:44.0246980Z /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0287570Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/mapia/mapia/.git.path /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0355910Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T15:54:44.0358810Z /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0421610Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/mapia/mapia/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0435970Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-04-03T15:54:44.0440310Z /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0486890Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0575020Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T15:54:44.0578180Z /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0766370Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config
+2026-04-03T15:54:44.0780330Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T15:54:44.1100300Z Removing credentials config '/Users/runner/work/_temp/git-credentials-ddafbe62-c19b-49b5-b90c-a0cb9a70d1bc.config'
+2026-04-03T15:54:44.1231970Z Cleaning up orphan processes
+2026-04-03T15:54:44.3113790Z Terminate orphan process: pid (5761) (gen_snapshot_x6)
+2026-04-03T15:54:44.3482520Z Terminate orphan process: pid (5760) (gen_snapshot_ar)
+2026-04-03T15:54:44.9116360Z Terminate orphan process: pid (3337) (ibtoold)
+2026-04-03T15:54:44.9558660Z Terminate orphan process: pid (3336) (ibtoold)
