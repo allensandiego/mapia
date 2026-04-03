@@ -3,14 +3,20 @@ releases:
   - name: release
     jobs:
       - name: windows-msix
-        package: msix
+        package:
+          name: msix
       - name: windows-exe
-        package: exe
+        package:
+          name: exe
       - name: linux-deb
-        package: deb
+        package:
+          name: deb
       - name: linux-rpm
-        package: rpm
+        package:
+          name: rpm
       - name: linux-appimage
-        package: appimage
+        package:
+          name: appimage
       - name: macos-dmg
-        package: dmg
+        package:
+          name: dmg
