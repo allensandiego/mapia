@@ -64,4 +64,4 @@ Mapia follows **Clean Architecture** principles to ensure maintainability and te
 - [ ] Drag-and-drop reordering in Collection Tree.
 
 ## 📄 License
-This project is for internal use/demonstration purposes. Refer to the `LICENSE` file (if available) for more details.
+This project is licensed under the GNU Affero General Public License v3.0. Refer to the `LICENSE` file for details.

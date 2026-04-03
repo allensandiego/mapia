@@ -12,7 +12,7 @@
 **/macos/Flutter/ephemeral/
 **/Pods/
 **/macos/Flutter/GeneratedPluginRegistrant.swift
-**/xcuserdata/
+**/macos/Flutter/ephemeral
 
 # Windows
 **/windows/flutter/generated_plugin_registrant.cc
@@ -75,3 +75,6 @@ migrate_working_dir/
 .issues
 .agents
 .docs
+
+# Symbols
+app.*.symbols
