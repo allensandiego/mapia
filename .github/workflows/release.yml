@@ -29,29 +29,29 @@ jobs:
       - name: Get Dependencies
         run: |
           flutter pub get
-          dart pub global activate flutter_distributor
+          dart pub global activate fastforge
 
       - name: Build and Package (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          flutter_distributor release --name release --jobs windows-msix,windows-exe
+          fastforge release --name release --jobs windows-msix,windows-exe
 
       - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          flutter_distributor release --name release --jobs macos-dmg
+          fastforge release --name release --jobs macos-dmg
 
       - name: Build and Package (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
           # Install toolkits for DEB, RPM, and AppImage
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm binutils
+          sudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm rpm-build binutils patchelf
           sudo gem install fpm
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
-          flutter_distributor release --name release --jobs linux-deb,linux-rpm,linux-appimage
+          fastforge release --name release --jobs linux-deb,linux-rpm,linux-appimage
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2.6.0
@@ -66,4 +66,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          
