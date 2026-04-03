@@ -54,7 +54,6 @@ releases:
           display_name: Mapia
           package_name: mapia
           icon_path: mapia.png
-          desktop_file_path: mapia.desktop
       - name: macos-dmg
         package:
           platform: macos

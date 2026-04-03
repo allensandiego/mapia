@@ -2,5 +2,3 @@ display_name: Mapia
 package_name: mapia
 version: 1.0.0+1
 icon: mapia.png
-exec: mapia
-categories: Utility;Network;Development
