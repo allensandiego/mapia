@@ -25,7 +25,7 @@ releases:
           target: deb
         config:
           display_name: Mapia
-          package_name: com.allensandiego.mapia
+          package_name: mapia
           maintainer:
             name: Allen San Diego
             email: allensandiego@example.com
@@ -35,14 +35,14 @@ releases:
           target: rpm
         config:
           display_name: Mapia
-          package_name: com.allensandiego.mapia
+          package_name: mapia
       - name: linux-appimage
         package:
           platform: linux
           target: appimage
         config:
           display_name: Mapia
-          package_name: com.allensandiego.mapia
+          package_name: mapia
       - name: macos-dmg
         package:
           platform: macos
