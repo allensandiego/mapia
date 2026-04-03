@@ -34,12 +34,12 @@ jobs:
       - name: Build and Package (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          flutter_distributor distribute --name release --jobs windows-msix,windows-exe
+          flutter_distributor release --name release --jobs windows-msix,windows-exe
 
       - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          flutter_distributor distribute --name release --jobs macos-dmg
+          flutter_distributor release --name release --jobs macos-dmg
 
       - name: Build and Package (Linux)
         if: matrix.os == 'ubuntu-latest'
@@ -51,7 +51,7 @@ jobs:
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
-          flutter_distributor distribute --name release --jobs linux-deb,linux-rpm,linux-appimage
+          flutter_distributor release --name release --jobs linux-deb,linux-rpm,linux-appimage
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2.6.0
