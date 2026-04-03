@@ -52,6 +52,13 @@ jobs:
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
           fastforge release --name release --jobs linux-deb,linux-appimage
+          # Fix AppImage desktop file to include Categories for appimagetool validation
+          for appdir in dist/*/mapia-*-linux_appimage/mapia.AppDir 2>/dev/null; do
+            if [ -d "$appdir" ] && [ -f "$appdir/mapia.desktop" ]; then
+              echo "Adding Categories to $appdir/mapia.desktop"
+              sed -i '/^Type=Application$/a Categories=Utility;Network;Development' "$appdir/mapia.desktop"
+            fi
+          done
           # Build RPM with error handling
           fastforge release --name release --jobs linux-rpm || echo "Initial RPM build may have spec issues"
           # Fix and retry RPM if spec references missing files
