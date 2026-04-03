@@ -4,19 +4,25 @@ releases:
     jobs:
       - name: windows-msix
         package:
-          name: msix
+          platform: windows
+          target: msix
       - name: windows-exe
         package:
-          name: exe
+          platform: windows
+          target: exe
       - name: linux-deb
         package:
-          name: deb
+          platform: linux
+          target: deb
       - name: linux-rpm
         package:
-          name: rpm
+          platform: linux
+          target: rpm
       - name: linux-appimage
         package:
-          name: appimage
+          platform: linux
+          target: appimage
       - name: macos-dmg
         package:
-          name: dmg
+          platform: macos
+          target: dmg
