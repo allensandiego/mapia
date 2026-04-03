@@ -1,0 +1,85 @@
+﻿2026-04-03T15:57:48.8116880Z ##[group]Run actions/checkout@v6
+2026-04-03T15:57:48.8117620Z with:
+2026-04-03T15:57:48.8118080Z   repository: allensandiego/mapia
+2026-04-03T15:57:48.8118800Z   token: ***
+2026-04-03T15:57:48.8119220Z   ssh-strict: true
+2026-04-03T15:57:48.8119670Z   ssh-user: git
+2026-04-03T15:57:48.8120130Z   persist-credentials: true
+2026-04-03T15:57:48.8120630Z   clean: true
+2026-04-03T15:57:48.8121110Z   sparse-checkout-cone-mode: true
+2026-04-03T15:57:48.8121650Z   fetch-depth: 1
+2026-04-03T15:57:48.8122090Z   fetch-tags: false
+2026-04-03T15:57:48.8122560Z   show-progress: true
+2026-04-03T15:57:48.8123020Z   lfs: false
+2026-04-03T15:57:48.8123460Z   submodules: false
+2026-04-03T15:57:48.8123940Z   set-safe-directory: true
+2026-04-03T15:57:48.8124600Z env:
+2026-04-03T15:57:48.8125080Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:48.8125700Z ##[endgroup]
+2026-04-03T15:57:49.1536960Z Syncing repository: allensandiego/mapia
+2026-04-03T15:57:49.1538660Z ##[group]Getting Git version info
+2026-04-03T15:57:49.1539420Z Working directory is '/Users/runner/work/mapia/mapia'
+2026-04-03T15:57:49.1540450Z [command]/opt/homebrew/bin/git version
+2026-04-03T15:57:49.1750490Z git version 2.53.0
+2026-04-03T15:57:49.1761660Z ##[endgroup]
+2026-04-03T15:57:49.1767300Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/48f3d637-bfd4-4de0-814b-4d1827d7cacb/.gitconfig'
+2026-04-03T15:57:49.1774240Z Temporarily overriding HOME='/Users/runner/work/_temp/48f3d637-bfd4-4de0-814b-4d1827d7cacb' before making global git config changes
+2026-04-03T15:57:49.1775830Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T15:57:49.1777220Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/mapia/mapia
+2026-04-03T15:57:49.1867280Z Deleting the contents of '/Users/runner/work/mapia/mapia'
+2026-04-03T15:57:49.1870290Z ##[group]Initializing the repository
+2026-04-03T15:57:49.1873480Z [command]/opt/homebrew/bin/git init /Users/runner/work/mapia/mapia
+2026-04-03T15:57:49.2059120Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-03T15:57:49.2060390Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-03T15:57:49.2061500Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-03T15:57:49.2062320Z hint: call:
+2026-04-03T15:57:49.2062730Z hint:
+2026-04-03T15:57:49.2063280Z hint: 	git config --global init.defaultBranch <name>
+2026-04-03T15:57:49.2063940Z hint:
+2026-04-03T15:57:49.2064540Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-03T15:57:49.2065680Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-03T15:57:49.2066510Z hint:
+2026-04-03T15:57:49.2066920Z hint: 	git branch -m <name>
+2026-04-03T15:57:49.2067400Z hint:
+2026-04-03T15:57:49.2068070Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-03T15:57:49.2069150Z Initialized empty Git repository in /Users/runner/work/mapia/mapia/.git/
+2026-04-03T15:57:49.2071150Z [command]/opt/homebrew/bin/git remote add origin https://github.com/allensandiego/mapia
+2026-04-03T15:57:49.2131670Z ##[endgroup]
+2026-04-03T15:57:49.2132590Z ##[group]Disabling automatic garbage collection
+2026-04-03T15:57:49.2133660Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-04-03T15:57:49.2193770Z ##[endgroup]
+2026-04-03T15:57:49.2195000Z ##[group]Setting up auth
+2026-04-03T15:57:49.2195790Z Removing SSH command configuration
+2026-04-03T15:57:49.2196880Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T15:57:49.2254130Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T15:57:49.3697290Z Removing HTTP extra header
+2026-04-03T15:57:49.3700900Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T15:57:49.3756180Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T15:57:49.4449340Z Removing includeIf entries pointing to credentials config files
+2026-04-03T15:57:49.4452520Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T15:57:49.4499980Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T15:57:49.5495910Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-35565070-7b04-4c6f-8db8-e49dcfe4d306.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-03T15:57:49.5582860Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/mapia/mapia/.git.path /Users/runner/work/_temp/git-credentials-35565070-7b04-4c6f-8db8-e49dcfe4d306.config
+2026-04-03T15:57:49.5587360Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/mapia/mapia/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-35565070-7b04-4c6f-8db8-e49dcfe4d306.config
+2026-04-03T15:57:49.5591190Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-35565070-7b04-4c6f-8db8-e49dcfe4d306.config
+2026-04-03T15:57:49.5594510Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-35565070-7b04-4c6f-8db8-e49dcfe4d306.config
+2026-04-03T15:57:49.5602700Z ##[endgroup]
+2026-04-03T15:57:49.5603480Z ##[group]Fetching the repository
+2026-04-03T15:57:49.5609680Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.33:refs/tags/v1.0.33
+2026-04-03T15:57:50.7805540Z From https://github.com/allensandiego/mapia
+2026-04-03T15:57:50.7919720Z  * [new tag]         v1.0.33    -> v1.0.33
+2026-04-03T15:57:50.8253050Z [command]/opt/homebrew/bin/git tag --list v1.0.33
+2026-04-03T15:57:50.8354960Z v1.0.33
+2026-04-03T15:57:50.8662180Z [command]/opt/homebrew/bin/git rev-parse refs/tags/v1.0.33^{commit}
+2026-04-03T15:57:50.8721570Z 766a8248ecec55ddc88042df6d7af5e48abc445d
+2026-04-03T15:57:50.8727990Z ##[endgroup]
+2026-04-03T15:57:50.8765830Z ##[group]Determining the checkout info
+2026-04-03T15:57:50.8766580Z ##[endgroup]
+2026-04-03T15:57:50.8766990Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-04-03T15:57:50.8772540Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-03T15:57:50.8780080Z ##[group]Checking out the ref
+2026-04-03T15:57:50.8782850Z [command]/opt/homebrew/bin/git checkout --progress --force refs/tags/v1.0.33
+2026-04-03T15:57:50.8783390Z HEAD is now at 766a824 fix(release): correct bash syntax error in RPM build loop
+2026-04-03T15:57:50.8795370Z ##[endgroup]
+2026-04-03T15:57:50.8838720Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-04-03T15:57:50.8912270Z 766a8248ecec55ddc88042df6d7af5e48abc445d

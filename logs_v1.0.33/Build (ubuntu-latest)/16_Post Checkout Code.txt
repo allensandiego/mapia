@@ -1,0 +1,32 @@
+﻿2026-04-03T16:00:07.4761361Z Post job cleanup.
+2026-04-03T16:00:07.5552294Z [command]/usr/bin/git version
+2026-04-03T16:00:07.5619867Z git version 2.53.0
+2026-04-03T16:00:07.5660138Z Temporarily overriding HOME='/home/runner/work/_temp/a34760a8-8447-4384-9b89-38d8fca53348' before making global git config changes
+2026-04-03T16:00:07.5661870Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T16:00:07.5665372Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mapia/mapia
+2026-04-03T16:00:07.5694611Z Removing SSH command configuration
+2026-04-03T16:00:07.5701495Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T16:00:07.5734786Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T16:00:07.5950249Z Removing HTTP extra header
+2026-04-03T16:00:07.5954417Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T16:00:07.5987754Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T16:00:07.6202381Z Removing includeIf entries pointing to credentials config files
+2026-04-03T16:00:07.6208613Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T16:00:07.6232031Z includeif.gitdir:/home/runner/work/mapia/mapia/.git.path
+2026-04-03T16:00:07.6232945Z includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:00:07.6234118Z includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:00:07.6234765Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:00:07.6243167Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mapia/mapia/.git.path
+2026-04-03T16:00:07.6264630Z /home/runner/work/_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6274613Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mapia/mapia/.git.path /home/runner/work/_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6309306Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:00:07.6330348Z /home/runner/work/_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6339479Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6369900Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:00:07.6389702Z /github/runner_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6397339Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6425895Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:00:07.6445690Z /github/runner_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6455132Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config
+2026-04-03T16:00:07.6488090Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T16:00:07.6699101Z Removing credentials config '/home/runner/work/_temp/git-credentials-53874e68-742c-480c-a83e-57bccc617189.config'

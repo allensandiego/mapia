@@ -70,23 +70,33 @@ jobs:
           
           # Build and Package
           fastforge release --name release --jobs linux-deb,linux-appimage
-          
           # Build RPM with manual fix
           fastforge release --name release --jobs linux-rpm --skip-clean || {
             echo "RPM build failed, attempting fix..."
             # Use a subshell with ls to avoid syntax errors with 2>/dev/null in the for loop
             for spec_file in $(ls dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null); do
               if [ -f "$spec_file" ]; then
+                # Get absolute path for topdir to avoid relative path issues in rpmbuild
+                topdir=$(readlink -f "$(dirname "$(dirname "$spec_file")")")
+                build_dir="$topdir/BUILD"
+
+                # Ensure necessary files are in the BUILD directory
+                cp mapia.png "$build_dir/" 2>/dev/null || cp linux/packaging/rpm/mapia.png "$build_dir/" || :
+                cp mapia.desktop "$build_dir/" 2>/dev/null || cp linux/packaging/appimage/mapia.desktop "$build_dir/" || :
+
                 sed -i '/^cp -r %{name}\.png /s/$/ || :/' "$spec_file"
                 sed -i '/^cp -r %{name}\.desktop /s/$/ || :/' "$spec_file"  
                 sed -i '/%attr.*%{_datadir}\/pixmaps.*png/d' "$spec_file"
-                topdir=$(dirname "$(dirname "$spec_file")")
+
                 rpmbuild --define "_topdir $topdir" -bb "$spec_file" 
+
+                # Move the manually built RPM to where fastforge (and the upload step) expects it
                 mkdir -p "$(dirname "$topdir")/release"
                 find "$topdir/RPMS" -name "*.rpm" -exec cp {} "$(dirname "$topdir")/release/" \;
               fi
             done
           }
+
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2.6.0

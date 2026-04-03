@@ -1,0 +1,234 @@
+﻿2026-04-03T15:57:46.6007055Z Current runner version: '2.333.1'
+2026-04-03T15:57:46.6047047Z ##[group]Runner Image Provisioner
+2026-04-03T15:57:46.6048375Z Hosted Compute Agent
+2026-04-03T15:57:46.6049193Z Version: 20260213.493
+2026-04-03T15:57:46.6050133Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T15:57:46.6051894Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T15:57:46.6052918Z Worker ID: {7aa074ba-2d82-4f10-a094-1260c30c5927}
+2026-04-03T15:57:46.6054034Z Azure Region: northcentralus
+2026-04-03T15:57:46.6055084Z ##[endgroup]
+2026-04-03T15:57:46.6057259Z ##[group]Operating System
+2026-04-03T15:57:46.6058210Z Microsoft Windows Server 2025
+2026-04-03T15:57:46.6059134Z 10.0.26100
+2026-04-03T15:57:46.6060021Z Datacenter
+2026-04-03T15:57:46.6060787Z ##[endgroup]
+2026-04-03T15:57:46.6061562Z ##[group]Runner Image
+2026-04-03T15:57:46.6062651Z Image: windows-2025
+2026-04-03T15:57:46.6063353Z Version: 20260317.61.1
+2026-04-03T15:57:46.6065759Z Included Software: https://github.com/actions/runner-images/blob/win25/20260317.61/images/windows/Windows2025-Readme.md
+2026-04-03T15:57:46.6068316Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260317.61
+2026-04-03T15:57:46.6069877Z ##[endgroup]
+2026-04-03T15:57:46.6072141Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T15:57:46.6075263Z Contents: read
+2026-04-03T15:57:46.6076088Z Metadata: read
+2026-04-03T15:57:46.6076754Z Packages: read
+2026-04-03T15:57:46.6077460Z ##[endgroup]
+2026-04-03T15:57:46.6080542Z Secret source: Actions
+2026-04-03T15:57:46.6081551Z Prepare workflow directory
+2026-04-03T15:57:46.6611624Z Prepare all required actions
+2026-04-03T15:57:46.6658186Z Getting action download info
+2026-04-03T15:57:46.9783472Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T15:57:47.1228880Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T15:57:47.4485921Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T15:57:47.9602764Z Getting action download info
+2026-04-03T15:57:48.0803896Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T15:57:48.6534152Z Complete job name: Build (windows-latest)
+2026-04-03T15:57:48.8400609Z ##[group]Run actions/checkout@v6
+2026-04-03T15:57:48.8403140Z with:
+2026-04-03T15:57:48.8403866Z   repository: allensandiego/mapia
+2026-04-03T15:57:48.8405185Z   token: ***
+2026-04-03T15:57:48.8405881Z   ssh-strict: true
+2026-04-03T15:57:48.8406566Z   ssh-user: git
+2026-04-03T15:57:48.8407268Z   persist-credentials: true
+2026-04-03T15:57:48.8408047Z   clean: true
+2026-04-03T15:57:48.8408783Z   sparse-checkout-cone-mode: true
+2026-04-03T15:57:48.8409642Z   fetch-depth: 1
+2026-04-03T15:57:48.8410328Z   fetch-tags: false
+2026-04-03T15:57:48.8411055Z   show-progress: true
+2026-04-03T15:57:48.8411768Z   lfs: false
+2026-04-03T15:57:48.8412406Z   submodules: false
+2026-04-03T15:57:48.8413195Z   set-safe-directory: true
+2026-04-03T15:57:48.8414422Z env:
+2026-04-03T15:57:48.8415120Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:48.8416009Z ##[endgroup]
+2026-04-03T15:57:48.9997123Z Syncing repository: allensandiego/mapia
+2026-04-03T15:57:49.0001140Z ##[group]Getting Git version info
+2026-04-03T15:57:49.0002624Z Working directory is 'D:\a\mapia\mapia'
+2026-04-03T15:57:49.1120745Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-04-03T15:57:49.6311005Z git version 2.53.0.windows.2
+2026-04-03T15:57:49.6379272Z ##[endgroup]
+2026-04-03T15:57:49.6398412Z Temporarily overriding HOME='D:\a\_temp\f0773043-7920-4d6c-9360-a58c80666d00' before making global git config changes
+2026-04-03T15:57:49.6402299Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T15:57:49.6412097Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\mapia\mapia
+2026-04-03T15:57:49.7243282Z Deleting the contents of 'D:\a\mapia\mapia'
+2026-04-03T15:57:49.7250721Z ##[group]Initializing the repository
+2026-04-03T15:57:49.7259742Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\mapia\mapia
+2026-04-03T15:57:49.9384653Z Initialized empty Git repository in D:/a/mapia/mapia/.git/
+2026-04-03T15:57:49.9443889Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/allensandiego/mapia
+2026-04-03T15:57:50.0068672Z ##[endgroup]
+2026-04-03T15:57:50.0070760Z ##[group]Disabling automatic garbage collection
+2026-04-03T15:57:50.0081156Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-04-03T15:57:50.0476723Z ##[endgroup]
+2026-04-03T15:57:50.0480966Z ##[group]Setting up auth
+2026-04-03T15:57:50.0485326Z Removing SSH command configuration
+2026-04-03T15:57:50.0496577Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T15:57:50.0945063Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-04-03T15:57:52.6438025Z Removing HTTP extra header
+2026-04-03T15:57:52.6449195Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T15:57:52.6823670Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-04-03T15:57:53.2968631Z Removing includeIf entries pointing to credentials config files
+2026-04-03T15:57:53.2969663Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T15:57:53.3305638Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-04-03T15:57:53.9412833Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-04-03T15:57:53.9789671Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git.path D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T15:57:54.0134620Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T15:57:54.0559715Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T15:57:54.0919965Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T15:57:54.1326940Z ##[endgroup]
+2026-04-03T15:57:54.1328311Z ##[group]Fetching the repository
+2026-04-03T15:57:54.1345220Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.33:refs/tags/v1.0.33
+2026-04-03T15:57:55.2601831Z From https://github.com/allensandiego/mapia
+2026-04-03T15:57:55.2602447Z  * [new tag]         v1.0.33    -> v1.0.33
+2026-04-03T15:57:55.2990591Z [command]"C:\Program Files\Git\bin\git.exe" tag --list v1.0.33
+2026-04-03T15:57:55.3371470Z v1.0.33
+2026-04-03T15:57:55.3418723Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/tags/v1.0.33^{commit}
+2026-04-03T15:57:55.3825983Z 766a8248ecec55ddc88042df6d7af5e48abc445d
+2026-04-03T15:57:55.3861403Z ##[endgroup]
+2026-04-03T15:57:55.3862263Z ##[group]Determining the checkout info
+2026-04-03T15:57:55.3863648Z ##[endgroup]
+2026-04-03T15:57:55.3872834Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-04-03T15:57:55.4366857Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-04-03T15:57:55.4744332Z ##[group]Checking out the ref
+2026-04-03T15:57:55.4754980Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/tags/v1.0.33
+2026-04-03T15:57:55.6263293Z Note: switching to 'refs/tags/v1.0.33'.
+2026-04-03T15:57:55.6263722Z 
+2026-04-03T15:57:55.6264058Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-04-03T15:57:55.6264784Z changes and commit them, and you can discard any commits you make in this
+2026-04-03T15:57:55.6265368Z state without impacting any branches by switching back to a branch.
+2026-04-03T15:57:55.6265729Z 
+2026-04-03T15:57:55.6265960Z If you want to create a new branch to retain commits you create, you may
+2026-04-03T15:57:55.6266434Z do so (now or later) by using -c with the switch command. Example:
+2026-04-03T15:57:55.6266822Z 
+2026-04-03T15:57:55.6266980Z   git switch -c <new-branch-name>
+2026-04-03T15:57:55.6267163Z 
+2026-04-03T15:57:55.6267295Z Or undo this operation with:
+2026-04-03T15:57:55.6267512Z 
+2026-04-03T15:57:55.6267601Z   git switch -
+2026-04-03T15:57:55.6267759Z 
+2026-04-03T15:57:55.6267985Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-04-03T15:57:55.6268302Z 
+2026-04-03T15:57:55.6280953Z HEAD is now at 766a824 fix(release): correct bash syntax error in RPM build loop
+2026-04-03T15:57:55.6388408Z ##[endgroup]
+2026-04-03T15:57:55.6964335Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-04-03T15:57:55.7287244Z 766a8248ecec55ddc88042df6d7af5e48abc445d
+2026-04-03T15:57:55.7907875Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T15:57:55.7908372Z with:
+2026-04-03T15:57:55.7908692Z   channel: stable
+2026-04-03T15:57:55.7997401Z   cache: true
+2026-04-03T15:57:55.7997634Z   architecture: X64
+2026-04-03T15:57:55.7997865Z   pub-cache-path: default
+2026-04-03T15:57:55.7998119Z   dry-run: false
+2026-04-03T15:57:55.7998408Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T15:57:55.7998705Z env:
+2026-04-03T15:57:55.7998878Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:55.7999115Z ##[endgroup]
+2026-04-03T15:57:55.8267398Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T15:57:55.8267836Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T15:57:55.8292371Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:57:55.8292782Z env:
+2026-04-03T15:57:55.8292973Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:55.8293220Z ##[endgroup]
+2026-04-03T15:57:56.0769244Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T15:57:56.0769602Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T15:57:56.0769851Z [36;1m  -n '' \[0m
+2026-04-03T15:57:56.0770028Z [36;1m  -f '' \[0m
+2026-04-03T15:57:56.0770200Z [36;1m  -a 'X64' \[0m
+2026-04-03T15:57:56.0770399Z [36;1m  -k '' \[0m
+2026-04-03T15:57:56.0770548Z [36;1m  -c '' \[0m
+2026-04-03T15:57:56.0770702Z [36;1m  -l '' \[0m
+2026-04-03T15:57:56.0770857Z [36;1m  -d 'default' \[0m
+2026-04-03T15:57:56.0771136Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T15:57:56.0771429Z [36;1m  stable[0m
+2026-04-03T15:57:56.0789449Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:57:56.0789818Z env:
+2026-04-03T15:57:56.0790004Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:56.0790247Z ##[endgroup]
+2026-04-03T15:57:59.7813199Z ##[group]Run actions/cache@v5
+2026-04-03T15:57:59.7813419Z with:
+2026-04-03T15:57:59.7813662Z   path: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64
+2026-04-03T15:57:59.7814116Z   key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:57:59.7814520Z   enableCrossOsArchive: false
+2026-04-03T15:57:59.7814727Z   fail-on-cache-miss: false
+2026-04-03T15:57:59.7815116Z   lookup-only: false
+2026-04-03T15:57:59.7815285Z   save-always: false
+2026-04-03T15:57:59.7815448Z env:
+2026-04-03T15:57:59.7815608Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:57:59.7815839Z ##[endgroup]
+2026-04-03T15:58:00.3117773Z Cache hit for: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:58:01.5903849Z Received 134217728 of 1831231845 (7.3%), 112.0 MBs/sec
+2026-04-03T15:58:02.5902969Z Received 276824064 of 1831231845 (15.1%), 123.1 MBs/sec
+2026-04-03T15:58:03.6074341Z Received 469762048 of 1831231845 (25.7%), 141.7 MBs/sec
+2026-04-03T15:58:04.6074806Z Received 616562688 of 1831231845 (33.7%), 141.3 MBs/sec
+2026-04-03T15:58:05.6226328Z Received 792723456 of 1831231845 (43.3%), 146.0 MBs/sec
+2026-04-03T15:58:06.6590011Z Received 939524096 of 1831231845 (51.3%), 144.3 MBs/sec
+2026-04-03T15:58:07.6729712Z Received 1128267776 of 1831231845 (61.6%), 149.0 MBs/sec
+2026-04-03T15:58:08.6700083Z Received 1270874112 of 1831231845 (69.4%), 147.4 MBs/sec
+2026-04-03T15:58:09.6812687Z Received 1447034880 of 1831231845 (79.0%), 149.5 MBs/sec
+2026-04-03T15:58:10.6824838Z Received 1606418432 of 1831231845 (87.7%), 149.7 MBs/sec
+2026-04-03T15:58:11.6920950Z Received 1744830464 of 1831231845 (95.3%), 148.0 MBs/sec
+2026-04-03T15:58:12.2034226Z Received 1831231845 of 1831231845 (100.0%), 148.5 MBs/sec
+2026-04-03T15:58:12.2039083Z Cache Size: ~1746 MB (1831231845 B)
+2026-04-03T15:58:12.2100909Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/f08519b4-df42-4956-b57e-9c0eea1ed792/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T15:59:23.4470513Z Cache restored successfully
+2026-04-03T15:59:23.5834864Z Cache restored from key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:59:23.7984409Z ##[group]Run actions/cache@v5
+2026-04-03T15:59:23.7984650Z with:
+2026-04-03T15:59:23.7984870Z   path: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T15:59:23.7985699Z   key: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T15:59:23.7987131Z   enableCrossOsArchive: false
+2026-04-03T15:59:23.7987502Z   fail-on-cache-miss: false
+2026-04-03T15:59:23.7987731Z   lookup-only: false
+2026-04-03T15:59:23.7987916Z   save-always: false
+2026-04-03T15:59:23.7988106Z env:
+2026-04-03T15:59:23.7988307Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:59:23.7988557Z ##[endgroup]
+2026-04-03T15:59:24.1721643Z Cache hit for: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T15:59:25.2944289Z Received 134217728 of 158221169 (84.8%), 127.6 MBs/sec
+2026-04-03T15:59:25.4463173Z Received 158221169 of 158221169 (100.0%), 130.6 MBs/sec
+2026-04-03T15:59:25.4465307Z Cache Size: ~151 MB (158221169 B)
+2026-04-03T15:59:25.4544991Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/d59c7a3e-3c5f-416c-8ff7-9316532440c1/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T16:00:10.9896293Z ##[error]The operation was canceled.
+2026-04-03T16:00:11.4101151Z Post job cleanup.
+2026-04-03T16:00:11.8377442Z Post job cleanup.
+2026-04-03T16:00:12.4629426Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-04-03T16:00:12.4955250Z git version 2.53.0.windows.2
+2026-04-03T16:00:12.5027670Z Temporarily overriding HOME='D:\a\_temp\52a64dd6-601d-47d7-8ba0-89a2e0deb523' before making global git config changes
+2026-04-03T16:00:12.5028782Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T16:00:12.5039926Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\mapia\mapia
+2026-04-03T16:00:12.5452685Z Removing SSH command configuration
+2026-04-03T16:00:12.5464526Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T16:00:12.5813226Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-04-03T16:00:13.2067130Z Removing HTTP extra header
+2026-04-03T16:00:13.2081166Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T16:00:13.2509471Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-04-03T16:00:13.8905099Z Removing includeIf entries pointing to credentials config files
+2026-04-03T16:00:13.8918243Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T16:00:13.9264039Z includeif.gitdir:D:/a/mapia/mapia/.git.path
+2026-04-03T16:00:13.9264707Z includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:00:13.9265250Z includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:00:13.9265832Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:00:13.9337921Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/mapia/mapia/.git.path
+2026-04-03T16:00:13.9635342Z D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:13.9685611Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/mapia/mapia/.git.path D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.0037658Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:00:14.0380547Z D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.0434153Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.0817280Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:00:14.1104548Z /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.1155759Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.1505886Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:00:14.1840844Z /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.1891044Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config
+2026-04-03T16:00:14.2227467Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-04-03T16:00:14.7994590Z Removing credentials config 'D:\a\_temp\git-credentials-4c4d154d-1dac-4c09-9aad-76d74feb9af7.config'
+2026-04-03T16:00:14.8240114Z Cleaning up orphan processes

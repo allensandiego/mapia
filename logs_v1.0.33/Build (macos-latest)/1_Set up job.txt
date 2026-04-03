@@ -1,0 +1,35 @@
+﻿2026-04-03T15:57:45.6506090Z Current runner version: '2.333.1'
+2026-04-03T15:57:45.6521560Z ##[group]Runner Image Provisioner
+2026-04-03T15:57:45.6522100Z Hosted Compute Agent
+2026-04-03T15:57:45.6522440Z Version: 20260213.493
+2026-04-03T15:57:45.6522840Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T15:57:45.6523290Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T15:57:45.6523700Z Worker ID: {96de2453-f2b6-49fb-8558-5137b4965224}
+2026-04-03T15:57:45.6524400Z Azure Region: westus
+2026-04-03T15:57:45.6524840Z ##[endgroup]
+2026-04-03T15:57:45.6525780Z ##[group]Operating System
+2026-04-03T15:57:45.6526140Z macOS
+2026-04-03T15:57:45.6526550Z 15.7.4
+2026-04-03T15:57:45.6526980Z 24G517
+2026-04-03T15:57:45.6527360Z ##[endgroup]
+2026-04-03T15:57:45.6527810Z ##[group]Runner Image
+2026-04-03T15:57:45.6528280Z Image: macos-15-arm64
+2026-04-03T15:57:45.6528730Z Version: 20260330.0243.1
+2026-04-03T15:57:45.6530300Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260330.0243/images/macos/macos-15-arm64-Readme.md
+2026-04-03T15:57:45.6532080Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260330.0243
+2026-04-03T15:57:45.6532710Z ##[endgroup]
+2026-04-03T15:57:45.6533930Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T15:57:45.6535380Z Contents: read
+2026-04-03T15:57:45.6535700Z Metadata: read
+2026-04-03T15:57:45.6536000Z Packages: read
+2026-04-03T15:57:45.6536310Z ##[endgroup]
+2026-04-03T15:57:45.6537860Z Secret source: Actions
+2026-04-03T15:57:45.6538260Z Prepare workflow directory
+2026-04-03T15:57:45.6791220Z Prepare all required actions
+2026-04-03T15:57:45.6817580Z Getting action download info
+2026-04-03T15:57:45.8810000Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T15:57:46.1532260Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T15:57:47.2156050Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T15:57:48.5498810Z Getting action download info
+2026-04-03T15:57:48.6480170Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T15:57:48.7684480Z Complete job name: Build (macos-latest)
