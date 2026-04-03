@@ -1,0 +1,92 @@
+﻿2026-04-03T16:20:03.6536280Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T16:20:03.6536540Z with:
+2026-04-03T16:20:03.6536660Z   channel: stable
+2026-04-03T16:20:03.6536840Z   cache: true
+2026-04-03T16:20:03.6536960Z   architecture: ARM64
+2026-04-03T16:20:03.6537120Z   pub-cache-path: default
+2026-04-03T16:20:03.6537270Z   dry-run: false
+2026-04-03T16:20:03.6537460Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T16:20:03.6537690Z env:
+2026-04-03T16:20:03.6537820Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:03.6538020Z ##[endgroup]
+2026-04-03T16:20:03.6635450Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T16:20:03.6635830Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T16:20:03.6718320Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:20:03.6718630Z env:
+2026-04-03T16:20:03.6718780Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:03.6718970Z ##[endgroup]
+2026-04-03T16:20:03.7601760Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T16:20:03.7602320Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T16:20:03.7602530Z [36;1m  -n '' \[0m
+2026-04-03T16:20:03.7602680Z [36;1m  -f '' \[0m
+2026-04-03T16:20:03.7602830Z [36;1m  -a 'ARM64' \[0m
+2026-04-03T16:20:03.7602990Z [36;1m  -k '' \[0m
+2026-04-03T16:20:03.7603120Z [36;1m  -c '' \[0m
+2026-04-03T16:20:03.7603270Z [36;1m  -l '' \[0m
+2026-04-03T16:20:03.7603430Z [36;1m  -d 'default' \[0m
+2026-04-03T16:20:03.7603670Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T16:20:03.7604020Z [36;1m  stable[0m
+2026-04-03T16:20:03.7654650Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:20:03.7654960Z env:
+2026-04-03T16:20:03.7655250Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:03.7655490Z ##[endgroup]
+2026-04-03T16:20:04.5072820Z ##[group]Run actions/cache@v5
+2026-04-03T16:20:04.5073080Z with:
+2026-04-03T16:20:04.5073270Z   path: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64
+2026-04-03T16:20:04.5073720Z   key: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:20:04.5074060Z   enableCrossOsArchive: false
+2026-04-03T16:20:04.5074250Z   fail-on-cache-miss: false
+2026-04-03T16:20:04.5074430Z   lookup-only: false
+2026-04-03T16:20:04.5074580Z   save-always: false
+2026-04-03T16:20:04.5074720Z env:
+2026-04-03T16:20:04.5074870Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:04.5075070Z ##[endgroup]
+2026-04-03T16:20:04.7943460Z Cache hit for: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:20:05.8118350Z Received 134217728 of 2109788074 (6.4%), 127.9 MBs/sec
+2026-04-03T16:20:06.8159440Z Received 264241152 of 2109788074 (12.5%), 125.7 MBs/sec
+2026-04-03T16:20:07.8180330Z Received 369098752 of 2109788074 (17.5%), 117.0 MBs/sec
+2026-04-03T16:20:08.8198390Z Received 515899392 of 2109788074 (24.5%), 122.7 MBs/sec
+2026-04-03T16:20:09.8224300Z Received 658505728 of 2109788074 (31.2%), 125.3 MBs/sec
+2026-04-03T16:20:10.8241650Z Received 805306368 of 2109788074 (38.2%), 127.7 MBs/sec
+2026-04-03T16:20:11.8283220Z Received 973078528 of 2109788074 (46.1%), 132.2 MBs/sec
+2026-04-03T16:20:12.8415830Z Received 1145044992 of 2109788074 (54.3%), 136.2 MBs/sec
+2026-04-03T16:20:13.8378730Z Received 1312817152 of 2109788074 (62.2%), 138.8 MBs/sec
+2026-04-03T16:20:14.8419990Z Received 1426063360 of 2109788074 (67.6%), 135.7 MBs/sec
+2026-04-03T16:20:15.8340300Z Received 1610612736 of 2109788074 (76.3%), 139.3 MBs/sec
+2026-04-03T16:20:16.8356930Z Received 1744830464 of 2109788074 (82.7%), 138.4 MBs/sec
+2026-04-03T16:20:17.8371440Z Received 1912602624 of 2109788074 (90.7%), 140.0 MBs/sec
+2026-04-03T16:20:18.8631800Z Received 2055208960 of 2109788074 (97.4%), 139.5 MBs/sec
+2026-04-03T16:20:19.1288090Z Received 2109788074 of 2109788074 (100.0%), 140.5 MBs/sec
+2026-04-03T16:20:19.1295320Z Cache Size: ~2012 MB (2109788074 B)
+2026-04-03T16:20:19.1353660Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/0e613ff9-2804-4d0e-b010-3d22086dc429/cache.tzst -P -C /Users/runner/work/mapia/mapia --delay-directory-restore --use-compress-program unzstd
+2026-04-03T16:20:36.2421560Z Cache restored successfully
+2026-04-03T16:20:36.3918180Z Cache restored from key: flutter-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:20:36.9310590Z ##[group]Run actions/cache@v5
+2026-04-03T16:20:36.9310920Z with:
+2026-04-03T16:20:36.9311120Z   path: /Users/runner/.pub-cache
+2026-04-03T16:20:36.9311820Z   key: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T16:20:36.9312760Z   enableCrossOsArchive: false
+2026-04-03T16:20:36.9313000Z   fail-on-cache-miss: false
+2026-04-03T16:20:36.9313290Z   lookup-only: false
+2026-04-03T16:20:36.9313520Z   save-always: false
+2026-04-03T16:20:36.9313740Z env:
+2026-04-03T16:20:36.9314010Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:36.9314280Z ##[endgroup]
+2026-04-03T16:20:37.1712470Z Cache hit for: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T16:20:38.2351250Z Received 134217728 of 158979347 (84.4%), 127.6 MBs/sec
+2026-04-03T16:20:38.4729310Z Received 158979347 of 158979347 (100.0%), 122.6 MBs/sec
+2026-04-03T16:20:38.4789260Z Cache Size: ~152 MB (158979347 B)
+2026-04-03T16:20:38.4790310Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/06b97be1-72a2-4394-b8a2-68e528654fca/cache.tzst -P -C /Users/runner/work/mapia/mapia --delay-directory-restore --use-compress-program unzstd
+2026-04-03T16:20:44.5167750Z Cache restored successfully
+2026-04-03T16:20:44.5393870Z Cache restored from key: flutter-pub-macos-stable-3.41.6-arm64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T16:20:44.5506820Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T16:20:44.5507320Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T16:20:44.5507780Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T16:20:44.5508090Z [36;1m  -a 'arm64' \[0m
+2026-04-03T16:20:44.5508480Z [36;1m  -c '/Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64' \[0m
+2026-04-03T16:20:44.5508980Z [36;1m  -d '/Users/runner/.pub-cache' \[0m
+2026-04-03T16:20:44.5509250Z [36;1m  stable[0m
+2026-04-03T16:20:44.5562800Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:20:44.5563160Z env:
+2026-04-03T16:20:44.5563330Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:20:44.5573750Z ##[endgroup]
