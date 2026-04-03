@@ -51,8 +51,17 @@ jobs:
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
-          fastforge release --name release --jobs linux-deb,linux-appimage
-          # Build RPM with error handling and manual fix if needed
+          
+          # 1. Build the application
+          fastforge package --platform linux --targets deb --skip-clean || echo "Initial build to generate files"
+          
+          # 2. Patch ALL potential desktop files in the build artifacts
+          find dist -name "*.desktop" -exec echo "Patching {}" \; -exec sed -i '/^Type=Application$/a Categories=Utility;Network;Development' {} \;
+          
+          # 3. Package everything else
+          fastforge release --name release --jobs linux-deb,linux-appimage --skip-clean
+          
+          # 4. Build RPM with manual fix
           fastforge release --name release --jobs linux-rpm --skip-clean || {
             echo "RPM build failed, attempting fix..."
             for spec_file in dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null; do
@@ -62,7 +71,6 @@ jobs:
                 sed -i '/%attr.*%{_datadir}\/pixmaps.*png/d' "$spec_file"
                 topdir=$(dirname "$(dirname "$spec_file")")
                 rpmbuild --define "_topdir $topdir" -bb "$spec_file" 
-                # Move the manually built RPM to where fastforge (and the upload step) expects it
                 mkdir -p "$(dirname "$topdir")/release"
                 find "$topdir/RPMS" -name "*.rpm" -exec cp {} "$(dirname "$topdir")/release/" \;
               fi

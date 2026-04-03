@@ -1,0 +1,86 @@
+﻿2026-04-03T15:40:10.8866648Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T15:40:10.8867751Z with:
+2026-04-03T15:40:10.8868488Z   channel: stable
+2026-04-03T15:40:10.8869456Z   cache: true
+2026-04-03T15:40:10.8870212Z   architecture: X64
+2026-04-03T15:40:10.8871023Z   pub-cache-path: default
+2026-04-03T15:40:10.8871846Z   dry-run: false
+2026-04-03T15:40:10.8872763Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T15:40:10.8873834Z env:
+2026-04-03T15:40:10.8874578Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:10.8875540Z ##[endgroup]
+2026-04-03T15:40:10.9021569Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T15:40:10.9022944Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T15:40:10.9047366Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:40:10.9048690Z env:
+2026-04-03T15:40:10.9049481Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:10.9050440Z ##[endgroup]
+2026-04-03T15:40:10.9202138Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T15:40:10.9203410Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T15:40:10.9204376Z [36;1m  -n '' \[0m
+2026-04-03T15:40:10.9205094Z [36;1m  -f '' \[0m
+2026-04-03T15:40:10.9205801Z [36;1m  -a 'X64' \[0m
+2026-04-03T15:40:10.9206533Z [36;1m  -k '' \[0m
+2026-04-03T15:40:10.9207231Z [36;1m  -c '' \[0m
+2026-04-03T15:40:10.9207933Z [36;1m  -l '' \[0m
+2026-04-03T15:40:10.9208799Z [36;1m  -d 'default' \[0m
+2026-04-03T15:40:10.9209879Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T15:40:10.9210931Z [36;1m  stable[0m
+2026-04-03T15:40:10.9230166Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:40:10.9231303Z env:
+2026-04-03T15:40:10.9232026Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:10.9232977Z ##[endgroup]
+2026-04-03T15:40:11.0696172Z ##[group]Run actions/cache@v5
+2026-04-03T15:40:11.0697205Z with:
+2026-04-03T15:40:11.0698047Z   path: /opt/hostedtoolcache/flutter/stable-3.41.6-x64
+2026-04-03T15:40:11.0699740Z   key: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:40:11.0701228Z   enableCrossOsArchive: false
+2026-04-03T15:40:11.0702122Z   fail-on-cache-miss: false
+2026-04-03T15:40:11.0702971Z   lookup-only: false
+2026-04-03T15:40:11.0703727Z   save-always: false
+2026-04-03T15:40:11.0704459Z env:
+2026-04-03T15:40:11.0705162Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:11.0706124Z ##[endgroup]
+2026-04-03T15:40:11.2960643Z Cache hit for: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:40:12.4338108Z Received 134217728 of 1664313858 (8.1%), 128.0 MBs/sec
+2026-04-03T15:40:13.4339302Z Received 364904448 of 1664313858 (21.9%), 174.0 MBs/sec
+2026-04-03T15:40:14.4334930Z Received 562036736 of 1664313858 (33.8%), 178.7 MBs/sec
+2026-04-03T15:40:15.4624117Z Received 805306368 of 1664313858 (48.4%), 190.6 MBs/sec
+2026-04-03T15:40:16.4630804Z Received 1015021568 of 1664313858 (61.0%), 192.5 MBs/sec
+2026-04-03T15:40:17.4635538Z Received 1207959552 of 1664313858 (72.6%), 191.0 MBs/sec
+2026-04-03T15:40:18.4636233Z Received 1421869056 of 1664313858 (85.4%), 192.9 MBs/sec
+2026-04-03T15:40:19.4644916Z Received 1635778560 of 1664313858 (98.3%), 194.2 MBs/sec
+2026-04-03T15:40:19.5793711Z Received 1664313858 of 1664313858 (100.0%), 194.8 MBs/sec
+2026-04-03T15:40:19.5797147Z Cache Size: ~1587 MB (1664313858 B)
+2026-04-03T15:40:19.5908795Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f16816fd-dc5a-4edf-9542-ea3cf16c9be9/cache.tzst -P -C /home/runner/work/mapia/mapia --use-compress-program unzstd
+2026-04-03T15:40:24.1360003Z Cache restored successfully
+2026-04-03T15:40:24.1994964Z Cache restored from key: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T15:40:24.2842937Z ##[group]Run actions/cache@v5
+2026-04-03T15:40:24.2843198Z with:
+2026-04-03T15:40:24.2843438Z   path: /home/runner/.pub-cache
+2026-04-03T15:40:24.2844116Z   key: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:40:24.2845084Z   enableCrossOsArchive: false
+2026-04-03T15:40:24.2845314Z   fail-on-cache-miss: false
+2026-04-03T15:40:24.2845536Z   lookup-only: false
+2026-04-03T15:40:24.2845734Z   save-always: false
+2026-04-03T15:40:24.2845909Z env:
+2026-04-03T15:40:24.2846091Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:24.2846331Z ##[endgroup]
+2026-04-03T15:40:24.5059361Z Cache hit for: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:40:25.7463644Z Received 138412032 of 158696941 (87.2%), 131.7 MBs/sec
+2026-04-03T15:40:25.8149504Z Received 158696941 of 158696941 (100.0%), 141.4 MBs/sec
+2026-04-03T15:40:25.8150489Z Cache Size: ~151 MB (158696941 B)
+2026-04-03T15:40:25.8263914Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f94944fc-c1da-4058-982c-456c6fc4dcf7/cache.tzst -P -C /home/runner/work/mapia/mapia --use-compress-program unzstd
+2026-04-03T15:40:26.9701280Z Cache restored successfully
+2026-04-03T15:40:26.9835355Z Cache restored from key: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T15:40:26.9932258Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T15:40:26.9932623Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T15:40:26.9932876Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T15:40:26.9933087Z [36;1m  -a 'x64' \[0m
+2026-04-03T15:40:26.9933379Z [36;1m  -c '/opt/hostedtoolcache/flutter/stable-3.41.6-x64' \[0m
+2026-04-03T15:40:26.9933713Z [36;1m  -d '/home/runner/.pub-cache' \[0m
+2026-04-03T15:40:26.9933957Z [36;1m  stable[0m
+2026-04-03T15:40:26.9951610Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T15:40:26.9951944Z env:
+2026-04-03T15:40:26.9952307Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:40:26.9952564Z ##[endgroup]
