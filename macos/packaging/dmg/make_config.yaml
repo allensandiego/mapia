@@ -3,3 +3,4 @@ package_name: com.allensandiego.mapia
 version: 1.0.0+1
 app_path: build/macos/Build/Products/Release/mapia.app
 icon_path: macos/packaging/dmg/mapia.png
+contents: []

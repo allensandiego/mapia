@@ -1,0 +1,88 @@
+﻿2026-04-03T16:26:52.3138497Z ##[group]Run actions/checkout@v6
+2026-04-03T16:26:52.3139855Z with:
+2026-04-03T16:26:52.3140536Z   repository: allensandiego/mapia
+2026-04-03T16:26:52.3141632Z   token: ***
+2026-04-03T16:26:52.3142297Z   ssh-strict: true
+2026-04-03T16:26:52.3142969Z   ssh-user: git
+2026-04-03T16:26:52.3143664Z   persist-credentials: true
+2026-04-03T16:26:52.3144433Z   clean: true
+2026-04-03T16:26:52.3145138Z   sparse-checkout-cone-mode: true
+2026-04-03T16:26:52.3145970Z   fetch-depth: 1
+2026-04-03T16:26:52.3146646Z   fetch-tags: false
+2026-04-03T16:26:52.3147340Z   show-progress: true
+2026-04-03T16:26:52.3148046Z   lfs: false
+2026-04-03T16:26:52.3148689Z   submodules: false
+2026-04-03T16:26:52.3149413Z   set-safe-directory: true
+2026-04-03T16:26:52.3150377Z env:
+2026-04-03T16:26:52.3151067Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:26:52.3151958Z ##[endgroup]
+2026-04-03T16:26:52.4514422Z Syncing repository: allensandiego/mapia
+2026-04-03T16:26:52.4516731Z ##[group]Getting Git version info
+2026-04-03T16:26:52.4517766Z Working directory is 'D:\a\mapia\mapia'
+2026-04-03T16:26:52.5444692Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-04-03T16:26:52.9672319Z git version 2.53.0.windows.2
+2026-04-03T16:26:52.9744854Z ##[endgroup]
+2026-04-03T16:26:52.9765740Z Temporarily overriding HOME='D:\a\_temp\efefa4bf-3e3e-4244-b0ef-268f9d6d5551' before making global git config changes
+2026-04-03T16:26:52.9767940Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T16:26:52.9775734Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\mapia\mapia
+2026-04-03T16:26:53.0407053Z Deleting the contents of 'D:\a\mapia\mapia'
+2026-04-03T16:26:53.0415030Z ##[group]Initializing the repository
+2026-04-03T16:26:53.0423580Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\mapia\mapia
+2026-04-03T16:26:53.1353348Z Initialized empty Git repository in D:/a/mapia/mapia/.git/
+2026-04-03T16:26:53.1402895Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/allensandiego/mapia
+2026-04-03T16:26:53.1921629Z ##[endgroup]
+2026-04-03T16:26:53.1922940Z ##[group]Disabling automatic garbage collection
+2026-04-03T16:26:53.1930231Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-04-03T16:26:53.2224995Z ##[endgroup]
+2026-04-03T16:26:53.2226648Z ##[group]Setting up auth
+2026-04-03T16:26:53.2227595Z Removing SSH command configuration
+2026-04-03T16:26:53.2237965Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T16:26:53.2567395Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-04-03T16:26:54.6579195Z Removing HTTP extra header
+2026-04-03T16:26:54.6593207Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T16:26:54.6915484Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-04-03T16:26:55.2392550Z Removing includeIf entries pointing to credentials config files
+2026-04-03T16:26:55.2403437Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T16:26:55.2706694Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-04-03T16:26:55.8279629Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-04-03T16:26:55.8608704Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.8901673Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9233828Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9531258Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9849522Z ##[endgroup]
+2026-04-03T16:26:55.9850081Z ##[group]Fetching the repository
+2026-04-03T16:26:55.9863267Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.37:refs/tags/v1.0.37
+2026-04-03T16:26:57.0997081Z From https://github.com/allensandiego/mapia
+2026-04-03T16:26:57.0997862Z  * [new tag]         v1.0.37    -> v1.0.37
+2026-04-03T16:26:57.1312987Z [command]"C:\Program Files\Git\bin\git.exe" tag --list v1.0.37
+2026-04-03T16:26:57.1640529Z v1.0.37
+2026-04-03T16:26:57.1685394Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/tags/v1.0.37^{commit}
+2026-04-03T16:26:57.1998605Z 56f2007cf0ef1195d25a4cf816af84cb3a5a6bdf
+2026-04-03T16:26:57.2043494Z ##[endgroup]
+2026-04-03T16:26:57.2044060Z ##[group]Determining the checkout info
+2026-04-03T16:26:57.2046314Z ##[endgroup]
+2026-04-03T16:26:57.2057402Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-04-03T16:26:57.2482738Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-04-03T16:26:57.2782204Z ##[group]Checking out the ref
+2026-04-03T16:26:57.2793765Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/tags/v1.0.37
+2026-04-03T16:26:57.3765879Z Note: switching to 'refs/tags/v1.0.37'.
+2026-04-03T16:26:57.3766345Z 
+2026-04-03T16:26:57.3766774Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-04-03T16:26:57.3767610Z changes and commit them, and you can discard any commits you make in this
+2026-04-03T16:26:57.3768465Z state without impacting any branches by switching back to a branch.
+2026-04-03T16:26:57.3768905Z 
+2026-04-03T16:26:57.3769175Z If you want to create a new branch to retain commits you create, you may
+2026-04-03T16:26:57.3769827Z do so (now or later) by using -c with the switch command. Example:
+2026-04-03T16:26:57.3770911Z 
+2026-04-03T16:26:57.3771205Z   git switch -c <new-branch-name>
+2026-04-03T16:26:57.3771529Z 
+2026-04-03T16:26:57.3771672Z Or undo this operation with:
+2026-04-03T16:26:57.3771954Z 
+2026-04-03T16:26:57.3772073Z   git switch -
+2026-04-03T16:26:57.3772244Z 
+2026-04-03T16:26:57.3772592Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-04-03T16:26:57.3773167Z 
+2026-04-03T16:26:57.3773518Z HEAD is now at 56f2007 fix(release): add missing macOS DMG packaging config
+2026-04-03T16:26:57.3840985Z ##[endgroup]
+2026-04-03T16:26:57.4259881Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-04-03T16:26:57.4540784Z 56f2007cf0ef1195d25a4cf816af84cb3a5a6bdf

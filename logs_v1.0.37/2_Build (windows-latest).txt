@@ -1,0 +1,461 @@
+﻿2026-04-03T16:26:49.9597312Z Current runner version: '2.333.1'
+2026-04-03T16:26:49.9634224Z ##[group]Runner Image Provisioner
+2026-04-03T16:26:49.9635021Z Hosted Compute Agent
+2026-04-03T16:26:49.9635532Z Version: 20260213.493
+2026-04-03T16:26:49.9636120Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T16:26:49.9636858Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T16:26:49.9637496Z Worker ID: {53aec539-5cda-443b-b4cb-8e2903d1d133}
+2026-04-03T16:26:49.9638212Z Azure Region: centralus
+2026-04-03T16:26:49.9638748Z ##[endgroup]
+2026-04-03T16:26:49.9640305Z ##[group]Operating System
+2026-04-03T16:26:49.9640960Z Microsoft Windows Server 2025
+2026-04-03T16:26:49.9641582Z 10.0.26100
+2026-04-03T16:26:49.9642050Z Datacenter
+2026-04-03T16:26:49.9642493Z ##[endgroup]
+2026-04-03T16:26:49.9642990Z ##[group]Runner Image
+2026-04-03T16:26:49.9643465Z Image: windows-2025
+2026-04-03T16:26:49.9643948Z Version: 20260317.61.1
+2026-04-03T16:26:49.9645428Z Included Software: https://github.com/actions/runner-images/blob/win25/20260317.61/images/windows/Windows2025-Readme.md
+2026-04-03T16:26:49.9647115Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260317.61
+2026-04-03T16:26:49.9647931Z ##[endgroup]
+2026-04-03T16:26:49.9648924Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T16:26:49.9650730Z Contents: write
+2026-04-03T16:26:49.9651215Z Metadata: read
+2026-04-03T16:26:49.9651670Z ##[endgroup]
+2026-04-03T16:26:49.9654261Z Secret source: Actions
+2026-04-03T16:26:49.9654941Z Prepare workflow directory
+2026-04-03T16:26:50.0148231Z Prepare all required actions
+2026-04-03T16:26:50.0201004Z Getting action download info
+2026-04-03T16:26:50.3311245Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T16:26:50.4622463Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T16:26:50.8413338Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T16:26:51.4302156Z Getting action download info
+2026-04-03T16:26:51.5650985Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T16:26:52.1795287Z Complete job name: Build (windows-latest)
+2026-04-03T16:26:52.3138544Z ##[group]Run actions/checkout@v6
+2026-04-03T16:26:52.3139867Z with:
+2026-04-03T16:26:52.3140542Z   repository: allensandiego/mapia
+2026-04-03T16:26:52.3141638Z   token: ***
+2026-04-03T16:26:52.3142302Z   ssh-strict: true
+2026-04-03T16:26:52.3142974Z   ssh-user: git
+2026-04-03T16:26:52.3143669Z   persist-credentials: true
+2026-04-03T16:26:52.3144437Z   clean: true
+2026-04-03T16:26:52.3145143Z   sparse-checkout-cone-mode: true
+2026-04-03T16:26:52.3145980Z   fetch-depth: 1
+2026-04-03T16:26:52.3146650Z   fetch-tags: false
+2026-04-03T16:26:52.3147353Z   show-progress: true
+2026-04-03T16:26:52.3148051Z   lfs: false
+2026-04-03T16:26:52.3148693Z   submodules: false
+2026-04-03T16:26:52.3149417Z   set-safe-directory: true
+2026-04-03T16:26:52.3150388Z env:
+2026-04-03T16:26:52.3151072Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:26:52.3151962Z ##[endgroup]
+2026-04-03T16:26:52.4514483Z Syncing repository: allensandiego/mapia
+2026-04-03T16:26:52.4516817Z ##[group]Getting Git version info
+2026-04-03T16:26:52.4517772Z Working directory is 'D:\a\mapia\mapia'
+2026-04-03T16:26:52.5444754Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-04-03T16:26:52.9672412Z git version 2.53.0.windows.2
+2026-04-03T16:26:52.9744903Z ##[endgroup]
+2026-04-03T16:26:52.9765773Z Temporarily overriding HOME='D:\a\_temp\efefa4bf-3e3e-4244-b0ef-268f9d6d5551' before making global git config changes
+2026-04-03T16:26:52.9767947Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T16:26:52.9775768Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\mapia\mapia
+2026-04-03T16:26:53.0407124Z Deleting the contents of 'D:\a\mapia\mapia'
+2026-04-03T16:26:53.0415068Z ##[group]Initializing the repository
+2026-04-03T16:26:53.0423615Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\mapia\mapia
+2026-04-03T16:26:53.1353448Z Initialized empty Git repository in D:/a/mapia/mapia/.git/
+2026-04-03T16:26:53.1402991Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/allensandiego/mapia
+2026-04-03T16:26:53.1921680Z ##[endgroup]
+2026-04-03T16:26:53.1922946Z ##[group]Disabling automatic garbage collection
+2026-04-03T16:26:53.1930260Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-04-03T16:26:53.2225063Z ##[endgroup]
+2026-04-03T16:26:53.2226663Z ##[group]Setting up auth
+2026-04-03T16:26:53.2227601Z Removing SSH command configuration
+2026-04-03T16:26:53.2237992Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T16:26:53.2567465Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-04-03T16:26:54.6579256Z Removing HTTP extra header
+2026-04-03T16:26:54.6593290Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T16:26:54.6915558Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-04-03T16:26:55.2392613Z Removing includeIf entries pointing to credentials config files
+2026-04-03T16:26:55.2403463Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T16:26:55.2706741Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-04-03T16:26:55.8279692Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-04-03T16:26:55.8610893Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.8901723Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9233890Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9531340Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:26:55.9849562Z ##[endgroup]
+2026-04-03T16:26:55.9850090Z ##[group]Fetching the repository
+2026-04-03T16:26:55.9863318Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.37:refs/tags/v1.0.37
+2026-04-03T16:26:57.0997154Z From https://github.com/allensandiego/mapia
+2026-04-03T16:26:57.0997873Z  * [new tag]         v1.0.37    -> v1.0.37
+2026-04-03T16:26:57.1313027Z [command]"C:\Program Files\Git\bin\git.exe" tag --list v1.0.37
+2026-04-03T16:26:57.1640572Z v1.0.37
+2026-04-03T16:26:57.1685422Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/tags/v1.0.37^{commit}
+2026-04-03T16:26:57.1998658Z 56f2007cf0ef1195d25a4cf816af84cb3a5a6bdf
+2026-04-03T16:26:57.2043514Z ##[endgroup]
+2026-04-03T16:26:57.2044067Z ##[group]Determining the checkout info
+2026-04-03T16:26:57.2046330Z ##[endgroup]
+2026-04-03T16:26:57.2057426Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-04-03T16:26:57.2482787Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-04-03T16:26:57.2782246Z ##[group]Checking out the ref
+2026-04-03T16:26:57.2793827Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/tags/v1.0.37
+2026-04-03T16:26:57.3765927Z Note: switching to 'refs/tags/v1.0.37'.
+2026-04-03T16:26:57.3766354Z 
+2026-04-03T16:26:57.3766783Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-04-03T16:26:57.3767618Z changes and commit them, and you can discard any commits you make in this
+2026-04-03T16:26:57.3768471Z state without impacting any branches by switching back to a branch.
+2026-04-03T16:26:57.3768911Z 
+2026-04-03T16:26:57.3769181Z If you want to create a new branch to retain commits you create, you may
+2026-04-03T16:26:57.3769834Z do so (now or later) by using -c with the switch command. Example:
+2026-04-03T16:26:57.3770949Z 
+2026-04-03T16:26:57.3771212Z   git switch -c <new-branch-name>
+2026-04-03T16:26:57.3771535Z 
+2026-04-03T16:26:57.3771678Z Or undo this operation with:
+2026-04-03T16:26:57.3771964Z 
+2026-04-03T16:26:57.3772079Z   git switch -
+2026-04-03T16:26:57.3772249Z 
+2026-04-03T16:26:57.3772614Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-04-03T16:26:57.3773175Z 
+2026-04-03T16:26:57.3773525Z HEAD is now at 56f2007 fix(release): add missing macOS DMG packaging config
+2026-04-03T16:26:57.3841004Z ##[endgroup]
+2026-04-03T16:26:57.4259919Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-04-03T16:26:57.4540825Z 56f2007cf0ef1195d25a4cf816af84cb3a5a6bdf
+2026-04-03T16:26:57.5134134Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T16:26:57.5134470Z with:
+2026-04-03T16:26:57.5134627Z   channel: stable
+2026-04-03T16:26:57.5134798Z   cache: true
+2026-04-03T16:26:57.5134957Z   architecture: X64
+2026-04-03T16:26:57.5135138Z   pub-cache-path: default
+2026-04-03T16:26:57.5135346Z   dry-run: false
+2026-04-03T16:26:57.5135576Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T16:26:57.5135851Z env:
+2026-04-03T16:26:57.5136013Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:26:57.5136291Z ##[endgroup]
+2026-04-03T16:26:57.5361450Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T16:26:57.5361821Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T16:26:57.5381359Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:26:57.5381730Z env:
+2026-04-03T16:26:57.5381899Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:26:57.5382127Z ##[endgroup]
+2026-04-03T16:26:57.7278519Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T16:26:57.7278845Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T16:26:57.7279082Z [36;1m  -n '' \[0m
+2026-04-03T16:26:57.7279240Z [36;1m  -f '' \[0m
+2026-04-03T16:26:57.7279391Z [36;1m  -a 'X64' \[0m
+2026-04-03T16:26:57.7279551Z [36;1m  -k '' \[0m
+2026-04-03T16:26:57.7279707Z [36;1m  -c '' \[0m
+2026-04-03T16:26:57.7279851Z [36;1m  -l '' \[0m
+2026-04-03T16:26:57.7279999Z [36;1m  -d 'default' \[0m
+2026-04-03T16:26:57.7280271Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T16:26:57.7280559Z [36;1m  stable[0m
+2026-04-03T16:26:57.7303293Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:26:57.7303650Z env:
+2026-04-03T16:26:57.7303820Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:26:57.7304046Z ##[endgroup]
+2026-04-03T16:27:00.9671087Z ##[group]Run actions/cache@v5
+2026-04-03T16:27:00.9671297Z with:
+2026-04-03T16:27:00.9671527Z   path: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64
+2026-04-03T16:27:00.9671976Z   key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:27:00.9672374Z   enableCrossOsArchive: false
+2026-04-03T16:27:00.9672574Z   fail-on-cache-miss: false
+2026-04-03T16:27:00.9672942Z   lookup-only: false
+2026-04-03T16:27:00.9673102Z   save-always: false
+2026-04-03T16:27:00.9673258Z env:
+2026-04-03T16:27:00.9673412Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:27:00.9673636Z ##[endgroup]
+2026-04-03T16:27:01.3901211Z Cache hit for: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:27:02.5700572Z Received 130023424 of 1831231845 (7.1%), 123.3 MBs/sec
+2026-04-03T16:27:03.6678395Z Received 268435456 of 1831231845 (14.7%), 121.7 MBs/sec
+2026-04-03T16:27:04.6814128Z Received 440401920 of 1831231845 (24.0%), 135.0 MBs/sec
+2026-04-03T16:27:05.6749336Z Received 616562688 of 1831231845 (33.7%), 143.0 MBs/sec
+2026-04-03T16:27:06.6900626Z Received 792723456 of 1831231845 (43.3%), 147.7 MBs/sec
+2026-04-03T16:27:07.6865611Z Received 939524096 of 1831231845 (51.3%), 146.4 MBs/sec
+2026-04-03T16:27:08.6912657Z Received 1107296256 of 1831231845 (60.5%), 148.2 MBs/sec
+2026-04-03T16:27:09.6990541Z Received 1258291200 of 1831231845 (68.7%), 147.5 MBs/sec
+2026-04-03T16:27:10.7023878Z Received 1413480448 of 1831231845 (77.2%), 147.5 MBs/sec
+2026-04-03T16:27:11.7041669Z Received 1572864000 of 1831231845 (85.9%), 147.9 MBs/sec
+2026-04-03T16:27:12.7045985Z Received 1732247552 of 1831231845 (94.6%), 148.3 MBs/sec
+2026-04-03T16:27:13.4561878Z Received 1831231845 of 1831231845 (100.0%), 146.9 MBs/sec
+2026-04-03T16:27:13.4567489Z Cache Size: ~1746 MB (1831231845 B)
+2026-04-03T16:27:13.4672286Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/45260962-b1d7-4aa2-a997-6edabc8aec26/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T16:27:53.4582215Z Cache restored successfully
+2026-04-03T16:27:53.5659120Z Cache restored from key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:27:53.7529459Z ##[group]Run actions/cache@v5
+2026-04-03T16:27:53.7529668Z with:
+2026-04-03T16:27:53.7529872Z   path: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T16:27:53.7530658Z   key: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:27:53.7531381Z   enableCrossOsArchive: false
+2026-04-03T16:27:53.7531605Z   fail-on-cache-miss: false
+2026-04-03T16:27:53.7531802Z   lookup-only: false
+2026-04-03T16:27:53.7531965Z   save-always: false
+2026-04-03T16:27:53.7532121Z env:
+2026-04-03T16:27:53.7532288Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:27:53.7532517Z ##[endgroup]
+2026-04-03T16:27:54.1009896Z Cache hit for: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:27:55.3460138Z Received 134217728 of 158221169 (84.8%), 116.9 MBs/sec
+2026-04-03T16:27:55.5106172Z Received 158221169 of 158221169 (100.0%), 119.9 MBs/sec
+2026-04-03T16:27:55.5110409Z Cache Size: ~151 MB (158221169 B)
+2026-04-03T16:27:55.5174886Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/dd057376-2e7b-4839-b59c-a9cef42627ac/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T16:28:25.2598625Z Cache restored successfully
+2026-04-03T16:28:25.2814602Z Cache restored from key: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:28:25.3077602Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T16:28:25.3077972Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T16:28:25.3078216Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T16:28:25.3078412Z [36;1m  -a 'x64' \[0m
+2026-04-03T16:28:25.3078707Z [36;1m  -c 'C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64' \[0m
+2026-04-03T16:28:25.3079096Z [36;1m  -d 'C:\Users\runneradmin\AppData\Local\Pub\Cache' \[0m
+2026-04-03T16:28:25.3079380Z [36;1m  stable[0m
+2026-04-03T16:28:25.3094028Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:28:25.3094592Z env:
+2026-04-03T16:28:25.3094781Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:28:25.3095034Z ##[endgroup]
+2026-04-03T16:28:27.7754541Z ##[group]Run flutter pub get
+2026-04-03T16:28:27.7754859Z [36;1mflutter pub get[0m
+2026-04-03T16:28:27.7755116Z [36;1mdart pub global activate fastforge[0m
+2026-04-03T16:28:27.8347597Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-04-03T16:28:27.8348004Z env:
+2026-04-03T16:28:27.8348230Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:28:27.8348680Z   FLUTTER_ROOT: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64/flutter
+2026-04-03T16:28:27.8349189Z   PUB_CACHE: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T16:28:27.8349538Z ##[endgroup]
+2026-04-03T16:28:34.4632126Z Resolving dependencies...
+2026-04-03T16:28:34.9103385Z Downloading packages...
+2026-04-03T16:28:35.0837958Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T16:28:35.0838500Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T16:28:35.0838967Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T16:28:35.0839240Z   build 2.5.4 (4.0.5 available)
+2026-04-03T16:28:35.0839713Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T16:28:35.0840144Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T16:28:35.0840557Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T16:28:35.0841380Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T16:28:35.0841795Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T16:28:35.0842217Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T16:28:35.0842650Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T16:28:35.0842980Z > characters 1.4.1 (was 1.4.0)
+2026-04-03T16:28:35.0843241Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T16:28:35.0843574Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T16:28:35.0843925Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T16:28:35.0844228Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T16:28:35.0844553Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T16:28:35.0844877Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T16:28:35.0845217Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T16:28:35.0845526Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T16:28:35.0845817Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T16:28:35.0846099Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T16:28:35.0846367Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T16:28:35.0846659Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T16:28:35.0846934Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T16:28:35.0847206Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T16:28:35.0847502Z   image 4.3.0 (4.8.0 available)
+2026-04-03T16:28:35.0847762Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T16:28:35.0848065Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T16:28:35.0848346Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T16:28:35.0848589Z > matcher 0.12.19 (was 0.12.17)
+2026-04-03T16:28:35.0848865Z > material_color_utilities 0.13.0 (was 0.11.1)
+2026-04-03T16:28:35.0849321Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T16:28:35.0849619Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T16:28:35.0849918Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T16:28:35.0850198Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T16:28:35.0850472Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T16:28:35.0850730Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T16:28:35.0851001Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T16:28:35.0851289Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T16:28:35.0851580Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T16:28:35.0851810Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T16:28:35.0852022Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T16:28:35.0852268Z > test_api 0.7.10 (was 0.7.7) (0.7.11 available)
+2026-04-03T16:28:35.0852538Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T16:28:35.0853635Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T16:28:35.0853854Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T16:28:35.0856225Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T16:28:35.0856966Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T16:28:35.0857388Z Changed 4 dependencies!
+2026-04-03T16:28:35.0857726Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T16:28:35.0858118Z Try `flutter pub outdated` for more information.
+2026-04-03T16:28:35.7054481Z Resolving dependencies...
+2026-04-03T16:28:36.1420883Z Downloading packages...
+2026-04-03T16:28:36.5463744Z + _discoveryapis_commons 1.0.7
+2026-04-03T16:28:36.5467206Z + ansicolor 2.0.3
+2026-04-03T16:28:36.5467782Z + archive 3.6.1 (4.0.9 available)
+2026-04-03T16:28:36.5468606Z + args 2.7.0
+2026-04-03T16:28:36.5469077Z + async 2.13.1
+2026-04-03T16:28:36.5469358Z + buffer 1.2.3
+2026-04-03T16:28:36.5469612Z + charset 2.0.1
+2026-04-03T16:28:36.5469894Z + checked_yaml 2.0.4
+2026-04-03T16:28:36.5470465Z + cli_util 0.4.2
+2026-04-03T16:28:36.5470772Z + clock 1.1.2
+2026-04-03T16:28:36.5471058Z + collection 1.19.1
+2026-04-03T16:28:36.5471358Z + console 4.1.0
+2026-04-03T16:28:36.5471623Z + convert 3.1.2
+2026-04-03T16:28:36.5471880Z + crypto 3.0.7
+2026-04-03T16:28:36.5472141Z + dio 5.9.2
+2026-04-03T16:28:36.5472365Z + dio_web_adapter 2.1.2
+2026-04-03T16:28:36.5472575Z + fastforge 0.6.6
+2026-04-03T16:28:36.5472756Z + file 7.0.1
+2026-04-03T16:28:36.5472943Z + flutter_app_builder 0.6.0
+2026-04-03T16:28:36.5473179Z + flutter_app_packager 0.6.5
+2026-04-03T16:28:36.5473420Z + flutter_app_publisher 0.6.6
+2026-04-03T16:28:36.5473646Z + get_it 9.2.1
+2026-04-03T16:28:36.5473810Z + glob 2.1.3
+2026-04-03T16:28:36.5474000Z + google_identity_services_web 0.3.3+1
+2026-04-03T16:28:36.5474271Z + googleapis 13.2.0 (16.0.0 available)
+2026-04-03T16:28:36.5474537Z + googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T16:28:36.5474793Z + http 1.6.0
+2026-04-03T16:28:36.5474967Z + http_parser 4.1.2
+2026-04-03T16:28:36.5475166Z + image 4.3.0 (4.8.0 available)
+2026-04-03T16:28:36.5475388Z + intl 0.20.2
+2026-04-03T16:28:36.5475554Z + io 1.0.5
+2026-04-03T16:28:36.5475730Z + json_annotation 4.11.0
+2026-04-03T16:28:36.5475962Z + liquid_engine 0.2.2
+2026-04-03T16:28:36.5476160Z + logging 1.3.0
+2026-04-03T16:28:36.5476328Z + meta 1.18.2
+2026-04-03T16:28:36.5476495Z + mime 2.0.0
+2026-04-03T16:28:36.5476658Z + minio 3.5.8
+2026-04-03T16:28:36.5476829Z + msix 3.16.13
+2026-04-03T16:28:36.5477014Z + mustache_template 2.0.4
+2026-04-03T16:28:36.5477240Z + package_config 2.2.0
+2026-04-03T16:28:36.5477445Z + parse_app_package 0.6.0
+2026-04-03T16:28:36.5477656Z + path 1.9.1
+2026-04-03T16:28:36.5477840Z + petitparser 7.0.2
+2026-04-03T16:28:36.5478053Z + plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T16:28:36.5478307Z + pub_semver 2.2.0
+2026-04-03T16:28:36.5478493Z + pubspec_parse 1.5.0
+2026-04-03T16:28:36.5478709Z + qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T16:28:36.5478971Z + recase 4.1.0
+2026-04-03T16:28:36.5479161Z + shell_executor 0.3.0
+2026-04-03T16:28:36.5479345Z + shell_uikit 0.3.0
+2026-04-03T16:28:36.5479508Z + source_span 1.10.2
+2026-04-03T16:28:36.5479677Z + string_scanner 1.4.1
+2026-04-03T16:28:36.5479851Z + term_glyph 1.2.2
+2026-04-03T16:28:36.5480013Z + typed_data 1.4.0
+2026-04-03T16:28:36.5480184Z + unified_distributor 0.2.6
+2026-04-03T16:28:36.5480384Z + uuid 3.0.7 (4.5.3 available)
+2026-04-03T16:28:36.5480569Z + vector_math 2.3.0
+2026-04-03T16:28:36.5480723Z + web 1.1.1
+2026-04-03T16:28:36.5480859Z + xml 6.6.1
+2026-04-03T16:28:36.5480996Z + yaml 3.1.3
+2026-04-03T16:28:36.5560132Z Building package executables...
+2026-04-03T16:28:39.9748809Z Built fastforge:main.
+2026-04-03T16:28:39.9873595Z Installed executable fastforge.
+2026-04-03T16:28:40.1090499Z Activated fastforge 0.6.6.
+2026-04-03T16:28:40.2818140Z ##[group]Run fastforge release --name release --jobs windows-msix,windows-exe
+2026-04-03T16:28:40.2818737Z [36;1mfastforge release --name release --jobs windows-msix,windows-exe[0m
+2026-04-03T16:28:40.2887041Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-04-03T16:28:40.2887375Z env:
+2026-04-03T16:28:40.2887568Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:28:40.2887939Z   FLUTTER_ROOT: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64/flutter
+2026-04-03T16:28:40.2888363Z   PUB_CACHE: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T16:28:40.2888649Z ##[endgroup]
+2026-04-03T16:28:40.8337319Z 
+2026-04-03T16:28:40.8337610Z 
+2026-04-03T16:28:40.9370592Z ⠋ Checking for updates...
+2026-04-03T16:28:40.9812344Z ⠙ Checking for updates...
+2026-04-03T16:28:41.0393383Z ⠹ Checking for updates...
+2026-04-03T16:28:41.0448366Z                                  
+2026-04-03T16:28:41.0449139Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T16:28:41.0449373Z 
+2026-04-03T16:28:41.0677824Z 
+2026-04-03T16:28:41.0680620Z ===> [1mReleasing[0m release:[1mwindows-msix[0m
+2026-04-03T16:28:41.0791304Z $ flutter clean
+2026-04-03T16:28:41.9127803Z Deleting .dart_tool...                                               1ms
+2026-04-03T16:28:41.9152587Z Deleting ephemeral...                                                0ms
+2026-04-03T16:28:41.9162542Z Deleting ephemeral...                                                0ms
+2026-04-03T16:28:41.9175208Z Deleting ephemeral...                                                0ms
+2026-04-03T16:28:41.9188222Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T16:28:41.9686057Z Packaging mapia 1.0.0+1 as msix:
+2026-04-03T16:28:41.9816231Z $ C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64/flutter\bin\flutter build windows --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T16:28:42.8453840Z Resolving dependencies...
+2026-04-03T16:28:43.1300335Z Downloading packages...
+2026-04-03T16:28:43.4062072Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T16:28:43.4064523Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T16:28:43.4065255Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T16:28:43.4065891Z   build 2.5.4 (4.0.5 available)
+2026-04-03T16:28:43.4066415Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T16:28:43.4066974Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T16:28:43.4067535Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T16:28:43.4067941Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T16:28:43.4068381Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T16:28:43.4068952Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T16:28:43.4069559Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T16:28:43.4070006Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T16:28:43.4070376Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T16:28:43.4070769Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T16:28:43.4071177Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T16:28:43.4071599Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T16:28:43.4072067Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T16:28:43.4072814Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T16:28:43.4073260Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T16:28:43.4073672Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T16:28:43.4074436Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T16:28:43.4074942Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T16:28:43.4075418Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T16:28:43.4075833Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T16:28:43.4076527Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T16:28:43.4076945Z   image 4.3.0 (4.8.0 available)
+2026-04-03T16:28:43.4077320Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T16:28:43.4079753Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T16:28:43.4080239Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T16:28:43.4080599Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T16:28:43.4081047Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T16:28:43.4081673Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T16:28:43.4082069Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T16:28:43.4082481Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T16:28:43.4082849Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T16:28:43.4083226Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T16:28:43.4083636Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T16:28:43.4084030Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T16:28:43.4084410Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T16:28:43.4084786Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T16:28:43.4085175Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T16:28:43.4085575Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T16:28:43.4085996Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T16:28:43.4086342Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T16:28:43.4086708Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T16:28:43.4087058Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T16:28:43.4087444Z Got dependencies!
+2026-04-03T16:28:43.4087935Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T16:28:43.4088604Z Try `flutter pub outdated` for more information.
+2026-04-03T16:30:16.8418977Z Building Windows application...                                 Terminate batch job (Y/N)? 
+2026-04-03T16:30:16.8858601Z ^C
+2026-04-03T16:30:16.9073387Z ##[error]The operation was canceled.
+2026-04-03T16:30:17.3115701Z Post job cleanup.
+2026-04-03T16:30:17.7430569Z Post job cleanup.
+2026-04-03T16:30:18.3843446Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-04-03T16:30:18.4143861Z git version 2.53.0.windows.2
+2026-04-03T16:30:18.4235663Z Temporarily overriding HOME='D:\a\_temp\cf51644b-1284-473b-ad96-1fe9b0ff07d6' before making global git config changes
+2026-04-03T16:30:18.4238507Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T16:30:18.4252803Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\mapia\mapia
+2026-04-03T16:30:18.4644747Z Removing SSH command configuration
+2026-04-03T16:30:18.4656295Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T16:30:18.5009665Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-04-03T16:30:19.1089658Z Removing HTTP extra header
+2026-04-03T16:30:19.1100316Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T16:30:19.1446328Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-04-03T16:30:19.7414410Z Removing includeIf entries pointing to credentials config files
+2026-04-03T16:30:19.7427502Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T16:30:19.7914418Z includeif.gitdir:D:/a/mapia/mapia/.git.path
+2026-04-03T16:30:19.7916366Z includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:30:19.7917235Z includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:30:19.7918046Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:30:19.8025141Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/mapia/mapia/.git.path
+2026-04-03T16:30:19.8372140Z D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:19.8426704Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/mapia/mapia/.git.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:19.9037712Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path
+2026-04-03T16:30:19.9312067Z D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:19.9360455Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/mapia/mapia/.git/worktrees/*.path D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:20.0084758Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-04-03T16:30:20.0385849Z /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:20.0438098Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:20.0797032Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T16:30:20.1094064Z /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:20.1137259Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-821077ca-9287-460c-8129-3530daaa17da.config
+2026-04-03T16:30:20.1520733Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-04-03T16:30:20.7119891Z Removing credentials config 'D:\a\_temp\git-credentials-821077ca-9287-460c-8129-3530daaa17da.config'
+2026-04-03T16:30:20.7436679Z Cleaning up orphan processes
+2026-04-03T16:30:20.7564116Z Terminate orphan process: pid (8256) (cmd)
+2026-04-03T16:30:20.7630434Z Terminate orphan process: pid (2124) (conhost)
+2026-04-03T16:30:20.7709264Z Terminate orphan process: pid (7068) (dart)
+2026-04-03T16:30:20.8095256Z Terminate orphan process: pid (1612) (dartvm)
+2026-04-03T16:30:20.8239909Z Terminate orphan process: pid (5536) (vctip)
+2026-04-03T16:30:20.8318726Z Terminate orphan process: pid (2028) (cmake)
+2026-04-03T16:30:20.8444298Z Terminate orphan process: pid (2252) (conhost)
