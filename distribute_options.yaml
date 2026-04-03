@@ -39,6 +39,11 @@ releases:
         config:
           display_name: Mapia
           package_name: mapia
+          summary: A beautiful REST API client for desktop
+          group: Applications/Networking
+          vendor: Allensandiego
+          license: MIT
+          url: https://github.com/allensandiego/mapia
       - name: linux-appimage
         package:
           platform: linux
