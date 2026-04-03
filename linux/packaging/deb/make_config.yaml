@@ -1,5 +1,6 @@
 display_name: Mapia
 package_name: com.allensandiego.mapia
+version: 1.0.0+1
 maintainer:
   name: Allen San Diego
   email: allensandiego@example.com
