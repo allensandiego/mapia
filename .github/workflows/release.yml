@@ -42,6 +42,7 @@ jobs:
       - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
+          npm install -g appdmg
           fastforge release --name release --jobs macos-dmg
 
       - name: Build and Package (Linux)
