@@ -1,0 +1,35 @@
+﻿2026-04-03T15:33:09.6629798Z Current runner version: '2.333.1'
+2026-04-03T15:33:09.6681884Z ##[group]Runner Image Provisioner
+2026-04-03T15:33:09.6682990Z Hosted Compute Agent
+2026-04-03T15:33:09.6683986Z Version: 20260213.493
+2026-04-03T15:33:09.6685025Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T15:33:09.6686036Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T15:33:09.6686899Z Worker ID: {e3f434f4-7ae8-4989-a417-9e917894a7d5}
+2026-04-03T15:33:09.6687946Z Azure Region: centralus
+2026-04-03T15:33:09.6688673Z ##[endgroup]
+2026-04-03T15:33:09.6690493Z ##[group]Operating System
+2026-04-03T15:33:09.6691432Z Microsoft Windows Server 2025
+2026-04-03T15:33:09.6692266Z 10.0.26100
+2026-04-03T15:33:09.6692919Z Datacenter
+2026-04-03T15:33:09.6693542Z ##[endgroup]
+2026-04-03T15:33:09.6694217Z ##[group]Runner Image
+2026-04-03T15:33:09.6694907Z Image: windows-2025
+2026-04-03T15:33:09.6695649Z Version: 20260317.61.1
+2026-04-03T15:33:09.6697442Z Included Software: https://github.com/actions/runner-images/blob/win25/20260317.61/images/windows/Windows2025-Readme.md
+2026-04-03T15:33:09.6700415Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260317.61
+2026-04-03T15:33:09.6701803Z ##[endgroup]
+2026-04-03T15:33:09.6703407Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T15:33:09.6707643Z Contents: read
+2026-04-03T15:33:09.6709764Z Metadata: read
+2026-04-03T15:33:09.6710983Z Packages: read
+2026-04-03T15:33:09.6711694Z ##[endgroup]
+2026-04-03T15:33:09.6714301Z Secret source: Actions
+2026-04-03T15:33:09.6715307Z Prepare workflow directory
+2026-04-03T15:33:09.7259810Z Prepare all required actions
+2026-04-03T15:33:09.7306228Z Getting action download info
+2026-04-03T15:33:10.0258514Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T15:33:10.1569874Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T15:33:10.5381862Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T15:33:14.2632058Z Getting action download info
+2026-04-03T15:33:14.3837241Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T15:33:15.0077388Z Complete job name: Build (windows-latest)

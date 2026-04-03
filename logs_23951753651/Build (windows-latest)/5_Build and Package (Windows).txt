@@ -1,0 +1,81 @@
+﻿2026-04-03T15:35:03.4895262Z ##[group]Run fastforge release --name release --jobs windows-msix,windows-exe
+2026-04-03T15:35:03.4896012Z [36;1mfastforge release --name release --jobs windows-msix,windows-exe[0m
+2026-04-03T15:35:03.4966287Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-04-03T15:35:03.4966621Z env:
+2026-04-03T15:35:03.4966813Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T15:35:03.4967179Z   FLUTTER_ROOT: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64/flutter
+2026-04-03T15:35:03.4967598Z   PUB_CACHE: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T15:35:03.4967889Z ##[endgroup]
+2026-04-03T15:35:04.1356079Z 
+2026-04-03T15:35:04.1356142Z 
+2026-04-03T15:35:04.2680572Z ⠋ Checking for updates...
+2026-04-03T15:35:04.3067384Z ⠙ Checking for updates...
+2026-04-03T15:35:04.3879976Z ⠹ Checking for updates...
+2026-04-03T15:35:04.3942214Z ⠸ Checking for updates...
+2026-04-03T15:35:04.3992729Z                                  
+2026-04-03T15:35:04.3993337Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T15:35:04.3993607Z 
+2026-04-03T15:35:04.4226556Z 
+2026-04-03T15:35:04.4229802Z ===> [1mReleasing[0m release:[1mwindows-msix[0m
+2026-04-03T15:35:04.4341447Z $ flutter clean
+2026-04-03T15:35:05.5923249Z Deleting .dart_tool...                                               1ms
+2026-04-03T15:35:05.5949114Z Deleting ephemeral...                                                0ms
+2026-04-03T15:35:05.5960418Z Deleting ephemeral...                                                0ms
+2026-04-03T15:35:05.5974445Z Deleting ephemeral...                                                0ms
+2026-04-03T15:35:05.5987144Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T15:35:05.6500465Z Packaging mapia 1.0.0+1 as msix:
+2026-04-03T15:35:05.6653064Z $ C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64/flutter\bin\flutter build windows --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T15:35:06.6395006Z Resolving dependencies...
+2026-04-03T15:35:06.9848375Z Downloading packages...
+2026-04-03T15:35:07.2911754Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T15:35:07.2913859Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T15:35:07.2914706Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T15:35:07.2915295Z   build 2.5.4 (4.0.5 available)
+2026-04-03T15:35:07.2915822Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T15:35:07.2916363Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T15:35:07.2916978Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T15:35:07.2917580Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T15:35:07.2918031Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T15:35:07.2918584Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T15:35:07.2919154Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T15:35:07.2919531Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T15:35:07.2919797Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T15:35:07.2920028Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T15:35:07.2920285Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T15:35:07.2920560Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T15:35:07.2920836Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T15:35:07.2921118Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T15:35:07.2921367Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T15:35:07.2921607Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T15:35:07.2921840Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T15:35:07.2922069Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T15:35:07.2922460Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T15:35:07.2923138Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T15:35:07.2923496Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T15:35:07.2923840Z   image 4.3.0 (4.8.0 available)
+2026-04-03T15:35:07.2925321Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T15:35:07.2929830Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T15:35:07.2930239Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T15:35:07.2930559Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T15:35:07.2930912Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T15:35:07.2931329Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T15:35:07.2931716Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T15:35:07.2932108Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T15:35:07.2932479Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T15:35:07.2932868Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T15:35:07.2933289Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T15:35:07.2933692Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T15:35:07.2934072Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T15:35:07.2934455Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T15:35:07.2934837Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T15:35:07.2935257Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T15:35:07.2935681Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T15:35:07.2936030Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T15:35:07.2936401Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T15:35:07.2936760Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T15:35:07.2937135Z Got dependencies!
+2026-04-03T15:35:07.2937640Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T15:35:07.2938309Z Try `flutter pub outdated` for more information.
+2026-04-03T15:35:40.9854110Z Building Windows application...                                 Terminate batch job (Y/N)? 
+2026-04-03T15:35:41.0358404Z ^C
+2026-04-03T15:35:41.0679158Z ##[error]The operation was canceled.
