@@ -1,4 +1,4 @@
-# Mapia — REST API client for Desktop
+# Mapia — yet another rest api client for Desktop
 
 Mapia is a modern, cross-platform REST API client built with **Flutter**, designed for professional developers who need a powerful yet lightweight tool for testing and debugging APIs.
 
