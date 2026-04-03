@@ -1,0 +1,2192 @@
+﻿2026-04-03T14:44:48.8528312Z Current runner version: '2.333.1'
+2026-04-03T14:44:48.8561864Z ##[group]Runner Image Provisioner
+2026-04-03T14:44:48.8563024Z Hosted Compute Agent
+2026-04-03T14:44:48.8563902Z Version: 20260213.493
+2026-04-03T14:44:48.8565026Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T14:44:48.8566128Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T14:44:48.8567208Z Worker ID: {c26442cc-c035-4e0e-884a-58787aa721b1}
+2026-04-03T14:44:48.8568495Z Azure Region: eastus
+2026-04-03T14:44:48.8569455Z ##[endgroup]
+2026-04-03T14:44:48.8572155Z ##[group]Operating System
+2026-04-03T14:44:48.8573304Z Ubuntu
+2026-04-03T14:44:48.8574052Z 24.04.4
+2026-04-03T14:44:48.8574893Z LTS
+2026-04-03T14:44:48.8575857Z ##[endgroup]
+2026-04-03T14:44:48.8576704Z ##[group]Runner Image
+2026-04-03T14:44:48.8577628Z Image: ubuntu-24.04
+2026-04-03T14:44:48.8578676Z Version: 20260329.72.1
+2026-04-03T14:44:48.8581048Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260329.72/images/ubuntu/Ubuntu2404-Readme.md
+2026-04-03T14:44:48.8583836Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260329.72
+2026-04-03T14:44:48.8585522Z ##[endgroup]
+2026-04-03T14:44:48.8587263Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T14:44:48.8590440Z Contents: read
+2026-04-03T14:44:48.8591397Z Metadata: read
+2026-04-03T14:44:48.8592156Z Packages: read
+2026-04-03T14:44:48.8592959Z ##[endgroup]
+2026-04-03T14:44:48.8595960Z Secret source: Actions
+2026-04-03T14:44:48.8597203Z Prepare workflow directory
+2026-04-03T14:44:48.9176463Z Prepare all required actions
+2026-04-03T14:44:48.9235315Z Getting action download info
+2026-04-03T14:44:49.1981900Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+2026-04-03T14:44:49.3436293Z Download action repository 'subosito/flutter-action@v2.23.0' (SHA:1a449444c387b1966244ae4d4f8c696479add0b2)
+2026-04-03T14:44:49.4902263Z Download action repository 'softprops/action-gh-release@v2.6.0' (SHA:26e8ad27a09a225049a7075d7ec1caa2df6ff332)
+2026-04-03T14:44:49.8250817Z Getting action download info
+2026-04-03T14:44:49.9300090Z Download action repository 'actions/cache@v5' (SHA:668228422ae6a00e4ad889ee87cd7109ec5666a7)
+2026-04-03T14:44:50.0716830Z Complete job name: Build (ubuntu-latest)
+2026-04-03T14:44:50.1405101Z ##[group]Run actions/checkout@v6
+2026-04-03T14:44:50.1405922Z with:
+2026-04-03T14:44:50.1406325Z   repository: allensandiego/mapia
+2026-04-03T14:44:50.1406959Z   token: ***
+2026-04-03T14:44:50.1407334Z   ssh-strict: true
+2026-04-03T14:44:50.1407708Z   ssh-user: git
+2026-04-03T14:44:50.1408093Z   persist-credentials: true
+2026-04-03T14:44:50.1408554Z   clean: true
+2026-04-03T14:44:50.1408993Z   sparse-checkout-cone-mode: true
+2026-04-03T14:44:50.1409506Z   fetch-depth: 1
+2026-04-03T14:44:50.1410150Z   fetch-tags: false
+2026-04-03T14:44:50.1410599Z   show-progress: true
+2026-04-03T14:44:50.1411042Z   lfs: false
+2026-04-03T14:44:50.1411419Z   submodules: false
+2026-04-03T14:44:50.1411809Z   set-safe-directory: true
+2026-04-03T14:44:50.1412495Z env:
+2026-04-03T14:44:50.1412923Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:44:50.1413450Z ##[endgroup]
+2026-04-03T14:44:50.2337096Z Syncing repository: allensandiego/mapia
+2026-04-03T14:44:50.2340161Z ##[group]Getting Git version info
+2026-04-03T14:44:50.2341308Z Working directory is '/home/runner/work/mapia/mapia'
+2026-04-03T14:44:50.2342911Z [command]/usr/bin/git version
+2026-04-03T14:44:50.2364823Z git version 2.53.0
+2026-04-03T14:44:50.2388054Z ##[endgroup]
+2026-04-03T14:44:50.2404013Z Temporarily overriding HOME='/home/runner/work/_temp/dfacbccb-052a-4a1f-9f12-e2fecf82ec96' before making global git config changes
+2026-04-03T14:44:50.2406383Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T14:44:50.2409336Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mapia/mapia
+2026-04-03T14:44:50.2441762Z Deleting the contents of '/home/runner/work/mapia/mapia'
+2026-04-03T14:44:50.2445465Z ##[group]Initializing the repository
+2026-04-03T14:44:50.2449788Z [command]/usr/bin/git init /home/runner/work/mapia/mapia
+2026-04-03T14:44:50.2538426Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-03T14:44:50.2540281Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-03T14:44:50.2541433Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-03T14:44:50.2542181Z hint: call:
+2026-04-03T14:44:50.2542523Z hint:
+2026-04-03T14:44:50.2543039Z hint: 	git config --global init.defaultBranch <name>
+2026-04-03T14:44:50.2543594Z hint:
+2026-04-03T14:44:50.2544148Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-03T14:44:50.2545028Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-03T14:44:50.2545708Z hint:
+2026-04-03T14:44:50.2546064Z hint: 	git branch -m <name>
+2026-04-03T14:44:50.2546479Z hint:
+2026-04-03T14:44:50.2547042Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-03T14:44:50.2547952Z Initialized empty Git repository in /home/runner/work/mapia/mapia/.git/
+2026-04-03T14:44:50.2551650Z [command]/usr/bin/git remote add origin https://github.com/allensandiego/mapia
+2026-04-03T14:44:50.2613305Z ##[endgroup]
+2026-04-03T14:44:50.2614037Z ##[group]Disabling automatic garbage collection
+2026-04-03T14:44:50.2616600Z [command]/usr/bin/git config --local gc.auto 0
+2026-04-03T14:44:50.2644498Z ##[endgroup]
+2026-04-03T14:44:50.2645248Z ##[group]Setting up auth
+2026-04-03T14:44:50.2646055Z Removing SSH command configuration
+2026-04-03T14:44:50.2651734Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T14:44:50.2681392Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T14:44:50.2958756Z Removing HTTP extra header
+2026-04-03T14:44:50.2964621Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T14:44:50.2995621Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T14:44:50.3204676Z Removing includeIf entries pointing to credentials config files
+2026-04-03T14:44:50.3210743Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T14:44:50.3240429Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T14:44:50.3453868Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-03T14:44:50.3489491Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mapia/mapia/.git.path /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:44:50.3518343Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:44:50.3547261Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:44:50.3575078Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:44:50.3600387Z ##[endgroup]
+2026-04-03T14:44:50.3601298Z ##[group]Fetching the repository
+2026-04-03T14:44:50.3608316Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v1.0.28:refs/tags/v1.0.28
+2026-04-03T14:44:50.5833193Z From https://github.com/allensandiego/mapia
+2026-04-03T14:44:50.5834560Z  * [new tag]         v1.0.28    -> v1.0.28
+2026-04-03T14:44:50.5863731Z [command]/usr/bin/git tag --list v1.0.28
+2026-04-03T14:44:50.5892587Z v1.0.28
+2026-04-03T14:44:50.5900917Z [command]/usr/bin/git rev-parse refs/tags/v1.0.28^{commit}
+2026-04-03T14:44:50.5924296Z 3a417b517efc6a4beae4f3a0f638d1628a1eb068
+2026-04-03T14:44:50.5929286Z ##[endgroup]
+2026-04-03T14:44:50.5931141Z ##[group]Determining the checkout info
+2026-04-03T14:44:50.5932584Z ##[endgroup]
+2026-04-03T14:44:50.5933812Z [command]/usr/bin/git sparse-checkout disable
+2026-04-03T14:44:50.5971319Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-03T14:44:50.5997465Z ##[group]Checking out the ref
+2026-04-03T14:44:50.6000411Z [command]/usr/bin/git checkout --progress --force refs/tags/v1.0.28
+2026-04-03T14:44:50.6115499Z Note: switching to 'refs/tags/v1.0.28'.
+2026-04-03T14:44:50.6116542Z 
+2026-04-03T14:44:50.6117253Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-04-03T14:44:50.6119012Z changes and commit them, and you can discard any commits you make in this
+2026-04-03T14:44:50.6121646Z state without impacting any branches by switching back to a branch.
+2026-04-03T14:44:50.6123269Z 
+2026-04-03T14:44:50.6124401Z If you want to create a new branch to retain commits you create, you may
+2026-04-03T14:44:50.6127016Z do so (now or later) by using -c with the switch command. Example:
+2026-04-03T14:44:50.6128746Z 
+2026-04-03T14:44:50.6129484Z   git switch -c <new-branch-name>
+2026-04-03T14:44:50.6130964Z 
+2026-04-03T14:44:50.6131636Z Or undo this operation with:
+2026-04-03T14:44:50.6132697Z 
+2026-04-03T14:44:50.6133295Z   git switch -
+2026-04-03T14:44:50.6134100Z 
+2026-04-03T14:44:50.6135648Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-04-03T14:44:50.6137074Z 
+2026-04-03T14:44:50.6138006Z HEAD is now at 3a417b5 chore: add AppImage desktop file with required Categories
+2026-04-03T14:44:50.6143104Z ##[endgroup]
+2026-04-03T14:44:50.6163063Z [command]/usr/bin/git log -1 --format=%H
+2026-04-03T14:44:50.6186652Z 3a417b517efc6a4beae4f3a0f638d1628a1eb068
+2026-04-03T14:44:50.6856638Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T14:44:50.6857801Z with:
+2026-04-03T14:44:50.6858561Z   channel: stable
+2026-04-03T14:44:50.6859366Z   cache: true
+2026-04-03T14:44:50.6860532Z   architecture: X64
+2026-04-03T14:44:50.6861385Z   pub-cache-path: default
+2026-04-03T14:44:50.6862283Z   dry-run: false
+2026-04-03T14:44:50.6863260Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T14:44:50.6864421Z env:
+2026-04-03T14:44:50.6865233Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:44:50.6866285Z ##[endgroup]
+2026-04-03T14:44:50.7013617Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T14:44:50.7014974Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T14:44:50.7046854Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T14:44:50.7048109Z env:
+2026-04-03T14:44:50.7048913Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:44:50.7050168Z ##[endgroup]
+2026-04-03T14:44:50.7210174Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T14:44:50.7211405Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T14:44:50.7212466Z [36;1m  -n '' \[0m
+2026-04-03T14:44:50.7213220Z [36;1m  -f '' \[0m
+2026-04-03T14:44:50.7213977Z [36;1m  -a 'X64' \[0m
+2026-04-03T14:44:50.7214751Z [36;1m  -k '' \[0m
+2026-04-03T14:44:50.7215501Z [36;1m  -c '' \[0m
+2026-04-03T14:44:50.7216248Z [36;1m  -l '' \[0m
+2026-04-03T14:44:50.7217005Z [36;1m  -d 'default' \[0m
+2026-04-03T14:44:50.7218066Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T14:44:50.7219204Z [36;1m  stable[0m
+2026-04-03T14:44:50.7245935Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T14:44:50.7247141Z env:
+2026-04-03T14:44:50.7247914Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:44:50.7248933Z ##[endgroup]
+2026-04-03T14:44:50.9007554Z ##[group]Run actions/cache@v5
+2026-04-03T14:44:50.9009064Z with:
+2026-04-03T14:44:50.9010222Z   path: /opt/hostedtoolcache/flutter/stable-3.41.6-x64
+2026-04-03T14:44:50.9011957Z   key: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T14:44:50.9013512Z   enableCrossOsArchive: false
+2026-04-03T14:44:50.9014441Z   fail-on-cache-miss: false
+2026-04-03T14:44:50.9015313Z   lookup-only: false
+2026-04-03T14:44:50.9016121Z   save-always: false
+2026-04-03T14:44:50.9016889Z env:
+2026-04-03T14:44:50.9017628Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:44:50.9018628Z ##[endgroup]
+2026-04-03T14:44:51.0725646Z Cache hit for: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T14:44:52.1112446Z Received 268435456 of 1664313858 (16.1%), 256.0 MBs/sec
+2026-04-03T14:44:53.1120064Z Received 603979776 of 1664313858 (36.3%), 287.9 MBs/sec
+2026-04-03T14:44:54.1181293Z Received 931135488 of 1664313858 (55.9%), 295.9 MBs/sec
+2026-04-03T14:44:55.1135454Z Received 1207959552 of 1664313858 (72.6%), 287.8 MBs/sec
+2026-04-03T14:44:56.1153588Z Received 1560281088 of 1664313858 (93.7%), 297.3 MBs/sec
+2026-04-03T14:44:56.4874225Z Received 1664313858 of 1664313858 (100.0%), 295.2 MBs/sec
+2026-04-03T14:44:56.4881994Z Cache Size: ~1587 MB (1664313858 B)
+2026-04-03T14:44:56.5039220Z [command]/usr/bin/tar -xf /home/runner/work/_temp/b21bb60a-caf9-40ae-a425-f39ff0272a46/cache.tzst -P -C /home/runner/work/mapia/mapia --use-compress-program unzstd
+2026-04-03T14:45:01.4475830Z Cache restored successfully
+2026-04-03T14:45:01.5245598Z Cache restored from key: flutter-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T14:45:01.6233330Z ##[group]Run actions/cache@v5
+2026-04-03T14:45:01.6233582Z with:
+2026-04-03T14:45:01.6233773Z   path: /home/runner/.pub-cache
+2026-04-03T14:45:01.6234487Z   key: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T14:45:01.6235213Z   enableCrossOsArchive: false
+2026-04-03T14:45:01.6235506Z   fail-on-cache-miss: false
+2026-04-03T14:45:01.6235738Z   lookup-only: false
+2026-04-03T14:45:01.6236267Z   save-always: false
+2026-04-03T14:45:01.6236489Z env:
+2026-04-03T14:45:01.6236687Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:45:01.6236941Z ##[endgroup]
+2026-04-03T14:45:01.7937330Z Cache hit for: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T14:45:02.4818846Z Received 158696941 of 158696941 (100.0%), 233.2 MBs/sec
+2026-04-03T14:45:02.4819453Z Cache Size: ~151 MB (158696941 B)
+2026-04-03T14:45:02.4873176Z [command]/usr/bin/tar -xf /home/runner/work/_temp/ea5c689f-6c0b-4095-ba17-24092a69db28/cache.tzst -P -C /home/runner/work/mapia/mapia --use-compress-program unzstd
+2026-04-03T14:45:04.1167391Z Cache restored successfully
+2026-04-03T14:45:04.1313643Z Cache restored from key: flutter-pub-linux-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-230e4a37475238de20d0f56514f77938b889e248bd8347f8514c069c9a325d00
+2026-04-03T14:45:04.1451373Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T14:45:04.1451719Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T14:45:04.1452004Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T14:45:04.1452270Z [36;1m  -a 'x64' \[0m
+2026-04-03T14:45:04.1452559Z [36;1m  -c '/opt/hostedtoolcache/flutter/stable-3.41.6-x64' \[0m
+2026-04-03T14:45:04.1452920Z [36;1m  -d '/home/runner/.pub-cache' \[0m
+2026-04-03T14:45:04.1453180Z [36;1m  stable[0m
+2026-04-03T14:45:04.1480957Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-04-03T14:45:04.1481299Z env:
+2026-04-03T14:45:04.1481510Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:45:04.1481781Z ##[endgroup]
+2026-04-03T14:45:04.3352806Z ##[group]Run flutter pub get
+2026-04-03T14:45:04.3353134Z [36;1mflutter pub get[0m
+2026-04-03T14:45:04.3353395Z [36;1mdart pub global activate fastforge[0m
+2026-04-03T14:45:04.3384724Z shell: /usr/bin/bash -e {0}
+2026-04-03T14:45:04.3385138Z env:
+2026-04-03T14:45:04.3385346Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:45:04.3385729Z   FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter
+2026-04-03T14:45:04.3386113Z   PUB_CACHE: /home/runner/.pub-cache
+2026-04-03T14:45:04.3386368Z ##[endgroup]
+2026-04-03T14:45:05.1142368Z Resolving dependencies...
+2026-04-03T14:45:05.3913627Z Downloading packages...
+2026-04-03T14:45:05.4505690Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T14:45:05.4506298Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T14:45:05.4506717Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T14:45:05.4507087Z   build 2.5.4 (4.0.5 available)
+2026-04-03T14:45:05.4507461Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T14:45:05.4507978Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T14:45:05.4508444Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T14:45:05.4508884Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T14:45:05.4509358Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T14:45:05.4510202Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T14:45:05.4510831Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T14:45:05.4511313Z > characters 1.4.1 (was 1.4.0)
+2026-04-03T14:45:05.4511706Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T14:45:05.4512095Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T14:45:05.4512512Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T14:45:05.4512962Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T14:45:05.4513431Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T14:45:05.4513916Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T14:45:05.4514407Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T14:45:05.4514872Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T14:45:05.4515322Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T14:45:05.4515770Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T14:45:05.4516186Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T14:45:05.4516640Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T14:45:05.4517056Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T14:45:05.4517457Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T14:45:05.4517876Z   image 4.3.0 (4.8.0 available)
+2026-04-03T14:45:05.4518258Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T14:45:05.4518701Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T14:45:05.4519134Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T14:45:05.4519503Z > matcher 0.12.19 (was 0.12.17)
+2026-04-03T14:45:05.4520329Z > material_color_utilities 0.13.0 (was 0.11.1)
+2026-04-03T14:45:05.4520817Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T14:45:05.4521234Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T14:45:05.4521696Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T14:45:05.4522136Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T14:45:05.4522569Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T14:45:05.4522961Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T14:45:05.4523381Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T14:45:05.4523822Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T14:45:05.4524387Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T14:45:05.4552661Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T14:45:05.4553108Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T14:45:05.4553584Z > test_api 0.7.10 (was 0.7.7) (0.7.11 available)
+2026-04-03T14:45:05.4554126Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T14:45:05.4554600Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T14:45:05.4554994Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T14:45:05.4555444Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T14:45:05.4555872Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T14:45:05.4556684Z Changed 4 dependencies!
+2026-04-03T14:45:05.4557302Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T14:45:05.4558033Z Try `flutter pub outdated` for more information.
+2026-04-03T14:45:05.9659015Z Resolving dependencies...
+2026-04-03T14:45:06.2116850Z Downloading packages...
+2026-04-03T14:45:06.3138237Z + _discoveryapis_commons 1.0.7
+2026-04-03T14:45:06.3138744Z + ansicolor 2.0.3
+2026-04-03T14:45:06.3139117Z + archive 3.6.1 (4.0.9 available)
+2026-04-03T14:45:06.3139761Z + args 2.7.0
+2026-04-03T14:45:06.3140089Z + async 2.13.1
+2026-04-03T14:45:06.3140403Z + buffer 1.2.3
+2026-04-03T14:45:06.3140717Z + charset 2.0.1
+2026-04-03T14:45:06.3141048Z + checked_yaml 2.0.4
+2026-04-03T14:45:06.3141401Z + cli_util 0.4.2
+2026-04-03T14:45:06.3141735Z + clock 1.1.2
+2026-04-03T14:45:06.3142048Z + collection 1.19.1
+2026-04-03T14:45:06.3142400Z + console 4.1.0
+2026-04-03T14:45:06.3142729Z + convert 3.1.2
+2026-04-03T14:45:06.3143056Z + crypto 3.0.7
+2026-04-03T14:45:06.3143408Z + dio 5.9.2
+2026-04-03T14:45:06.3143735Z + dio_web_adapter 2.1.2
+2026-04-03T14:45:06.3144098Z + fastforge 0.6.6
+2026-04-03T14:45:06.3144432Z + file 7.0.1
+2026-04-03T14:45:06.3144773Z + flutter_app_builder 0.6.0
+2026-04-03T14:45:06.3145211Z + flutter_app_packager 0.6.5
+2026-04-03T14:45:06.3145643Z + flutter_app_publisher 0.6.6
+2026-04-03T14:45:06.3145970Z + get_it 9.2.1
+2026-04-03T14:45:06.3146186Z + glob 2.1.3
+2026-04-03T14:45:06.3146414Z + google_identity_services_web 0.3.3+1
+2026-04-03T14:45:06.3146733Z + googleapis 13.2.0 (16.0.0 available)
+2026-04-03T14:45:06.3147044Z + googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T14:45:06.3147363Z + http 1.6.0
+2026-04-03T14:45:06.3147577Z + http_parser 4.1.2
+2026-04-03T14:45:06.3147806Z + image 4.3.0 (4.8.0 available)
+2026-04-03T14:45:06.3148067Z + intl 0.20.2
+2026-04-03T14:45:06.3148272Z + io 1.0.5
+2026-04-03T14:45:06.3148480Z + json_annotation 4.11.0
+2026-04-03T14:45:06.3148729Z + liquid_engine 0.2.2
+2026-04-03T14:45:06.3148953Z + logging 1.3.0
+2026-04-03T14:45:06.3149171Z + meta 1.18.2
+2026-04-03T14:45:06.3149373Z + mime 2.0.0
+2026-04-03T14:45:06.3149754Z + minio 3.5.8
+2026-04-03T14:45:06.3149963Z + msix 3.16.13
+2026-04-03T14:45:06.3150185Z + mustache_template 2.0.4
+2026-04-03T14:45:06.3150443Z + package_config 2.2.0
+2026-04-03T14:45:06.3150694Z + parse_app_package 0.6.0
+2026-04-03T14:45:06.3150940Z + path 1.9.1
+2026-04-03T14:45:06.3151158Z + petitparser 7.0.2
+2026-04-03T14:45:06.3151405Z + plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T14:45:06.3151700Z + pub_semver 2.2.0
+2026-04-03T14:45:06.3151930Z + pubspec_parse 1.5.0
+2026-04-03T14:45:06.3152186Z + qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T14:45:06.3152483Z + recase 4.1.0
+2026-04-03T14:45:06.3152700Z + shell_executor 0.3.0
+2026-04-03T14:45:06.3152938Z + shell_uikit 0.3.0
+2026-04-03T14:45:06.3153158Z + source_span 1.10.2
+2026-04-03T14:45:06.3153398Z + string_scanner 1.4.1
+2026-04-03T14:45:06.3153642Z + term_glyph 1.2.2
+2026-04-03T14:45:06.3153867Z + typed_data 1.4.0
+2026-04-03T14:45:06.3154081Z + unified_distributor 0.2.6
+2026-04-03T14:45:06.3154309Z + uuid 3.0.7 (4.5.3 available)
+2026-04-03T14:45:06.3154523Z + vector_math 2.3.0
+2026-04-03T14:45:06.3154703Z + web 1.1.1
+2026-04-03T14:45:06.3154867Z + xml 6.6.1
+2026-04-03T14:45:06.3155039Z + yaml 3.1.3
+2026-04-03T14:45:06.3167478Z Building package executables...
+2026-04-03T14:45:09.7063727Z Built fastforge:main.
+2026-04-03T14:45:09.7121838Z Installed executable fastforge.
+2026-04-03T14:45:09.7156570Z Activated fastforge 0.6.6.
+2026-04-03T14:45:09.7453578Z ##[group]Run # Install toolkits for DEB, RPM, and AppImage
+2026-04-03T14:45:09.7454349Z [36;1m# Install toolkits for DEB, RPM, and AppImage[0m
+2026-04-03T14:45:09.7454875Z [36;1msudo apt-get update[0m
+2026-04-03T14:45:09.7455816Z [36;1msudo apt-get install -y libgtk-3-dev liblzma-dev pkg-config ruby ruby-dev build-essential fuse rpm binutils patchelf[0m
+2026-04-03T14:45:09.7456829Z [36;1msudo gem install fpm[0m
+2026-04-03T14:45:09.7458021Z [36;1mwget --no-check-certificate -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage[0m
+2026-04-03T14:45:09.7459259Z [36;1mchmod +x appimagetool[0m
+2026-04-03T14:45:09.7460152Z [36;1msudo mv appimagetool /usr/local/bin/[0m
+2026-04-03T14:45:09.7461076Z [36;1mfastforge release --name release --jobs linux-deb,linux-appimage[0m
+2026-04-03T14:45:09.7462012Z [36;1m# Fix AppImage desktop file to include Categories for appimagetool validation[0m
+2026-04-03T14:45:09.7462990Z [36;1mfor appdir in dist/*/mapia-*-linux_appimage/mapia.AppDir 2>/dev/null; do[0m
+2026-04-03T14:45:09.7463803Z [36;1m  if [ -d "$appdir" ] && [ -f "$appdir/mapia.desktop" ]; then[0m
+2026-04-03T14:45:09.7464523Z [36;1m    echo "Adding Categories to $appdir/mapia.desktop"[0m
+2026-04-03T14:45:09.7465452Z [36;1m    sed -i '/^Type=Application$/a Categories=Utility;Network;Development' "$appdir/mapia.desktop"[0m
+2026-04-03T14:45:09.7466264Z [36;1m  fi[0m
+2026-04-03T14:45:09.7466566Z [36;1mdone[0m
+2026-04-03T14:45:09.7466895Z [36;1m# Build RPM with error handling[0m
+2026-04-03T14:45:09.7467733Z [36;1mfastforge release --name release --jobs linux-rpm || echo "Initial RPM build may have spec issues"[0m
+2026-04-03T14:45:09.7468698Z [36;1m# Fix and retry RPM if spec references missing files[0m
+2026-04-03T14:45:09.7469513Z [36;1mfor spec_file in dist/*/mapia-*-linux_rpm/rpmbuild/SPECS/*.spec 2>/dev/null; do[0m
+2026-04-03T14:45:09.7470439Z [36;1m  if [ -f "$spec_file" ]; then[0m
+2026-04-03T14:45:09.7470990Z [36;1m    sed -i '/^cp -r %{name}\.png /s/$/ || :/' "$spec_file"[0m
+2026-04-03T14:45:09.7471386Z [36;1m    sed -i '/^cp -r %{name}\.desktop /s/$/ || :/' "$spec_file"  [0m
+2026-04-03T14:45:09.7471791Z [36;1m    sed -i '/%attr.*%{_datadir}\/pixmaps.*png/d' "$spec_file"[0m
+2026-04-03T14:45:09.7472166Z [36;1m    topdir=$(dirname "$(dirname "$spec_file")")[0m
+2026-04-03T14:45:09.7472782Z [36;1m    rpmbuild --define "_topdir $topdir" -bb "$spec_file" 2>&1 | tail -20[0m
+2026-04-03T14:45:09.7473440Z [36;1m  fi[0m
+2026-04-03T14:45:09.7473719Z [36;1mdone[0m
+2026-04-03T14:45:09.7503581Z shell: /usr/bin/bash -e {0}
+2026-04-03T14:45:09.7503812Z env:
+2026-04-03T14:45:09.7504012Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T14:45:09.7504389Z   FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter
+2026-04-03T14:45:09.7504754Z   PUB_CACHE: /home/runner/.pub-cache
+2026-04-03T14:45:09.7505004Z ##[endgroup]
+2026-04-03T14:45:10.1469395Z Hit:1 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-04-03T14:45:10.1471453Z Get:2 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-04-03T14:45:10.1472266Z Get:3 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-04-03T14:45:10.2101849Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-04-03T14:45:10.2116514Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-04-03T14:45:10.2342075Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-04-03T14:45:10.2990390Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-04-03T14:45:10.4145419Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.4 kB]
+2026-04-03T14:45:10.4242355Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [89.3 kB]
+2026-04-03T14:45:10.4462148Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [113 kB]
+2026-04-03T14:45:10.5558546Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1875 kB]
+2026-04-03T14:45:10.5851010Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [342 kB]
+2026-04-03T14:45:10.5898991Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-04-03T14:45:10.5937629Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [16.9 kB]
+2026-04-03T14:45:10.5952830Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1663 kB]
+2026-04-03T14:45:10.6067059Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [322 kB]
+2026-04-03T14:45:10.6143646Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-04-03T14:45:10.6145092Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.2 kB]
+2026-04-03T14:45:10.6508679Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2894 kB]
+2026-04-03T14:45:10.6654250Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [671 kB]
+2026-04-03T14:45:10.7497032Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-04-03T14:45:10.7507481Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-04-03T14:45:10.7526718Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-04-03T14:45:10.7542292Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [13.1 kB]
+2026-04-03T14:45:10.7557955Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2026-04-03T14:45:10.7569263Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-04-03T14:45:10.7943371Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1576 kB]
+2026-04-03T14:45:10.8071167Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [252 kB]
+2026-04-03T14:45:10.8098242Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2026-04-03T14:45:10.8119371Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [10.7 kB]
+2026-04-03T14:45:10.8141161Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1167 kB]
+2026-04-03T14:45:10.8376981Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [225 kB]
+2026-04-03T14:45:10.8415515Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-04-03T14:45:10.8425041Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [22.8 kB]
+2026-04-03T14:45:10.8873504Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2757 kB]
+2026-04-03T14:45:10.9345542Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [642 kB]
+2026-04-03T14:45:10.9391631Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-04-03T14:45:10.9406867Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-04-03T14:45:20.0219956Z Fetched 15.7 MB in 2s (7542 kB/s)
+2026-04-03T14:45:20.8139721Z Reading package lists...
+2026-04-03T14:45:20.8462205Z Reading package lists...
+2026-04-03T14:45:21.0338581Z Building dependency tree...
+2026-04-03T14:45:21.0346127Z Reading state information...
+2026-04-03T14:45:21.1904550Z pkg-config is already the newest version (1.8.1-2build1).
+2026-04-03T14:45:21.1905387Z ruby is already the newest version (1:3.2~ubuntu1).
+2026-04-03T14:45:21.1906052Z ruby set to manually installed.
+2026-04-03T14:45:21.1906655Z ruby-dev is already the newest version (1:3.2~ubuntu1).
+2026-04-03T14:45:21.1907884Z ruby-dev set to manually installed.
+2026-04-03T14:45:21.1908561Z rpm is already the newest version (4.18.2+dfsg-2.1build2).
+2026-04-03T14:45:21.1909357Z binutils is already the newest version (2.42-4ubuntu2.10).
+2026-04-03T14:45:21.1910487Z patchelf is already the newest version (0.18.0-1.1build1).
+2026-04-03T14:45:21.1911254Z The following additional packages will be installed:
+2026-04-03T14:45:21.1912209Z   bsdextrautils bsdutils bzip2-doc eject fdisk gir1.2-atk-1.0 gir1.2-atspi-2.0
+2026-04-03T14:45:21.1913285Z   gir1.2-freedesktop gir1.2-freedesktop-dev gir1.2-gdkpixbuf-2.0
+2026-04-03T14:45:21.1914199Z   gir1.2-glib-2.0-dev gir1.2-gtk-3.0 gir1.2-harfbuzz-0.0 gir1.2-pango-1.0
+2026-04-03T14:45:21.1915180Z   libatk-bridge2.0-dev libatk1.0-dev libatspi2.0-dev libblkid-dev libblkid1
+2026-04-03T14:45:21.1916432Z   libbrotli-dev libbz2-dev libcairo-script-interpreter2 libcairo2-dev
+2026-04-03T14:45:21.1917433Z   libdatrie-dev libdbus-1-dev libdeflate-dev libegl-dev libegl-mesa0 libegl1
+2026-04-03T14:45:21.1918332Z   libegl1-mesa-dev libepoxy-dev libfdisk1 libfontconfig-dev libfreetype-dev
+2026-04-03T14:45:21.1918966Z   libfreetype6 libfribidi-dev libfuse2t64 libgdk-pixbuf-2.0-dev
+2026-04-03T14:45:21.1919797Z   libgdk-pixbuf2.0-bin libgirepository-2.0-0 libgl-dev libgles-dev libgles1
+2026-04-03T14:45:21.1920493Z   libgles2 libglib2.0-dev libglib2.0-dev-bin libglvnd-core-dev libglvnd-dev
+2026-04-03T14:45:21.1921333Z   libglx-dev libgraphite2-dev libharfbuzz-cairo0 libharfbuzz-dev
+2026-04-03T14:45:21.1922268Z   libharfbuzz-gobject0 libharfbuzz-icu0 libharfbuzz-subset0 libice-dev
+2026-04-03T14:45:21.1923230Z   libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblerc-dev
+2026-04-03T14:45:21.1924089Z   libmount-dev libmount1 libopengl-dev libopengl0 libpango1.0-dev
+2026-04-03T14:45:21.1924805Z   libpangoxft-1.0-0 libpixman-1-dev libpng-dev libpng-tools
+2026-04-03T14:45:21.1925268Z   libpthread-stubs0-dev libselinux1-dev libsepol-dev libsharpyuv-dev libsm-dev
+2026-04-03T14:45:21.1925783Z   libsmartcols1 libthai-dev libtiff-dev libtiffxx6 libuuid1 libwayland-bin
+2026-04-03T14:45:21.1926375Z   libwayland-dev libwayland-server0 libwebp-dev libwebpdecoder3 libx11-dev
+2026-04-03T14:45:21.1926872Z   libxau-dev libxcb-render0-dev libxcb-shm0-dev libxcb1-dev libxcomposite-dev
+2026-04-03T14:45:21.1927354Z   libxcursor-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev
+2026-04-03T14:45:21.1927812Z   libxft-dev libxi-dev libxinerama-dev libxkbcommon-dev libxrandr-dev
+2026-04-03T14:45:21.1928356Z   libxrender-dev libxtst-dev mount pango1.0-tools util-linux uuid-dev
+2026-04-03T14:45:21.1928823Z   uuid-runtime wayland-protocols x11proto-dev xorg-sgml-doctools xtrans-dev
+2026-04-03T14:45:21.1929205Z Suggested packages:
+2026-04-03T14:45:21.1929525Z   libcairo2-doc libdatrie-doc freetype2-doc libglib2.0-doc libxml2-utils
+2026-04-03T14:45:21.1930204Z   libgraphite2-utils libgtk-3-doc libice-doc liblzma-doc libpango1.0-doc
+2026-04-03T14:45:21.1930668Z   libsm-doc libthai-doc libwayland-doc libx11-doc libxcb-doc libxext-doc
+2026-04-03T14:45:21.1931108Z   nfs-common graphicsmagick util-linux-extra util-linux-locales
+2026-04-03T14:45:21.2508634Z The following packages will be REMOVED:
+2026-04-03T14:45:21.2524361Z   fuse-overlayfs fuse3 ntfs-3g
+2026-04-03T14:45:21.2524938Z The following NEW packages will be installed:
+2026-04-03T14:45:21.2525668Z   build-essential bzip2-doc fuse gir1.2-atk-1.0 gir1.2-atspi-2.0
+2026-04-03T14:45:21.2526464Z   gir1.2-freedesktop gir1.2-freedesktop-dev gir1.2-gdkpixbuf-2.0
+2026-04-03T14:45:21.2527275Z   gir1.2-glib-2.0-dev gir1.2-gtk-3.0 gir1.2-harfbuzz-0.0 gir1.2-pango-1.0
+2026-04-03T14:45:21.2528092Z   libatk-bridge2.0-dev libatk1.0-dev libatspi2.0-dev libblkid-dev
+2026-04-03T14:45:21.2528928Z   libbrotli-dev libbz2-dev libcairo-script-interpreter2 libcairo2-dev
+2026-04-03T14:45:21.2530048Z   libdatrie-dev libdbus-1-dev libdeflate-dev libegl-dev libegl-mesa0 libegl1
+2026-04-03T14:45:21.2530966Z   libegl1-mesa-dev libepoxy-dev libfontconfig-dev libfreetype-dev
+2026-04-03T14:45:21.2532262Z   libfribidi-dev libfuse2t64 libgdk-pixbuf-2.0-dev libgdk-pixbuf2.0-bin
+2026-04-03T14:45:21.2533219Z   libgirepository-2.0-0 libgl-dev libgles-dev libgles1 libgles2 libglib2.0-dev
+2026-04-03T14:45:21.2534089Z   libglib2.0-dev-bin libglvnd-core-dev libglvnd-dev libglx-dev
+2026-04-03T14:45:21.2534883Z   libgraphite2-dev libgtk-3-dev libharfbuzz-cairo0 libharfbuzz-dev
+2026-04-03T14:45:21.2535684Z   libharfbuzz-gobject0 libharfbuzz-icu0 libharfbuzz-subset0 libice-dev
+2026-04-03T14:45:21.2536560Z   libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblerc-dev
+2026-04-03T14:45:21.2537302Z   liblzma-dev libmount-dev libopengl-dev libopengl0 libpango1.0-dev
+2026-04-03T14:45:21.2537741Z   libpangoxft-1.0-0 libpixman-1-dev libpng-dev libpng-tools
+2026-04-03T14:45:21.2538209Z   libpthread-stubs0-dev libselinux1-dev libsepol-dev libsharpyuv-dev libsm-dev
+2026-04-03T14:45:21.2538941Z   libthai-dev libtiff-dev libtiffxx6 libwayland-bin libwayland-dev
+2026-04-03T14:45:21.2539416Z   libwayland-server0 libwebp-dev libwebpdecoder3 libx11-dev libxau-dev
+2026-04-03T14:45:21.2540426Z   libxcb-render0-dev libxcb-shm0-dev libxcb1-dev libxcomposite-dev
+2026-04-03T14:45:21.2541229Z   libxcursor-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev
+2026-04-03T14:45:21.2541701Z   libxft-dev libxi-dev libxinerama-dev libxkbcommon-dev libxrandr-dev
+2026-04-03T14:45:21.2542171Z   libxrender-dev libxtst-dev pango1.0-tools uuid-dev wayland-protocols
+2026-04-03T14:45:21.2542692Z   x11proto-dev xorg-sgml-doctools xtrans-dev
+2026-04-03T14:45:21.2543225Z The following packages will be upgraded:
+2026-04-03T14:45:21.2543777Z   bsdextrautils bsdutils eject fdisk libblkid1 libfdisk1 libfreetype6
+2026-04-03T14:45:21.2548516Z   libmount1 libsmartcols1 libuuid1 mount util-linux uuid-runtime
+2026-04-03T14:45:21.2747588Z 13 upgraded, 103 newly installed, 3 to remove and 69 not upgraded.
+2026-04-03T14:45:21.2748268Z Need to get 16.2 MB of archives.
+2026-04-03T14:45:21.2748788Z After this operation, 80.5 MB of additional disk space will be used.
+2026-04-03T14:45:21.2749206Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-04-03T14:45:21.2995012Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdutils amd64 1:2.39.3-9ubuntu6.5 [96.1 kB]
+2026-04-03T14:45:21.3151031Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 util-linux amd64 2.39.3-9ubuntu6.5 [1128 kB]
+2026-04-03T14:45:21.4225794Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libfuse2t64 amd64 2.9.9-8.1build1 [89.9 kB]
+2026-04-03T14:45:21.4503951Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 mount amd64 2.39.3-9ubuntu6.5 [118 kB]
+2026-04-03T14:45:21.4784634Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fuse amd64 2.9.9-8.1build1 [27.6 kB]
+2026-04-03T14:45:21.4944881Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsmartcols1 amd64 2.39.3-9ubuntu6.5 [65.8 kB]
+2026-04-03T14:45:21.5119930Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libuuid1 amd64 2.39.3-9ubuntu6.5 [36.1 kB]
+2026-04-03T14:45:21.5245012Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-runtime amd64 2.39.3-9ubuntu6.5 [33.1 kB]
+2026-04-03T14:45:21.5443495Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid1 amd64 2.39.3-9ubuntu6.5 [123 kB]
+2026-04-03T14:45:21.5614603Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount1 amd64 2.39.3-9ubuntu6.5 [134 kB]
+2026-04-03T14:45:21.5806617Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 eject amd64 2.39.3-9ubuntu6.5 [26.3 kB]
+2026-04-03T14:45:21.5898540Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libfdisk1 amd64 2.39.3-9ubuntu6.5 [146 kB]
+2026-04-03T14:45:21.6113496Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdextrautils amd64 2.39.3-9ubuntu6.5 [73.7 kB]
+2026-04-03T14:45:21.6253963Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+2026-04-03T14:45:21.6340764Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 bzip2-doc all 1.0.8-5.1build0.1 [499 kB]
+2026-04-03T14:45:21.6814693Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 fdisk amd64 2.39.3-9ubuntu6.5 [122 kB]
+2026-04-03T14:45:21.7012539Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-atk-1.0 amd64 2.52.0-1build1 [23.1 kB]
+2026-04-03T14:45:21.7110581Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-freedesktop amd64 1.80.1-1 [49.7 kB]
+2026-04-03T14:45:21.7271108Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-atspi-2.0 amd64 2.52.0-1build1 [19.8 kB]
+2026-04-03T14:45:21.7383500Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0-dev amd64 2.80.0-6ubuntu3.8 [848 kB]
+2026-04-03T14:45:21.8185224Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-freedesktop-dev amd64 1.80.1-1 [28.8 kB]
+2026-04-03T14:45:21.8290279Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-gdkpixbuf-2.0 amd64 2.42.10+dfsg-3ubuntu3.2 [9488 B]
+2026-04-03T14:45:21.8403892Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-gobject0 amd64 8.3.0-2build2 [34.3 kB]
+2026-04-03T14:45:21.8521881Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-harfbuzz-0.0 amd64 8.3.0-2build2 [44.5 kB]
+2026-04-03T14:45:21.8645811Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpangoxft-1.0-0 amd64 1.52.1+ds-1build1 [20.3 kB]
+2026-04-03T14:45:21.8761647Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-pango-1.0 amd64 1.52.1+ds-1build1 [34.8 kB]
+2026-04-03T14:45:21.8919226Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-gtk-3.0 amd64 3.24.41-4ubuntu1.3 [245 kB]
+2026-04-03T14:45:21.9200175Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev-bin amd64 2.80.0-6ubuntu3.8 [138 kB]
+2026-04-03T14:45:21.9405673Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-dev amd64 2.39.3-9ubuntu6.5 [33.5 kB]
+2026-04-03T14:45:21.9531582Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid-dev amd64 2.39.3-9ubuntu6.5 [204 kB]
+2026-04-03T14:45:21.9784946Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libsepol-dev amd64 3.5-2build1 [384 kB]
+2026-04-03T14:45:22.0278201Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libselinux1-dev amd64 3.5-2ubuntu2.1 [164 kB]
+2026-04-03T14:45:22.0497815Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount-dev amd64 2.39.3-9ubuntu6.5 [14.9 kB]
+2026-04-03T14:45:22.0886767Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgirepository-2.0-0 amd64 2.80.0-6ubuntu3.8 [73.6 kB]
+2026-04-03T14:45:22.1151905Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev amd64 2.80.0-6ubuntu3.8 [1860 kB]
+2026-04-03T14:45:22.2739485Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libatk1.0-dev amd64 2.52.0-1build1 [100 kB]
+2026-04-03T14:45:22.2912342Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libdbus-1-dev amd64 1.14.10-4ubuntu4.1 [190 kB]
+2026-04-03T14:45:22.3616776Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xorg-sgml-doctools all 1:1.11-1.1 [10.9 kB]
+2026-04-03T14:45:22.3711405Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 x11proto-dev all 2023.2-1 [602 kB]
+2026-04-03T14:45:22.4187153Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxau-dev amd64 1:1.0.9-1build6 [9570 B]
+2026-04-03T14:45:22.4284660Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxdmcp-dev amd64 1:1.1.3-0ubuntu6 [26.5 kB]
+2026-04-03T14:45:22.4415121Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xtrans-dev all 1.4.0-1 [68.9 kB]
+2026-04-03T14:45:22.4566970Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpthread-stubs0-dev amd64 0.4-1build3 [4746 B]
+2026-04-03T14:45:22.4658019Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcb1-dev amd64 1.15-1ubuntu2 [85.8 kB]
+2026-04-03T14:45:22.4790552Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libx11-dev amd64 2:1.8.7-1build1 [732 kB]
+2026-04-03T14:45:22.5438512Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxext-dev amd64 2:1.3.4-1build2 [83.5 kB]
+2026-04-03T14:45:22.5636658Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxfixes-dev amd64 1:6.0.0-2build1 [12.1 kB]
+2026-04-03T14:45:22.5739271Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxi-dev amd64 2:1.8.1-1build1 [194 kB]
+2026-04-03T14:45:22.6046384Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxtst-dev amd64 2:1.2.3-1.1build1 [15.9 kB]
+2026-04-03T14:45:22.6139506Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libatspi2.0-dev amd64 2.52.0-1build1 [76.2 kB]
+2026-04-03T14:45:22.6284886Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libatk-bridge2.0-dev amd64 2.52.0-1build1 [4284 B]
+2026-04-03T14:45:22.6371460Z Get:53 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libbrotli-dev amd64 1.1.0-2build2 [353 kB]
+2026-04-03T14:45:22.6725835Z Get:54 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libbz2-dev amd64 1.0.8-5.1build0.1 [33.6 kB]
+2026-04-03T14:45:22.6830586Z Get:55 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libfreetype6 amd64 2.13.2+dfsg-1ubuntu0.1 [402 kB]
+2026-04-03T14:45:22.7203965Z Get:56 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libcairo-script-interpreter2 amd64 1.18.0-3build1 [60.3 kB]
+2026-04-03T14:45:22.7337291Z Get:57 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng-dev amd64 1.6.43-5ubuntu0.5 [265 kB]
+2026-04-03T14:45:22.7976528Z Get:58 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libfreetype-dev amd64 2.13.2+dfsg-1ubuntu0.1 [575 kB]
+2026-04-03T14:45:22.8353728Z Get:59 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libfontconfig-dev amd64 2.15.0-1.1ubuntu2 [161 kB]
+2026-04-03T14:45:22.8536964Z Get:60 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpixman-1-dev amd64 0.42.2-1build1 [296 kB]
+2026-04-03T14:45:22.8818171Z Get:61 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libice-dev amd64 2:1.0.10-1build3 [51.0 kB]
+2026-04-03T14:45:22.8952945Z Get:62 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libsm-dev amd64 2:1.2.3-1build3 [17.8 kB]
+2026-04-03T14:45:22.9045741Z Get:63 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcb-render0-dev amd64 1.15-1ubuntu2 [19.6 kB]
+2026-04-03T14:45:22.9151191Z Get:64 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcb-shm0-dev amd64 1.15-1ubuntu2 [8246 B]
+2026-04-03T14:45:22.9247059Z Get:65 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxrender-dev amd64 1:0.9.10-1.1build1 [26.3 kB]
+2026-04-03T14:45:22.9356099Z Get:66 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libcairo2-dev amd64 1.18.0-3build1 [41.1 kB]
+2026-04-03T14:45:22.9488606Z Get:67 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libdatrie-dev amd64 0.2.13-3build1 [19.4 kB]
+2026-04-03T14:45:22.9607103Z Get:68 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libdeflate-dev amd64 1.19-1build1.1 [50.9 kB]
+2026-04-03T14:45:22.9747160Z Get:69 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libegl-mesa0 amd64 25.2.8-0ubuntu0.24.04.1 [117 kB]
+2026-04-03T14:45:22.9949424Z Get:70 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libegl1 amd64 1.7.0-1build1 [28.7 kB]
+2026-04-03T14:45:23.0046262Z Get:71 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglx-dev amd64 1.7.0-1build1 [14.2 kB]
+2026-04-03T14:45:23.0147216Z Get:72 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgl-dev amd64 1.7.0-1build1 [102 kB]
+2026-04-03T14:45:23.0300811Z Get:73 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libegl-dev amd64 1.7.0-1build1 [18.2 kB]
+2026-04-03T14:45:23.0405946Z Get:74 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglvnd-core-dev amd64 1.7.0-1build1 [13.6 kB]
+2026-04-03T14:45:23.0494155Z Get:75 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles1 amd64 1.7.0-1build1 [11.6 kB]
+2026-04-03T14:45:23.1018391Z Get:76 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles2 amd64 1.7.0-1build1 [17.1 kB]
+2026-04-03T14:45:23.1113648Z Get:77 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgles-dev amd64 1.7.0-1build1 [50.5 kB]
+2026-04-03T14:45:23.1233989Z Get:78 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopengl0 amd64 1.7.0-1build1 [32.8 kB]
+2026-04-03T14:45:23.1346928Z Get:79 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopengl-dev amd64 1.7.0-1build1 [3454 B]
+2026-04-03T14:45:23.1439029Z Get:80 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libglvnd-dev amd64 1.7.0-1build1 [3198 B]
+2026-04-03T14:45:23.1517785Z Get:81 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libegl1-mesa-dev amd64 25.2.8-0ubuntu0.24.04.1 [26.4 kB]
+2026-04-03T14:45:23.1611690Z Get:82 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libepoxy-dev amd64 1.5.10-1build1 [132 kB]
+2026-04-03T14:45:23.1837639Z Get:83 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libfribidi-dev amd64 1.0.13-3build1 [64.8 kB]
+2026-04-03T14:45:23.1968770Z Get:84 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgdk-pixbuf2.0-bin amd64 2.42.10+dfsg-3ubuntu3.2 [13.9 kB]
+2026-04-03T14:45:23.2074113Z Get:85 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjpeg-turbo8-dev amd64 2.1.5-2ubuntu2 [295 kB]
+2026-04-03T14:45:23.2348980Z Get:86 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjpeg8-dev amd64 8c-2ubuntu11 [1484 B]
+2026-04-03T14:45:23.2441428Z Get:87 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjpeg-dev amd64 8c-2ubuntu11 [1482 B]
+2026-04-03T14:45:23.2556126Z Get:88 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjbig-dev amd64 2.1-6.1ubuntu2 [27.9 kB]
+2026-04-03T14:45:23.2700080Z Get:89 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 liblzma-dev amd64 5.6.1+really5.4.5-1ubuntu0.2 [176 kB]
+2026-04-03T14:45:23.2945715Z Get:90 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwebpdecoder3 amd64 1.3.2-0.4build3 [114 kB]
+2026-04-03T14:45:23.3190492Z Get:91 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libsharpyuv-dev amd64 1.3.2-0.4build3 [16.0 kB]
+2026-04-03T14:45:23.3292127Z Get:92 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwebp-dev amd64 1.3.2-0.4build3 [367 kB]
+2026-04-03T14:45:23.3643765Z Get:93 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiffxx6 amd64 4.5.1+git230720-4ubuntu2.5 [5642 B]
+2026-04-03T14:45:23.3742107Z Get:94 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 liblerc-dev amd64 4.0.0+ds-4ubuntu2 [182 kB]
+2026-04-03T14:45:23.4428348Z Get:95 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiff-dev amd64 4.5.1+git230720-4ubuntu2.5 [338 kB]
+2026-04-03T14:45:23.4799924Z Get:96 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgdk-pixbuf-2.0-dev amd64 2.42.10+dfsg-3ubuntu3.2 [48.0 kB]
+2026-04-03T14:45:23.4936668Z Get:97 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libgraphite2-dev amd64 1.3.14-2build1 [14.7 kB]
+2026-04-03T14:45:23.5041261Z Get:98 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-icu0 amd64 8.3.0-2build2 [13.3 kB]
+2026-04-03T14:45:23.5132750Z Get:99 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-subset0 amd64 8.3.0-2build2 [448 kB]
+2026-04-03T14:45:23.5615838Z Get:100 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-cairo0 amd64 8.3.0-2build2 [26.2 kB]
+2026-04-03T14:45:23.5737624Z Get:101 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-dev amd64 8.3.0-2build2 [142 kB]
+2026-04-03T14:45:23.5988227Z Get:102 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libthai-dev amd64 0.1.29-2build1 [26.6 kB]
+2026-04-03T14:45:23.6104767Z Get:103 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxft-dev amd64 2.3.6-1build1 [64.3 kB]
+2026-04-03T14:45:23.6208137Z Get:104 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 pango1.0-tools amd64 1.52.1+ds-1build1 [36.7 kB]
+2026-04-03T14:45:23.6290798Z Get:105 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libpango1.0-dev amd64 1.52.1+ds-1build1 [147 kB]
+2026-04-03T14:45:23.6396246Z Get:106 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-server0 amd64 1.22.0-2.1build1 [33.9 kB]
+2026-04-03T14:45:23.6487103Z Get:107 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-bin amd64 1.22.0-2.1build1 [20.6 kB]
+2026-04-03T14:45:23.6574453Z Get:108 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libwayland-dev amd64 1.22.0-2.1build1 [71.3 kB]
+2026-04-03T14:45:23.6681699Z Get:109 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcomposite-dev amd64 1:0.4.5-1build3 [9374 B]
+2026-04-03T14:45:23.6775011Z Get:110 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxcursor-dev amd64 1:1.2.1-1build1 [31.8 kB]
+2026-04-03T14:45:23.6879479Z Get:111 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxdamage-dev amd64 1:1.1.6-1build1 [5270 B]
+2026-04-03T14:45:23.6966780Z Get:112 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxinerama-dev amd64 2:1.1.4-3build1 [7988 B]
+2026-04-03T14:45:23.7050072Z Get:113 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxkbcommon-dev amd64 1.6.0-1build1 [56.3 kB]
+2026-04-03T14:45:23.7154354Z Get:114 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libxrandr-dev amd64 2:1.5.2-2build1 [26.4 kB]
+2026-04-03T14:45:23.7245476Z Get:115 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 wayland-protocols all 1.45-1~ubuntu0.24.04.1 [114 kB]
+2026-04-03T14:45:23.7364573Z Get:116 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgtk-3-dev amd64 3.24.41-4ubuntu1.3 [1096 kB]
+2026-04-03T14:45:23.7621772Z Get:117 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng-tools amd64 1.6.43-5ubuntu0.5 [28.5 kB]
+2026-04-03T14:45:24.1147739Z Fetched 16.2 MB in 2s (6481 kB/s)
+2026-04-03T14:45:24.1635944Z (Reading database ... 
+2026-04-03T14:45:24.1636323Z (Reading database ... 5%
+2026-04-03T14:45:24.1636644Z (Reading database ... 10%
+2026-04-03T14:45:24.1636951Z (Reading database ... 15%
+2026-04-03T14:45:24.1637249Z (Reading database ... 20%
+2026-04-03T14:45:24.1637546Z (Reading database ... 25%
+2026-04-03T14:45:24.1637962Z (Reading database ... 30%
+2026-04-03T14:45:24.1638257Z (Reading database ... 35%
+2026-04-03T14:45:24.1638549Z (Reading database ... 40%
+2026-04-03T14:45:24.1638852Z (Reading database ... 45%
+2026-04-03T14:45:24.1639141Z (Reading database ... 50%
+2026-04-03T14:45:24.1828410Z (Reading database ... 55%
+2026-04-03T14:45:24.3407142Z (Reading database ... 60%
+2026-04-03T14:45:24.4921813Z (Reading database ... 65%
+2026-04-03T14:45:24.6983955Z (Reading database ... 70%
+2026-04-03T14:45:24.8400199Z (Reading database ... 75%
+2026-04-03T14:45:25.0536507Z (Reading database ... 80%
+2026-04-03T14:45:25.2378748Z (Reading database ... 85%
+2026-04-03T14:45:25.4424377Z (Reading database ... 90%
+2026-04-03T14:45:25.5841211Z (Reading database ... 95%
+2026-04-03T14:45:25.5841642Z (Reading database ... 100%
+2026-04-03T14:45:25.5842188Z (Reading database ... 220446 files and directories currently installed.)
+2026-04-03T14:45:25.5888592Z Preparing to unpack .../bsdutils_1%3a2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:25.5932789Z Unpacking bsdutils (1:2.39.3-9ubuntu6.5) over (1:2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:25.6706186Z Setting up bsdutils (1:2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:25.7026185Z (Reading database ... 
+2026-04-03T14:45:25.7026681Z (Reading database ... 5%
+2026-04-03T14:45:25.7027141Z (Reading database ... 10%
+2026-04-03T14:45:25.7027615Z (Reading database ... 15%
+2026-04-03T14:45:25.7028046Z (Reading database ... 20%
+2026-04-03T14:45:25.7028476Z (Reading database ... 25%
+2026-04-03T14:45:25.7028906Z (Reading database ... 30%
+2026-04-03T14:45:25.7029873Z (Reading database ... 35%
+2026-04-03T14:45:25.7030850Z (Reading database ... 40%
+2026-04-03T14:45:25.7031263Z (Reading database ... 45%
+2026-04-03T14:45:25.7031541Z (Reading database ... 50%
+2026-04-03T14:45:25.7043622Z (Reading database ... 55%
+2026-04-03T14:45:25.7149320Z (Reading database ... 60%
+2026-04-03T14:45:25.7177899Z (Reading database ... 65%
+2026-04-03T14:45:25.7195001Z (Reading database ... 70%
+2026-04-03T14:45:25.7231975Z (Reading database ... 75%
+2026-04-03T14:45:25.7255230Z (Reading database ... 80%
+2026-04-03T14:45:25.7382184Z (Reading database ... 85%
+2026-04-03T14:45:25.7455777Z (Reading database ... 90%
+2026-04-03T14:45:25.7732308Z (Reading database ... 95%
+2026-04-03T14:45:25.7732808Z (Reading database ... 100%
+2026-04-03T14:45:25.7733508Z (Reading database ... 220446 files and directories currently installed.)
+2026-04-03T14:45:25.7777623Z Preparing to unpack .../util-linux_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:25.7835125Z Unpacking util-linux (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:26.0005763Z Setting up util-linux (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:26.6718568Z fstrim.service is a disabled or a static unit not running, not starting it.
+2026-04-03T14:45:26.7003211Z (Reading database ... 
+2026-04-03T14:45:26.7003683Z (Reading database ... 5%
+2026-04-03T14:45:26.7004075Z (Reading database ... 10%
+2026-04-03T14:45:26.7004449Z (Reading database ... 15%
+2026-04-03T14:45:26.7004818Z (Reading database ... 20%
+2026-04-03T14:45:26.7005184Z (Reading database ... 25%
+2026-04-03T14:45:26.7005550Z (Reading database ... 30%
+2026-04-03T14:45:26.7005940Z (Reading database ... 35%
+2026-04-03T14:45:26.7006300Z (Reading database ... 40%
+2026-04-03T14:45:26.7006661Z (Reading database ... 45%
+2026-04-03T14:45:26.7007021Z (Reading database ... 50%
+2026-04-03T14:45:26.7023395Z (Reading database ... 55%
+2026-04-03T14:45:26.7134119Z (Reading database ... 60%
+2026-04-03T14:45:26.7164677Z (Reading database ... 65%
+2026-04-03T14:45:26.7182393Z (Reading database ... 70%
+2026-04-03T14:45:26.7222133Z (Reading database ... 75%
+2026-04-03T14:45:26.7251317Z (Reading database ... 80%
+2026-04-03T14:45:26.7395856Z (Reading database ... 85%
+2026-04-03T14:45:26.7479277Z (Reading database ... 90%
+2026-04-03T14:45:26.7778131Z (Reading database ... 95%
+2026-04-03T14:45:26.7778659Z (Reading database ... 100%
+2026-04-03T14:45:26.7779281Z (Reading database ... 220444 files and directories currently installed.)
+2026-04-03T14:45:26.7821783Z Removing fuse-overlayfs (1.13-1) ...
+2026-04-03T14:45:26.8274677Z Selecting previously unselected package libfuse2t64:amd64.
+2026-04-03T14:45:26.8326537Z (Reading database ... 
+2026-04-03T14:45:26.8327103Z (Reading database ... 5%
+2026-04-03T14:45:26.8327493Z (Reading database ... 10%
+2026-04-03T14:45:26.8327873Z (Reading database ... 15%
+2026-04-03T14:45:26.8328277Z (Reading database ... 20%
+2026-04-03T14:45:26.8328627Z (Reading database ... 25%
+2026-04-03T14:45:26.8328995Z (Reading database ... 30%
+2026-04-03T14:45:26.8329361Z (Reading database ... 35%
+2026-04-03T14:45:26.8329975Z (Reading database ... 40%
+2026-04-03T14:45:26.8330347Z (Reading database ... 45%
+2026-04-03T14:45:26.8330705Z (Reading database ... 50%
+2026-04-03T14:45:26.8343859Z (Reading database ... 55%
+2026-04-03T14:45:26.8447423Z (Reading database ... 60%
+2026-04-03T14:45:26.8475943Z (Reading database ... 65%
+2026-04-03T14:45:26.8492735Z (Reading database ... 70%
+2026-04-03T14:45:26.8529088Z (Reading database ... 75%
+2026-04-03T14:45:26.8552563Z (Reading database ... 80%
+2026-04-03T14:45:26.8685020Z (Reading database ... 85%
+2026-04-03T14:45:26.8764269Z (Reading database ... 90%
+2026-04-03T14:45:26.9047755Z (Reading database ... 95%
+2026-04-03T14:45:26.9048194Z (Reading database ... 100%
+2026-04-03T14:45:26.9048744Z (Reading database ... 220440 files and directories currently installed.)
+2026-04-03T14:45:26.9093444Z Preparing to unpack .../libfuse2t64_2.9.9-8.1build1_amd64.deb ...
+2026-04-03T14:45:26.9114075Z Unpacking libfuse2t64:amd64 (2.9.9-8.1build1) ...
+2026-04-03T14:45:26.9483206Z Preparing to unpack .../mount_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:26.9508646Z Unpacking mount (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.0061326Z (Reading database ... 
+2026-04-03T14:45:27.0061867Z (Reading database ... 5%
+2026-04-03T14:45:27.0062328Z (Reading database ... 10%
+2026-04-03T14:45:27.0062842Z (Reading database ... 15%
+2026-04-03T14:45:27.0063267Z (Reading database ... 20%
+2026-04-03T14:45:27.0063524Z (Reading database ... 25%
+2026-04-03T14:45:27.0063780Z (Reading database ... 30%
+2026-04-03T14:45:27.0064024Z (Reading database ... 35%
+2026-04-03T14:45:27.0064264Z (Reading database ... 40%
+2026-04-03T14:45:27.0064497Z (Reading database ... 45%
+2026-04-03T14:45:27.0064734Z (Reading database ... 50%
+2026-04-03T14:45:27.0086630Z (Reading database ... 55%
+2026-04-03T14:45:27.0195900Z (Reading database ... 60%
+2026-04-03T14:45:27.0225967Z (Reading database ... 65%
+2026-04-03T14:45:27.0243385Z (Reading database ... 70%
+2026-04-03T14:45:27.0281480Z (Reading database ... 75%
+2026-04-03T14:45:27.0305637Z (Reading database ... 80%
+2026-04-03T14:45:27.0442634Z (Reading database ... 85%
+2026-04-03T14:45:27.0521463Z (Reading database ... 90%
+2026-04-03T14:45:27.0815918Z (Reading database ... 95%
+2026-04-03T14:45:27.0816407Z (Reading database ... 100%
+2026-04-03T14:45:27.0817004Z (Reading database ... 220451 files and directories currently installed.)
+2026-04-03T14:45:27.0862462Z Removing ntfs-3g (1:2022.10.3-1.2ubuntu3) ...
+2026-04-03T14:45:27.1205450Z dpkg: fuse3: dependency problems, but removing anyway as you requested:
+2026-04-03T14:45:27.1206343Z  snapd depends on fuse3 (>= 3.10.5-1) | fuse; however:
+2026-04-03T14:45:27.1206770Z   Package fuse3 is to be removed.
+2026-04-03T14:45:27.1207109Z   Package fuse is not installed.
+2026-04-03T14:45:27.1207485Z   Package fuse3 which provides fuse is to be removed.
+2026-04-03T14:45:27.1207964Z  snapd depends on fuse3 (>= 3.10.5-1) | fuse; however:
+2026-04-03T14:45:27.1208355Z   Package fuse3 is to be removed.
+2026-04-03T14:45:27.1208689Z   Package fuse is not installed.
+2026-04-03T14:45:27.1209052Z   Package fuse3 which provides fuse is to be removed.
+2026-04-03T14:45:27.1209342Z 
+2026-04-03T14:45:27.1349531Z Removing fuse3 (3.14.0-5build1) ...
+2026-04-03T14:45:27.1621808Z update-initramfs: deferring update (trigger activated)
+2026-04-03T14:45:27.1997268Z Selecting previously unselected package fuse.
+2026-04-03T14:45:27.2049105Z (Reading database ... 
+2026-04-03T14:45:27.2049911Z (Reading database ... 5%
+2026-04-03T14:45:27.2050375Z (Reading database ... 10%
+2026-04-03T14:45:27.2050819Z (Reading database ... 15%
+2026-04-03T14:45:27.2051247Z (Reading database ... 20%
+2026-04-03T14:45:27.2051694Z (Reading database ... 25%
+2026-04-03T14:45:27.2051990Z (Reading database ... 30%
+2026-04-03T14:45:27.2052263Z (Reading database ... 35%
+2026-04-03T14:45:27.2052568Z (Reading database ... 40%
+2026-04-03T14:45:27.2052837Z (Reading database ... 45%
+2026-04-03T14:45:27.2053099Z (Reading database ... 50%
+2026-04-03T14:45:27.2061758Z (Reading database ... 55%
+2026-04-03T14:45:27.2168016Z (Reading database ... 60%
+2026-04-03T14:45:27.2196576Z (Reading database ... 65%
+2026-04-03T14:45:27.2213153Z (Reading database ... 70%
+2026-04-03T14:45:27.2249939Z (Reading database ... 75%
+2026-04-03T14:45:27.2273795Z (Reading database ... 80%
+2026-04-03T14:45:27.2405664Z (Reading database ... 85%
+2026-04-03T14:45:27.2484576Z (Reading database ... 90%
+2026-04-03T14:45:27.2776130Z (Reading database ... 95%
+2026-04-03T14:45:27.2776588Z (Reading database ... 100%
+2026-04-03T14:45:27.2777142Z (Reading database ... 220378 files and directories currently installed.)
+2026-04-03T14:45:27.2821946Z Preparing to unpack .../fuse_2.9.9-8.1build1_amd64.deb ...
+2026-04-03T14:45:27.2832126Z Unpacking fuse (2.9.9-8.1build1) ...
+2026-04-03T14:45:27.3209403Z Preparing to unpack .../libsmartcols1_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:27.3237265Z Unpacking libsmartcols1:amd64 (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.3624528Z Setting up libsmartcols1:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:27.3942207Z (Reading database ... 
+2026-04-03T14:45:27.3942720Z (Reading database ... 5%
+2026-04-03T14:45:27.3943169Z (Reading database ... 10%
+2026-04-03T14:45:27.3943619Z (Reading database ... 15%
+2026-04-03T14:45:27.3944026Z (Reading database ... 20%
+2026-04-03T14:45:27.3944317Z (Reading database ... 25%
+2026-04-03T14:45:27.3944594Z (Reading database ... 30%
+2026-04-03T14:45:27.3944864Z (Reading database ... 35%
+2026-04-03T14:45:27.3945130Z (Reading database ... 40%
+2026-04-03T14:45:27.3945404Z (Reading database ... 45%
+2026-04-03T14:45:27.3945683Z (Reading database ... 50%
+2026-04-03T14:45:27.3965229Z (Reading database ... 55%
+2026-04-03T14:45:27.4069849Z (Reading database ... 60%
+2026-04-03T14:45:27.4097630Z (Reading database ... 65%
+2026-04-03T14:45:27.4114143Z (Reading database ... 70%
+2026-04-03T14:45:27.4149602Z (Reading database ... 75%
+2026-04-03T14:45:27.4172466Z (Reading database ... 80%
+2026-04-03T14:45:27.4301769Z (Reading database ... 85%
+2026-04-03T14:45:27.4379294Z (Reading database ... 90%
+2026-04-03T14:45:27.4660706Z (Reading database ... 95%
+2026-04-03T14:45:27.4661240Z (Reading database ... 100%
+2026-04-03T14:45:27.4661796Z (Reading database ... 220388 files and directories currently installed.)
+2026-04-03T14:45:27.4704662Z Preparing to unpack .../libuuid1_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:27.4785887Z Unpacking libuuid1:amd64 (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.5215408Z Setting up libuuid1:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:27.5686631Z (Reading database ... 
+2026-04-03T14:45:27.5687108Z (Reading database ... 5%
+2026-04-03T14:45:27.5687504Z (Reading database ... 10%
+2026-04-03T14:45:27.5687881Z (Reading database ... 15%
+2026-04-03T14:45:27.5688259Z (Reading database ... 20%
+2026-04-03T14:45:27.5688671Z (Reading database ... 25%
+2026-04-03T14:45:27.5689033Z (Reading database ... 30%
+2026-04-03T14:45:27.5689397Z (Reading database ... 35%
+2026-04-03T14:45:27.5690010Z (Reading database ... 40%
+2026-04-03T14:45:27.5690401Z (Reading database ... 45%
+2026-04-03T14:45:27.5690784Z (Reading database ... 50%
+2026-04-03T14:45:27.5702838Z (Reading database ... 55%
+2026-04-03T14:45:27.5810012Z (Reading database ... 60%
+2026-04-03T14:45:27.5838838Z (Reading database ... 65%
+2026-04-03T14:45:27.5855484Z (Reading database ... 70%
+2026-04-03T14:45:27.5891611Z (Reading database ... 75%
+2026-04-03T14:45:27.5914262Z (Reading database ... 80%
+2026-04-03T14:45:27.6041572Z (Reading database ... 85%
+2026-04-03T14:45:27.6115710Z (Reading database ... 90%
+2026-04-03T14:45:27.6403253Z (Reading database ... 95%
+2026-04-03T14:45:27.6403720Z (Reading database ... 100%
+2026-04-03T14:45:27.6404316Z (Reading database ... 220388 files and directories currently installed.)
+2026-04-03T14:45:27.6454636Z Preparing to unpack .../uuid-runtime_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:27.6528337Z Unpacking uuid-runtime (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.6967984Z Preparing to unpack .../libblkid1_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:27.7047400Z Unpacking libblkid1:amd64 (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.7448391Z Setting up libblkid1:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:27.7764412Z (Reading database ... 
+2026-04-03T14:45:27.7764731Z (Reading database ... 5%
+2026-04-03T14:45:27.7765017Z (Reading database ... 10%
+2026-04-03T14:45:27.7765285Z (Reading database ... 15%
+2026-04-03T14:45:27.7765547Z (Reading database ... 20%
+2026-04-03T14:45:27.7765806Z (Reading database ... 25%
+2026-04-03T14:45:27.7766066Z (Reading database ... 30%
+2026-04-03T14:45:27.7766313Z (Reading database ... 35%
+2026-04-03T14:45:27.7766572Z (Reading database ... 40%
+2026-04-03T14:45:27.7766825Z (Reading database ... 45%
+2026-04-03T14:45:27.7767077Z (Reading database ... 50%
+2026-04-03T14:45:27.7779198Z (Reading database ... 55%
+2026-04-03T14:45:27.7882031Z (Reading database ... 60%
+2026-04-03T14:45:27.7910351Z (Reading database ... 65%
+2026-04-03T14:45:27.7926598Z (Reading database ... 70%
+2026-04-03T14:45:27.7962978Z (Reading database ... 75%
+2026-04-03T14:45:27.7985541Z (Reading database ... 80%
+2026-04-03T14:45:27.8112888Z (Reading database ... 85%
+2026-04-03T14:45:27.8187569Z (Reading database ... 90%
+2026-04-03T14:45:27.8460711Z (Reading database ... 95%
+2026-04-03T14:45:27.8461083Z (Reading database ... 100%
+2026-04-03T14:45:27.8461638Z (Reading database ... 220388 files and directories currently installed.)
+2026-04-03T14:45:27.8505214Z Preparing to unpack .../libmount1_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:27.8612119Z Unpacking libmount1:amd64 (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:27.9007498Z Setting up libmount1:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:27.9372510Z (Reading database ... 
+2026-04-03T14:45:27.9373020Z (Reading database ... 5%
+2026-04-03T14:45:27.9373778Z (Reading database ... 10%
+2026-04-03T14:45:27.9374189Z (Reading database ... 15%
+2026-04-03T14:45:27.9374598Z (Reading database ... 20%
+2026-04-03T14:45:27.9375006Z (Reading database ... 25%
+2026-04-03T14:45:27.9375448Z (Reading database ... 30%
+2026-04-03T14:45:27.9375845Z (Reading database ... 35%
+2026-04-03T14:45:27.9376228Z (Reading database ... 40%
+2026-04-03T14:45:27.9376643Z (Reading database ... 45%
+2026-04-03T14:45:27.9377046Z (Reading database ... 50%
+2026-04-03T14:45:27.9395361Z (Reading database ... 55%
+2026-04-03T14:45:27.9499901Z (Reading database ... 60%
+2026-04-03T14:45:27.9528586Z (Reading database ... 65%
+2026-04-03T14:45:27.9545245Z (Reading database ... 70%
+2026-04-03T14:45:27.9581790Z (Reading database ... 75%
+2026-04-03T14:45:27.9604978Z (Reading database ... 80%
+2026-04-03T14:45:27.9734960Z (Reading database ... 85%
+2026-04-03T14:45:27.9812527Z (Reading database ... 90%
+2026-04-03T14:45:28.0091575Z (Reading database ... 95%
+2026-04-03T14:45:28.0092026Z (Reading database ... 100%
+2026-04-03T14:45:28.0092582Z (Reading database ... 220388 files and directories currently installed.)
+2026-04-03T14:45:28.0136712Z Preparing to unpack .../000-eject_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.0164363Z Unpacking eject (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:28.0556070Z Preparing to unpack .../001-libfdisk1_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.0590580Z Unpacking libfdisk1:amd64 (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:28.0964678Z Preparing to unpack .../002-bsdextrautils_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.1018242Z Unpacking bsdextrautils (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:28.1383553Z Selecting previously unselected package build-essential.
+2026-04-03T14:45:28.1526374Z Preparing to unpack .../003-build-essential_12.10ubuntu1_amd64.deb ...
+2026-04-03T14:45:28.1535900Z Unpacking build-essential (12.10ubuntu1) ...
+2026-04-03T14:45:28.1737042Z Selecting previously unselected package bzip2-doc.
+2026-04-03T14:45:28.1874619Z Preparing to unpack .../004-bzip2-doc_1.0.8-5.1build0.1_all.deb ...
+2026-04-03T14:45:28.1884094Z Unpacking bzip2-doc (1.0.8-5.1build0.1) ...
+2026-04-03T14:45:28.2253113Z Preparing to unpack .../005-fdisk_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.2275296Z Unpacking fdisk (2.39.3-9ubuntu6.5) over (2.39.3-9ubuntu6.4) ...
+2026-04-03T14:45:28.2512470Z Selecting previously unselected package gir1.2-atk-1.0:amd64.
+2026-04-03T14:45:28.2649387Z Preparing to unpack .../006-gir1.2-atk-1.0_2.52.0-1build1_amd64.deb ...
+2026-04-03T14:45:28.2657130Z Unpacking gir1.2-atk-1.0:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:28.2849475Z Selecting previously unselected package gir1.2-freedesktop:amd64.
+2026-04-03T14:45:28.2983331Z Preparing to unpack .../007-gir1.2-freedesktop_1.80.1-1_amd64.deb ...
+2026-04-03T14:45:28.2993328Z Unpacking gir1.2-freedesktop:amd64 (1.80.1-1) ...
+2026-04-03T14:45:28.3205845Z Selecting previously unselected package gir1.2-atspi-2.0:amd64.
+2026-04-03T14:45:28.3339020Z Preparing to unpack .../008-gir1.2-atspi-2.0_2.52.0-1build1_amd64.deb ...
+2026-04-03T14:45:28.3347307Z Unpacking gir1.2-atspi-2.0:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:28.3540428Z Selecting previously unselected package gir1.2-glib-2.0-dev:amd64.
+2026-04-03T14:45:28.3672336Z Preparing to unpack .../009-gir1.2-glib-2.0-dev_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-04-03T14:45:28.3680417Z Unpacking gir1.2-glib-2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:28.4167094Z Selecting previously unselected package gir1.2-freedesktop-dev:amd64.
+2026-04-03T14:45:28.4302972Z Preparing to unpack .../010-gir1.2-freedesktop-dev_1.80.1-1_amd64.deb ...
+2026-04-03T14:45:28.4311730Z Unpacking gir1.2-freedesktop-dev:amd64 (1.80.1-1) ...
+2026-04-03T14:45:28.4519988Z Selecting previously unselected package gir1.2-gdkpixbuf-2.0:amd64.
+2026-04-03T14:45:28.4655302Z Preparing to unpack .../011-gir1.2-gdkpixbuf-2.0_2.42.10+dfsg-3ubuntu3.2_amd64.deb ...
+2026-04-03T14:45:28.4663146Z Unpacking gir1.2-gdkpixbuf-2.0:amd64 (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:28.4871963Z Selecting previously unselected package libharfbuzz-gobject0:amd64.
+2026-04-03T14:45:28.5005707Z Preparing to unpack .../012-libharfbuzz-gobject0_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:28.5014014Z Unpacking libharfbuzz-gobject0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:28.5208616Z Selecting previously unselected package gir1.2-harfbuzz-0.0:amd64.
+2026-04-03T14:45:28.5342717Z Preparing to unpack .../013-gir1.2-harfbuzz-0.0_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:28.5350441Z Unpacking gir1.2-harfbuzz-0.0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:28.5558341Z Selecting previously unselected package libpangoxft-1.0-0:amd64.
+2026-04-03T14:45:28.5693475Z Preparing to unpack .../014-libpangoxft-1.0-0_1.52.1+ds-1build1_amd64.deb ...
+2026-04-03T14:45:28.5702479Z Unpacking libpangoxft-1.0-0:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:28.5894974Z Selecting previously unselected package gir1.2-pango-1.0:amd64.
+2026-04-03T14:45:28.6028032Z Preparing to unpack .../015-gir1.2-pango-1.0_1.52.1+ds-1build1_amd64.deb ...
+2026-04-03T14:45:28.6035441Z Unpacking gir1.2-pango-1.0:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:28.6237866Z Selecting previously unselected package gir1.2-gtk-3.0:amd64.
+2026-04-03T14:45:28.6415633Z Preparing to unpack .../016-gir1.2-gtk-3.0_3.24.41-4ubuntu1.3_amd64.deb ...
+2026-04-03T14:45:28.6439658Z Unpacking gir1.2-gtk-3.0:amd64 (3.24.41-4ubuntu1.3) ...
+2026-04-03T14:45:28.6857928Z Selecting previously unselected package libglib2.0-dev-bin.
+2026-04-03T14:45:28.6998479Z Preparing to unpack .../017-libglib2.0-dev-bin_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-04-03T14:45:28.7011660Z Unpacking libglib2.0-dev-bin (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:28.7518814Z Selecting previously unselected package uuid-dev:amd64.
+2026-04-03T14:45:28.7668594Z Preparing to unpack .../018-uuid-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.7684184Z Unpacking uuid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:28.8131916Z Selecting previously unselected package libblkid-dev:amd64.
+2026-04-03T14:45:28.8267353Z Preparing to unpack .../019-libblkid-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.8274950Z Unpacking libblkid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:28.8508215Z Selecting previously unselected package libsepol-dev:amd64.
+2026-04-03T14:45:28.8644462Z Preparing to unpack .../020-libsepol-dev_3.5-2build1_amd64.deb ...
+2026-04-03T14:45:28.8653312Z Unpacking libsepol-dev:amd64 (3.5-2build1) ...
+2026-04-03T14:45:28.8955132Z Selecting previously unselected package libselinux1-dev:amd64.
+2026-04-03T14:45:28.9090965Z Preparing to unpack .../021-libselinux1-dev_3.5-2ubuntu2.1_amd64.deb ...
+2026-04-03T14:45:28.9100269Z Unpacking libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-04-03T14:45:28.9643739Z Selecting previously unselected package libmount-dev:amd64.
+2026-04-03T14:45:28.9780213Z Preparing to unpack .../022-libmount-dev_2.39.3-9ubuntu6.5_amd64.deb ...
+2026-04-03T14:45:28.9790779Z Unpacking libmount-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:28.9999446Z Selecting previously unselected package libgirepository-2.0-0:amd64.
+2026-04-03T14:45:29.0132178Z Preparing to unpack .../023-libgirepository-2.0-0_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-04-03T14:45:29.0142488Z Unpacking libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:29.0347344Z Selecting previously unselected package libglib2.0-dev:amd64.
+2026-04-03T14:45:29.0476225Z Preparing to unpack .../024-libglib2.0-dev_2.80.0-6ubuntu3.8_amd64.deb ...
+2026-04-03T14:45:29.0484632Z Unpacking libglib2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:29.1465051Z Selecting previously unselected package libatk1.0-dev:amd64.
+2026-04-03T14:45:29.1602454Z Preparing to unpack .../025-libatk1.0-dev_2.52.0-1build1_amd64.deb ...
+2026-04-03T14:45:29.1611522Z Unpacking libatk1.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:29.1907529Z Selecting previously unselected package libdbus-1-dev:amd64.
+2026-04-03T14:45:29.2045439Z Preparing to unpack .../026-libdbus-1-dev_1.14.10-4ubuntu4.1_amd64.deb ...
+2026-04-03T14:45:29.2053620Z Unpacking libdbus-1-dev:amd64 (1.14.10-4ubuntu4.1) ...
+2026-04-03T14:45:29.2389978Z Selecting previously unselected package xorg-sgml-doctools.
+2026-04-03T14:45:29.2526403Z Preparing to unpack .../027-xorg-sgml-doctools_1%3a1.11-1.1_all.deb ...
+2026-04-03T14:45:29.2535564Z Unpacking xorg-sgml-doctools (1:1.11-1.1) ...
+2026-04-03T14:45:29.2785809Z Selecting previously unselected package x11proto-dev.
+2026-04-03T14:45:29.2921199Z Preparing to unpack .../028-x11proto-dev_2023.2-1_all.deb ...
+2026-04-03T14:45:29.2931281Z Unpacking x11proto-dev (2023.2-1) ...
+2026-04-03T14:45:29.3456675Z Selecting previously unselected package libxau-dev:amd64.
+2026-04-03T14:45:29.3592651Z Preparing to unpack .../029-libxau-dev_1%3a1.0.9-1build6_amd64.deb ...
+2026-04-03T14:45:29.3603984Z Unpacking libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-04-03T14:45:29.3809762Z Selecting previously unselected package libxdmcp-dev:amd64.
+2026-04-03T14:45:29.3947821Z Preparing to unpack .../030-libxdmcp-dev_1%3a1.1.3-0ubuntu6_amd64.deb ...
+2026-04-03T14:45:29.3957579Z Unpacking libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-04-03T14:45:29.4159139Z Selecting previously unselected package xtrans-dev.
+2026-04-03T14:45:29.4295185Z Preparing to unpack .../031-xtrans-dev_1.4.0-1_all.deb ...
+2026-04-03T14:45:29.4303535Z Unpacking xtrans-dev (1.4.0-1) ...
+2026-04-03T14:45:29.4539856Z Selecting previously unselected package libpthread-stubs0-dev:amd64.
+2026-04-03T14:45:29.4675156Z Preparing to unpack .../032-libpthread-stubs0-dev_0.4-1build3_amd64.deb ...
+2026-04-03T14:45:29.4684613Z Unpacking libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-04-03T14:45:29.4873754Z Selecting previously unselected package libxcb1-dev:amd64.
+2026-04-03T14:45:29.5006714Z Preparing to unpack .../033-libxcb1-dev_1.15-1ubuntu2_amd64.deb ...
+2026-04-03T14:45:29.5015682Z Unpacking libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:29.5241450Z Selecting previously unselected package libx11-dev:amd64.
+2026-04-03T14:45:29.5375735Z Preparing to unpack .../034-libx11-dev_2%3a1.8.7-1build1_amd64.deb ...
+2026-04-03T14:45:29.5384365Z Unpacking libx11-dev:amd64 (2:1.8.7-1build1) ...
+2026-04-03T14:45:29.5690504Z Selecting previously unselected package libxext-dev:amd64.
+2026-04-03T14:45:29.5825324Z Preparing to unpack .../035-libxext-dev_2%3a1.3.4-1build2_amd64.deb ...
+2026-04-03T14:45:29.5836071Z Unpacking libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-04-03T14:45:29.6162807Z Selecting previously unselected package libxfixes-dev:amd64.
+2026-04-03T14:45:29.6303110Z Preparing to unpack .../036-libxfixes-dev_1%3a6.0.0-2build1_amd64.deb ...
+2026-04-03T14:45:29.6312423Z Unpacking libxfixes-dev:amd64 (1:6.0.0-2build1) ...
+2026-04-03T14:45:29.6555758Z Selecting previously unselected package libxi-dev:amd64.
+2026-04-03T14:45:29.6692194Z Preparing to unpack .../037-libxi-dev_2%3a1.8.1-1build1_amd64.deb ...
+2026-04-03T14:45:29.6701209Z Unpacking libxi-dev:amd64 (2:1.8.1-1build1) ...
+2026-04-03T14:45:29.7007209Z Selecting previously unselected package libxtst-dev:amd64.
+2026-04-03T14:45:29.7143512Z Preparing to unpack .../038-libxtst-dev_2%3a1.2.3-1.1build1_amd64.deb ...
+2026-04-03T14:45:29.7153871Z Unpacking libxtst-dev:amd64 (2:1.2.3-1.1build1) ...
+2026-04-03T14:45:29.7387134Z Selecting previously unselected package libatspi2.0-dev:amd64.
+2026-04-03T14:45:29.7522281Z Preparing to unpack .../039-libatspi2.0-dev_2.52.0-1build1_amd64.deb ...
+2026-04-03T14:45:29.7531635Z Unpacking libatspi2.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:29.7795132Z Selecting previously unselected package libatk-bridge2.0-dev:amd64.
+2026-04-03T14:45:29.7928107Z Preparing to unpack .../040-libatk-bridge2.0-dev_2.52.0-1build1_amd64.deb ...
+2026-04-03T14:45:29.7938381Z Unpacking libatk-bridge2.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:29.8141165Z Selecting previously unselected package libbrotli-dev:amd64.
+2026-04-03T14:45:29.8271493Z Preparing to unpack .../041-libbrotli-dev_1.1.0-2build2_amd64.deb ...
+2026-04-03T14:45:29.8281580Z Unpacking libbrotli-dev:amd64 (1.1.0-2build2) ...
+2026-04-03T14:45:29.8531482Z Selecting previously unselected package libbz2-dev:amd64.
+2026-04-03T14:45:29.8663109Z Preparing to unpack .../042-libbz2-dev_1.0.8-5.1build0.1_amd64.deb ...
+2026-04-03T14:45:29.8671051Z Unpacking libbz2-dev:amd64 (1.0.8-5.1build0.1) ...
+2026-04-03T14:45:29.9007352Z Preparing to unpack .../043-libfreetype6_2.13.2+dfsg-1ubuntu0.1_amd64.deb ...
+2026-04-03T14:45:29.9039878Z Unpacking libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.1) over (2.13.2+dfsg-1build3) ...
+2026-04-03T14:45:29.9297409Z Selecting previously unselected package libcairo-script-interpreter2:amd64.
+2026-04-03T14:45:29.9428804Z Preparing to unpack .../044-libcairo-script-interpreter2_1.18.0-3build1_amd64.deb ...
+2026-04-03T14:45:29.9438338Z Unpacking libcairo-script-interpreter2:amd64 (1.18.0-3build1) ...
+2026-04-03T14:45:29.9660084Z Selecting previously unselected package libpng-dev:amd64.
+2026-04-03T14:45:29.9790762Z Preparing to unpack .../045-libpng-dev_1.6.43-5ubuntu0.5_amd64.deb ...
+2026-04-03T14:45:29.9799951Z Unpacking libpng-dev:amd64 (1.6.43-5ubuntu0.5) ...
+2026-04-03T14:45:30.0058408Z Selecting previously unselected package libfreetype-dev:amd64.
+2026-04-03T14:45:30.0190912Z Preparing to unpack .../046-libfreetype-dev_2.13.2+dfsg-1ubuntu0.1_amd64.deb ...
+2026-04-03T14:45:30.0201005Z Unpacking libfreetype-dev:amd64 (2.13.2+dfsg-1ubuntu0.1) ...
+2026-04-03T14:45:30.0818107Z Selecting previously unselected package libfontconfig-dev:amd64.
+2026-04-03T14:45:30.0951053Z Preparing to unpack .../047-libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb ...
+2026-04-03T14:45:30.0963138Z Unpacking libfontconfig-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-04-03T14:45:30.1195280Z Selecting previously unselected package libpixman-1-dev:amd64.
+2026-04-03T14:45:30.1334824Z Preparing to unpack .../048-libpixman-1-dev_0.42.2-1build1_amd64.deb ...
+2026-04-03T14:45:30.1347096Z Unpacking libpixman-1-dev:amd64 (0.42.2-1build1) ...
+2026-04-03T14:45:30.1586757Z Selecting previously unselected package libice-dev:amd64.
+2026-04-03T14:45:30.1720186Z Preparing to unpack .../049-libice-dev_2%3a1.0.10-1build3_amd64.deb ...
+2026-04-03T14:45:30.1728547Z Unpacking libice-dev:amd64 (2:1.0.10-1build3) ...
+2026-04-03T14:45:30.1949749Z Selecting previously unselected package libsm-dev:amd64.
+2026-04-03T14:45:30.2083670Z Preparing to unpack .../050-libsm-dev_2%3a1.2.3-1build3_amd64.deb ...
+2026-04-03T14:45:30.2092033Z Unpacking libsm-dev:amd64 (2:1.2.3-1build3) ...
+2026-04-03T14:45:30.2312789Z Selecting previously unselected package libxcb-render0-dev:amd64.
+2026-04-03T14:45:30.2447228Z Preparing to unpack .../051-libxcb-render0-dev_1.15-1ubuntu2_amd64.deb ...
+2026-04-03T14:45:30.2457415Z Unpacking libxcb-render0-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:30.2658607Z Selecting previously unselected package libxcb-shm0-dev:amd64.
+2026-04-03T14:45:30.2796446Z Preparing to unpack .../052-libxcb-shm0-dev_1.15-1ubuntu2_amd64.deb ...
+2026-04-03T14:45:30.2806095Z Unpacking libxcb-shm0-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:30.3013451Z Selecting previously unselected package libxrender-dev:amd64.
+2026-04-03T14:45:30.3151566Z Preparing to unpack .../053-libxrender-dev_1%3a0.9.10-1.1build1_amd64.deb ...
+2026-04-03T14:45:30.3161339Z Unpacking libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-04-03T14:45:30.3372122Z Selecting previously unselected package libcairo2-dev:amd64.
+2026-04-03T14:45:30.3508317Z Preparing to unpack .../054-libcairo2-dev_1.18.0-3build1_amd64.deb ...
+2026-04-03T14:45:30.3516499Z Unpacking libcairo2-dev:amd64 (1.18.0-3build1) ...
+2026-04-03T14:45:30.3757984Z Selecting previously unselected package libdatrie-dev:amd64.
+2026-04-03T14:45:30.3894775Z Preparing to unpack .../055-libdatrie-dev_0.2.13-3build1_amd64.deb ...
+2026-04-03T14:45:30.3908984Z Unpacking libdatrie-dev:amd64 (0.2.13-3build1) ...
+2026-04-03T14:45:30.4124956Z Selecting previously unselected package libdeflate-dev:amd64.
+2026-04-03T14:45:30.4259833Z Preparing to unpack .../056-libdeflate-dev_1.19-1build1.1_amd64.deb ...
+2026-04-03T14:45:30.4269846Z Unpacking libdeflate-dev:amd64 (1.19-1build1.1) ...
+2026-04-03T14:45:30.4502574Z Selecting previously unselected package libegl-mesa0:amd64.
+2026-04-03T14:45:30.4638609Z Preparing to unpack .../057-libegl-mesa0_25.2.8-0ubuntu0.24.04.1_amd64.deb ...
+2026-04-03T14:45:30.4650049Z Unpacking libegl-mesa0:amd64 (25.2.8-0ubuntu0.24.04.1) ...
+2026-04-03T14:45:30.4889961Z Selecting previously unselected package libegl1:amd64.
+2026-04-03T14:45:30.5026048Z Preparing to unpack .../058-libegl1_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.5036115Z Unpacking libegl1:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.5243374Z Selecting previously unselected package libglx-dev:amd64.
+2026-04-03T14:45:30.5372990Z Preparing to unpack .../059-libglx-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.5381693Z Unpacking libglx-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.5580214Z Selecting previously unselected package libgl-dev:amd64.
+2026-04-03T14:45:30.5707186Z Preparing to unpack .../060-libgl-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.5716034Z Unpacking libgl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.5954524Z Selecting previously unselected package libegl-dev:amd64.
+2026-04-03T14:45:30.6084254Z Preparing to unpack .../061-libegl-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.6092318Z Unpacking libegl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.6302333Z Selecting previously unselected package libglvnd-core-dev:amd64.
+2026-04-03T14:45:30.6433807Z Preparing to unpack .../062-libglvnd-core-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.6443781Z Unpacking libglvnd-core-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.6658469Z Selecting previously unselected package libgles1:amd64.
+2026-04-03T14:45:30.6788520Z Preparing to unpack .../063-libgles1_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.6796839Z Unpacking libgles1:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.7006171Z Selecting previously unselected package libgles2:amd64.
+2026-04-03T14:45:30.7135700Z Preparing to unpack .../064-libgles2_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.7143888Z Unpacking libgles2:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.7352168Z Selecting previously unselected package libgles-dev:amd64.
+2026-04-03T14:45:30.7482139Z Preparing to unpack .../065-libgles-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.7493531Z Unpacking libgles-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.7755263Z Selecting previously unselected package libopengl0:amd64.
+2026-04-03T14:45:30.7884888Z Preparing to unpack .../066-libopengl0_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.7894872Z Unpacking libopengl0:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.8103332Z Selecting previously unselected package libopengl-dev:amd64.
+2026-04-03T14:45:30.8230689Z Preparing to unpack .../067-libopengl-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.8239158Z Unpacking libopengl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.8513913Z Selecting previously unselected package libglvnd-dev:amd64.
+2026-04-03T14:45:30.8641667Z Preparing to unpack .../068-libglvnd-dev_1.7.0-1build1_amd64.deb ...
+2026-04-03T14:45:30.8650405Z Unpacking libglvnd-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:30.8842740Z Selecting previously unselected package libegl1-mesa-dev:amd64.
+2026-04-03T14:45:30.8969924Z Preparing to unpack .../069-libegl1-mesa-dev_25.2.8-0ubuntu0.24.04.1_amd64.deb ...
+2026-04-03T14:45:30.8978191Z Unpacking libegl1-mesa-dev:amd64 (25.2.8-0ubuntu0.24.04.1) ...
+2026-04-03T14:45:30.9175562Z Selecting previously unselected package libepoxy-dev:amd64.
+2026-04-03T14:45:30.9302114Z Preparing to unpack .../070-libepoxy-dev_1.5.10-1build1_amd64.deb ...
+2026-04-03T14:45:30.9313123Z Unpacking libepoxy-dev:amd64 (1.5.10-1build1) ...
+2026-04-03T14:45:30.9580790Z Selecting previously unselected package libfribidi-dev:amd64.
+2026-04-03T14:45:30.9711387Z Preparing to unpack .../071-libfribidi-dev_1.0.13-3build1_amd64.deb ...
+2026-04-03T14:45:30.9720885Z Unpacking libfribidi-dev:amd64 (1.0.13-3build1) ...
+2026-04-03T14:45:30.9994673Z Selecting previously unselected package libgdk-pixbuf2.0-bin.
+2026-04-03T14:45:31.0124630Z Preparing to unpack .../072-libgdk-pixbuf2.0-bin_2.42.10+dfsg-3ubuntu3.2_amd64.deb ...
+2026-04-03T14:45:31.0135051Z Unpacking libgdk-pixbuf2.0-bin (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:31.0366789Z Selecting previously unselected package libjpeg-turbo8-dev:amd64.
+2026-04-03T14:45:31.0493845Z Preparing to unpack .../073-libjpeg-turbo8-dev_2.1.5-2ubuntu2_amd64.deb ...
+2026-04-03T14:45:31.0502685Z Unpacking libjpeg-turbo8-dev:amd64 (2.1.5-2ubuntu2) ...
+2026-04-03T14:45:31.0768006Z Selecting previously unselected package libjpeg8-dev:amd64.
+2026-04-03T14:45:31.0895596Z Preparing to unpack .../074-libjpeg8-dev_8c-2ubuntu11_amd64.deb ...
+2026-04-03T14:45:31.0905409Z Unpacking libjpeg8-dev:amd64 (8c-2ubuntu11) ...
+2026-04-03T14:45:31.1096638Z Selecting previously unselected package libjpeg-dev:amd64.
+2026-04-03T14:45:31.1224118Z Preparing to unpack .../075-libjpeg-dev_8c-2ubuntu11_amd64.deb ...
+2026-04-03T14:45:31.1234060Z Unpacking libjpeg-dev:amd64 (8c-2ubuntu11) ...
+2026-04-03T14:45:31.1429789Z Selecting previously unselected package libjbig-dev:amd64.
+2026-04-03T14:45:31.1557321Z Preparing to unpack .../076-libjbig-dev_2.1-6.1ubuntu2_amd64.deb ...
+2026-04-03T14:45:31.1695689Z Unpacking libjbig-dev:amd64 (2.1-6.1ubuntu2) ...
+2026-04-03T14:45:31.1907743Z Selecting previously unselected package liblzma-dev:amd64.
+2026-04-03T14:45:31.2038664Z Preparing to unpack .../077-liblzma-dev_5.6.1+really5.4.5-1ubuntu0.2_amd64.deb ...
+2026-04-03T14:45:31.2047199Z Unpacking liblzma-dev:amd64 (5.6.1+really5.4.5-1ubuntu0.2) ...
+2026-04-03T14:45:31.2312376Z Selecting previously unselected package libwebpdecoder3:amd64.
+2026-04-03T14:45:31.2443051Z Preparing to unpack .../078-libwebpdecoder3_1.3.2-0.4build3_amd64.deb ...
+2026-04-03T14:45:31.2452969Z Unpacking libwebpdecoder3:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:31.2671253Z Selecting previously unselected package libsharpyuv-dev:amd64.
+2026-04-03T14:45:31.2802269Z Preparing to unpack .../079-libsharpyuv-dev_1.3.2-0.4build3_amd64.deb ...
+2026-04-03T14:45:31.2812229Z Unpacking libsharpyuv-dev:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:31.3019923Z Selecting previously unselected package libwebp-dev:amd64.
+2026-04-03T14:45:31.3153724Z Preparing to unpack .../080-libwebp-dev_1.3.2-0.4build3_amd64.deb ...
+2026-04-03T14:45:31.3162748Z Unpacking libwebp-dev:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:31.3488423Z Selecting previously unselected package libtiffxx6:amd64.
+2026-04-03T14:45:31.3633741Z Preparing to unpack .../081-libtiffxx6_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-04-03T14:45:31.3642911Z Unpacking libtiffxx6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-04-03T14:45:31.3843839Z Selecting previously unselected package liblerc-dev:amd64.
+2026-04-03T14:45:31.3985088Z Preparing to unpack .../082-liblerc-dev_4.0.0+ds-4ubuntu2_amd64.deb ...
+2026-04-03T14:45:31.3994769Z Unpacking liblerc-dev:amd64 (4.0.0+ds-4ubuntu2) ...
+2026-04-03T14:45:31.4231199Z Selecting previously unselected package libtiff-dev:amd64.
+2026-04-03T14:45:31.4366754Z Preparing to unpack .../083-libtiff-dev_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-04-03T14:45:31.4378753Z Unpacking libtiff-dev:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-04-03T14:45:31.4712899Z Selecting previously unselected package libgdk-pixbuf-2.0-dev:amd64.
+2026-04-03T14:45:31.4847940Z Preparing to unpack .../084-libgdk-pixbuf-2.0-dev_2.42.10+dfsg-3ubuntu3.2_amd64.deb ...
+2026-04-03T14:45:31.4855925Z Unpacking libgdk-pixbuf-2.0-dev:amd64 (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:31.5098729Z Selecting previously unselected package libgraphite2-dev:amd64.
+2026-04-03T14:45:31.5232208Z Preparing to unpack .../085-libgraphite2-dev_1.3.14-2build1_amd64.deb ...
+2026-04-03T14:45:31.5240312Z Unpacking libgraphite2-dev:amd64 (1.3.14-2build1) ...
+2026-04-03T14:45:31.5453698Z Selecting previously unselected package libharfbuzz-icu0:amd64.
+2026-04-03T14:45:31.5586187Z Preparing to unpack .../086-libharfbuzz-icu0_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:31.5596214Z Unpacking libharfbuzz-icu0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:31.5809994Z Selecting previously unselected package libharfbuzz-subset0:amd64.
+2026-04-03T14:45:31.5940825Z Preparing to unpack .../087-libharfbuzz-subset0_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:31.5952159Z Unpacking libharfbuzz-subset0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:31.6205198Z Selecting previously unselected package libharfbuzz-cairo0:amd64.
+2026-04-03T14:45:31.6336552Z Preparing to unpack .../088-libharfbuzz-cairo0_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:31.6346132Z Unpacking libharfbuzz-cairo0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:31.6541698Z Selecting previously unselected package libharfbuzz-dev:amd64.
+2026-04-03T14:45:31.6671859Z Preparing to unpack .../089-libharfbuzz-dev_8.3.0-2build2_amd64.deb ...
+2026-04-03T14:45:31.6682044Z Unpacking libharfbuzz-dev:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:31.6996944Z Selecting previously unselected package libthai-dev:amd64.
+2026-04-03T14:45:31.7128989Z Preparing to unpack .../090-libthai-dev_0.1.29-2build1_amd64.deb ...
+2026-04-03T14:45:31.7138546Z Unpacking libthai-dev:amd64 (0.1.29-2build1) ...
+2026-04-03T14:45:31.7376996Z Selecting previously unselected package libxft-dev:amd64.
+2026-04-03T14:45:31.7508066Z Preparing to unpack .../091-libxft-dev_2.3.6-1build1_amd64.deb ...
+2026-04-03T14:45:31.7516883Z Unpacking libxft-dev:amd64 (2.3.6-1build1) ...
+2026-04-03T14:45:31.7794616Z Selecting previously unselected package pango1.0-tools.
+2026-04-03T14:45:31.7924305Z Preparing to unpack .../092-pango1.0-tools_1.52.1+ds-1build1_amd64.deb ...
+2026-04-03T14:45:31.7931506Z Unpacking pango1.0-tools (1.52.1+ds-1build1) ...
+2026-04-03T14:45:31.8161199Z Selecting previously unselected package libpango1.0-dev:amd64.
+2026-04-03T14:45:31.8290750Z Preparing to unpack .../093-libpango1.0-dev_1.52.1+ds-1build1_amd64.deb ...
+2026-04-03T14:45:31.8300192Z Unpacking libpango1.0-dev:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:31.8628102Z Selecting previously unselected package libwayland-server0:amd64.
+2026-04-03T14:45:31.8761323Z Preparing to unpack .../094-libwayland-server0_1.22.0-2.1build1_amd64.deb ...
+2026-04-03T14:45:31.8771388Z Unpacking libwayland-server0:amd64 (1.22.0-2.1build1) ...
+2026-04-03T14:45:31.8974639Z Selecting previously unselected package libwayland-bin.
+2026-04-03T14:45:31.9105835Z Preparing to unpack .../095-libwayland-bin_1.22.0-2.1build1_amd64.deb ...
+2026-04-03T14:45:31.9114049Z Unpacking libwayland-bin (1.22.0-2.1build1) ...
+2026-04-03T14:45:31.9318332Z Selecting previously unselected package libwayland-dev:amd64.
+2026-04-03T14:45:31.9446020Z Preparing to unpack .../096-libwayland-dev_1.22.0-2.1build1_amd64.deb ...
+2026-04-03T14:45:31.9458766Z Unpacking libwayland-dev:amd64 (1.22.0-2.1build1) ...
+2026-04-03T14:45:31.9723208Z Selecting previously unselected package libxcomposite-dev:amd64.
+2026-04-03T14:45:31.9860327Z Preparing to unpack .../097-libxcomposite-dev_1%3a0.4.5-1build3_amd64.deb ...
+2026-04-03T14:45:31.9868430Z Unpacking libxcomposite-dev:amd64 (1:0.4.5-1build3) ...
+2026-04-03T14:45:32.0089883Z Selecting previously unselected package libxcursor-dev:amd64.
+2026-04-03T14:45:32.0216942Z Preparing to unpack .../098-libxcursor-dev_1%3a1.2.1-1build1_amd64.deb ...
+2026-04-03T14:45:32.0229238Z Unpacking libxcursor-dev:amd64 (1:1.2.1-1build1) ...
+2026-04-03T14:45:32.0497847Z Selecting previously unselected package libxdamage-dev:amd64.
+2026-04-03T14:45:32.0627253Z Preparing to unpack .../099-libxdamage-dev_1%3a1.1.6-1build1_amd64.deb ...
+2026-04-03T14:45:32.0638406Z Unpacking libxdamage-dev:amd64 (1:1.1.6-1build1) ...
+2026-04-03T14:45:32.0843048Z Selecting previously unselected package libxinerama-dev:amd64.
+2026-04-03T14:45:32.0984489Z Preparing to unpack .../100-libxinerama-dev_2%3a1.1.4-3build1_amd64.deb ...
+2026-04-03T14:45:32.0997466Z Unpacking libxinerama-dev:amd64 (2:1.1.4-3build1) ...
+2026-04-03T14:45:32.1219302Z Selecting previously unselected package libxkbcommon-dev:amd64.
+2026-04-03T14:45:32.1350542Z Preparing to unpack .../101-libxkbcommon-dev_1.6.0-1build1_amd64.deb ...
+2026-04-03T14:45:32.1359182Z Unpacking libxkbcommon-dev:amd64 (1.6.0-1build1) ...
+2026-04-03T14:45:32.1585334Z Selecting previously unselected package libxrandr-dev:amd64.
+2026-04-03T14:45:32.1716320Z Preparing to unpack .../102-libxrandr-dev_2%3a1.5.2-2build1_amd64.deb ...
+2026-04-03T14:45:32.1726009Z Unpacking libxrandr-dev:amd64 (2:1.5.2-2build1) ...
+2026-04-03T14:45:32.1951054Z Selecting previously unselected package wayland-protocols.
+2026-04-03T14:45:32.2081205Z Preparing to unpack .../103-wayland-protocols_1.45-1~ubuntu0.24.04.1_all.deb ...
+2026-04-03T14:45:32.2090493Z Unpacking wayland-protocols (1.45-1~ubuntu0.24.04.1) ...
+2026-04-03T14:45:32.2469335Z Selecting previously unselected package libgtk-3-dev:amd64.
+2026-04-03T14:45:32.2601775Z Preparing to unpack .../104-libgtk-3-dev_3.24.41-4ubuntu1.3_amd64.deb ...
+2026-04-03T14:45:32.2611876Z Unpacking libgtk-3-dev:amd64 (3.24.41-4ubuntu1.3) ...
+2026-04-03T14:45:32.3768377Z Selecting previously unselected package libpng-tools.
+2026-04-03T14:45:32.3908897Z Preparing to unpack .../105-libpng-tools_1.6.43-5ubuntu0.5_amd64.deb ...
+2026-04-03T14:45:32.3918627Z Unpacking libpng-tools (1.6.43-5ubuntu0.5) ...
+2026-04-03T14:45:32.4335909Z Setting up libglib2.0-dev-bin (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:32.5819531Z Setting up bzip2-doc (1.0.8-5.1build0.1) ...
+2026-04-03T14:45:32.5848201Z Setting up libwayland-server0:amd64 (1.22.0-2.1build1) ...
+2026-04-03T14:45:32.5872280Z Setting up libjpeg-turbo8-dev:amd64 (2.1.5-2ubuntu2) ...
+2026-04-03T14:45:32.5896241Z Setting up gir1.2-freedesktop:amd64 (1.80.1-1) ...
+2026-04-03T14:45:32.5924631Z Setting up libharfbuzz-icu0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:32.5951034Z Setting up libpixman-1-dev:amd64 (0.42.2-1build1) ...
+2026-04-03T14:45:32.5975694Z Setting up bsdextrautils (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:32.6000511Z Setting up libpangoxft-1.0-0:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:32.6022344Z Setting up libglvnd-core-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:32.6049584Z Setting up gir1.2-gdkpixbuf-2.0:amd64 (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:32.6075144Z Setting up libpng-tools (1.6.43-5ubuntu0.5) ...
+2026-04-03T14:45:32.6124256Z Setting up libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:32.6146835Z Setting up gir1.2-atk-1.0:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:32.6170744Z Setting up libfribidi-dev:amd64 (1.0.13-3build1) ...
+2026-04-03T14:45:32.6193483Z Setting up libxkbcommon-dev:amd64 (1.6.0-1build1) ...
+2026-04-03T14:45:32.6220039Z Setting up libpng-dev:amd64 (1.6.43-5ubuntu0.5) ...
+2026-04-03T14:45:32.6243051Z Setting up pango1.0-tools (1.52.1+ds-1build1) ...
+2026-04-03T14:45:32.6266632Z Setting up libjbig-dev:amd64 (2.1-6.1ubuntu2) ...
+2026-04-03T14:45:32.6291935Z Setting up libwebpdecoder3:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:32.6313136Z Setting up libharfbuzz-gobject0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:32.6336164Z Setting up gir1.2-atspi-2.0:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:32.6357475Z Setting up gir1.2-harfbuzz-0.0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:32.6381492Z Setting up libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-04-03T14:45:32.6401580Z Setting up libopengl0:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:32.6427007Z Setting up eject (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:32.6451346Z Setting up xtrans-dev (1.4.0-1) ...
+2026-04-03T14:45:32.6475728Z Setting up libwayland-bin (1.22.0-2.1build1) ...
+2026-04-03T14:45:32.6500697Z Setting up libgraphite2-dev:amd64 (1.3.14-2build1) ...
+2026-04-03T14:45:32.6526109Z Setting up gir1.2-pango-1.0:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:32.6549090Z Setting up libegl-mesa0:amd64 (25.2.8-0ubuntu0.24.04.1) ...
+2026-04-03T14:45:32.6577942Z Setting up libgles2:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:32.6603695Z Setting up libharfbuzz-cairo0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:32.6626176Z Setting up libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.1) ...
+2026-04-03T14:45:32.6651875Z Setting up libdbus-1-dev:amd64 (1.14.10-4ubuntu4.1) ...
+2026-04-03T14:45:32.8234248Z Setting up uuid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:32.8256446Z Setting up libgles1:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:32.8277848Z Setting up libsepol-dev:amd64 (3.5-2build1) ...
+2026-04-03T14:45:32.8300089Z Setting up liblerc-dev:amd64 (4.0.0+ds-4ubuntu2) ...
+2026-04-03T14:45:32.8341244Z Setting up libfdisk1:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:32.8363716Z Setting up liblzma-dev:amd64 (5.6.1+really5.4.5-1ubuntu0.2) ...
+2026-04-03T14:45:32.8391322Z Setting up wayland-protocols (1.45-1~ubuntu0.24.04.1) ...
+2026-04-03T14:45:32.8413779Z Setting up mount (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:32.8435669Z Setting up libdatrie-dev:amd64 (0.2.13-3build1) ...
+2026-04-03T14:45:32.8461227Z Setting up gir1.2-glib-2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:32.8484832Z Setting up uuid-runtime (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:33.5868227Z uuidd.service is a disabled or a static unit not running, not starting it.
+2026-04-03T14:45:33.6060123Z Setting up libgdk-pixbuf2.0-bin (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:33.6084388Z Setting up libegl1:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:33.6108497Z Setting up libharfbuzz-subset0:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:33.6136554Z Setting up build-essential (12.10ubuntu1) ...
+2026-04-03T14:45:33.6159035Z Setting up xorg-sgml-doctools (1:1.11-1.1) ...
+2026-04-03T14:45:33.6181546Z Setting up libopengl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:33.6208817Z Setting up libjpeg8-dev:amd64 (8c-2ubuntu11) ...
+2026-04-03T14:45:33.6230404Z Setting up libsharpyuv-dev:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:33.6255154Z Setting up libtiffxx6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-04-03T14:45:33.6279114Z Setting up libdeflate-dev:amd64 (1.19-1build1.1) ...
+2026-04-03T14:45:33.6305214Z Setting up libfuse2t64:amd64 (2.9.9-8.1build1) ...
+2026-04-03T14:45:33.6332668Z Setting up libbrotli-dev:amd64 (1.1.0-2build2) ...
+2026-04-03T14:45:33.6359355Z Setting up libbz2-dev:amd64 (1.0.8-5.1build0.1) ...
+2026-04-03T14:45:33.6386996Z Setting up libcairo-script-interpreter2:amd64 (1.18.0-3build1) ...
+2026-04-03T14:45:33.6422524Z Setting up fuse (2.9.9-8.1build1) ...
+2026-04-03T14:45:33.6433842Z Installing new version of config file /etc/fuse.conf ...
+2026-04-03T14:45:33.6678635Z update-initramfs: deferring update (trigger activated)
+2026-04-03T14:45:33.6696399Z Setting up libblkid-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:33.6721437Z Setting up libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-04-03T14:45:33.6744942Z Setting up gir1.2-gtk-3.0:amd64 (3.24.41-4ubuntu1.3) ...
+2026-04-03T14:45:33.6772614Z Setting up libjpeg-dev:amd64 (8c-2ubuntu11) ...
+2026-04-03T14:45:33.6794331Z Setting up libwayland-dev:amd64 (1.22.0-2.1build1) ...
+2026-04-03T14:45:33.6820450Z Setting up fdisk (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:33.6847657Z Setting up libfreetype-dev:amd64 (2.13.2+dfsg-1ubuntu0.1) ...
+2026-04-03T14:45:33.6873299Z Setting up libwebp-dev:amd64 (1.3.2-0.4build3) ...
+2026-04-03T14:45:33.6903423Z Setting up libtiff-dev:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-04-03T14:45:33.6931249Z Setting up gir1.2-freedesktop-dev:amd64 (1.80.1-1) ...
+2026-04-03T14:45:33.6956165Z Setting up libthai-dev:amd64 (0.1.29-2build1) ...
+2026-04-03T14:45:33.6981614Z Setting up libmount-dev:amd64 (2.39.3-9ubuntu6.5) ...
+2026-04-03T14:45:33.7004394Z Setting up libfontconfig-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-04-03T14:45:33.7051252Z Setting up libglib2.0-dev:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:33.7412297Z Processing triggers for initramfs-tools (0.142ubuntu25.8) ...
+2026-04-03T14:45:33.7657538Z update-initramfs: Generating /boot/initrd.img-6.17.0-1008-azure
+2026-04-03T14:45:39.4958030Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-04-03T14:45:39.5277449Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-04-03T14:45:39.5352075Z Not building database; man-db/auto-update is not 'true'.
+2026-04-03T14:45:39.5372790Z Processing triggers for libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) ...
+2026-04-03T14:45:39.5542107Z Processing triggers for sgml-base (1.31) ...
+2026-04-03T14:45:39.5781934Z Processing triggers for install-info (7.1-3build2) ...
+2026-04-03T14:45:39.8153722Z Setting up libatk1.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:39.8209752Z Setting up x11proto-dev (2023.2-1) ...
+2026-04-03T14:45:39.8246390Z Setting up libgdk-pixbuf-2.0-dev:amd64 (2.42.10+dfsg-3ubuntu3.2) ...
+2026-04-03T14:45:39.8402101Z Setting up libharfbuzz-dev:amd64 (8.3.0-2build2) ...
+2026-04-03T14:45:39.8429014Z Setting up libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-04-03T14:45:39.8454254Z Setting up libice-dev:amd64 (2:1.0.10-1build3) ...
+2026-04-03T14:45:39.8481974Z Setting up libsm-dev:amd64 (2:1.2.3-1build3) ...
+2026-04-03T14:45:39.8531898Z Setting up libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-04-03T14:45:39.8620017Z Setting up libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:39.8662926Z Setting up libx11-dev:amd64 (2:1.8.7-1build1) ...
+2026-04-03T14:45:39.8703059Z Setting up libxfixes-dev:amd64 (1:6.0.0-2build1) ...
+2026-04-03T14:45:39.8729382Z Setting up libxcb-shm0-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:39.8762923Z Setting up libxcb-render0-dev:amd64 (1.15-1ubuntu2) ...
+2026-04-03T14:45:39.8787323Z Setting up libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-04-03T14:45:39.8833257Z Setting up libglx-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:39.8871462Z Setting up libxi-dev:amd64 (2:1.8.1-1build1) ...
+2026-04-03T14:45:39.8900723Z Setting up libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-04-03T14:45:39.8929818Z Setting up libgl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:39.8956184Z Setting up libxft-dev:amd64 (2.3.6-1build1) ...
+2026-04-03T14:45:39.8989360Z Setting up libxtst-dev:amd64 (2:1.2.3-1.1build1) ...
+2026-04-03T14:45:39.9036606Z Setting up libxdamage-dev:amd64 (1:1.1.6-1build1) ...
+2026-04-03T14:45:39.9068630Z Setting up libatspi2.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:39.9109134Z Setting up libegl-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:39.9138853Z Setting up libxcomposite-dev:amd64 (1:0.4.5-1build3) ...
+2026-04-03T14:45:39.9166856Z Setting up libxcursor-dev:amd64 (1:1.2.1-1build1) ...
+2026-04-03T14:45:39.9194206Z Setting up libepoxy-dev:amd64 (1.5.10-1build1) ...
+2026-04-03T14:45:39.9231426Z Setting up libatk-bridge2.0-dev:amd64 (2.52.0-1build1) ...
+2026-04-03T14:45:39.9258474Z Setting up libxrandr-dev:amd64 (2:1.5.2-2build1) ...
+2026-04-03T14:45:39.9309803Z Setting up libxinerama-dev:amd64 (2:1.1.4-3build1) ...
+2026-04-03T14:45:39.9340081Z Setting up libcairo2-dev:amd64 (1.18.0-3build1) ...
+2026-04-03T14:45:39.9370232Z Setting up libgles-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:39.9413808Z Setting up libglvnd-dev:amd64 (1.7.0-1build1) ...
+2026-04-03T14:45:39.9447731Z Setting up libpango1.0-dev:amd64 (1.52.1+ds-1build1) ...
+2026-04-03T14:45:39.9474358Z Setting up libegl1-mesa-dev:amd64 (25.2.8-0ubuntu0.24.04.1) ...
+2026-04-03T14:45:39.9510875Z Setting up libgtk-3-dev:amd64 (3.24.41-4ubuntu1.3) ...
+2026-04-03T14:45:40.5595378Z 
+2026-04-03T14:45:40.5595846Z Running kernel seems to be up-to-date.
+2026-04-03T14:45:40.5596254Z 
+2026-04-03T14:45:40.5596421Z Restarting services...
+2026-04-03T14:45:40.6315073Z  /etc/needrestart/restart.d/systemd-manager
+2026-04-03T14:45:40.9320048Z  systemctl restart packagekit.service php8.3-fpm.service polkit.service rsyslog.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-udevd.service udisks2.service
+2026-04-03T14:45:41.2064710Z 
+2026-04-03T14:45:41.2065752Z Service restarts being deferred:
+2026-04-03T14:45:41.2067493Z  systemctl restart ModemManager.service
+2026-04-03T14:45:41.2068605Z  systemctl restart getty@tty1.service
+2026-04-03T14:45:41.2069833Z  systemctl restart serial-getty@ttyS0.service
+2026-04-03T14:45:41.2071262Z  systemctl restart systemd-logind.service
+2026-04-03T14:45:41.2075134Z 
+2026-04-03T14:45:41.2075552Z No containers need to be restarted.
+2026-04-03T14:45:41.2076057Z 
+2026-04-03T14:45:41.2076383Z User sessions running outdated binaries:
+2026-04-03T14:45:41.2077301Z  runner @ user manager service: systemd[1228]
+2026-04-03T14:45:41.2200723Z 
+2026-04-03T14:45:41.2201442Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-04-03T14:45:49.3964840Z Successfully installed stud-0.0.23
+2026-04-03T14:45:49.3965389Z Successfully installed mustache-0.99.8
+2026-04-03T14:45:49.3965811Z Successfully installed insist-1.0.0
+2026-04-03T14:45:49.3966210Z Successfully installed clamp-1.5.2
+2026-04-03T14:45:49.3966602Z Successfully installed cabin-0.9.1
+2026-04-03T14:45:49.3967001Z Successfully installed pleaserun-0.0.33
+2026-04-03T14:45:49.3967430Z Successfully installed backports-3.25.3
+2026-04-03T14:45:49.3967864Z Successfully installed arr-pm-0.0.12
+2026-04-03T14:45:49.3968267Z Successfully installed fpm-1.17.0
+2026-04-03T14:45:49.3968659Z Parsing documentation for stud-0.0.23
+2026-04-03T14:45:49.3969081Z Installing ri documentation for stud-0.0.23
+2026-04-03T14:45:49.3969527Z Parsing documentation for mustache-0.99.8
+2026-04-03T14:45:49.3970211Z Installing ri documentation for mustache-0.99.8
+2026-04-03T14:45:49.3970699Z Parsing documentation for insist-1.0.0
+2026-04-03T14:45:49.3971149Z Installing ri documentation for insist-1.0.0
+2026-04-03T14:45:49.3971602Z Parsing documentation for clamp-1.5.2
+2026-04-03T14:45:49.3972046Z Installing ri documentation for clamp-1.5.2
+2026-04-03T14:45:49.3972498Z Parsing documentation for cabin-0.9.1
+2026-04-03T14:45:49.3972925Z Installing ri documentation for cabin-0.9.1
+2026-04-03T14:45:49.3973384Z Parsing documentation for pleaserun-0.0.33
+2026-04-03T14:45:49.3973888Z Installing ri documentation for pleaserun-0.0.33
+2026-04-03T14:45:49.3974391Z Parsing documentation for backports-3.25.3
+2026-04-03T14:45:49.3974881Z Installing ri documentation for backports-3.25.3
+2026-04-03T14:45:49.3975338Z Parsing documentation for arr-pm-0.0.12
+2026-04-03T14:45:49.3975784Z Installing ri documentation for arr-pm-0.0.12
+2026-04-03T14:45:49.3976214Z Parsing documentation for fpm-1.17.0
+2026-04-03T14:45:49.3976630Z Installing ri documentation for fpm-1.17.0
+2026-04-03T14:45:49.3977469Z Done installing documentation for stud, mustache, insist, clamp, cabin, pleaserun, backports, arr-pm, fpm after 3 seconds
+2026-04-03T14:45:49.3979288Z 9 gems installed
+2026-04-03T14:45:49.4151118Z --2026-04-03 14:45:49--  https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+2026-04-03T14:45:49.4406522Z Resolving github.com (github.com)... 140.82.114.4
+2026-04-03T14:45:49.4423184Z Connecting to github.com (github.com)|140.82.114.4|:443... connected.
+2026-04-03T14:45:49.5147370Z HTTP request sent, awaiting response... 302 Found
+2026-04-03T14:45:49.5156654Z Location: https://release-assets.githubusercontent.com/github-production-release-asset/658450330/0e2f119a-fd37-40eb-8884-78e1fc76c580?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-04-03T15%3A38%3A08Z&rscd=attachment%3B+filename%3Dappimagetool-x86_64.AppImage&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-04-03T14%3A37%3A31Z&ske=2026-04-03T15%3A38%3A08Z&sks=b&skv=2018-11-09&sig=2tT9QYILKMzRn9uTyq87WOzY19lK0BjycXy5GRxS5hM%3D&jwt=*** [following]
+2026-04-03T14:45:49.5165997Z --2026-04-03 14:45:49--  https://release-assets.githubusercontent.com/github-production-release-asset/658450330/0e2f119a-fd37-40eb-8884-78e1fc76c580?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-04-03T15%3A38%3A08Z&rscd=attachment%3B+filename%3Dappimagetool-x86_64.AppImage&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-04-03T14%3A37%3A31Z&ske=2026-04-03T15%3A38%3A08Z&sks=b&skv=2018-11-09&sig=2tT9QYILKMzRn9uTyq87WOzY19lK0BjycXy5GRxS5hM%3D&jwt=***
+2026-04-03T14:45:49.5176404Z Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+2026-04-03T14:45:49.5191403Z Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.110.133|:443... connected.
+2026-04-03T14:45:49.5281923Z HTTP request sent, awaiting response... 200 OK
+2026-04-03T14:45:49.5283265Z Length: 15092216 (14M) [application/octet-stream]
+2026-04-03T14:45:49.5284450Z Saving to: ‘appimagetool’
+2026-04-03T14:45:49.5284812Z 
+2026-04-03T14:45:49.5297861Z      0K .......... .......... .......... .......... ..........  0% 35.0M 0s
+2026-04-03T14:45:49.5307667Z     50K .......... .......... .......... .......... ..........  0% 50.5M 0s
+2026-04-03T14:45:49.5313008Z    100K .......... .......... .......... .......... ..........  1% 91.5M 0s
+2026-04-03T14:45:49.5324376Z    150K .......... .......... .......... .......... ..........  1% 43.3M 0s
+2026-04-03T14:45:49.5325755Z    200K .......... .......... .......... .......... ..........  1%  284M 0s
+2026-04-03T14:45:49.5333652Z    250K .......... .......... .......... .......... ..........  2% 63.7M 0s
+2026-04-03T14:45:49.5337430Z    300K .......... .......... .......... .......... ..........  2%  131M 0s
+2026-04-03T14:45:49.5346403Z    350K .......... .......... .......... .......... ..........  2% 54.3M 0s
+2026-04-03T14:45:49.5348722Z    400K .......... .......... .......... .......... ..........  3%  246M 0s
+2026-04-03T14:45:49.5356649Z    450K .......... .......... .......... .......... ..........  3% 59.7M 0s
+2026-04-03T14:45:49.5358827Z    500K .......... .......... .......... .......... ..........  3%  217M 0s
+2026-04-03T14:45:49.5361178Z    550K .......... .......... .......... .......... ..........  4%  218M 0s
+2026-04-03T14:45:49.5363099Z    600K .......... .......... .......... .......... ..........  4%  243M 0s
+2026-04-03T14:45:49.5364431Z    650K .......... .......... .......... .......... ..........  4%  305M 0s
+2026-04-03T14:45:49.5371140Z    700K .......... .......... .......... .......... ..........  5% 75.2M 0s
+2026-04-03T14:45:49.5373683Z    750K .......... .......... .......... .......... ..........  5%  195M 0s
+2026-04-03T14:45:49.5375147Z    800K .......... .......... .......... .......... ..........  5%  263M 0s
+2026-04-03T14:45:49.5383612Z    850K .......... .......... .......... .......... ..........  6% 60.3M 0s
+2026-04-03T14:45:49.5385566Z    900K .......... .......... .......... .......... ..........  6%  242M 0s
+2026-04-03T14:45:49.5387630Z    950K .......... .......... .......... .......... ..........  6%  255M 0s
+2026-04-03T14:45:49.5388896Z   1000K .......... .......... .......... .......... ..........  7%  295M 0s
+2026-04-03T14:45:49.5390961Z   1050K .......... .......... .......... .......... ..........  7%  277M 0s
+2026-04-03T14:45:49.5393167Z   1100K .......... .......... .......... .......... ..........  7%  220M 0s
+2026-04-03T14:45:49.5394598Z   1150K .......... .......... .......... .......... ..........  8%  283M 0s
+2026-04-03T14:45:49.5396223Z   1200K .......... .......... .......... .......... ..........  8%  295M 0s
+2026-04-03T14:45:49.5398447Z   1250K .......... .......... .......... .......... ..........  8%  277M 0s
+2026-04-03T14:45:49.5399822Z   1300K .......... .......... .......... .......... ..........  9%  319M 0s
+2026-04-03T14:45:49.5401608Z   1350K .......... .......... .......... .......... ..........  9%  270M 0s
+2026-04-03T14:45:49.5405741Z   1400K .......... .......... .......... .......... ..........  9%  121M 0s
+2026-04-03T14:45:49.5407417Z   1450K .......... .......... .......... .......... .......... 10%  288M 0s
+2026-04-03T14:45:49.5409295Z   1500K .......... .......... .......... .......... .......... 10%  233M 0s
+2026-04-03T14:45:49.5411801Z   1550K .......... .......... .......... .......... .......... 10%  213M 0s
+2026-04-03T14:45:49.5413014Z   1600K .......... .......... .......... .......... .......... 11%  311M 0s
+2026-04-03T14:45:49.5414866Z   1650K .......... .......... .......... .......... .......... 11%  293M 0s
+2026-04-03T14:45:49.5417636Z   1700K .......... .......... .......... .......... .......... 11%  200M 0s
+2026-04-03T14:45:49.5419053Z   1750K .......... .......... .......... .......... .......... 12%  285M 0s
+2026-04-03T14:45:49.5421340Z   1800K .......... .......... .......... .......... .......... 12%  235M 0s
+2026-04-03T14:45:49.5423768Z   1850K .......... .......... .......... .......... .......... 12%  207M 0s
+2026-04-03T14:45:49.5425752Z   1900K .......... .......... .......... .......... .......... 13%  218M 0s
+2026-04-03T14:45:49.5427222Z   1950K .......... .......... .......... .......... .......... 13%  291M 0s
+2026-04-03T14:45:49.5428758Z   2000K .......... .......... .......... .......... .......... 13%  307M 0s
+2026-04-03T14:45:49.5431024Z   2050K .......... .......... .......... .......... .......... 14%  249M 0s
+2026-04-03T14:45:49.5432304Z   2100K .......... .......... .......... .......... .......... 14%  315M 0s
+2026-04-03T14:45:49.5434284Z   2150K .......... .......... .......... .......... .......... 14%  294M 0s
+2026-04-03T14:45:49.5435750Z   2200K .......... .......... .......... .......... .......... 15%  286M 0s
+2026-04-03T14:45:49.5437246Z   2250K .......... .......... .......... .......... .......... 15%  321M 0s
+2026-04-03T14:45:49.5439484Z   2300K .......... .......... .......... .......... .......... 15%  242M 0s
+2026-04-03T14:45:49.5440951Z   2350K .......... .......... .......... .......... .......... 16%  277M 0s
+2026-04-03T14:45:49.5442366Z   2400K .......... .......... .......... .......... .......... 16%  331M 0s
+2026-04-03T14:45:49.5444709Z   2450K .......... .......... .......... .......... .......... 16%  283M 0s
+2026-04-03T14:45:49.5445780Z   2500K .......... .......... .......... .......... .......... 17%  298M 0s
+2026-04-03T14:45:49.5447653Z   2550K .......... .......... .......... .......... .......... 17%  307M 0s
+2026-04-03T14:45:49.5449689Z   2600K .......... .......... .......... .......... .......... 17%  315M 0s
+2026-04-03T14:45:49.5450895Z   2650K .......... .......... .......... .......... .......... 18%  278M 0s
+2026-04-03T14:45:49.5453614Z   2700K .......... .......... .......... .......... .......... 18%  212M 0s
+2026-04-03T14:45:49.5454376Z   2750K .......... .......... .......... .......... .......... 18%  371M 0s
+2026-04-03T14:45:49.5456016Z   2800K .......... .......... .......... .......... .......... 19%  343M 0s
+2026-04-03T14:45:49.5457080Z   2850K .......... .......... .......... .......... .......... 19%  342M 0s
+2026-04-03T14:45:49.5458565Z   2900K .......... .......... .......... .......... .......... 20%  341M 0s
+2026-04-03T14:45:49.5460420Z   2950K .......... .......... .......... .......... .......... 20%  313M 0s
+2026-04-03T14:45:49.5461674Z   3000K .......... .......... .......... .......... .......... 20%  316M 0s
+2026-04-03T14:45:49.5463442Z   3050K .......... .......... .......... .......... .......... 21%  342M 0s
+2026-04-03T14:45:49.5465358Z   3100K .......... .......... .......... .......... .......... 21%  243M 0s
+2026-04-03T14:45:49.5466544Z   3150K .......... .......... .......... .......... .......... 21%  339M 0s
+2026-04-03T14:45:49.5469046Z   3200K .......... .......... .......... .......... .......... 22%  300M 0s
+2026-04-03T14:45:49.5469773Z   3250K .......... .......... .......... .......... .......... 22%  357M 0s
+2026-04-03T14:45:49.5476499Z   3300K .......... .......... .......... .......... .......... 22%  267M 0s
+2026-04-03T14:45:49.5477191Z   3350K .......... .......... .......... .......... .......... 23%  419M 0s
+2026-04-03T14:45:49.5478043Z   3400K .......... .......... .......... .......... .......... 23%  425M 0s
+2026-04-03T14:45:49.5478717Z   3450K .......... .......... .......... .......... .......... 23%  506M 0s
+2026-04-03T14:45:49.5479378Z   3500K .......... .......... .......... .......... .......... 24%  350M 0s
+2026-04-03T14:45:49.5480234Z   3550K .......... .......... .......... .......... .......... 24%  167M 0s
+2026-04-03T14:45:49.5480888Z   3600K .......... .......... .......... .......... .......... 24%  260M 0s
+2026-04-03T14:45:49.5482622Z   3650K .......... .......... .......... .......... .......... 25%  284M 0s
+2026-04-03T14:45:49.5484111Z   3700K .......... .......... .......... .......... .......... 25%  380M 0s
+2026-04-03T14:45:49.5485835Z   3750K .......... .......... .......... .......... .......... 25%  420M 0s
+2026-04-03T14:45:49.5486791Z   3800K .......... .......... .......... .......... .......... 26%  497M 0s
+2026-04-03T14:45:49.5487492Z   3850K .......... .......... .......... .......... .......... 26%  429M 0s
+2026-04-03T14:45:49.5488542Z   3900K .......... .......... .......... .......... .......... 26%  340M 0s
+2026-04-03T14:45:49.5490252Z   3950K .......... .......... .......... .......... .......... 27%  363M 0s
+2026-04-03T14:45:49.5492108Z   4000K .......... .......... .......... .......... .......... 27%  258M 0s
+2026-04-03T14:45:49.5493195Z   4050K .......... .......... .......... .......... .......... 27%  392M 0s
+2026-04-03T14:45:49.5494340Z   4100K .......... .......... .......... .......... .......... 28%  374M 0s
+2026-04-03T14:45:49.5495645Z   4150K .......... .......... .......... .......... .......... 28%  432M 0s
+2026-04-03T14:45:49.5496857Z   4200K .......... .......... .......... .......... .......... 28%  357M 0s
+2026-04-03T14:45:49.5498565Z   4250K .......... .......... .......... .......... .......... 29%  325M 0s
+2026-04-03T14:45:49.5500569Z   4300K .......... .......... .......... .......... .......... 29%  317M 0s
+2026-04-03T14:45:49.5501427Z   4350K .......... .......... .......... .......... .......... 29%  318M 0s
+2026-04-03T14:45:49.5503152Z   4400K .......... .......... .......... .......... .......... 30%  332M 0s
+2026-04-03T14:45:49.5504319Z   4450K .......... .......... .......... .......... .......... 30%  455M 0s
+2026-04-03T14:45:49.5505898Z   4500K .......... .......... .......... .......... .......... 30%  319M 0s
+2026-04-03T14:45:49.5506601Z   4550K .......... .......... .......... .......... .......... 31%  435M 0s
+2026-04-03T14:45:49.5507849Z   4600K .......... .......... .......... .......... .......... 31%  404M 0s
+2026-04-03T14:45:49.5509806Z   4650K .......... .......... .......... .......... .......... 31%  354M 0s
+2026-04-03T14:45:49.5511439Z   4700K .......... .......... .......... .......... .......... 32%  257M 0s
+2026-04-03T14:45:49.5512304Z   4750K .......... .......... .......... .......... .......... 32%  401M 0s
+2026-04-03T14:45:49.5514315Z   4800K .......... .......... .......... .......... .......... 32%  347M 0s
+2026-04-03T14:45:49.5514991Z   4850K .......... .......... .......... .......... .......... 33%  390M 0s
+2026-04-03T14:45:49.5516987Z   4900K .......... .......... .......... .......... .......... 33%  362M 0s
+2026-04-03T14:45:49.5517675Z   4950K .......... .......... .......... .......... .......... 33%  449M 0s
+2026-04-03T14:45:49.5518578Z   5000K .......... .......... .......... .......... .......... 34%  401M 0s
+2026-04-03T14:45:49.5520252Z   5050K .......... .......... .......... .......... .......... 34%  363M 0s
+2026-04-03T14:45:49.5521814Z   5100K .......... .......... .......... .......... .......... 34%  251M 0s
+2026-04-03T14:45:49.5522982Z   5150K .......... .......... .......... .......... .......... 35%  473M 0s
+2026-04-03T14:45:49.5524400Z   5200K .......... .......... .......... .......... .......... 35%  324M 0s
+2026-04-03T14:45:49.5525808Z   5250K .......... .......... .......... .......... .......... 35%  432M 0s
+2026-04-03T14:45:49.5526486Z   5300K .......... .......... .......... .......... .......... 36%  480M 0s
+2026-04-03T14:45:49.5528009Z   5350K .......... .......... .......... .......... .......... 36%  414M 0s
+2026-04-03T14:45:49.5529092Z   5400K .......... .......... .......... .......... .......... 36%  374M 0s
+2026-04-03T14:45:49.5530646Z   5450K .......... .......... .......... .......... .......... 37%  334M 0s
+2026-04-03T14:45:49.5532060Z   5500K .......... .......... .......... .......... .......... 37%  311M 0s
+2026-04-03T14:45:49.5534188Z   5550K .......... .......... .......... .......... .......... 37%  420M 0s
+2026-04-03T14:45:49.5534811Z   5600K .......... .......... .......... .......... .......... 38%  325M 0s
+2026-04-03T14:45:49.5536106Z   5650K .......... .......... .......... .......... .......... 38%  368M 0s
+2026-04-03T14:45:49.5537386Z   5700K .......... .......... .......... .......... .......... 39%  414M 0s
+2026-04-03T14:45:49.5539229Z   5750K .......... .......... .......... .......... .......... 39%  254M 0s
+2026-04-03T14:45:49.5541916Z   5800K .......... .......... .......... .......... .......... 39%  300M 0s
+2026-04-03T14:45:49.5542622Z   5850K .......... .......... .......... .......... .......... 40%  322M 0s
+2026-04-03T14:45:49.5544879Z   5900K .......... .......... .......... .......... .......... 40%  218M 0s
+2026-04-03T14:45:49.5547235Z   5950K .......... .......... .......... .......... .......... 40%  303M 0s
+2026-04-03T14:45:49.5548249Z   6000K .......... .......... .......... .......... .......... 41%  334M 0s
+2026-04-03T14:45:49.5549904Z   6050K .......... .......... .......... .......... .......... 41%  269M 0s
+2026-04-03T14:45:49.5561050Z   6100K .......... .......... .......... .......... .......... 41%  320M 0s
+2026-04-03T14:45:49.5630350Z   6150K .......... .......... .......... .......... .......... 42%  464M 0s
+2026-04-03T14:45:49.5631054Z   6200K .......... .......... .......... .......... .......... 42%  432M 0s
+2026-04-03T14:45:49.5631742Z   6250K .......... .......... .......... .......... .......... 42%  510M 0s
+2026-04-03T14:45:49.5632444Z   6300K .......... .......... .......... .......... .......... 43%  387M 0s
+2026-04-03T14:45:49.5633124Z   6350K .......... .......... .......... .......... .......... 43%  485M 0s
+2026-04-03T14:45:49.5633772Z   6400K .......... .......... .......... .......... .......... 43%  451M 0s
+2026-04-03T14:45:49.5634421Z   6450K .......... .......... .......... .......... .......... 44%  455M 0s
+2026-04-03T14:45:49.5635060Z   6500K .......... .......... .......... .......... .......... 44%  501M 0s
+2026-04-03T14:45:49.5635712Z   6550K .......... .......... .......... .......... .......... 44%  286M 0s
+2026-04-03T14:45:49.5636365Z   6600K .......... .......... .......... .......... .......... 45%  311M 0s
+2026-04-03T14:45:49.5637012Z   6650K .......... .......... .......... .......... .......... 45%  381M 0s
+2026-04-03T14:45:49.5637699Z   6700K .......... .......... .......... .......... .......... 45%  205M 0s
+2026-04-03T14:45:49.5638348Z   6750K .......... .......... .......... .......... .......... 46%  350M 0s
+2026-04-03T14:45:49.5638991Z   6800K .......... .......... .......... .......... .......... 46%  373M 0s
+2026-04-03T14:45:49.5639826Z   6850K .......... .......... .......... .......... .......... 46%  275M 0s
+2026-04-03T14:45:49.5640502Z   6900K .......... .......... .......... .......... .......... 47%  350M 0s
+2026-04-03T14:45:49.5641174Z   6950K .......... .......... .......... .......... .......... 47%  270M 0s
+2026-04-03T14:45:49.5641832Z   7000K .......... .......... .......... .......... .......... 47%  391M 0s
+2026-04-03T14:45:49.5642477Z   7050K .......... .......... .......... .......... .......... 48%  394M 0s
+2026-04-03T14:45:49.5643110Z   7100K .......... .......... .......... .......... .......... 48%  269M 0s
+2026-04-03T14:45:49.5643740Z   7150K .......... .......... .......... .......... .......... 48%  351M 0s
+2026-04-03T14:45:49.5644396Z   7200K .......... .......... .......... .......... .......... 49%  292M 0s
+2026-04-03T14:45:49.5645046Z   7250K .......... .......... .......... .......... .......... 49%  395M 0s
+2026-04-03T14:45:49.5645851Z   7300K .......... .......... .......... .......... .......... 49%  351M 0s
+2026-04-03T14:45:49.5646494Z   7350K .......... .......... .......... .......... .......... 50%  364M 0s
+2026-04-03T14:45:49.5647142Z   7400K .......... .......... .......... .......... .......... 50%  332M 0s
+2026-04-03T14:45:49.5647788Z   7450K .......... .......... .......... .......... .......... 50%  357M 0s
+2026-04-03T14:45:49.5648412Z   7500K .......... .......... .......... .......... .......... 51%  297M 0s
+2026-04-03T14:45:49.5649056Z   7550K .......... .......... .......... .......... .......... 51%  290M 0s
+2026-04-03T14:45:49.5649910Z   7600K .......... .......... .......... .......... .......... 51%  362M 0s
+2026-04-03T14:45:49.5650565Z   7650K .......... .......... .......... .......... .......... 52%  390M 0s
+2026-04-03T14:45:49.5651371Z   7700K .......... .......... .......... .......... .......... 52%  379M 0s
+2026-04-03T14:45:49.5652025Z   7750K .......... .......... .......... .......... .......... 52%  384M 0s
+2026-04-03T14:45:49.5652670Z   7800K .......... .......... .......... .......... .......... 53%  383M 0s
+2026-04-03T14:45:49.5653306Z   7850K .......... .......... .......... .......... .......... 53%  319M 0s
+2026-04-03T14:45:49.5653952Z   7900K .......... .......... .......... .......... .......... 53%  231M 0s
+2026-04-03T14:45:49.5654593Z   7950K .......... .......... .......... .......... .......... 54%  219M 0s
+2026-04-03T14:45:49.5655238Z   8000K .......... .......... .......... .......... .......... 54%  356M 0s
+2026-04-03T14:45:49.5655892Z   8050K .......... .......... .......... .......... .......... 54%  339M 0s
+2026-04-03T14:45:49.5656537Z   8100K .......... .......... .......... .......... .......... 55%  364M 0s
+2026-04-03T14:45:49.5657186Z   8150K .......... .......... .......... .......... .......... 55%  384M 0s
+2026-04-03T14:45:49.5657831Z   8200K .......... .......... .......... .......... .......... 55%  281M 0s
+2026-04-03T14:45:49.5658484Z   8250K .......... .......... .......... .......... .......... 56%  341M 0s
+2026-04-03T14:45:49.5659126Z   8300K .......... .......... .......... .......... .......... 56%  264M 0s
+2026-04-03T14:45:49.5660029Z   8350K .......... .......... .......... .......... .......... 56%  353M 0s
+2026-04-03T14:45:49.5660696Z   8400K .......... .......... .......... .......... .......... 57%  383M 0s
+2026-04-03T14:45:49.5661327Z   8450K .......... .......... .......... .......... .......... 57%  375M 0s
+2026-04-03T14:45:49.5661972Z   8500K .......... .......... .......... .......... .......... 58%  386M 0s
+2026-04-03T14:45:49.5662615Z   8550K .......... .......... .......... .......... .......... 58%  282M 0s
+2026-04-03T14:45:49.5663272Z   8600K .......... .......... .......... .......... .......... 58%  315M 0s
+2026-04-03T14:45:49.5663944Z   8650K .......... .......... .......... .......... .......... 59%  325M 0s
+2026-04-03T14:45:49.5664590Z   8700K .......... .......... .......... .......... .......... 59%  234M 0s
+2026-04-03T14:45:49.5665235Z   8750K .......... .......... .......... .......... .......... 59%  339M 0s
+2026-04-03T14:45:49.5665884Z   8800K .......... .......... .......... .......... .......... 60%  306M 0s
+2026-04-03T14:45:49.5666555Z   8850K .......... .......... .......... .......... .......... 60%  269M 0s
+2026-04-03T14:45:49.5667183Z   8900K .......... .......... .......... .......... .......... 60%  288M 0s
+2026-04-03T14:45:49.5667769Z   8950K .......... .......... .......... .......... .......... 61%  289M 0s
+2026-04-03T14:45:49.5668357Z   9000K .......... .......... .......... .......... .......... 61%  293M 0s
+2026-04-03T14:45:49.5668946Z   9050K .......... .......... .......... .......... .......... 61%  312M 0s
+2026-04-03T14:45:49.5669789Z   9100K .......... .......... .......... .......... .......... 62%  248M 0s
+2026-04-03T14:45:49.5670461Z   9150K .......... .......... .......... .......... .......... 62%  234M 0s
+2026-04-03T14:45:49.5671115Z   9200K .......... .......... .......... .......... .......... 62%  297M 0s
+2026-04-03T14:45:49.5671927Z   9250K .......... .......... .......... .......... .......... 63%  325M 0s
+2026-04-03T14:45:49.5672642Z   9300K .......... .......... .......... .......... .......... 63%  345M 0s
+2026-04-03T14:45:49.5673300Z   9350K .......... .......... .......... .......... .......... 63%  334M 0s
+2026-04-03T14:45:49.5673941Z   9400K .......... .......... .......... .......... .......... 64%  360M 0s
+2026-04-03T14:45:49.5674594Z   9450K .......... .......... .......... .......... .......... 64%  281M 0s
+2026-04-03T14:45:49.5675240Z   9500K .......... .......... .......... .......... .......... 64%  251M 0s
+2026-04-03T14:45:49.5675891Z   9550K .......... .......... .......... .......... .......... 65%  314M 0s
+2026-04-03T14:45:49.5676545Z   9600K .......... .......... .......... .......... .......... 65%  339M 0s
+2026-04-03T14:45:49.5677380Z   9650K .......... .......... .......... .......... .......... 65%  322M 0s
+2026-04-03T14:45:49.5678022Z   9700K .......... .......... .......... .......... .......... 66%  309M 0s
+2026-04-03T14:45:49.5678686Z   9750K .......... .......... .......... .......... .......... 66%  292M 0s
+2026-04-03T14:45:49.5679340Z   9800K .......... .......... .......... .......... .......... 66%  226M 0s
+2026-04-03T14:45:49.5680170Z   9850K .......... .......... .......... .......... .......... 67%  289M 0s
+2026-04-03T14:45:49.5680829Z   9900K .......... .......... .......... .......... .......... 67%  229M 0s
+2026-04-03T14:45:49.5681471Z   9950K .......... .......... .......... .......... .......... 67%  120M 0s
+2026-04-03T14:45:49.5682110Z  10000K .......... .......... .......... .......... .......... 68%  329M 0s
+2026-04-03T14:45:49.5682763Z  10050K .......... .......... .......... .......... .......... 68%  282M 0s
+2026-04-03T14:45:49.5683406Z  10100K .......... .......... .......... .......... .......... 68%  292M 0s
+2026-04-03T14:45:49.5684075Z  10150K .......... .......... .......... .......... .......... 69%  283M 0s
+2026-04-03T14:45:49.5684743Z  10200K .......... .......... .......... .......... .......... 69%  262M 0s
+2026-04-03T14:45:49.5690787Z  10250K .......... .......... .......... .......... .......... 69%  279M 0s
+2026-04-03T14:45:49.5691773Z  10300K .......... .......... .......... .......... .......... 70%  270M 0s
+2026-04-03T14:45:49.5692711Z  10350K .......... .......... .......... .......... .......... 70%  327M 0s
+2026-04-03T14:45:49.5693349Z  10400K .......... .......... .......... .......... .......... 70%  356M 0s
+2026-04-03T14:45:49.5693983Z  10450K .......... .......... .......... .......... .......... 71%  357M 0s
+2026-04-03T14:45:49.5695033Z  10500K .......... .......... .......... .......... .......... 71%  434M 0s
+2026-04-03T14:45:49.5695681Z  10550K .......... .......... .......... .......... .......... 71%  486M 0s
+2026-04-03T14:45:49.5696884Z  10600K .......... .......... .......... .......... .......... 72%  316M 0s
+2026-04-03T14:45:49.5697527Z  10650K .......... .......... .......... .......... .......... 72%  239M 0s
+2026-04-03T14:45:49.5698160Z  10700K .......... .......... .......... .......... .......... 72%  259M 0s
+2026-04-03T14:45:49.5698908Z  10750K .......... .......... .......... .......... .......... 73%  314M 0s
+2026-04-03T14:45:49.5699726Z  10800K .......... .......... .......... .......... .......... 73%  318M 0s
+2026-04-03T14:45:49.5700994Z  10850K .......... .......... .......... .......... .......... 73%  322M 0s
+2026-04-03T14:45:49.5701742Z  10900K .......... .......... .......... .......... .......... 74%  267M 0s
+2026-04-03T14:45:49.5702886Z  10950K .......... .......... .......... .......... .......... 74%  295M 0s
+2026-04-03T14:45:49.5704349Z  11000K .......... .......... .......... .......... .......... 74%  350M 0s
+2026-04-03T14:45:49.5706833Z  11050K .......... .......... .......... .......... .......... 75%  284M 0s
+2026-04-03T14:45:49.5708152Z  11100K .......... .......... .......... .......... .......... 75%  234M 0s
+2026-04-03T14:45:49.5709998Z  11150K .......... .......... .......... .......... .......... 75%  305M 0s
+2026-04-03T14:45:49.5712090Z  11200K .......... .......... .......... .......... .......... 76%  270M 0s
+2026-04-03T14:45:49.5713299Z  11250K .......... .......... .......... .......... .......... 76%  295M 0s
+2026-04-03T14:45:49.5715023Z  11300K .......... .......... .......... .......... .......... 77%  306M 0s
+2026-04-03T14:45:49.5716338Z  11350K .......... .......... .......... .......... .......... 77%  328M 0s
+2026-04-03T14:45:49.5718183Z  11400K .......... .......... .......... .......... .......... 77%  303M 0s
+2026-04-03T14:45:49.5720438Z  11450K .......... .......... .......... .......... .......... 78%  325M 0s
+2026-04-03T14:45:49.5721819Z  11500K .......... .......... .......... .......... .......... 78%  216M 0s
+2026-04-03T14:45:49.5723141Z  11550K .......... .......... .......... .......... .......... 78%  330M 0s
+2026-04-03T14:45:49.5724589Z  11600K .......... .......... .......... .......... .......... 79%  350M 0s
+2026-04-03T14:45:49.5726298Z  11650K .......... .......... .......... .......... .......... 79%  304M 0s
+2026-04-03T14:45:49.5727914Z  11700K .......... .......... .......... .......... .......... 79%  282M 0s
+2026-04-03T14:45:49.5729983Z  11750K .......... .......... .......... .......... .......... 80%  350M 0s
+2026-04-03T14:45:49.5731151Z  11800K .......... .......... .......... .......... .......... 80%  268M 0s
+2026-04-03T14:45:49.5733557Z  11850K .......... .......... .......... .......... .......... 80%  328M 0s
+2026-04-03T14:45:49.5735149Z  11900K .......... .......... .......... .......... .......... 81%  221M 0s
+2026-04-03T14:45:49.5736360Z  11950K .......... .......... .......... .......... .......... 81%  318M 0s
+2026-04-03T14:45:49.5737877Z  12000K .......... .......... .......... .......... .......... 81%  333M 0s
+2026-04-03T14:45:49.5739725Z  12050K .......... .......... .......... .......... .......... 82%  287M 0s
+2026-04-03T14:45:49.5741203Z  12100K .......... .......... .......... .......... .......... 82%  293M 0s
+2026-04-03T14:45:49.5743109Z  12150K .......... .......... .......... .......... .......... 82%  287M 0s
+2026-04-03T14:45:49.5744407Z  12200K .......... .......... .......... .......... .......... 83%  324M 0s
+2026-04-03T14:45:49.5746633Z  12250K .......... .......... .......... .......... .......... 83%  316M 0s
+2026-04-03T14:45:49.5747993Z  12300K .......... .......... .......... .......... .......... 83%  234M 0s
+2026-04-03T14:45:49.5749684Z  12350K .......... .......... .......... .......... .......... 84%  320M 0s
+2026-04-03T14:45:49.5751895Z  12400K .......... .......... .......... .......... .......... 84%  243M 0s
+2026-04-03T14:45:49.5753484Z  12450K .......... .......... .......... .......... .......... 84%  311M 0s
+2026-04-03T14:45:49.5754727Z  12500K .......... .......... .......... .......... .......... 85%  312M 0s
+2026-04-03T14:45:49.5756431Z  12550K .......... .......... .......... .......... .......... 85%  312M 0s
+2026-04-03T14:45:49.5757905Z  12600K .......... .......... .......... .......... .......... 85%  330M 0s
+2026-04-03T14:45:49.5760165Z  12650K .......... .......... .......... .......... .......... 86%  304M 0s
+2026-04-03T14:45:49.5763116Z  12700K .......... .......... .......... .......... .......... 86%  175M 0s
+2026-04-03T14:45:49.5764076Z  12750K .......... .......... .......... .......... .......... 86%  322M 0s
+2026-04-03T14:45:49.5765343Z  12800K .......... .......... .......... .......... .......... 87%  290M 0s
+2026-04-03T14:45:49.5766808Z  12850K .......... .......... .......... .......... .......... 87%  350M 0s
+2026-04-03T14:45:49.5768155Z  12900K .......... .......... .......... .......... .......... 87%  338M 0s
+2026-04-03T14:45:49.5770335Z  12950K .......... .......... .......... .......... .......... 88%  346M 0s
+2026-04-03T14:45:49.5771458Z  13000K .......... .......... .......... .......... .......... 88%  271M 0s
+2026-04-03T14:45:49.5773677Z  13050K .......... .......... .......... .......... .......... 88%  328M 0s
+2026-04-03T14:45:49.5774947Z  13100K .......... .......... .......... .......... .......... 89%  233M 0s
+2026-04-03T14:45:49.5777103Z  13150K .......... .......... .......... .......... .......... 89%  302M 0s
+2026-04-03T14:45:49.5778161Z  13200K .......... .......... .......... .......... .......... 89%  314M 0s
+2026-04-03T14:45:49.5779855Z  13250K .......... .......... .......... .......... .......... 90%  335M 0s
+2026-04-03T14:45:49.5781443Z  13300K .......... .......... .......... .......... .......... 90%  279M 0s
+2026-04-03T14:45:49.5783443Z  13350K .......... .......... .......... .......... .......... 90%  312M 0s
+2026-04-03T14:45:49.5784600Z  13400K .......... .......... .......... .......... .......... 91%  297M 0s
+2026-04-03T14:45:49.5787265Z  13450K .......... .......... .......... .......... .......... 91%  324M 0s
+2026-04-03T14:45:49.5788066Z  13500K .......... .......... .......... .......... .......... 91%  238M 0s
+2026-04-03T14:45:49.5789915Z  13550K .......... .......... .......... .......... .......... 92%  310M 0s
+2026-04-03T14:45:49.5791636Z  13600K .......... .......... .......... .......... .......... 92%  271M 0s
+2026-04-03T14:45:49.5792907Z  13650K .......... .......... .......... .......... .......... 92%  328M 0s
+2026-04-03T14:45:49.5794478Z  13700K .......... .......... .......... .......... .......... 93%  357M 0s
+2026-04-03T14:45:49.5796252Z  13750K .......... .......... .......... .......... .......... 93%  286M 0s
+2026-04-03T14:45:49.5797640Z  13800K .......... .......... .......... .......... .......... 93%  316M 0s
+2026-04-03T14:45:49.5799873Z  13850K .......... .......... .......... .......... .......... 94%  319M 0s
+2026-04-03T14:45:49.5801330Z  13900K .......... .......... .......... .......... .......... 94%  224M 0s
+2026-04-03T14:45:49.5803083Z  13950K .......... .......... .......... .......... .......... 94%  313M 0s
+2026-04-03T14:45:49.5804766Z  14000K .......... .......... .......... .......... .......... 95%  287M 0s
+2026-04-03T14:45:49.5806062Z  14050K .......... .......... .......... .......... .......... 95%  312M 0s
+2026-04-03T14:45:49.5808171Z  14100K .......... .......... .......... .......... .......... 96%  320M 0s
+2026-04-03T14:45:49.5809344Z  14150K .......... .......... .......... .......... .......... 96%  289M 0s
+2026-04-03T14:45:49.5811175Z  14200K .......... .......... .......... .......... .......... 96%  297M 0s
+2026-04-03T14:45:49.5813404Z  14250K .......... .......... .......... .......... .......... 97%  293M 0s
+2026-04-03T14:45:49.5814893Z  14300K .......... .......... .......... .......... .......... 97%  224M 0s
+2026-04-03T14:45:49.5816688Z  14350K .......... .......... .......... .......... .......... 97%  301M 0s
+2026-04-03T14:45:49.5818312Z  14400K .......... .......... .......... .......... .......... 98%  298M 0s
+2026-04-03T14:45:49.5819461Z  14450K .......... .......... .......... .......... .......... 98%  337M 0s
+2026-04-03T14:45:49.5821351Z  14500K .......... .......... .......... .......... .......... 98%  297M 0s
+2026-04-03T14:45:49.5822629Z  14550K .......... .......... .......... .......... .......... 99%  337M 0s
+2026-04-03T14:45:49.5824150Z  14600K .......... .......... .......... .......... .......... 99%  349M 0s
+2026-04-03T14:45:49.5826144Z  14650K .......... .......... .......... .......... .......... 99%  333M 0s
+2026-04-03T14:45:49.5827004Z  14700K .......... .......... .......... ........             100%  264M=0.05s
+2026-04-03T14:45:49.5827439Z 
+2026-04-03T14:45:49.5828114Z 2026-04-03 14:45:49 (265 MB/s) - ‘appimagetool’ saved [15092216/15092216]
+2026-04-03T14:45:49.5828737Z 
+2026-04-03T14:45:49.8151063Z 
+2026-04-03T14:45:49.8151076Z 
+2026-04-03T14:45:49.8802242Z ⠋ Checking for updates...
+2026-04-03T14:45:49.9689508Z ⠙ Checking for updates...
+2026-04-03T14:45:50.0055574Z ⠹ Checking for updates...
+2026-04-03T14:45:50.0104893Z                                  
+2026-04-03T14:45:50.0105592Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T14:45:50.0106062Z 
+2026-04-03T14:45:50.0309980Z 
+2026-04-03T14:45:50.0312563Z ===> [1mReleasing[0m release:[1mlinux-deb[0m
+2026-04-03T14:45:50.0421305Z $ flutter clean
+2026-04-03T14:45:50.1901651Z Deleting .dart_tool...                                               0ms
+2026-04-03T14:45:50.1911150Z Deleting ephemeral...                                                0ms
+2026-04-03T14:45:50.1918141Z Deleting ephemeral...                                                0ms
+2026-04-03T14:45:50.1926170Z Deleting ephemeral...                                                0ms
+2026-04-03T14:45:50.1930488Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T14:45:50.2344352Z Packaging mapia 1.0.0+1 as deb:
+2026-04-03T14:45:50.2461300Z $ /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter/bin/flutter build linux --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T14:45:50.4123324Z Resolving dependencies...
+2026-04-03T14:45:50.6494200Z Downloading packages...
+2026-04-03T14:45:50.7066762Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T14:45:50.7067468Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T14:45:50.7067998Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T14:45:50.7068522Z   build 2.5.4 (4.0.5 available)
+2026-04-03T14:45:50.7068998Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T14:45:50.7069496Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T14:45:50.7070264Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T14:45:50.7070780Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T14:45:50.7071320Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T14:45:50.7071985Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T14:45:50.7072699Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T14:45:50.7073337Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T14:45:50.7073809Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T14:45:50.7074291Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T14:45:50.7074838Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T14:45:50.7075402Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T14:45:50.7075978Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T14:45:50.7076552Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T14:45:50.7077093Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T14:45:50.7077644Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T14:45:50.7078154Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T14:45:50.7078643Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T14:45:50.7079184Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T14:45:50.7079938Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T14:45:50.7080392Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T14:45:50.7080841Z   image 4.3.0 (4.8.0 available)
+2026-04-03T14:45:50.7081256Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T14:45:50.7081731Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T14:45:50.7082190Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T14:45:50.7082563Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T14:45:50.7082992Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T14:45:50.7083463Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T14:45:50.7083918Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T14:45:50.7084363Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T14:45:50.7084776Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T14:45:50.7085192Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T14:45:50.7085636Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T14:45:50.7086006Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T14:45:50.7086383Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T14:45:50.7086794Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T14:45:50.7087229Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T14:45:50.7087671Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T14:45:50.7088142Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T14:45:50.7088544Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T14:45:50.7088965Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T14:45:50.7089353Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T14:45:50.7091397Z Got dependencies!
+2026-04-03T14:45:50.7092185Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T14:45:50.7092881Z Try `flutter pub outdated` for more information.
+2026-04-03T14:46:39.9196145Z Building Linux application...                                   
+2026-04-03T14:46:39.9231986Z ✓ Built build/linux/x64/release/bundle/mapia
+2026-04-03T14:46:39.9430846Z {
+2026-04-03T14:46:39.9431121Z   "config": {
+2026-04-03T14:46:39.9431399Z     "mode": "release",
+2026-04-03T14:46:39.9431699Z     "arguments": {}
+2026-04-03T14:46:39.9431962Z   },
+2026-04-03T14:46:39.9432279Z   "outputDirectory": "build/linux/x64/release/bundle",
+2026-04-03T14:46:39.9432768Z   "duration": 49700,
+2026-04-03T14:46:39.9432978Z   "outputFiles": []
+2026-04-03T14:46:39.9433174Z }
+2026-04-03T14:46:39.9433466Z Successfully built Directory: 'build/linux/x64/release/bundle' in 49s
+2026-04-03T14:46:39.9771376Z $ mkdir -p dist/1.0.0+1/mapia-1.0.0+1-linux_deb/DEBIAN dist/1.0.0+1/mapia-1.0.0+1-linux_deb/usr/share/mapia dist/1.0.0+1/mapia-1.0.0+1-linux_deb/usr/share/applications
+2026-04-03T14:46:39.9842487Z $ chmod +x dist/1.0.0+1/mapia-1.0.0+1-linux_deb/DEBIAN/postinst dist/1.0.0+1/mapia-1.0.0+1-linux_deb/DEBIAN/postrm
+2026-04-03T14:46:39.9882361Z $ cp -fr build/linux/x64/release/bundle/. dist/1.0.0+1/mapia-1.0.0+1-linux_deb/usr/share/mapia/
+2026-04-03T14:46:40.0153298Z $ dpkg-deb --build --root-owner-group dist/1.0.0+1/mapia-1.0.0+1-linux_deb dist/1.0.0+1/mapia-1.0.0+1-linux.deb
+2026-04-03T14:46:40.0166475Z dpkg-deb: building package 'mapia' in 'dist/1.0.0+1/mapia-1.0.0+1-linux.deb'.
+2026-04-03T14:46:50.3433846Z {
+2026-04-03T14:46:50.3434176Z   "config": {
+2026-04-03T14:46:50.3434487Z     "CONTROL": {
+2026-04-03T14:46:50.3434892Z       "Maintainer": "Allen San Diego <allensandiego@example.com>",
+2026-04-03T14:46:50.3435233Z       "Package": "mapia",
+2026-04-03T14:46:50.3435476Z       "Version": "1.0.0+1",
+2026-04-03T14:46:50.3435686Z       "Section": "x11",
+2026-04-03T14:46:50.3435894Z       "Priority": "optional",
+2026-04-03T14:46:50.3436119Z       "Architecture": "amd64",
+2026-04-03T14:46:50.3436352Z       "Installed-Size": 250000,
+2026-04-03T14:46:50.3436635Z       "Description": "A beautiful REST API client for desktop."
+2026-04-03T14:46:50.3436936Z     },
+2026-04-03T14:46:50.3437097Z     "DESKTOP": {
+2026-04-03T14:46:50.3437294Z       "Type": "Application",
+2026-04-03T14:46:50.3437512Z       "Version": "1.0.0+1",
+2026-04-03T14:46:50.3437709Z       "Name": "Mapia",
+2026-04-03T14:46:50.3437895Z       "Icon": "mapia",
+2026-04-03T14:46:50.3438081Z       "Exec": "mapia %U"
+2026-04-03T14:46:50.3438273Z     }
+2026-04-03T14:46:50.3438423Z   },
+2026-04-03T14:46:50.3438578Z   "artifacts": [
+2026-04-03T14:46:50.3438740Z     {
+2026-04-03T14:46:50.3438900Z       "type": "file",
+2026-04-03T14:46:50.3439128Z       "path": "dist/1.0.0+1/mapia-1.0.0+1-linux.deb"
+2026-04-03T14:46:50.3439394Z     }
+2026-04-03T14:46:50.3439540Z   ]
+2026-04-03T14:46:50.3439953Z }
+2026-04-03T14:46:50.3440274Z Successfully packaged dist/1.0.0+1/mapia-1.0.0+1-linux.deb
+2026-04-03T14:46:50.3440701Z 
+2026-04-03T14:46:50.3441293Z ===> [1mReleasing[0m release:[1mlinux-appimage[0m
+2026-04-03T14:46:50.3442262Z Packaging mapia 1.0.0+1 as appimage:
+2026-04-03T14:46:50.3482701Z $ /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter/bin/flutter build linux --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T14:46:52.8997385Z Building Linux application...                                   
+2026-04-03T14:46:52.9024554Z ✓ Built build/linux/x64/release/bundle/mapia
+2026-04-03T14:46:52.9199244Z {
+2026-04-03T14:46:52.9199835Z   "config": {
+2026-04-03T14:46:52.9200162Z     "mode": "release",
+2026-04-03T14:46:52.9200504Z     "arguments": {}
+2026-04-03T14:46:52.9200796Z   },
+2026-04-03T14:46:52.9201160Z   "outputDirectory": "build/linux/x64/release/bundle",
+2026-04-03T14:46:52.9201507Z   "duration": 2571,
+2026-04-03T14:46:52.9201701Z   "outputFiles": []
+2026-04-03T14:46:52.9201877Z }
+2026-04-03T14:46:52.9202145Z Successfully built Directory: 'build/linux/x64/release/bundle' in 2s
+2026-04-03T14:46:52.9341066Z $ cp -r build/linux/x64/release/bundle dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir
+2026-04-03T14:46:52.9610589Z $ chmod +x dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/AppRun
+2026-04-03T14:46:52.9667083Z $ mkdir -p dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/share/icons/hicolor/128x128/apps dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/share/icons/hicolor/256x256/apps
+2026-04-03T14:46:52.9723312Z $ mkdir -p dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/lib
+2026-04-03T14:46:52.9767980Z $ ldd -d dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/lib/libflutter_linux_gtk.so
+2026-04-03T14:46:53.0662552Z 	linux-vdso.so.1 (0x00007f3ed34b0000)
+2026-04-03T14:46:53.0663191Z 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f3ed3498000)
+2026-04-03T14:46:53.0664406Z 	libgtk-3.so.0 => /lib/x86_64-linux-gnu/libgtk-3.so.0 (0x00007f3ed1c00000)
+2026-04-03T14:46:53.0665248Z 	libgdk-3.so.0 => /lib/x86_64-linux-gnu/libgdk-3.so.0 (0x00007f3ed1b05000)
+2026-04-03T14:46:53.0666184Z 	libpangocairo-1.0.so.0 => /lib/x86_64-linux-gnu/libpangocairo-1.0.so.0 (0x00007f3ed3487000)
+2026-04-03T14:46:53.0667185Z 	libpango-1.0.so.0 => /lib/x86_64-linux-gnu/libpango-1.0.so.0 (0x00007f3ed341c000)
+2026-04-03T14:46:53.0667946Z 	libatk-1.0.so.0 => /lib/x86_64-linux-gnu/libatk-1.0.so.0 (0x00007f3ed33f0000)
+2026-04-03T14:46:53.0668499Z 	libcairo.so.2 => /lib/x86_64-linux-gnu/libcairo.so.2 (0x00007f3ed19c1000)
+2026-04-03T14:46:53.0669033Z 	libgio-2.0.so.0 => /lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007f3ed17f1000)
+2026-04-03T14:46:53.0669858Z 	libgobject-2.0.so.0 => /lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007f3ed178e000)
+2026-04-03T14:46:53.0670423Z 	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007f3ed1645000)
+2026-04-03T14:46:53.0670951Z 	libepoxy.so.0 => /lib/x86_64-linux-gnu/libepoxy.so.0 (0x00007f3ed1522000)
+2026-04-03T14:46:53.0671510Z 	libfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x00007f3ed14d1000)
+2026-04-03T14:46:53.0672069Z 	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f3ed33e9000)
+2026-04-03T14:46:53.0672549Z 	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f3ed13e8000)
+2026-04-03T14:46:53.0672969Z 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3ed1000000)
+2026-04-03T14:46:53.0673352Z 	/lib64/ld-linux-x86-64.so.2 (0x00007f3ed34b2000)
+2026-04-03T14:46:53.0673808Z 	libgmodule-2.0.so.0 => /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007f3ed33e2000)
+2026-04-03T14:46:53.0674367Z 	libharfbuzz.so.0 => /lib/x86_64-linux-gnu/libharfbuzz.so.0 (0x00007f3ed12db000)
+2026-04-03T14:46:53.0674930Z 	libpangoft2-1.0.so.0 => /lib/x86_64-linux-gnu/libpangoft2-1.0.so.0 (0x00007f3ed23e5000)
+2026-04-03T14:46:53.0675488Z 	libfribidi.so.0 => /lib/x86_64-linux-gnu/libfribidi.so.0 (0x00007f3ed12bd000)
+2026-04-03T14:46:53.0676091Z 	libcairo-gobject.so.2 => /lib/x86_64-linux-gnu/libcairo-gobject.so.2 (0x00007f3ed33d4000)
+2026-04-03T14:46:53.0676722Z 	libgdk_pixbuf-2.0.so.0 => /lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0 (0x00007f3ed128f000)
+2026-04-03T14:46:53.0677263Z 	libXi.so.6 => /lib/x86_64-linux-gnu/libXi.so.6 (0x00007f3ed23d2000)
+2026-04-03T14:46:53.0677710Z 	libX11.so.6 => /lib/x86_64-linux-gnu/libX11.so.6 (0x00007f3ed0ec3000)
+2026-04-03T14:46:53.0678244Z 	libatk-bridge-2.0.so.0 => /lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0 (0x00007f3ed1253000)
+2026-04-03T14:46:53.0678819Z 	libXfixes.so.3 => /lib/x86_64-linux-gnu/libXfixes.so.3 (0x00007f3ed124b000)
+2026-04-03T14:46:53.0679338Z 	libxkbcommon.so.0 => /lib/x86_64-linux-gnu/libxkbcommon.so.0 (0x00007f3ed0e7a000)
+2026-04-03T14:46:53.0680096Z 	libwayland-client.so.0 => /lib/x86_64-linux-gnu/libwayland-client.so.0 (0x00007f3ed123b000)
+2026-04-03T14:46:53.0680658Z 	libwayland-cursor.so.0 => /lib/x86_64-linux-gnu/libwayland-cursor.so.0 (0x00007f3ed1231000)
+2026-04-03T14:46:53.0681253Z 	libwayland-egl.so.1 => /lib/x86_64-linux-gnu/libwayland-egl.so.1 (0x00007f3ed23cd000)
+2026-04-03T14:46:53.0681922Z 	libXext.so.6 => /lib/x86_64-linux-gnu/libXext.so.6 (0x00007f3ed121d000)
+2026-04-03T14:46:53.0682371Z 	libXcursor.so.1 => /lib/x86_64-linux-gnu/libXcursor.so.1 (0x00007f3ed0e6e000)
+2026-04-03T14:46:53.0682831Z 	libXdamage.so.1 => /lib/x86_64-linux-gnu/libXdamage.so.1 (0x00007f3ed1218000)
+2026-04-03T14:46:53.0683313Z 	libXcomposite.so.1 => /lib/x86_64-linux-gnu/libXcomposite.so.1 (0x00007f3ed1213000)
+2026-04-03T14:46:53.0683789Z 	libXrandr.so.2 => /lib/x86_64-linux-gnu/libXrandr.so.2 (0x00007f3ed0e61000)
+2026-04-03T14:46:53.0684236Z 	libXinerama.so.1 => /lib/x86_64-linux-gnu/libXinerama.so.1 (0x00007f3ed0e5c000)
+2026-04-03T14:46:53.0684682Z 	libthai.so.0 => /lib/x86_64-linux-gnu/libthai.so.0 (0x00007f3ed0e51000)
+2026-04-03T14:46:53.0685075Z 	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f3ed0e35000)
+2026-04-03T14:46:53.0685495Z 	libpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x00007f3ed0dfd000)
+2026-04-03T14:46:53.0686086Z 	libfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007f3ed0d31000)
+2026-04-03T14:46:53.0686560Z 	libXrender.so.1 => /lib/x86_64-linux-gnu/libXrender.so.1 (0x00007f3ed0d23000)
+2026-04-03T14:46:53.0686991Z 	libxcb.so.1 => /lib/x86_64-linux-gnu/libxcb.so.1 (0x00007f3ed0cfa000)
+2026-04-03T14:46:53.0687468Z 	libxcb-render.so.0 => /lib/x86_64-linux-gnu/libxcb-render.so.0 (0x00007f3ed0ceb000)
+2026-04-03T14:46:53.0687946Z 	libxcb-shm.so.0 => /lib/x86_64-linux-gnu/libxcb-shm.so.0 (0x00007f3ed0ce6000)
+2026-04-03T14:46:53.0688417Z 	libpixman-1.so.0 => /lib/x86_64-linux-gnu/libpixman-1.so.0 (0x00007f3ed0c37000)
+2026-04-03T14:46:53.0688874Z 	libmount.so.1 => /lib/x86_64-linux-gnu/libmount.so.1 (0x00007f3ed0be8000)
+2026-04-03T14:46:53.0689313Z 	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f3ed0bbb000)
+2026-04-03T14:46:53.0689949Z 	libffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007f3ed0baf000)
+2026-04-03T14:46:53.0690376Z 	libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f3ed0b15000)
+2026-04-03T14:46:53.0690812Z 	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007f3ed0ae9000)
+2026-04-03T14:46:53.0691274Z 	libgraphite2.so.3 => /lib/x86_64-linux-gnu/libgraphite2.so.3 (0x00007f3ed0ac1000)
+2026-04-03T14:46:53.0691729Z 	libjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x00007f3ed0a3e000)
+2026-04-03T14:46:53.0692148Z 	libatspi.so.0 => /lib/x86_64-linux-gnu/libatspi.so.0 (0x00007f3ed0a04000)
+2026-04-03T14:46:53.0692580Z 	libdbus-1.so.3 => /lib/x86_64-linux-gnu/libdbus-1.so.3 (0x00007f3ed09b5000)
+2026-04-03T14:46:53.0693016Z 	libdatrie.so.1 => /lib/x86_64-linux-gnu/libdatrie.so.1 (0x00007f3ed09aa000)
+2026-04-03T14:46:53.0693441Z 	libbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007f3ed0996000)
+2026-04-03T14:46:53.0693887Z 	libbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007f3ed0988000)
+2026-04-03T14:46:53.0694330Z 	libXau.so.6 => /lib/x86_64-linux-gnu/libXau.so.6 (0x00007f3ed0982000)
+2026-04-03T14:46:53.0694745Z 	libXdmcp.so.6 => /lib/x86_64-linux-gnu/libXdmcp.so.6 (0x00007f3ed097a000)
+2026-04-03T14:46:53.0695169Z 	libblkid.so.1 => /lib/x86_64-linux-gnu/libblkid.so.1 (0x00007f3ed093d000)
+2026-04-03T14:46:53.0695606Z 	libsystemd.so.0 => /lib/x86_64-linux-gnu/libsystemd.so.0 (0x00007f3ed085d000)
+2026-04-03T14:46:53.0696105Z 	libbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007f3ed083a000)
+2026-04-03T14:46:53.0696583Z 	libbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007f3ed0824000)
+2026-04-03T14:46:53.0696969Z 	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007f3ed0817000)
+2026-04-03T14:46:53.0697395Z 	libgcrypt.so.20 => /lib/x86_64-linux-gnu/libgcrypt.so.20 (0x00007f3ed06cd000)
+2026-04-03T14:46:53.0697822Z 	liblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x00007f3ed06ab000)
+2026-04-03T14:46:53.0698226Z 	liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007f3ed0679000)
+2026-04-03T14:46:53.0698629Z 	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007f3ed05bf000)
+2026-04-03T14:46:53.0699028Z 	libmd.so.0 => /lib/x86_64-linux-gnu/libmd.so.0 (0x00007f3ed05b0000)
+2026-04-03T14:46:53.0699839Z 	libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007f3ed0589000)
+2026-04-03T14:46:53.0763297Z $ ldd -d dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/lib/liburl_launcher_linux_plugin.so
+2026-04-03T14:46:53.0793589Z $ ldd -d dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/lib/libscreen_retriever_plugin.so
+2026-04-03T14:46:53.0831604Z $ ldd -d dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/lib/libwindow_manager_plugin.so
+2026-04-03T14:46:53.0953084Z 	linux-vdso.so.1 (0x00007f7da4a53000)
+2026-04-03T14:46:53.0957191Z 	libflutter_linux_gtk.so => /home/runner/work/mapia/mapia/linux/flutter/ephemeral/libflutter_linux_gtk.so (0x00007f7da3a00000)
+2026-04-03T14:46:53.0961673Z 	libgtk-3.so.0 => /lib/x86_64-linux-gnu/libgtk-3.so.0 (0x00007f7da3200000)
+2026-04-03T14:46:53.0962505Z 	libgdk-3.so.0 => /lib/x86_64-linux-gnu/libgdk-3.so.0 (0x00007f7da3105000)
+2026-04-03T14:46:53.0963653Z 	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f7da4a1d000)
+2026-04-03T14:46:53.0964557Z 	libpangocairo-1.0.so.0 => /lib/x86_64-linux-gnu/libpangocairo-1.0.so.0 (0x00007f7da4a0c000)
+2026-04-03T14:46:53.0965536Z 	libpango-1.0.so.0 => /lib/x86_64-linux-gnu/libpango-1.0.so.0 (0x00007f7da309a000)
+2026-04-03T14:46:53.0966404Z 	libharfbuzz.so.0 => /lib/x86_64-linux-gnu/libharfbuzz.so.0 (0x00007f7da2f8d000)
+2026-04-03T14:46:53.0967233Z 	libatk-1.0.so.0 => /lib/x86_64-linux-gnu/libatk-1.0.so.0 (0x00007f7da49e0000)
+2026-04-03T14:46:53.0968111Z 	libcairo-gobject.so.2 => /lib/x86_64-linux-gnu/libcairo-gobject.so.2 (0x00007f7da49d4000)
+2026-04-03T14:46:53.0969019Z 	libcairo.so.2 => /lib/x86_64-linux-gnu/libcairo.so.2 (0x00007f7da2e49000)
+2026-04-03T14:46:53.0971484Z 	libgdk_pixbuf-2.0.so.0 => /lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0 (0x00007f7da39d2000)
+2026-04-03T14:46:53.0972467Z 	libgio-2.0.so.0 => /lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007f7da2c79000)
+2026-04-03T14:46:53.0973395Z 	libgobject-2.0.so.0 => /lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007f7da2c16000)
+2026-04-03T14:46:53.0974283Z 	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007f7da2acd000)
+2026-04-03T14:46:53.0975145Z 	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f7da2800000)
+2026-04-03T14:46:53.0975895Z 	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7da2717000)
+2026-04-03T14:46:53.0976587Z 	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7da2a9f000)
+2026-04-03T14:46:53.0977328Z 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7da2400000)
+2026-04-03T14:46:53.0978023Z 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7da39cd000)
+2026-04-03T14:46:53.0978761Z 	libepoxy.so.0 => /lib/x86_64-linux-gnu/libepoxy.so.0 (0x00007f7da22dd000)
+2026-04-03T14:46:53.0979920Z 	libfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x00007f7da26c6000)
+2026-04-03T14:46:53.0980840Z 	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f7da2a9a000)
+2026-04-03T14:46:53.0981577Z 	/lib64/ld-linux-x86-64.so.2 (0x00007f7da4a55000)
+2026-04-03T14:46:53.0982305Z 	libgmodule-2.0.so.0 => /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007f7da2a93000)
+2026-04-03T14:46:53.0983263Z 	libpangoft2-1.0.so.0 => /lib/x86_64-linux-gnu/libpangoft2-1.0.so.0 (0x00007f7da26ab000)
+2026-04-03T14:46:53.0984195Z 	libfribidi.so.0 => /lib/x86_64-linux-gnu/libfribidi.so.0 (0x00007f7da268d000)
+2026-04-03T14:46:53.0985010Z 	libXi.so.6 => /lib/x86_64-linux-gnu/libXi.so.6 (0x00007f7da2a80000)
+2026-04-03T14:46:53.0985767Z 	libX11.so.6 => /lib/x86_64-linux-gnu/libX11.so.6 (0x00007f7da21a0000)
+2026-04-03T14:46:53.0986663Z 	libatk-bridge-2.0.so.0 => /lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0 (0x00007f7da2651000)
+2026-04-03T14:46:53.0987593Z 	libXfixes.so.3 => /lib/x86_64-linux-gnu/libXfixes.so.3 (0x00007f7da2649000)
+2026-04-03T14:46:53.0988478Z 	libxkbcommon.so.0 => /lib/x86_64-linux-gnu/libxkbcommon.so.0 (0x00007f7da2157000)
+2026-04-03T14:46:53.0989529Z 	libwayland-client.so.0 => /lib/x86_64-linux-gnu/libwayland-client.so.0 (0x00007f7da2639000)
+2026-04-03T14:46:53.0991218Z 	libwayland-cursor.so.0 => /lib/x86_64-linux-gnu/libwayland-cursor.so.0 (0x00007f7da262f000)
+2026-04-03T14:46:53.0992268Z 	libwayland-egl.so.1 => /lib/x86_64-linux-gnu/libwayland-egl.so.1 (0x00007f7da262a000)
+2026-04-03T14:46:53.0993158Z 	libXext.so.6 => /lib/x86_64-linux-gnu/libXext.so.6 (0x00007f7da2614000)
+2026-04-03T14:46:53.0993980Z 	libXcursor.so.1 => /lib/x86_64-linux-gnu/libXcursor.so.1 (0x00007f7da214b000)
+2026-04-03T14:46:53.0994829Z 	libXdamage.so.1 => /lib/x86_64-linux-gnu/libXdamage.so.1 (0x00007f7da2146000)
+2026-04-03T14:46:53.0995728Z 	libXcomposite.so.1 => /lib/x86_64-linux-gnu/libXcomposite.so.1 (0x00007f7da2141000)
+2026-04-03T14:46:53.0996633Z 	libXrandr.so.2 => /lib/x86_64-linux-gnu/libXrandr.so.2 (0x00007f7da2134000)
+2026-04-03T14:46:53.0997496Z 	libXinerama.so.1 => /lib/x86_64-linux-gnu/libXinerama.so.1 (0x00007f7da212f000)
+2026-04-03T14:46:53.0998209Z 	libthai.so.0 => /lib/x86_64-linux-gnu/libthai.so.0 (0x00007f7da2124000)
+2026-04-03T14:46:53.0998680Z 	libfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007f7da2058000)
+2026-04-03T14:46:53.0999164Z 	libgraphite2.so.3 => /lib/x86_64-linux-gnu/libgraphite2.so.3 (0x00007f7da2032000)
+2026-04-03T14:46:53.1000303Z 	libpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x00007f7da1ffa000)
+2026-04-03T14:46:53.1000776Z 	libXrender.so.1 => /lib/x86_64-linux-gnu/libXrender.so.1 (0x00007f7da1fee000)
+2026-04-03T14:46:53.1001203Z 	libxcb.so.1 => /lib/x86_64-linux-gnu/libxcb.so.1 (0x00007f7da1fc3000)
+2026-04-03T14:46:53.1001654Z 	libxcb-render.so.0 => /lib/x86_64-linux-gnu/libxcb-render.so.0 (0x00007f7da1fb4000)
+2026-04-03T14:46:53.1002327Z 	libxcb-shm.so.0 => /lib/x86_64-linux-gnu/libxcb-shm.so.0 (0x00007f7da1faf000)
+2026-04-03T14:46:53.1002795Z 	libpixman-1.so.0 => /lib/x86_64-linux-gnu/libpixman-1.so.0 (0x00007f7da1f00000)
+2026-04-03T14:46:53.1003235Z 	libjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x00007f7da1e7d000)
+2026-04-03T14:46:53.1003662Z 	libmount.so.1 => /lib/x86_64-linux-gnu/libmount.so.1 (0x00007f7da1e2e000)
+2026-04-03T14:46:53.1004888Z 	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f7da1e01000)
+2026-04-03T14:46:53.1005652Z 	libffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007f7da1df5000)
+2026-04-03T14:46:53.1006080Z 	libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f7da1d5b000)
+2026-04-03T14:46:53.1006524Z 	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007f7da1d2f000)
+2026-04-03T14:46:53.1007103Z 	libatspi.so.0 => /lib/x86_64-linux-gnu/libatspi.so.0 (0x00007f7da1cf3000)
+2026-04-03T14:46:53.1007969Z 	libdbus-1.so.3 => /lib/x86_64-linux-gnu/libdbus-1.so.3 (0x00007f7da1ca4000)
+2026-04-03T14:46:53.1008474Z 	libdatrie.so.1 => /lib/x86_64-linux-gnu/libdatrie.so.1 (0x00007f7da1c9b000)
+2026-04-03T14:46:53.1008901Z 	libbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007f7da1c87000)
+2026-04-03T14:46:53.1009346Z 	libbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007f7da1c79000)
+2026-04-03T14:46:53.1010069Z 	libXau.so.6 => /lib/x86_64-linux-gnu/libXau.so.6 (0x00007f7da1c71000)
+2026-04-03T14:46:53.1010491Z 	libXdmcp.so.6 => /lib/x86_64-linux-gnu/libXdmcp.so.6 (0x00007f7da1c69000)
+2026-04-03T14:46:53.1010919Z 	libblkid.so.1 => /lib/x86_64-linux-gnu/libblkid.so.1 (0x00007f7da1c2e000)
+2026-04-03T14:46:53.1011350Z 	libsystemd.so.0 => /lib/x86_64-linux-gnu/libsystemd.so.0 (0x00007f7da1b4e000)
+2026-04-03T14:46:53.1011844Z 	libbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007f7da1b2b000)
+2026-04-03T14:46:53.1012312Z 	libbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007f7da1b13000)
+2026-04-03T14:46:53.1012709Z 	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007f7da1b06000)
+2026-04-03T14:46:53.1013138Z 	libgcrypt.so.20 => /lib/x86_64-linux-gnu/libgcrypt.so.20 (0x00007f7da19be000)
+2026-04-03T14:46:53.1013561Z 	liblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x00007f7da199c000)
+2026-04-03T14:46:53.1013968Z 	liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007f7da196a000)
+2026-04-03T14:46:53.1014635Z 	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007f7da18ae000)
+2026-04-03T14:46:53.1015689Z 	libmd.so.0 => /lib/x86_64-linux-gnu/libmd.so.0 (0x00007f7da189f000)
+2026-04-03T14:46:53.1016537Z 	libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007f7da187a000)
+2026-04-03T14:46:53.1017283Z 	linux-vdso.so.1 (0x00007f7290d60000)
+2026-04-03T14:46:53.1017987Z 	libflutter_linux_gtk.so => /home/runner/work/mapia/mapia/linux/flutter/ephemeral/libflutter_linux_gtk.so (0x00007f728fc00000)
+2026-04-03T14:46:53.1018620Z 	libgtk-3.so.0 => /lib/x86_64-linux-gnu/libgtk-3.so.0 (0x00007f728f400000)
+2026-04-03T14:46:53.1019031Z 	libgdk-3.so.0 => /lib/x86_64-linux-gnu/libgdk-3.so.0 (0x00007f7290c4c000)
+2026-04-03T14:46:53.1019421Z 	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f7290c30000)
+2026-04-03T14:46:53.1020216Z 	libpangocairo-1.0.so.0 => /lib/x86_64-linux-gnu/libpangocairo-1.0.so.0 (0x00007f7290c1f000)
+2026-04-03T14:46:53.1020945Z 	libpango-1.0.so.0 => /lib/x86_64-linux-gnu/libpango-1.0.so.0 (0x00007f728f395000)
+2026-04-03T14:46:53.1021417Z 	libharfbuzz.so.0 => /lib/x86_64-linux-gnu/libharfbuzz.so.0 (0x00007f728f288000)
+2026-04-03T14:46:53.1021865Z 	libatk-1.0.so.0 => /lib/x86_64-linux-gnu/libatk-1.0.so.0 (0x00007f7290bf3000)
+2026-04-03T14:46:53.1022380Z 	libcairo-gobject.so.2 => /lib/x86_64-linux-gnu/libcairo-gobject.so.2 (0x00007f7290be7000)
+2026-04-03T14:46:53.1022858Z 	libcairo.so.2 => /lib/x86_64-linux-gnu/libcairo.so.2 (0x00007f728f144000)
+2026-04-03T14:46:53.1023377Z 	libgdk_pixbuf-2.0.so.0 => /lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0 (0x00007f728fbd2000)
+2026-04-03T14:46:53.1023859Z 	libgio-2.0.so.0 => /lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007f728ef74000)
+2026-04-03T14:46:53.1024318Z 	libgobject-2.0.so.0 => /lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007f728ef11000)
+2026-04-03T14:46:53.1024815Z 	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007f728edc8000)
+2026-04-03T14:46:53.1025614Z 	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f728ea00000)
+2026-04-03T14:46:53.1026350Z 	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f728ecdf000)
+2026-04-03T14:46:53.1027065Z 	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f728ecb1000)
+2026-04-03T14:46:53.1027861Z 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f728e600000)
+2026-04-03T14:46:53.1028964Z 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7290bde000)
+2026-04-03T14:46:53.1029908Z 	libepoxy.so.0 => /lib/x86_64-linux-gnu/libepoxy.so.0 (0x00007f728e8dd000)
+2026-04-03T14:46:53.1030390Z 	libfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x00007f728e88c000)
+2026-04-03T14:46:53.1030899Z 	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f7290bd9000)
+2026-04-03T14:46:53.1031474Z 	/lib64/ld-linux-x86-64.so.2 (0x00007f7290d62000)
+2026-04-03T14:46:53.1032075Z 	libgmodule-2.0.so.0 => /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007f7290bd0000)
+2026-04-03T14:46:53.1032593Z 	libpangoft2-1.0.so.0 => /lib/x86_64-linux-gnu/libpangoft2-1.0.so.0 (0x00007f728ec96000)
+2026-04-03T14:46:53.1033073Z 	libfribidi.so.0 => /lib/x86_64-linux-gnu/libfribidi.so.0 (0x00007f728e86e000)
+2026-04-03T14:46:53.1033498Z 	libXi.so.6 => /lib/x86_64-linux-gnu/libXi.so.6 (0x00007f728ec83000)
+2026-04-03T14:46:53.1033882Z 	libX11.so.6 => /lib/x86_64-linux-gnu/libX11.so.6 (0x00007f728e4c3000)
+2026-04-03T14:46:53.1034342Z 	libatk-bridge-2.0.so.0 => /lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0 (0x00007f728e832000)
+2026-04-03T14:46:53.1034835Z 	libXfixes.so.3 => /lib/x86_64-linux-gnu/libXfixes.so.3 (0x00007f728e82a000)
+2026-04-03T14:46:53.1035287Z 	libxkbcommon.so.0 => /lib/x86_64-linux-gnu/libxkbcommon.so.0 (0x00007f728e47a000)
+2026-04-03T14:46:53.1035800Z 	libwayland-client.so.0 => /lib/x86_64-linux-gnu/libwayland-client.so.0 (0x00007f728e81a000)
+2026-04-03T14:46:53.1036344Z 	libwayland-cursor.so.0 => /lib/x86_64-linux-gnu/libwayland-cursor.so.0 (0x00007f728e470000)
+2026-04-03T14:46:53.1036873Z 	libwayland-egl.so.1 => /lib/x86_64-linux-gnu/libwayland-egl.so.1 (0x00007f728fbcd000)
+2026-04-03T14:46:53.1037328Z 	libXext.so.6 => /lib/x86_64-linux-gnu/libXext.so.6 (0x00007f728e45c000)
+2026-04-03T14:46:53.1037917Z 	libXcursor.so.1 => /lib/x86_64-linux-gnu/libXcursor.so.1 (0x00007f728e450000)
+2026-04-03T14:46:53.1038367Z 	libXdamage.so.1 => /lib/x86_64-linux-gnu/libXdamage.so.1 (0x00007f728e815000)
+2026-04-03T14:46:53.1038835Z 	libXcomposite.so.1 => /lib/x86_64-linux-gnu/libXcomposite.so.1 (0x00007f728e44b000)
+2026-04-03T14:46:53.1039294Z 	libXrandr.so.2 => /lib/x86_64-linux-gnu/libXrandr.so.2 (0x00007f728e43e000)
+2026-04-03T14:46:53.1040082Z 	libXinerama.so.1 => /lib/x86_64-linux-gnu/libXinerama.so.1 (0x00007f728e439000)
+2026-04-03T14:46:53.1040559Z 	libthai.so.0 => /lib/x86_64-linux-gnu/libthai.so.0 (0x00007f728e42e000)
+2026-04-03T14:46:53.1040991Z 	libfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007f728e362000)
+2026-04-03T14:46:53.1041457Z 	libgraphite2.so.3 => /lib/x86_64-linux-gnu/libgraphite2.so.3 (0x00007f728e33c000)
+2026-04-03T14:46:53.1042040Z 	libpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x00007f728e304000)
+2026-04-03T14:46:53.1042482Z 	libXrender.so.1 => /lib/x86_64-linux-gnu/libXrender.so.1 (0x00007f728e2f8000)
+2026-04-03T14:46:53.1042901Z 	libxcb.so.1 => /lib/x86_64-linux-gnu/libxcb.so.1 (0x00007f728e2cf000)
+2026-04-03T14:46:53.1043339Z 	libxcb-render.so.0 => /lib/x86_64-linux-gnu/libxcb-render.so.0 (0x00007f728e2c0000)
+2026-04-03T14:46:53.1044035Z 	libxcb-shm.so.0 => /lib/x86_64-linux-gnu/libxcb-shm.so.0 (0x00007f728e2bb000)
+2026-04-03T14:46:53.1044852Z 	libpixman-1.so.0 => /lib/x86_64-linux-gnu/libpixman-1.so.0 (0x00007f728e20c000)
+2026-04-03T14:46:53.1045632Z 	libjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x00007f728e189000)
+2026-04-03T14:46:53.1046406Z 	libmount.so.1 => /lib/x86_64-linux-gnu/libmount.so.1 (0x00007f728e13a000)
+2026-04-03T14:46:53.1047198Z 	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f728e10d000)
+2026-04-03T14:46:53.1047955Z 	libffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007f728e101000)
+2026-04-03T14:46:53.1048750Z 	libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f728e067000)
+2026-04-03T14:46:53.1049548Z 	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007f728e03b000)
+2026-04-03T14:46:53.1050599Z 	libatspi.so.0 => /lib/x86_64-linux-gnu/libatspi.so.0 (0x00007f728dfff000)
+2026-04-03T14:46:53.1051396Z 	libdbus-1.so.3 => /lib/x86_64-linux-gnu/libdbus-1.so.3 (0x00007f728dfb0000)
+2026-04-03T14:46:53.1052205Z 	libdatrie.so.1 => /lib/x86_64-linux-gnu/libdatrie.so.1 (0x00007f728dfa7000)
+2026-04-03T14:46:53.1053029Z 	libbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007f728df93000)
+2026-04-03T14:46:53.1053847Z 	libbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007f728df85000)
+2026-04-03T14:46:53.1054673Z 	libXau.so.6 => /lib/x86_64-linux-gnu/libXau.so.6 (0x00007f728df7d000)
+2026-04-03T14:46:53.1055426Z 	libXdmcp.so.6 => /lib/x86_64-linux-gnu/libXdmcp.so.6 (0x00007f728df75000)
+2026-04-03T14:46:53.1056212Z 	libblkid.so.1 => /lib/x86_64-linux-gnu/libblkid.so.1 (0x00007f728df3a000)
+2026-04-03T14:46:53.1057012Z 	libsystemd.so.0 => /lib/x86_64-linux-gnu/libsystemd.so.0 (0x00007f728de5a000)
+2026-04-03T14:46:53.1057929Z 	libbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007f728de37000)
+2026-04-03T14:46:53.1058796Z 	libbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007f728de1f000)
+2026-04-03T14:46:53.1059510Z 	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007f728de12000)
+2026-04-03T14:46:53.1060576Z 	libgcrypt.so.20 => /lib/x86_64-linux-gnu/libgcrypt.so.20 (0x00007f728dcca000)
+2026-04-03T14:46:53.1061355Z 	liblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x00007f728dca8000)
+2026-04-03T14:46:53.1062082Z 	liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007f728dc76000)
+2026-04-03T14:46:53.1062828Z 	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007f728dbba000)
+2026-04-03T14:46:53.1063700Z 	libmd.so.0 => /lib/x86_64-linux-gnu/libmd.so.0 (0x00007f728dbab000)
+2026-04-03T14:46:53.1064897Z 	libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007f728db86000)
+2026-04-03T14:46:53.1065907Z $ cp /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/libstdc++.so.6 dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/lib
+2026-04-03T14:46:53.1085243Z $ cp /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/libstdc++.so.6 dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/lib
+2026-04-03T14:46:53.1089115Z 	linux-vdso.so.1 (0x00007fa431c5e000)
+2026-04-03T14:46:53.1090336Z 	libflutter_linux_gtk.so => /home/runner/work/mapia/mapia/linux/flutter/ephemeral/libflutter_linux_gtk.so (0x00007fa430c00000)
+2026-04-03T14:46:53.1091390Z 	libgtk-3.so.0 => /lib/x86_64-linux-gnu/libgtk-3.so.0 (0x00007fa430400000)
+2026-04-03T14:46:53.1091851Z 	libgdk-3.so.0 => /lib/x86_64-linux-gnu/libgdk-3.so.0 (0x00007fa430305000)
+2026-04-03T14:46:53.1092267Z 	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007fa431c23000)
+2026-04-03T14:46:53.1092919Z 	libpangocairo-1.0.so.0 => /lib/x86_64-linux-gnu/libpangocairo-1.0.so.0 (0x00007fa431c12000)
+2026-04-03T14:46:53.1093439Z 	libpango-1.0.so.0 => /lib/x86_64-linux-gnu/libpango-1.0.so.0 (0x00007fa43029a000)
+2026-04-03T14:46:53.1093909Z 	libharfbuzz.so.0 => /lib/x86_64-linux-gnu/libharfbuzz.so.0 (0x00007fa43018d000)
+2026-04-03T14:46:53.1094362Z 	libatk-1.0.so.0 => /lib/x86_64-linux-gnu/libatk-1.0.so.0 (0x00007fa431be6000)
+2026-04-03T14:46:53.1094848Z 	libcairo-gobject.so.2 => /lib/x86_64-linux-gnu/libcairo-gobject.so.2 (0x00007fa431bda000)
+2026-04-03T14:46:53.1095338Z 	libcairo.so.2 => /lib/x86_64-linux-gnu/libcairo.so.2 (0x00007fa430049000)
+2026-04-03T14:46:53.1095810Z 	libgdk_pixbuf-2.0.so.0 => /lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0 (0x00007fa430bd2000)
+2026-04-03T14:46:53.1096290Z 	libgio-2.0.so.0 => /lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007fa42fe79000)
+2026-04-03T14:46:53.1096754Z 	libgobject-2.0.so.0 => /lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007fa42fe16000)
+2026-04-03T14:46:53.1097232Z 	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007fa42fccd000)
+2026-04-03T14:46:53.1097667Z 	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fa42fa00000)
+2026-04-03T14:46:53.1098066Z 	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fa42f917000)
+2026-04-03T14:46:53.1098454Z 	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fa42fc9f000)
+2026-04-03T14:46:53.1098842Z 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa42f600000)
+2026-04-03T14:46:53.1099213Z 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fa431bd1000)
+2026-04-03T14:46:53.1099899Z 	libepoxy.so.0 => /lib/x86_64-linux-gnu/libepoxy.so.0 (0x00007fa42f4dd000)
+2026-04-03T14:46:53.1100380Z 	libfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x00007fa42f8c6000)
+2026-04-03T14:46:53.1100854Z 	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fa430bcd000)
+2026-04-03T14:46:53.1101234Z 	/lib64/ld-linux-x86-64.so.2 (0x00007fa431c60000)
+2026-04-03T14:46:53.1101634Z 	libgmodule-2.0.so.0 => /lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007fa42fc98000)
+2026-04-03T14:46:53.1102133Z 	libpangoft2-1.0.so.0 => /lib/x86_64-linux-gnu/libpangoft2-1.0.so.0 (0x00007fa42f8ab000)
+2026-04-03T14:46:53.1102624Z 	libfribidi.so.0 => /lib/x86_64-linux-gnu/libfribidi.so.0 (0x00007fa42f88d000)
+2026-04-03T14:46:53.1103047Z 	libXi.so.6 => /lib/x86_64-linux-gnu/libXi.so.6 (0x00007fa42fc85000)
+2026-04-03T14:46:53.1103814Z 	libX11.so.6 => /lib/x86_64-linux-gnu/libX11.so.6 (0x00007fa42f3a0000)
+2026-04-03T14:46:53.1104520Z 	libatk-bridge-2.0.so.0 => /lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0 (0x00007fa42f851000)
+2026-04-03T14:46:53.1105235Z 	libXfixes.so.3 => /lib/x86_64-linux-gnu/libXfixes.so.3 (0x00007fa42f849000)
+2026-04-03T14:46:53.1105764Z 	libxkbcommon.so.0 => /lib/x86_64-linux-gnu/libxkbcommon.so.0 (0x00007fa42f357000)
+2026-04-03T14:46:53.1106405Z 	libwayland-client.so.0 => /lib/x86_64-linux-gnu/libwayland-client.so.0 (0x00007fa42f839000)
+2026-04-03T14:46:53.1106956Z 	libwayland-cursor.so.0 => /lib/x86_64-linux-gnu/libwayland-cursor.so.0 (0x00007fa42f82f000)
+2026-04-03T14:46:53.1107489Z 	libwayland-egl.so.1 => /lib/x86_64-linux-gnu/libwayland-egl.so.1 (0x00007fa42fc80000)
+2026-04-03T14:46:53.1108214Z 	libXext.so.6 => /lib/x86_64-linux-gnu/libXext.so.6 (0x00007fa42f81b000)
+2026-04-03T14:46:53.1108726Z 	libXcursor.so.1 => /lib/x86_64-linux-gnu/libXcursor.so.1 (0x00007fa42f34b000)
+2026-04-03T14:46:53.1109186Z 	libXdamage.so.1 => /lib/x86_64-linux-gnu/libXdamage.so.1 (0x00007fa42f816000)
+2026-04-03T14:46:53.1109907Z 	libXcomposite.so.1 => /lib/x86_64-linux-gnu/libXcomposite.so.1 (0x00007fa42f346000)
+2026-04-03T14:46:53.1110421Z 	libXrandr.so.2 => /lib/x86_64-linux-gnu/libXrandr.so.2 (0x00007fa42f339000)
+2026-04-03T14:46:53.1110887Z 	libXinerama.so.1 => /lib/x86_64-linux-gnu/libXinerama.so.1 (0x00007fa42f334000)
+2026-04-03T14:46:53.1111321Z 	libthai.so.0 => /lib/x86_64-linux-gnu/libthai.so.0 (0x00007fa42f329000)
+2026-04-03T14:46:53.1111755Z 	libfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007fa42f25d000)
+2026-04-03T14:46:53.1112352Z 	libgraphite2.so.3 => /lib/x86_64-linux-gnu/libgraphite2.so.3 (0x00007fa42f237000)
+2026-04-03T14:46:53.1112817Z 	libpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x00007fa42f1ff000)
+2026-04-03T14:46:53.1113256Z 	libXrender.so.1 => /lib/x86_64-linux-gnu/libXrender.so.1 (0x00007fa42f1f3000)
+2026-04-03T14:46:53.1113678Z 	libxcb.so.1 => /lib/x86_64-linux-gnu/libxcb.so.1 (0x00007fa42f1ca000)
+2026-04-03T14:46:53.1114118Z 	libxcb-render.so.0 => /lib/x86_64-linux-gnu/libxcb-render.so.0 (0x00007fa42f1bb000)
+2026-04-03T14:46:53.1114592Z 	libxcb-shm.so.0 => /lib/x86_64-linux-gnu/libxcb-shm.so.0 (0x00007fa42f1b6000)
+2026-04-03T14:46:53.1115426Z 	libpixman-1.so.0 => /lib/x86_64-linux-gnu/libpixman-1.so.0 (0x00007fa42f107000)
+2026-04-03T14:46:53.1116203Z 	libjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x00007fa42f084000)
+2026-04-03T14:46:53.1116626Z 	libmount.so.1 => /lib/x86_64-linux-gnu/libmount.so.1 (0x00007fa42f035000)
+2026-04-03T14:46:53.1117071Z 	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fa42f008000)
+2026-04-03T14:46:53.1117499Z 	libffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007fa42effc000)
+2026-04-03T14:46:53.1117920Z 	libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fa42ef62000)
+2026-04-03T14:46:53.1118749Z 	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007fa42ef36000)
+2026-04-03T14:46:53.1119824Z 	libatspi.so.0 => /lib/x86_64-linux-gnu/libatspi.so.0 (0x00007fa42eefa000)
+2026-04-03T14:46:53.1120765Z 	libdbus-1.so.3 => /lib/x86_64-linux-gnu/libdbus-1.so.3 (0x00007fa42eeab000)
+2026-04-03T14:46:53.1121212Z 	libdatrie.so.1 => /lib/x86_64-linux-gnu/libdatrie.so.1 (0x00007fa42eea2000)
+2026-04-03T14:46:53.1121628Z 	libbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007fa42ee8e000)
+2026-04-03T14:46:53.1122072Z 	libbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007fa42ee80000)
+2026-04-03T14:46:53.1122513Z 	libXau.so.6 => /lib/x86_64-linux-gnu/libXau.so.6 (0x00007fa42ee78000)
+2026-04-03T14:46:53.1122931Z 	libXdmcp.so.6 => /lib/x86_64-linux-gnu/libXdmcp.so.6 (0x00007fa42ee70000)
+2026-04-03T14:46:53.1123341Z 	libblkid.so.1 => /lib/x86_64-linux-gnu/libblkid.so.1 (0x00007fa42ee35000)
+2026-04-03T14:46:53.1123770Z 	libsystemd.so.0 => /lib/x86_64-linux-gnu/libsystemd.so.0 (0x00007fa42ed55000)
+2026-04-03T14:46:53.1124259Z 	libbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007fa42ed32000)
+2026-04-03T14:46:53.1124720Z 	libbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007fa42ed1a000)
+2026-04-03T14:46:53.1125102Z 	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007fa42ed0d000)
+2026-04-03T14:46:53.1125523Z 	libgcrypt.so.20 => /lib/x86_64-linux-gnu/libgcrypt.so.20 (0x00007fa42ebc5000)
+2026-04-03T14:46:53.1125943Z 	liblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x00007fa42eba3000)
+2026-04-03T14:46:53.1126337Z 	liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007fa42eb71000)
+2026-04-03T14:46:53.1126738Z 	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007fa42eab5000)
+2026-04-03T14:46:53.1127134Z 	libmd.so.0 => /lib/x86_64-linux-gnu/libmd.so.0 (0x00007fa42eaa6000)
+2026-04-03T14:46:53.1127559Z 	libgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x00007fa42ea81000)
+2026-04-03T14:46:53.1138832Z $ cp /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/libstdc++.so.6 dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir/usr/lib
+2026-04-03T14:46:53.1269996Z $ appimagetool --no-appstream dist/1.0.0+1/mapia-1.0.0+1-linux_appimage/mapia.AppDir dist/1.0.0+1/mapia-1.0.0+1-linux.AppImage
+2026-04-03T14:46:53.1480882Z appimagetool, continuous build (git version 8c8c91f), build 295 built on 2025-12-04 17:56:36 UTC
+2026-04-03T14:46:53.1512257Z Categories entry not found in desktop file
+2026-04-03T14:46:53.1512597Z .desktop file is missing a Categories= key
+2026-04-03T14:46:53.1545795Z MakeError: appimagetool, continuous build (git version 8c8c91f), build 295 built on 2025-12-04 17:56:36 UTC
+2026-04-03T14:46:53.1548068Z Categories entry not found in desktop file
+2026-04-03T14:46:53.1552245Z .desktop file is missing a Categories= key
+2026-04-03T14:46:53.1552626Z 
+2026-04-03T14:46:53.1553564Z #0      AppPackageMakerAppImage._make.<anonymous closure> (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:288:11)
+2026-04-03T14:46:53.1554801Z <asynchronous suspension>
+2026-04-03T14:46:53.1555792Z #1      AppPackageMakerAppImage._make (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:273:7)
+2026-04-03T14:46:53.1556866Z <asynchronous suspension>
+2026-04-03T14:46:53.1557655Z #2      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:35)
+2026-04-03T14:46:53.1558432Z <asynchronous suspension>
+2026-04-03T14:46:53.1558873Z #3      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T14:46:53.1559334Z <asynchronous suspension>
+2026-04-03T14:46:53.1559938Z #4      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T14:46:53.1560633Z <asynchronous suspension>
+2026-04-03T14:46:53.1561339Z #5      main (file:///home/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T14:46:53.1562071Z <asynchronous suspension>
+2026-04-03T14:46:53.1562325Z 
+2026-04-03T14:46:53.1562332Z 
+2026-04-03T14:46:53.1562755Z [1mRELEASE FAILED in 63s[0m
+2026-04-03T14:46:53.1563582Z MakeError: appimagetool, continuous build (git version 8c8c91f), build 295 built on 2025-12-04 17:56:36 UTC
+2026-04-03T14:46:53.1564509Z Categories entry not found in desktop file
+2026-04-03T14:46:53.1565014Z .desktop file is missing a Categories= key
+2026-04-03T14:46:53.1565354Z 
+2026-04-03T14:46:53.1566204Z #0      AppPackageMakerAppImage._make.<anonymous closure> (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:288:11)
+2026-04-03T14:46:53.1567377Z <asynchronous suspension>
+2026-04-03T14:46:53.1568358Z #1      AppPackageMakerAppImage._make (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:273:7)
+2026-04-03T14:46:53.1569412Z <asynchronous suspension>
+2026-04-03T14:46:53.1570467Z #2      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:35)
+2026-04-03T14:46:53.1571363Z <asynchronous suspension>
+2026-04-03T14:46:53.1572126Z #3      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T14:46:53.1572996Z <asynchronous suspension>
+2026-04-03T14:46:53.1573586Z #4      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T14:46:53.1574285Z <asynchronous suspension>
+2026-04-03T14:46:53.1574943Z #5      main (file:///home/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T14:46:53.1575707Z <asynchronous suspension>
+2026-04-03T14:46:53.1575948Z 
+2026-04-03T14:46:53.1576109Z Unhandled exception:
+2026-04-03T14:46:53.1576843Z MakeError: appimagetool, continuous build (git version 8c8c91f), build 295 built on 2025-12-04 17:56:36 UTC
+2026-04-03T14:46:53.1577839Z Categories entry not found in desktop file
+2026-04-03T14:46:53.1578356Z .desktop file is missing a Categories= key
+2026-04-03T14:46:53.1578734Z 
+2026-04-03T14:46:53.1580123Z #0      AppPackageMakerAppImage._make.<anonymous closure> (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:288:11)
+2026-04-03T14:46:53.1581518Z <asynchronous suspension>
+2026-04-03T14:46:53.1582558Z #1      AppPackageMakerAppImage._make (package:flutter_app_packager/src/makers/appimage/app_package_maker_appimage.dart:273:7)
+2026-04-03T14:46:53.1583701Z <asynchronous suspension>
+2026-04-03T14:46:53.1584568Z #2      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:35)
+2026-04-03T14:46:53.1585553Z <asynchronous suspension>
+2026-04-03T14:46:53.1586455Z #3      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T14:46:53.1587407Z <asynchronous suspension>
+2026-04-03T14:46:53.1588008Z #4      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T14:46:53.1588971Z <asynchronous suspension>
+2026-04-03T14:46:53.1589548Z #5      main (file:///home/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T14:46:53.1590378Z <asynchronous suspension>
+2026-04-03T14:46:53.1835143Z ##[error]Process completed with exit code 255.
+2026-04-03T14:46:53.2004543Z Post job cleanup.
+2026-04-03T14:46:53.2066615Z Post job cleanup.
+2026-04-03T14:46:53.2838704Z [command]/usr/bin/git version
+2026-04-03T14:46:53.2874695Z git version 2.53.0
+2026-04-03T14:46:53.2945310Z Temporarily overriding HOME='/home/runner/work/_temp/3dd88612-3a51-49aa-8856-84b63f8e5d86' before making global git config changes
+2026-04-03T14:46:53.2946845Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T14:46:53.2950867Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mapia/mapia
+2026-04-03T14:46:53.2981005Z Removing SSH command configuration
+2026-04-03T14:46:53.2987348Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T14:46:53.3020901Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T14:46:53.3238013Z Removing HTTP extra header
+2026-04-03T14:46:53.3242842Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T14:46:53.3276173Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T14:46:53.3495688Z Removing includeIf entries pointing to credentials config files
+2026-04-03T14:46:53.3496571Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T14:46:53.3518841Z includeif.gitdir:/home/runner/work/mapia/mapia/.git.path
+2026-04-03T14:46:53.3519939Z includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T14:46:53.3520693Z includeif.gitdir:/github/workspace/.git.path
+2026-04-03T14:46:53.3521356Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T14:46:53.3528391Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mapia/mapia/.git.path
+2026-04-03T14:46:53.3548797Z /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3558766Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mapia/mapia/.git.path /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3591105Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path
+2026-04-03T14:46:53.3612115Z /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3620595Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mapia/mapia/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3650488Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-04-03T14:46:53.3670677Z /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3678973Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3707441Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-04-03T14:46:53.3727500Z /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3735597Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config
+2026-04-03T14:46:53.3765286Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T14:46:53.3989335Z Removing credentials config '/home/runner/work/_temp/git-credentials-3507daad-1510-4a7c-805f-96c082ab3e2a.config'
+2026-04-03T14:46:53.4138605Z Cleaning up orphan processes

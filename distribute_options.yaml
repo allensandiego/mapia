@@ -26,6 +26,7 @@ releases:
         config:
           display_name: Mapia
           package_name: mapia
+          categories: "Utility;Network;Development;"
           maintainer:
             name: Allen San Diego
             email: allensandiego@example.com
@@ -53,6 +54,7 @@ releases:
         config:
           display_name: Mapia
           package_name: mapia
+          categories: "Utility;Network;Development;"
           icon_path: mapia.png
           desktop_file_path: linux/packaging/appimage/mapia.desktop
       - name: macos-dmg
