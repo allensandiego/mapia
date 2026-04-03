@@ -29,6 +29,9 @@ releases:
           maintainer:
             name: Allen San Diego
             email: allensandiego@example.com
+          priority: optional
+          section: x11
+          installed_size: 250000
       - name: linux-rpm
         package:
           platform: linux

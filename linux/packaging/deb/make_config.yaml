@@ -4,3 +4,6 @@ version: 1.0.0+1
 maintainer:
   name: Allen San Diego
   email: allensandiego@example.com
+priority: optional
+section: x11
+installed_size: 250000
