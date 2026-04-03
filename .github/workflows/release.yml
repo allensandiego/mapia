@@ -16,6 +16,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
@@ -88,9 +91,6 @@ jobs:
                 sed -i '/^cp -r %{name}\.desktop /s/$/ || :/' "$spec_file"  
 
                 rpmbuild --define "_topdir $topdir" -bb "$spec_file" 
-                # Move the manually built RPM to where fastforge (and the upload step) expects it
-                mkdir -p "$(dirname "$topdir")/release"
-                find "$topdir/RPMS" -name "*.rpm" -exec cp {} "$(dirname "$topdir")/release/" \;
               fi
             done
           }
@@ -100,12 +100,12 @@ jobs:
         uses: softprops/action-gh-release@v2.6.0
         with:
           files: |
-            dist/*/release/*.msix
-            dist/*/release/*.exe
-            dist/*/release/*.dmg
-            dist/*/release/*.AppImage
-            dist/*/release/*.deb
-            dist/*/release/*.rpm
+            dist/**/*.msix
+            dist/**/*.exe
+            dist/**/*.dmg
+            dist/**/*.AppImage
+            dist/**/*.deb
+            dist/**/*.rpm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

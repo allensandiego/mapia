@@ -1,0 +1,87 @@
+﻿2026-04-03T16:10:03.8055610Z ##[group]Run fastforge release --name release --jobs macos-dmg
+2026-04-03T16:10:03.8056120Z [36;1mfastforge release --name release --jobs macos-dmg[0m
+2026-04-03T16:10:03.8090320Z shell: /bin/bash -e {0}
+2026-04-03T16:10:03.8090570Z env:
+2026-04-03T16:10:03.8090840Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:10:03.8091240Z   FLUTTER_ROOT: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter
+2026-04-03T16:10:03.8091710Z   PUB_CACHE: /Users/runner/.pub-cache
+2026-04-03T16:10:03.8091910Z ##[endgroup]
+2026-04-03T16:10:04.0476670Z 
+2026-04-03T16:10:04.0477060Z 
+2026-04-03T16:10:04.1118250Z ⠋ Checking for updates...
+2026-04-03T16:10:04.1145540Z                                  
+2026-04-03T16:10:04.1147290Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T16:10:04.1147880Z 
+2026-04-03T16:10:04.1293030Z 
+2026-04-03T16:10:04.1296370Z ===> [1mReleasing[0m release:[1mmacos-dmg[0m
+2026-04-03T16:10:04.1380110Z $ flutter clean
+2026-04-03T16:10:12.3453930Z Cleaning Xcode workspace...                                         8.0s
+2026-04-03T16:10:12.3465030Z Deleting .dart_tool...                                               0ms
+2026-04-03T16:10:12.3498660Z Deleting ephemeral...                                                0ms
+2026-04-03T16:10:12.3515630Z Deleting ephemeral...                                                0ms
+2026-04-03T16:10:12.3517110Z Deleting ephemeral...                                                0ms
+2026-04-03T16:10:12.3522370Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T16:10:12.4015450Z Packaging mapia 1.0.0+1 as dmg:
+2026-04-03T16:10:12.4257850Z $ /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter/bin/flutter build macos --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T16:10:12.9493400Z Resolving dependencies...
+2026-04-03T16:10:13.6992380Z Downloading packages...
+2026-04-03T16:10:13.9221700Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T16:10:13.9222930Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T16:10:13.9223750Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T16:10:13.9224590Z   build 2.5.4 (4.0.5 available)
+2026-04-03T16:10:13.9225690Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T16:10:13.9226210Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T16:10:13.9226570Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T16:10:13.9227010Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T16:10:13.9227400Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T16:10:13.9227890Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T16:10:13.9228370Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T16:10:13.9228840Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T16:10:13.9229220Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T16:10:13.9229650Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T16:10:13.9230040Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T16:10:13.9230420Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T16:10:13.9230810Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T16:10:13.9231230Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T16:10:13.9231680Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T16:10:13.9232740Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T16:10:13.9235340Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T16:10:13.9235730Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T16:10:13.9236200Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T16:10:13.9236590Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T16:10:13.9236910Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T16:10:13.9238280Z   image 4.3.0 (4.8.0 available)
+2026-04-03T16:10:13.9238920Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T16:10:13.9239360Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T16:10:13.9239750Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T16:10:13.9240110Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T16:10:13.9241140Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T16:10:13.9241540Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T16:10:13.9241930Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T16:10:13.9242450Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T16:10:13.9243260Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T16:10:13.9243780Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T16:10:13.9244190Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T16:10:13.9290240Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T16:10:13.9298050Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T16:10:13.9298500Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T16:10:13.9298940Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T16:10:13.9299340Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T16:10:13.9299770Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T16:10:13.9300140Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T16:10:13.9300560Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T16:10:13.9300920Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T16:10:13.9301320Z Got dependencies!
+2026-04-03T16:10:13.9301880Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T16:10:13.9302380Z Try `flutter pub outdated` for more information.
+2026-04-03T16:10:22.9824370Z Running pod install...                                           2,075ms
+2026-04-03T16:11:17.3703930Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T16:11:17.3704730Z Building macOS application...                                   
+2026-04-03T16:11:17.3808030Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T16:11:17.3909840Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T16:11:17.4010150Z 1 warning generated.
+2026-04-03T16:11:17.6499610Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T16:11:17.6627670Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T16:11:17.6729180Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T16:11:17.6835630Z 1 warning generated.
+2026-04-03T16:11:22.0165410Z ##[error]The operation was canceled.

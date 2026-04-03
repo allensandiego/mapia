@@ -1,0 +1,91 @@
+﻿2026-04-03T16:09:03.5636536Z ##[group]Run subosito/flutter-action@v2.23.0
+2026-04-03T16:09:03.5636892Z with:
+2026-04-03T16:09:03.5637051Z   channel: stable
+2026-04-03T16:09:03.5637218Z   cache: true
+2026-04-03T16:09:03.5637368Z   architecture: X64
+2026-04-03T16:09:03.5637548Z   pub-cache-path: default
+2026-04-03T16:09:03.5637764Z   dry-run: false
+2026-04-03T16:09:03.5637996Z   git-source: https://github.com/flutter/flutter.git
+2026-04-03T16:09:03.5638262Z env:
+2026-04-03T16:09:03.5638416Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:09:03.5638653Z ##[endgroup]
+2026-04-03T16:09:03.5868583Z ##[group]Run chmod +x "$GITHUB_ACTION_PATH/setup.sh"
+2026-04-03T16:09:03.5868969Z [36;1mchmod +x "$GITHUB_ACTION_PATH/setup.sh"[0m
+2026-04-03T16:09:03.5895552Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:09:03.5895935Z env:
+2026-04-03T16:09:03.5896102Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:09:03.5896335Z ##[endgroup]
+2026-04-03T16:09:03.7808695Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh -p \
+2026-04-03T16:09:03.7809102Z [36;1m$GITHUB_ACTION_PATH/setup.sh -p \[0m
+2026-04-03T16:09:03.7809337Z [36;1m  -n '' \[0m
+2026-04-03T16:09:03.7809493Z [36;1m  -f '' \[0m
+2026-04-03T16:09:03.7809641Z [36;1m  -a 'X64' \[0m
+2026-04-03T16:09:03.7809818Z [36;1m  -k '' \[0m
+2026-04-03T16:09:03.7809960Z [36;1m  -c '' \[0m
+2026-04-03T16:09:03.7810106Z [36;1m  -l '' \[0m
+2026-04-03T16:09:03.7810253Z [36;1m  -d 'default' \[0m
+2026-04-03T16:09:03.7810522Z [36;1m  -g 'https://github.com/flutter/flutter.git' \[0m
+2026-04-03T16:09:03.7810791Z [36;1m  stable[0m
+2026-04-03T16:09:03.7826369Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:09:03.7826737Z env:
+2026-04-03T16:09:03.7826904Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:09:03.7827125Z ##[endgroup]
+2026-04-03T16:09:07.0013361Z ##[group]Run actions/cache@v5
+2026-04-03T16:09:07.0013587Z with:
+2026-04-03T16:09:07.0013801Z   path: C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64
+2026-04-03T16:09:07.0014263Z   key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:09:07.0014663Z   enableCrossOsArchive: false
+2026-04-03T16:09:07.0014861Z   fail-on-cache-miss: false
+2026-04-03T16:09:07.0015244Z   lookup-only: false
+2026-04-03T16:09:07.0015401Z   save-always: false
+2026-04-03T16:09:07.0015553Z env:
+2026-04-03T16:09:07.0015704Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:09:07.0015928Z ##[endgroup]
+2026-04-03T16:09:07.4102858Z Cache hit for: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:09:08.6099948Z Received 121634816 of 1831231845 (6.6%), 115.8 MBs/sec
+2026-04-03T16:09:09.6134692Z Received 184549376 of 1831231845 (10.1%), 87.7 MBs/sec
+2026-04-03T16:09:10.6219348Z Received 335544320 of 1831231845 (18.3%), 106.2 MBs/sec
+2026-04-03T16:09:11.6276708Z Received 486539264 of 1831231845 (26.6%), 115.5 MBs/sec
+2026-04-03T16:09:12.6317726Z Received 608174080 of 1831231845 (33.2%), 115.6 MBs/sec
+2026-04-03T16:09:13.6339610Z Received 759169024 of 1831231845 (41.5%), 120.2 MBs/sec
+2026-04-03T16:09:14.6321979Z Received 922746880 of 1831231845 (50.4%), 125.3 MBs/sec
+2026-04-03T16:09:15.6998384Z Received 1073741824 of 1831231845 (58.6%), 126.6 MBs/sec
+2026-04-03T16:09:16.7105206Z Received 1228931072 of 1831231845 (67.1%), 128.7 MBs/sec
+2026-04-03T16:09:17.7215462Z Received 1392508928 of 1831231845 (76.0%), 131.4 MBs/sec
+2026-04-03T16:09:18.7181499Z Received 1551892480 of 1831231845 (84.7%), 133.2 MBs/sec
+2026-04-03T16:09:19.7193563Z Received 1690304512 of 1831231845 (92.3%), 133.1 MBs/sec
+2026-04-03T16:09:20.7274497Z Received 1811939328 of 1831231845 (98.9%), 131.7 MBs/sec
+2026-04-03T16:09:21.0505943Z Received 1831231845 of 1831231845 (100.0%), 129.9 MBs/sec
+2026-04-03T16:09:21.0511261Z Cache Size: ~1746 MB (1831231845 B)
+2026-04-03T16:09:21.0605039Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/8501fe3f-5166-48d8-9902-bb4cab085ac6/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T16:10:01.9486927Z Cache restored successfully
+2026-04-03T16:10:02.0540027Z Cache restored from key: flutter-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a
+2026-04-03T16:10:02.2432776Z ##[group]Run actions/cache@v5
+2026-04-03T16:10:02.2433004Z with:
+2026-04-03T16:10:02.2433211Z   path: C:\Users\runneradmin\AppData\Local\Pub\Cache
+2026-04-03T16:10:02.2433996Z   key: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:10:02.2434738Z   enableCrossOsArchive: false
+2026-04-03T16:10:02.2434952Z   fail-on-cache-miss: false
+2026-04-03T16:10:02.2435149Z   lookup-only: false
+2026-04-03T16:10:02.2435312Z   save-always: false
+2026-04-03T16:10:02.2435469Z env:
+2026-04-03T16:10:02.2435635Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:10:02.2435867Z ##[endgroup]
+2026-04-03T16:10:02.6241925Z Cache hit for: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:10:03.9354989Z Received 134217728 of 158221169 (84.8%), 109.8 MBs/sec
+2026-04-03T16:10:04.1653350Z Received 158221169 of 158221169 (100.0%), 108.6 MBs/sec
+2026-04-03T16:10:04.1653961Z Cache Size: ~151 MB (158221169 B)
+2026-04-03T16:10:04.1654917Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/f1041d66-0913-4939-9a63-3f9be9986db5/cache.tzst -P -C D:/a/mapia/mapia --force-local --use-compress-program "zstd -d"
+2026-04-03T16:10:41.3967696Z Cache restored successfully
+2026-04-03T16:10:41.4181315Z Cache restored from key: flutter-pub-windows-stable-3.41.6-x64-db50e20168db8fee486b9abf32fc912de3bc5b6a-e164512e39ace570773db48ebb2045b4a1c214e7fa52b5fa38b973b07d98e70e
+2026-04-03T16:10:41.4442695Z ##[group]Run $GITHUB_ACTION_PATH/setup.sh \
+2026-04-03T16:10:41.4443006Z [36;1m$GITHUB_ACTION_PATH/setup.sh \[0m
+2026-04-03T16:10:41.4443254Z [36;1m  -n '3.41.6' \[0m
+2026-04-03T16:10:41.4443442Z [36;1m  -a 'x64' \[0m
+2026-04-03T16:10:41.4443712Z [36;1m  -c 'C:\hostedtoolcache\windows\flutter\stable-3.41.6-x64' \[0m
+2026-04-03T16:10:41.4444114Z [36;1m  -d 'C:\Users\runneradmin\AppData\Local\Pub\Cache' \[0m
+2026-04-03T16:10:41.4444575Z [36;1m  stable[0m
+2026-04-03T16:10:41.4458917Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2026-04-03T16:10:41.4459285Z env:
+2026-04-03T16:10:41.4459459Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:10:41.4459896Z ##[endgroup]
