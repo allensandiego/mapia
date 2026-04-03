@@ -1,8 +1,0 @@
-2026-04-03T16:05:32.0990000Z Evaluating build.if
-2026-04-03T16:05:32.0990000Z Evaluating: success()
-2026-04-03T16:05:32.0990000Z Result: true
-2026-04-03T16:05:32.1030000Z Requested labels: windows-latest
-2026-04-03T16:05:32.1030000Z Job defined at: allensandiego/mapia/.github/workflows/release.yml@refs/tags/v1.0.34
-2026-04-03T16:05:32.1030000Z Waiting for a runner to pick up this job...
-2026-04-03T16:05:32.6040000Z Job is waiting for a hosted runner to come online.
-2026-04-03T16:05:32.6040000Z Job is about to start running on the hosted runner: GitHub Actions 1000000889
