@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mapia
+Comment=A beautiful REST API client for desktop
+Exec=/usr/bin/mapia
+Icon=mapia
+Categories=Utility;Network;Development;
+Terminal=false
+StartupNotify=true

@@ -6,3 +6,5 @@ group: Applications/Networking
 vendor: Allensandiego
 license: MIT
 url: https://github.com/allensandiego/mapia
+icon_path: mapia.png
+changelog_path: CHANGELOG.md
