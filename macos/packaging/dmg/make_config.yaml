@@ -4,3 +4,5 @@ version: 1.0.0+1
 app_path: build/macos/Build/Products/Release/mapia.app
 icon_path: macos/packaging/dmg/mapia.png
 contents: []
+title: Mapia
+volume_name: Mapia

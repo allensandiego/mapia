@@ -1,0 +1,31 @@
+﻿2026-04-03T16:35:10.6962632Z ##[group]Run softprops/action-gh-release@v2.6.0
+2026-04-03T16:35:10.6962966Z with:
+2026-04-03T16:35:10.6963315Z   files: dist/**/*.msix
+dist/**/*.exe
+dist/**/*.dmg
+dist/**/*.AppImage
+dist/**/*.deb
+dist/**/*.rpm
+
+2026-04-03T16:35:10.6963740Z   overwrite_files: true
+2026-04-03T16:35:10.6964098Z   token: ***
+2026-04-03T16:35:10.6964286Z env:
+2026-04-03T16:35:10.6964484Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:35:10.6964867Z   FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.6-x64/flutter
+2026-04-03T16:35:10.6965236Z   PUB_CACHE: /home/runner/.pub-cache
+2026-04-03T16:35:10.6965624Z   GITHUB_TOKEN: ***
+2026-04-03T16:35:10.6965826Z ##[endgroup]
+2026-04-03T16:35:10.7987448Z 🤔 Pattern 'dist/**/*.msix' does not match any files.
+2026-04-03T16:35:10.7990568Z 🤔 Pattern 'dist/**/*.exe' does not match any files.
+2026-04-03T16:35:10.7991283Z 🤔 Pattern 'dist/**/*.dmg' does not match any files.
+2026-04-03T16:35:10.9278417Z 👩‍🏭 Creating new GitHub release for tag v1.0.38...
+2026-04-03T16:35:11.4837360Z Release 305096594 is not yet discoverable by tag v1.0.38, retrying... (2 retries remaining)
+2026-04-03T16:35:12.7885666Z ⬆️ Uploading mapia-1.0.0+1-linux.AppImage...
+2026-04-03T16:35:12.7888515Z ⬆️ Uploading mapia-1.0.0+1-linux.deb...
+2026-04-03T16:35:12.7889502Z ⬆️ Uploading mapia-1.0.0+1-1.x86_64.rpm...
+2026-04-03T16:35:13.9456378Z ✅ Uploaded mapia-1.0.0+1-1.x86_64.rpm
+2026-04-03T16:35:14.2569386Z ✅ Uploaded mapia-1.0.0+1-linux.deb
+2026-04-03T16:35:14.2754080Z ✅ Uploaded mapia-1.0.0+1-linux.AppImage
+2026-04-03T16:35:14.2754592Z Finalizing release...
+2026-04-03T16:35:14.5767183Z Getting assets list...
+2026-04-03T16:35:14.7073441Z 🎉 Release ready at https://github.com/allensandiego/mapia/releases/tag/v1.0.38

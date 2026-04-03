@@ -1,0 +1,142 @@
+﻿2026-04-03T16:33:44.7474390Z ##[group]Run fastforge release --name release --jobs macos-dmg
+2026-04-03T16:33:44.7474740Z [36;1mfastforge release --name release --jobs macos-dmg[0m
+2026-04-03T16:33:44.7505730Z shell: /bin/bash -e {0}
+2026-04-03T16:33:44.7505890Z env:
+2026-04-03T16:33:44.7506060Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-04-03T16:33:44.7506380Z   FLUTTER_ROOT: /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter
+2026-04-03T16:33:44.7506680Z   PUB_CACHE: /Users/runner/.pub-cache
+2026-04-03T16:33:44.7507160Z ##[endgroup]
+2026-04-03T16:33:44.9529930Z 
+2026-04-03T16:33:44.9530110Z 
+2026-04-03T16:33:45.0133680Z ⠋ Checking for updates...
+2026-04-03T16:33:45.0160120Z                                  
+2026-04-03T16:33:45.0160960Z 🎉 You are using the latest version [1m(0.6.6)[0m
+2026-04-03T16:33:45.0161350Z 
+2026-04-03T16:33:45.0288930Z 
+2026-04-03T16:33:45.0289700Z ===> [1mReleasing[0m release:[1mmacos-dmg[0m
+2026-04-03T16:33:45.0393390Z $ flutter clean
+2026-04-03T16:33:51.2574060Z Cleaning Xcode workspace...                                         6.0s
+2026-04-03T16:33:51.2580200Z Deleting .dart_tool...                                               0ms
+2026-04-03T16:33:51.2651440Z Deleting ephemeral...                                                0ms
+2026-04-03T16:33:51.2652320Z Deleting ephemeral...                                                0ms
+2026-04-03T16:33:51.2652910Z Deleting ephemeral...                                                0ms
+2026-04-03T16:33:51.2653490Z Deleting .flutter-plugins-dependencies...                            0ms
+2026-04-03T16:33:51.3082460Z Packaging mapia 1.0.0+1 as dmg:
+2026-04-03T16:33:51.3196360Z $ /Users/runner/hostedtoolcache/flutter/stable-3.41.6-arm64/flutter/bin/flutter build macos --dart-define FLUTTER_BUILD_NAME=1.0.0 --dart-define FLUTTER_BUILD_NUMBER=1
+2026-04-03T16:33:51.6200450Z Resolving dependencies...
+2026-04-03T16:33:51.9595300Z Downloading packages...
+2026-04-03T16:33:52.0274380Z   _fe_analyzer_shared 85.0.0 (98.0.0 available)
+2026-04-03T16:33:52.0275010Z   analyzer 7.7.1 (12.0.0 available)
+2026-04-03T16:33:52.0275470Z   archive 3.6.1 (4.0.9 available)
+2026-04-03T16:33:52.0275880Z   build 2.5.4 (4.0.5 available)
+2026-04-03T16:33:52.0276290Z   build_config 1.1.2 (1.3.0 available)
+2026-04-03T16:33:52.0276680Z   build_resolvers 2.5.4 (3.0.4 available)
+2026-04-03T16:33:52.0277110Z   build_runner 2.5.4 (2.13.1 available)
+2026-04-03T16:33:52.0277480Z   build_runner_core 9.1.2 (9.3.2 available)
+2026-04-03T16:33:52.0277890Z   cached_network_image 3.3.1 (3.4.1 available)
+2026-04-03T16:33:52.0278410Z   cached_network_image_platform_interface 4.0.0 (4.1.1 available)
+2026-04-03T16:33:52.0278950Z   cached_network_image_web 1.2.0 (1.3.1 available)
+2026-04-03T16:33:52.0279360Z   dart_style 3.1.1 (3.1.8 available)
+2026-04-03T16:33:52.0279780Z   fastforge 0.1.0 (0.6.6 available)
+2026-04-03T16:33:52.0280140Z   file_picker 8.3.7 (10.3.10 available)
+2026-04-03T16:33:52.0281130Z   flutter_app_builder 0.4.6 (0.6.0 available)
+2026-04-03T16:33:52.0281550Z   flutter_app_packager 0.4.6 (0.6.5 available)
+2026-04-03T16:33:52.0281980Z   flutter_app_publisher 0.4.6 (0.6.6 available)
+2026-04-03T16:33:52.0282440Z   flutter_cache_manager 3.3.1 (3.4.1 available)
+2026-04-03T16:33:52.0282830Z   flutter_lints 4.0.0 (6.0.0 available)
+2026-04-03T16:33:52.0283260Z   flutter_riverpod 2.6.1 (3.3.1 available)
+2026-04-03T16:33:52.0283650Z   freezed 2.5.8 (3.2.5 available)
+2026-04-03T16:33:52.0284100Z   freezed_annotation 2.4.4 (3.1.0 available)
+2026-04-03T16:33:52.0284480Z   google_fonts 6.3.3 (8.0.2 available)
+2026-04-03T16:33:52.0284870Z   googleapis 13.2.0 (16.0.0 available)
+2026-04-03T16:33:52.0285300Z   googleapis_auth 1.6.0 (2.2.1 available)
+2026-04-03T16:33:52.0285730Z   image 4.3.0 (4.8.0 available)
+2026-04-03T16:33:52.0286100Z   json_annotation 4.9.0 (4.11.0 available)
+2026-04-03T16:33:52.0286550Z   json_serializable 6.9.5 (6.13.1 available)
+2026-04-03T16:33:52.0286930Z   lints 4.0.0 (6.1.0 available)
+2026-04-03T16:33:52.0287330Z   meta 1.17.0 (1.18.2 available)
+2026-04-03T16:33:52.0288240Z   parse_app_package 0.4.5 (0.6.0 available)
+2026-04-03T16:33:52.0319240Z   plist_parser 0.0.11 (0.2.7 available)
+2026-04-03T16:33:52.0319880Z   qiniu_sdk_base 0.5.2 (0.7.5 available)
+2026-04-03T16:33:52.0320280Z   riverpod 2.6.1 (3.2.1 available)
+2026-04-03T16:33:52.0320680Z   rxdart 0.27.7 (0.28.0 available)
+2026-04-03T16:33:52.0321080Z   screen_retriever 0.1.9 (0.2.0 available)
+2026-04-03T16:33:52.0321510Z   shell_executor 0.1.6 (0.3.0 available)
+2026-04-03T16:33:52.0321890Z   shell_uikit 0.2.0 (0.3.0 available)
+2026-04-03T16:33:52.0322760Z   source_gen 2.0.0 (4.2.2 available)
+2026-04-03T16:33:52.0323190Z   source_helper 1.3.7 (1.3.11 available)
+2026-04-03T16:33:52.0323560Z   test_api 0.7.10 (0.7.11 available)
+2026-04-03T16:33:52.0323990Z   unified_distributor 0.1.1 (0.2.6 available)
+2026-04-03T16:33:52.0324370Z   uuid 3.0.7 (4.5.3 available)
+2026-04-03T16:33:52.0324810Z   vector_math 2.2.0 (2.3.0 available)
+2026-04-03T16:33:52.0325180Z   win32 5.15.0 (6.0.0 available)
+2026-04-03T16:33:52.0325580Z   window_manager 0.3.9 (0.5.1 available)
+2026-04-03T16:33:52.0325950Z Got dependencies!
+2026-04-03T16:33:52.0326560Z 46 packages have newer versions incompatible with dependency constraints.
+2026-04-03T16:33:52.0333650Z Try `flutter pub outdated` for more information.
+2026-04-03T16:34:01.3322510Z Running pod install...                                           2,247ms
+2026-04-03T16:34:40.7827470Z Building macOS application...                                   
+2026-04-03T16:34:40.8027970Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T16:34:40.8247130Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T16:34:40.8349240Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T16:34:40.8460150Z 1 warning generated.
+2026-04-03T16:34:40.9674790Z /Users/runner/.pub-cache/hosted/pub.dev/audio_session-0.2.3/macos/audio_session/Sources/audio_session/AudioSessionPlugin.m:14:5: warning: expression result unused [-Wunused-value]
+2026-04-03T16:34:40.9800260Z    14 |     [[AudioSessionPlugin alloc] initWithRegistrar:registrar];
+2026-04-03T16:34:40.9904490Z       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-04-03T16:34:41.0035850Z 1 warning generated.
+2026-04-03T16:35:54.5635650Z warning: Run script build phase 'Run Script' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Flutter Assemble' from project 'Runner')
+2026-04-03T16:35:54.7696010Z ✓ Built build/macos/Build/Products/Release/mapia.app (59.1MB)
+2026-04-03T16:35:54.8575890Z {
+2026-04-03T16:35:54.8681130Z Unhandled exception:
+2026-04-03T16:35:54.8682020Z   "config": {
+2026-04-03T16:35:54.8732180Z type 'Null' is not a subtype of type 'String'
+2026-04-03T16:35:54.8732990Z     "mode": "release",
+2026-04-03T16:35:54.8839980Z #0      new MakeDmgConfig.fromJson (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:154:18)
+2026-04-03T16:35:54.8841330Z     "arguments": {}
+2026-04-03T16:35:54.8885330Z #1      MakeDmgConfigLoader.load (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:211:26)
+2026-04-03T16:35:54.9144340Z   },
+2026-04-03T16:35:54.9174300Z #2      FlutterAppPackager.package (package:flutter_app_packager/src/flutter_app_packager.dart:40:39)
+2026-04-03T16:35:54.9179360Z   "outputDirectory": "build/macos/Build/Products/Release",
+2026-04-03T16:35:54.9227470Z #3      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:51)
+2026-04-03T16:35:54.9228910Z   "duration": 123545,
+2026-04-03T16:35:54.9236560Z <asynchronous suspension>
+2026-04-03T16:35:54.9237500Z   "outputFiles": [
+2026-04-03T16:35:54.9241240Z #4      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T16:35:54.9252530Z     "./build/macos/Build/Products/Release/mapia.app"
+2026-04-03T16:35:54.9252960Z <asynchronous suspension>
+2026-04-03T16:35:54.9253290Z   ]
+2026-04-03T16:35:54.9259990Z #5      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T16:35:54.9260750Z }
+2026-04-03T16:35:54.9265470Z <asynchronous suspension>
+2026-04-03T16:35:54.9265960Z Successfully built Directory: 'build/macos/Build/Products/Release' in 123s
+2026-04-03T16:35:54.9267030Z #6      main (file:///Users/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T16:35:54.9278040Z type 'Null' is not a subtype of type 'String'
+2026-04-03T16:35:54.9278670Z <asynchronous suspension>
+2026-04-03T16:35:54.9279350Z #0      new MakeDmgConfig.fromJson (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:154:18)
+2026-04-03T16:35:54.9292250Z #1      MakeDmgConfigLoader.load (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:211:26)
+2026-04-03T16:35:54.9304670Z #2      FlutterAppPackager.package (package:flutter_app_packager/src/flutter_app_packager.dart:40:39)
+2026-04-03T16:35:54.9408240Z #3      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:51)
+2026-04-03T16:35:54.9518360Z <asynchronous suspension>
+2026-04-03T16:35:54.9540890Z #4      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T16:35:54.9545250Z <asynchronous suspension>
+2026-04-03T16:35:54.9579640Z #5      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T16:35:54.9580200Z <asynchronous suspension>
+2026-04-03T16:35:54.9580840Z #6      main (file:///Users/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T16:35:54.9581350Z <asynchronous suspension>
+2026-04-03T16:35:54.9581610Z 
+2026-04-03T16:35:54.9581740Z 
+2026-04-03T16:35:54.9582290Z [1mRELEASE FAILED in 129s[0m
+2026-04-03T16:35:54.9582810Z type 'Null' is not a subtype of type 'String'
+2026-04-03T16:35:54.9583500Z #0      new MakeDmgConfig.fromJson (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:154:18)
+2026-04-03T16:35:54.9584210Z #1      MakeDmgConfigLoader.load (package:flutter_app_packager/src/makers/dmg/make_dmg_config.dart:211:26)
+2026-04-03T16:35:54.9585130Z #2      FlutterAppPackager.package (package:flutter_app_packager/src/flutter_app_packager.dart:40:39)
+2026-04-03T16:35:54.9585920Z #3      UnifiedDistributor.package (package:unified_distributor/src/unified_distributor.dart:197:51)
+2026-04-03T16:35:54.9586580Z <asynchronous suspension>
+2026-04-03T16:35:54.9587210Z #4      UnifiedDistributor.release (package:unified_distributor/src/unified_distributor.dart:366:45)
+2026-04-03T16:35:54.9588000Z <asynchronous suspension>
+2026-04-03T16:35:54.9588420Z #5      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+2026-04-03T16:35:54.9588850Z <asynchronous suspension>
+2026-04-03T16:35:54.9589320Z #6      main (file:///Users/runner/.pub-cache/hosted/pub.dev/fastforge-0.6.6/bin/main.dart:10:10)
+2026-04-03T16:35:54.9589860Z <asynchronous suspension>
+2026-04-03T16:35:54.9590160Z 
+2026-04-03T16:35:54.9794250Z ##[error]Process completed with exit code 255.
