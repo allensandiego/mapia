@@ -32,6 +32,7 @@ releases:
           priority: optional
           section: x11
           installed_size: 250000
+          icon_path: mapia.png
       - name: linux-rpm
         package:
           platform: linux
@@ -44,6 +45,7 @@ releases:
           vendor: Allensandiego
           license: MIT
           url: https://github.com/allensandiego/mapia
+          icon_path: mapia.png
       - name: linux-appimage
         package:
           platform: linux
@@ -51,6 +53,7 @@ releases:
         config:
           display_name: Mapia
           package_name: mapia
+          icon_path: mapia.png
       - name: macos-dmg
         package:
           platform: macos
