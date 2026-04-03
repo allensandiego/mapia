@@ -1,0 +1,16 @@
+output: dist/
+releases:
+  - name: release
+    jobs:
+      - name: windows-msix
+        package: msix
+      - name: windows-exe
+        package: exe
+      - name: linux-deb
+        package: deb
+      - name: linux-rpm
+        package: rpm
+      - name: linux-appimage
+        package: appimage
+      - name: macos-dmg
+        package: dmg

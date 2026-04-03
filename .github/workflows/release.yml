@@ -29,30 +29,33 @@ jobs:
       - name: Build and Package (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          dart run flutter_distributor:distribute --name release --jobs windows
+          dart run flutter_distributor:distribute --name release --jobs windows-msix,windows-exe
 
       - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          dart run flutter_distributor:distribute --name release --jobs macos
+          dart run flutter_distributor:distribute --name release --jobs macos-dmg
 
       - name: Build and Package (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
-          # Install appimagetool for AppImage generation
+          # Install toolkits for DEB, RPM, and AppImage
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev liblzma-dev libstdc++-12-dev pkg-config fuse
+          sudo apt-get install -y libgtk-3-dev liblzma-dev libstdc++-12-dev pkg-config fuse rpm binutils
           wget --no-check-certificate -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           sudo mv appimagetool /usr/local/bin/
-          dart run flutter_distributor:distribute --name release --jobs linux
+          dart run flutter_distributor:distribute --name release --jobs linux-deb,linux-rpm,linux-appimage
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             dist/*/release/*.msix
+            dist/*/release/*.exe
             dist/*/release/*.dmg
             dist/*/release/*.AppImage
+            dist/*/release/*.deb
+            dist/*/release/*.rpm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
