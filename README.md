@@ -3,27 +3,27 @@
 Mapia is a modern, cross-platform REST API client built with **Flutter**, designed for professional developers who need a powerful yet lightweight tool for testing and debugging APIs.
 
 ## 🚀 Features
+...
+- **Dynamic Themes**: Sleek dark and light modes using Material 3.
 
-- **Full HTTP Method Support**: GET, POST, PUT, DELETE, PATCH, HEAD, and OPTIONS.
-- **Advanced Request Editor**:
-    - **Header & Parameter Management**: Tab-based editors with autocompletion.
-    - **Authorization**: Comprehensive support for Basic Auth, Bearer Tokens, API Keys, and **OAuth2** (Client Credentials, Auth Code, Password, Implicit) with auto-refresh.
-    - **Multi-type Body Support**: JSON, XML, HTML, Form-data, x-www-form-urlencoded, and Binary payloads.
-- **Environment Management**:
-    - Manage multiple environments and switch seamlessly.
-    - Resolve variables using `{{variable}}` syntax in URLs, headers, and bodies.
-    - Hover over variables to see resolved values instantly.
-- **Powerful Response Viewer**:
-    - **Pretty View**: Syntax highlighting for JSON, XML, and HTML (using atom-one-dark theme).
-    - **Rendered View**: Preview HTML responses directly.
-    - **Metadata Tracking**: Detailed status codes, response time, and payload size.
-- **Organization & History**:
-    - **Collections & Folders**: Organize requests into logical groupings.
-    - **History Tracking**: Search and filter past requests by method or status code range.
-- **Developer Productivity**:
-    - **Code Snippets**: Generate snippets for cURL, Python (Requests), JavaScript (Fetch/Axios), and Dart (Dio).
-    - **Keyboard Shortcuts**: Power-user shortcuts for sending, saving, and tab management.
-    - **Dynamic Themes**: Sleek dark and light modes using Material 3.
+## 📥 Downloads & Installation
+
+To use Mapia on your desktop, visit the **[Latest Releases](https://github.com/allensandiego/mapia/releases)** page on GitHub and download the package for your operating system.
+
+### 🪟 Windows
+1. Download the `mapia-windows-x64.zip`.
+2. Extract the content to a folder of your choice.
+3. Run `mapia.exe` to launch the application.
+
+### 🍎 macOS
+1. Download the `Mapia.dmg`.
+2. Open the disk image and drag **Mapia.app** to your **Applications** folder.
+3. If prompted by macOS Gatekeeper, you may need to right-click open the app for the first time.
+
+### 🐧 Linux
+1. Download the `mapia-linux-x64.tar.gz`.
+2. Extract the archive: `tar -xzf mapia-linux-x64.tar.gz`.
+3. Run the executable: `./mapia`.
 
 ## 🛠️ Tech Stack
 
