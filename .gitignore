@@ -6,6 +6,7 @@
 .flutter-plugins-dependencies
 **/doc/api/
 /build/
+/dist/
 /coverage/
 
 # macOS

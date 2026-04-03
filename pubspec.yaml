@@ -37,6 +37,8 @@ dev_dependencies:
   freezed: ^2.5.2
   json_serializable: ^6.8.0
   flutter_launcher_icons: ^0.14.4
+  flutter_distributor: ^0.5.0
+  msix: ^3.16.7
 
 flutter_launcher_icons:
   android: false
@@ -56,3 +58,12 @@ flutter:
   uses-material-design: true
   assets:
     - mapia.png
+
+msix_config:
+  display_name: Mapia
+  publisher_display_name: Allensandiego
+  publisher: CN=Allensandiego, O=Allensandiego, L=City, S=State, C=Country
+  identity_name: com.allensandiego.mapia
+  install_description: Mapia - REST API Client for Desktop.
+  logo_path: mapia.png
+  install_scope: user # Enable non-admin installation

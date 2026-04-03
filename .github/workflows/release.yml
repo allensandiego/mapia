@@ -23,53 +23,36 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Install Desktop Dependencies (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev liblzma-dev libstdc++-12-dev pkg-config
-
       - name: Get Dependencies
         run: flutter pub get
 
-      - name: Build Application
-        run: |
-          if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            flutter build windows --release
-          elif [ "${{ matrix.os }}" == "macos-latest" ]; then
-            flutter build macos --release
-          else
-            flutter build linux --release
-          fi
-        shell: bash
-
-      - name: Package Artifacts (Windows)
+      - name: Build and Package (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          cd build/windows/x64/runner/Release
-          7p zip -r ../../../../mapia-windows-x64.zip .
-        shell: pwsh
+          dart run flutter_distributor:distribute --name release --jobs windows
 
-      - name: Package Artifacts (macOS)
+      - name: Build and Package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          cd build/macos/Build/Products/Release
-          zip -r ../../../../mapia-macos.zip Mapia.app
-        shell: bash
+          dart run flutter_distributor:distribute --name release --jobs macos
 
-      - name: Package Artifacts (Linux)
+      - name: Build and Package (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
-          cd build/linux/x64/release/bundle
-          tar -czf ../../../../mapia-linux-x64.tar.gz .
-        shell: bash
+          # Install appimagetool for AppImage generation
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev liblzma-dev libstdc++-12-dev pkg-config fuse
+          wget --no-check-certificate -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
+          sudo mv appimagetool /usr/local/bin/
+          dart run flutter_distributor:distribute --name release --jobs linux
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            mapia-windows-x64.zip
-            mapia-macos.zip
-            mapia-linux-x64.tar.gz
+            dist/*/release/*.msix
+            dist/*/release/*.dmg
+            dist/*/release/*.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
