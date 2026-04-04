@@ -318,9 +318,13 @@ class _ResponseBodyState extends State<_ResponseBody> {
         child: SingleChildScrollView(
           controller: _scrollController,
           padding: const EdgeInsets.all(12),
-          child: SelectableText(
-            raw,
-            style: AppTypography.mono.copyWith(fontSize: 12),
+          child: SizedBox(
+            width: double.infinity,
+            child: SelectableText(
+              raw,
+              style: AppTypography.mono.copyWith(fontSize: 12),
+              textAlign: TextAlign.left,
+            ),
           ),
         ),
       );
