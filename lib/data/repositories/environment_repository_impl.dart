@@ -1,23 +1,19 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import '../../core/services/storage_service.dart';
 import '../../domain/entities/environment.dart';
 import '../../domain/repositories/environment_repository.dart';
 
 class EnvironmentRepositoryImpl implements EnvironmentRepository {
-  static const _fileName = 'environments.json';
+  static const _storageKey = 'environments';
+  final StorageService _storage;
 
-  Future<File> _getFile() async {
-    final dir = await getApplicationSupportDirectory();
-    return File('${dir.path}/$_fileName');
-  }
+  EnvironmentRepositoryImpl(this._storage);
 
   @override
   Future<List<Environment>> getAll() async {
     try {
-      final file = await _getFile();
-      if (!await file.exists()) return [];
-      final jsonStr = await file.readAsString();
+      final jsonStr = await _storage.load(_storageKey);
+      if (jsonStr == null) return [];
       final List<dynamic> jsonList = jsonDecode(jsonStr) as List;
       return jsonList
           .map((e) => Environment.fromJson(e as Map<String, dynamic>))
@@ -28,8 +24,8 @@ class EnvironmentRepositoryImpl implements EnvironmentRepository {
   }
 
   Future<void> _saveAll(List<Environment> envs) async {
-    final file = await _getFile();
-    await file.writeAsString(
+    await _storage.save(
+      _storageKey,
       jsonEncode(envs.map((e) => e.toJson()).toList()),
     );
   }
@@ -51,5 +47,20 @@ class EnvironmentRepositoryImpl implements EnvironmentRepository {
     final all = await getAll();
     all.removeWhere((e) => e.id == environmentId);
     await _saveAll(all);
+  }
+
+  @override
+  Future<String> exportEnvironment(String environmentId) async {
+    final all = await getAll();
+    final env = all.firstWhere((e) => e.id == environmentId);
+    return jsonEncode(env.toJson());
+  }
+
+  @override
+  Future<Environment> importEnvironment(String jsonString) async {
+    final Map<String, dynamic> json = jsonDecode(jsonString) as Map<String, dynamic>;
+    final env = Environment.fromJson(json);
+    await save(env);
+    return env;
   }
 }

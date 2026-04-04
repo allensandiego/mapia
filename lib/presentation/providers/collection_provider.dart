@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:convert';
 import '../../domain/entities/collection.dart';
 import '../../domain/entities/api_request.dart';
+import '../../core/utils/postman_mapper.dart';
 import 'repository_providers.dart';
 
 class CollectionNotifier extends AsyncNotifier<List<Collection>> {
@@ -127,6 +129,133 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     state = AsyncValue.data(
       await ref.read(collectionRepositoryProvider).getAll(),
     );
+  }
+
+  Future<String> exportCollection(String id) async {
+    return ref.read(collectionRepositoryProvider).exportCollection(id);
+  }
+
+  Future<void> importCollection(String jsonStr) async {
+    final Map<String, dynamic> json = jsonDecode(jsonStr) as Map<String, dynamic>;
+    Collection col;
+    if (json.containsKey('info')) {
+      // Treat as postman
+      col = PostmanMapper.mapPostman(json);
+      await ref.read(collectionRepositoryProvider).save(col);
+    } else {
+      col =
+          await ref.read(collectionRepositoryProvider).importCollection(jsonStr);
+    }
+    state = AsyncValue.data([...state.value ?? [], col]);
+  }
+
+  Future<void> reorderCollections(int oldIndex, int newIndex) async {
+    final cols = (state.value ?? []).toList();
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final item = cols.removeAt(oldIndex);
+    cols.insert(newIndex, item);
+    state = AsyncValue.data(cols);
+    await ref
+        .read(collectionRepositoryProvider)
+        .reorderCollections(cols.map((c) => c.id).toList());
+  }
+
+  Future<void> reorderFolders(
+      String collectionId, int oldIndex, int newIndex) async {
+    final cols = state.value ?? [];
+    final col = cols.where((c) => c.id == collectionId).firstOrNull;
+    if (col == null) return;
+
+    final folders = col.folders.toList();
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final item = folders.removeAt(oldIndex);
+    folders.insert(newIndex, item);
+
+    final newCol = col.copyWith(folders: folders);
+    state = AsyncValue.data(
+      cols.map((c) => c.id == collectionId ? newCol : c).toList(),
+    );
+    await ref
+        .read(collectionRepositoryProvider)
+        .reorderFolders(collectionId, folders.map((f) => f.id).toList());
+  }
+
+  Future<void> reorderRequests(String collectionId, String? folderId,
+      int oldIndex, int newIndex) async {
+    final cols = state.value ?? [];
+    final col = cols.where((c) => c.id == collectionId).firstOrNull;
+    if (col == null) return;
+
+    List<ApiRequest> reqs;
+    if (folderId != null) {
+      final folder = col.folders.where((f) => f.id == folderId).firstOrNull;
+      if (folder == null) return;
+      reqs = folder.requests.toList();
+    } else {
+      reqs = col.requests.toList();
+    }
+
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final item = reqs.removeAt(oldIndex);
+    reqs.insert(newIndex, item);
+
+    Collection newCol;
+    if (folderId != null) {
+      newCol = col.copyWith(
+        folders: col.folders
+            .map((f) => f.id == folderId ? f.copyWith(requests: reqs) : f)
+            .toList(),
+      );
+    } else {
+      newCol = col.copyWith(requests: reqs);
+    }
+
+    state = AsyncValue.data(
+      cols.map((c) => c.id == collectionId ? newCol : c).toList(),
+    );
+    await ref
+        .read(collectionRepositoryProvider)
+        .reorderRequests(collectionId, folderId, reqs.map((r) => r.id).toList());
+  }
+
+  Future<void> moveRequest(
+    String requestId, {
+    required String fromCollectionId,
+    String? fromFolderId,
+    required String toCollectionId,
+    String? toFolderId,
+    int? toIndex,
+  }) async {
+    await ref.read(collectionRepositoryProvider).moveRequest(
+          requestId,
+          fromCollectionId: fromCollectionId,
+          fromFolderId: fromFolderId,
+          toCollectionId: toCollectionId,
+          toFolderId: toFolderId,
+          toIndex: toIndex,
+        );
+    await refresh();
+  }
+
+  Future<void> moveFolder(
+    String folderId, {
+    required String fromCollectionId,
+    required String toCollectionId,
+    int? toIndex,
+  }) async {
+    await ref.read(collectionRepositoryProvider).moveFolder(
+          folderId,
+          fromCollectionId: fromCollectionId,
+          toCollectionId: toCollectionId,
+          toIndex: toIndex,
+        );
+    await refresh();
   }
 }
 

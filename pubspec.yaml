@@ -1,6 +1,6 @@
 name: mapia
-description: A beautiful REST API client for desktop.
-version: 1.0.0+1
+description: Yes another REST API client for desktop.
+version: 1.0.41+1
 publish_to: none
 
 environment:
@@ -43,27 +43,27 @@ dev_dependencies:
 flutter_launcher_icons:
   android: false
   ios: false
-  image_path: "mapia.png"
+  image_path: "assets/mapia.png"
   windows:
     generate: true
-    image_path: "mapia.png"
+    image_path: "assets/mapia.png"
   macos:
     generate: true
-    image_path: "mapia.png"
+    image_path: "assets/mapia.png"
   linux:
     generate: true
-    image_path: "mapia.png"
+    image_path: "assets/mapia.png"
 
 flutter:
   uses-material-design: true
   assets:
-    - mapia.png
+    - assets/mapia.png
 
 msix_config:
   display_name: Mapia
   publisher_display_name: Allensandiego
   publisher: CN=Allensandiego, O=Allensandiego, L=City, S=State, C=Country
   identity_name: com.allensandiego.mapia
-  install_description: Mapia - REST API Client for Desktop.
-  logo_path: mapia.png
+  install_description: Mapia - Yes another REST API client
+  logo_path: assets/mapia.png
   install_scope: user # Enable non-admin installation

@@ -7,6 +7,7 @@ import '../../../core/constants/http_constants.dart';
 import '../../../core/utils/variable_parser.dart';
 import '../../providers/ui_provider.dart';
 import '../../../core/theme/mapia_colors.dart';
+import '../../../core/widgets/variable_text_editing_controller.dart';
 
 const double _kRowHeight = 48.0;
 
@@ -21,13 +22,13 @@ class UrlBar extends ConsumerStatefulWidget {
 }
 
 class _UrlBarState extends ConsumerState<UrlBar> {
-  late TextEditingController _urlCtrl;
+  late VariableTextEditingController _urlCtrl;
   late TextEditingController _nameCtrl;
 
   @override
   void initState() {
     super.initState();
-    _urlCtrl = TextEditingController(text: widget.tab.request.url);
+    _urlCtrl = VariableTextEditingController(text: widget.tab.request.url);
     _nameCtrl = TextEditingController(text: widget.tab.request.name);
   }
 
@@ -53,6 +54,9 @@ class _UrlBarState extends ConsumerState<UrlBar> {
     final colors = context.colors;
     final borderColor = colors.border;
     final focusedBorderColor = colors.accent;
+
+    _urlCtrl.variableColor = colors.warning;
+    _urlCtrl.defaultColor = colors.textPrimary;
 
     final activeEnvVars = ref.watch(activeEnvVariablesProvider);
     final allVars = <String>{...activeEnvVars.keys};
@@ -310,7 +314,7 @@ class _MethodDropdown extends StatelessWidget {
 // Shows a dropdown with matching {{variable}} suggestions when the user types {{.
 
 class _VarAutocompleteField extends StatefulWidget {
-  final TextEditingController controller;
+  final VariableTextEditingController controller;
   final Color borderColor;
   final Color focusedBorderColor;
   final ValueChanged<String> onChanged;
@@ -403,7 +407,8 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: matches
-                  .map((varKey) => InkWell(
+                  .map((varKey) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
                         onTap: () {
                           final text = widget.controller.text;
                           // Rebuild full text replacing the partial {{query with {{varKey}}
@@ -418,31 +423,34 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
                           widget.onChanged(inserted);
                           _hideOverlay();
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 9),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: '{{',
-                                    style: TextStyle(
-                                        color: colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: varKey,
-                                    style: TextStyle(
-                                        color: colors.textPrimary,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: '}}',
-                                    style: TextStyle(
-                                        color: colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                              ],
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 9),
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: '{{',
+                                      style: TextStyle(
+                                          color: colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: varKey,
+                                      style: TextStyle(
+                                          color: colors.textPrimary,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: '}}',
+                                      style: TextStyle(
+                                          color: colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                ],
+                              ),
                             ),
                           ),
                         ),

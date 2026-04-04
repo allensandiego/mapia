@@ -14,6 +14,24 @@ abstract class CollectionRepository {
       {String? folderId});
   Future<void> addFolder(String collectionId, Folder folder);
   Future<void> deleteFolder(String collectionId, String folderId);
+  Future<void> reorderFolders(String collectionId, List<String> orderedIds);
   Future<void> reorderRequests(
       String collectionId, String? folderId, List<String> orderedIds);
+  Future<void> reorderCollections(List<String> orderedIds);
+  Future<void> moveRequest(
+    String requestId, {
+    required String fromCollectionId,
+    String? fromFolderId,
+    required String toCollectionId,
+    String? toFolderId,
+    int? toIndex,
+  });
+  Future<void> moveFolder(
+    String folderId, {
+    required String fromCollectionId,
+    required String toCollectionId,
+    int? toIndex,
+  });
+  Future<String> exportCollection(String collectionId);
+  Future<Collection> importCollection(String jsonString);
 }

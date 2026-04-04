@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Mapia
-Comment=A beautiful REST API client for desktop.
+Comment=Yes another REST API client for desktop.
 Exec=mapia
 Icon=mapia
 Terminal=false

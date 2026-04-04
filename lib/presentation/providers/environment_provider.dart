@@ -31,6 +31,16 @@ class EnvironmentNotifier extends AsyncNotifier<List<Environment>> {
       ref.read(activeEnvironmentProvider.notifier).state = null;
     }
   }
+
+  Future<String> exportEnvironment(String id) async {
+    return ref.read(environmentRepositoryProvider).exportEnvironment(id);
+  }
+
+  Future<Environment> importEnvironment(String json) async {
+    final env = await ref.read(environmentRepositoryProvider).importEnvironment(json);
+    state = AsyncValue.data([...state.value ?? [], env]);
+    return env;
+  }
 }
 
 final environmentsProvider =

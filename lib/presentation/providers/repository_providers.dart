@@ -6,15 +6,20 @@ import '../../domain/repositories/collection_repository.dart';
 import '../../domain/repositories/environment_repository.dart';
 import '../../domain/repositories/history_repository.dart';
 
+import '../../core/services/storage_service.dart';
+
 // Repository providers
 final collectionRepositoryProvider = Provider<CollectionRepository>((ref) {
-  return CollectionRepositoryImpl();
+  final storage = ref.watch(storageServiceProvider);
+  return CollectionRepositoryImpl(storage);
 });
 
 final environmentRepositoryProvider = Provider<EnvironmentRepository>((ref) {
-  return EnvironmentRepositoryImpl();
+  final storage = ref.watch(storageServiceProvider);
+  return EnvironmentRepositoryImpl(storage);
 });
 
 final historyRepositoryProvider = Provider<HistoryRepository>((ref) {
-  return HistoryRepositoryImpl();
+  final storage = ref.watch(storageServiceProvider);
+  return HistoryRepositoryImpl(storage);
 });

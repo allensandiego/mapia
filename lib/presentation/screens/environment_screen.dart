@@ -6,6 +6,9 @@ import '../../../core/widgets/key_value_editor.dart';
 import '../../../domain/entities/environment.dart';
 import '../../../domain/entities/variable.dart';
 import 'package:uuid/uuid.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:convert';
+import '../../../core/utils/file_utils.dart';
 
 class EnvironmentScreen extends ConsumerStatefulWidget {
   const EnvironmentScreen({super.key});
@@ -46,6 +49,16 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
                           fontWeight: FontWeight.w600,
                           color: context.colors.textPrimary)),
                   const Spacer(),
+                  IconButton(
+                    onPressed: () => _importEnvironment(context),
+                    icon: const Icon(Icons.file_upload_outlined, size: 16),
+                    color: context.colors.textMuted,
+                    tooltip: 'Import Environment',
+                    padding: EdgeInsets.zero,
+                    constraints:
+                        const BoxConstraints(minWidth: 28, minHeight: 28),
+                  ),
+                  const SizedBox(width: 8),
                   IconButton(
                     onPressed: () => Navigator.pop(context),
                     icon: const Icon(Icons.close, size: 16),
@@ -177,6 +190,35 @@ class _EnvironmentScreenState extends ConsumerState<EnvironmentScreen> {
     await ref.read(environmentsProvider.notifier).save(env);
     setState(() => _selectedId = env.id);
   }
+
+  Future<void> _importEnvironment(BuildContext context) async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['json'],
+        withData: true,
+      );
+
+      if (result != null && result.files.single.bytes != null) {
+        final json = utf8.decode(result.files.single.bytes!);
+        final env = await ref
+            .read(environmentsProvider.notifier)
+            .importEnvironment(json);
+        if (mounted) {
+          setState(() => _selectedId = env.id);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Environment imported successfully')),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to import environment: $e')),
+        );
+      }
+    }
+  }
 }
 
 class _EnvironmentEditor extends ConsumerStatefulWidget {
@@ -249,6 +291,14 @@ class _EnvironmentEditorState extends ConsumerState<_EnvironmentEditor> {
                 constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
                 padding: EdgeInsets.zero,
               ),
+              IconButton(
+                icon: const Icon(Icons.file_download_outlined, size: 14),
+                onPressed: () => _exportEnvironment(context),
+                color: context.colors.textMuted,
+                tooltip: 'Export Environment',
+                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                padding: EdgeInsets.zero,
+              ),
             ],
           ),
         ),
@@ -271,5 +321,25 @@ class _EnvironmentEditorState extends ConsumerState<_EnvironmentEditor> {
         ),
       ],
     );
+  }
+
+  Future<void> _exportEnvironment(BuildContext context) async {
+    try {
+      final json = await ref
+          .read(environmentsProvider.notifier)
+          .exportEnvironment(widget.environment.id);
+      await FileUtils.downloadFile('${widget.environment.name}.json', json);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Environment exported successfully')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to export environment: $e')),
+        );
+      }
+    }
   }
 }

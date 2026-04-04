@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:convert';
 import '../../providers/collection_provider.dart';
 import '../../providers/ui_provider.dart';
 import 'collection_tree.dart';
@@ -90,9 +92,15 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Header
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 16, 12, 8),
+                // Header (48px to match request tabs)
+                Container(
+                  height: 48,
+                  padding: const EdgeInsets.fromLTRB(14, 0, 12, 0),
+                  decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(color: context.colors.border, width: 0.5)),
+                  ),
                   child: Row(
                     children: [
                       Text(
@@ -113,6 +121,14 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
                           onTap: () => _newCollection(ref),
                           tooltip: 'New Collection',
                         ),
+                      if (_tab == _SidebarTab.collections) ...[
+                        const SizedBox(width: 8),
+                        _ActionButton(
+                          icon: Icons.file_upload_outlined,
+                          onTap: () => _importCollections(ref),
+                          tooltip: 'Import Collection',
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -164,6 +180,32 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
         ],
       ),
     );
+  }
+
+  Future<void> _importCollections(WidgetRef ref) async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['json'],
+        withData: true, // Required for web
+      );
+
+      if (result != null && result.files.single.bytes != null) {
+        final json = utf8.decode(result.files.single.bytes!);
+        await ref.read(collectionsProvider.notifier).importCollection(json);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Collection imported successfully')),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to import: $e')),
+        );
+      }
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
@@ -9,23 +9,25 @@ import 'presentation/providers/ui_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await windowManager.ensureInitialized();
-  const windowOptions = WindowOptions(
-    size: Size(1280, 800),
-    minimumSize: Size(1024, 700),
-    center: true,
-    title: 'Mapia',
-    titleBarStyle: TitleBarStyle.normal,
-    backgroundColor: Colors.transparent,
-  );
-  await windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-    // Only set icon on Windows/macOS; GTK (Linux) handles it during startup in C++
-    if (!Platform.isLinux) {
-      await windowManager.setIcon('mapia.png');
-    }
-  });
+  if (!kIsWeb) {
+    await windowManager.ensureInitialized();
+    const windowOptions = WindowOptions(
+      size: Size(1280, 800),
+      minimumSize: Size(1024, 700),
+      center: true,
+      title: 'Mapia',
+      titleBarStyle: TitleBarStyle.normal,
+      backgroundColor: Colors.transparent,
+    );
+    await windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+      // Only set icon on Windows/macOS; GTK (Linux) handles it during startup in C++
+      if (defaultTargetPlatform != TargetPlatform.linux) {
+        await windowManager.setIcon('mapia.png');
+      }
+    });
+  }
 
   runApp(const ProviderScope(child: MapiaApp()));
 }

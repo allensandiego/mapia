@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class VariableTextEditingController extends TextEditingController {
   static final _variablePattern = RegExp(r'\{\{([^}]+)\}\}');
 
-  final Color variableColor;
-  final Color defaultColor;
+  Color variableColor;
+  Color defaultColor;
   final TextStyle? baseTextStyle;
 
   VariableTextEditingController({

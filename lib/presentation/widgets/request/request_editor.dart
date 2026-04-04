@@ -11,6 +11,7 @@ import '../../../core/utils/http_utils.dart';
 import '../../../core/utils/variable_parser.dart';
 import '../../../domain/entities/api_request.dart';
 import '../../../data/services/http_service.dart';
+import '../../../core/widgets/variable_text_editing_controller.dart';
 
 class RequestEditor extends ConsumerStatefulWidget {
   final RequestTab tab;
@@ -239,7 +240,11 @@ class _BodyEditor extends ConsumerWidget {
       case BodyType.json:
       case BodyType.raw:
       case BodyType.binary:
-        return _RawBodyEditor(tab: tab, resolvedEnvVars: resolvedVars);
+        return _RawBodyEditor(
+          tab: tab,
+          resolvedEnvVars: resolvedVars,
+          envVars: envVarsList,
+        );
     }
   }
 }
@@ -298,7 +303,8 @@ class _BodyTypeBar extends ConsumerWidget {
 class _RawBodyEditor extends ConsumerStatefulWidget {
   final RequestTab tab;
   final Map<String, String>? resolvedEnvVars;
-  const _RawBodyEditor({required this.tab, this.resolvedEnvVars});
+  final List<String>? envVars;
+  const _RawBodyEditor({required this.tab, this.resolvedEnvVars, this.envVars});
 
   @override
   ConsumerState<_RawBodyEditor> createState() => _RawBodyEditorState();
@@ -306,14 +312,21 @@ class _RawBodyEditor extends ConsumerStatefulWidget {
 
 class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
     with SingleTickerProviderStateMixin {
-  late TextEditingController _ctrl;
+  late VariableTextEditingController _ctrl;
   late TabController _tabCtrl;
+  OverlayEntry? _overlay;
+  final FocusNode _focus = FocusNode();
+  final LayerLink _layerLink = LayerLink();
 
   @override
   void initState() {
     super.initState();
-    _ctrl = TextEditingController(text: widget.tab.request.body);
+    _ctrl = VariableTextEditingController(text: widget.tab.request.body);
+    _ctrl.addListener(_onTextChanged);
     _tabCtrl = TabController(length: 2, vsync: this);
+    _focus.addListener(() {
+      if (!_focus.hasFocus) _hideOverlay();
+    });
   }
 
   @override
@@ -326,9 +339,127 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
 
   @override
   void dispose() {
+    _ctrl.removeListener(_onTextChanged);
     _ctrl.dispose();
     _tabCtrl.dispose();
+    _focus.dispose();
+    _hideOverlay();
     super.dispose();
+  }
+
+  void _onTextChanged() {
+    if (widget.envVars == null || widget.envVars!.isEmpty) {
+      _hideOverlay();
+      return;
+    }
+
+    final text = _ctrl.text;
+    final pos = _ctrl.selection.baseOffset;
+    if (pos < 0) return;
+
+    final before = text.substring(0, pos);
+    final openIdx = before.lastIndexOf('{{');
+    if (openIdx == -1) {
+      _hideOverlay();
+      return;
+    }
+
+    if (before.substring(openIdx).contains('}}')) {
+      _hideOverlay();
+      return;
+    }
+
+    final query = before.substring(openIdx + 2).toLowerCase();
+    final matches = widget.envVars!
+        .where((k) => k.toLowerCase().startsWith(query))
+        .toList();
+
+    if (matches.isEmpty) {
+      _hideOverlay();
+      return;
+    }
+    _showOverlay(matches, openIdx, pos);
+  }
+
+  void _showOverlay(List<String> matches, int openIdx, int cursorPos) {
+    _hideOverlay();
+    _overlay = OverlayEntry(
+      builder: (_) => Positioned(
+        width: 240,
+        child: CompositedTransformFollower(
+          link: _layerLink,
+          offset: const Offset(0, 50),
+          showWhenUnlinked: false,
+          child: Material(
+            elevation: 8,
+            borderRadius: BorderRadius.circular(6),
+            color: context.colors.bgElevated,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              children: matches
+                  .map<Widget>((varKey) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          final text = _ctrl.text;
+                          final prefix = text.substring(0, openIdx);
+                          final suffix = text.substring(cursorPos);
+                          final inserted = '$prefix{{$varKey}}$suffix';
+                          _ctrl.value = TextEditingValue(
+                            text: inserted,
+                            selection: TextSelection.collapsed(
+                                offset: openIdx + varKey.length + 4),
+                          );
+                          ref.read(tabsProvider.notifier).updateRequest(
+                                widget.tab.id,
+                                widget.tab.request.copyWith(body: inserted),
+                              );
+                          _hideOverlay();
+                        },
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 9),
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: '{{',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: varKey,
+                                      style: TextStyle(
+                                          color: context.colors.textPrimary,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: '}}',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ))
+                  .toList(),
+            ),
+          ),
+        ),
+      ),
+    );
+    Overlay.of(context).insert(_overlay!);
+  }
+
+  void _hideOverlay() {
+    _overlay?.remove();
+    _overlay = null;
   }
 
   String get _language {
@@ -362,7 +493,10 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
   @override
   Widget build(BuildContext context) {
     final req = widget.tab.request;
-    // colors removed - use AppColors directly
+
+    _ctrl.variableColor = context.colors.warning;
+    _ctrl.defaultColor = context.colors.textPrimary;
+
     return Column(
       children: [
         // Combined: Edit/Preview tabs (left) + Body type dropdown (right)
@@ -434,69 +568,73 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
                       ? VariableParser.resolve(text, widget.resolvedEnvVars!)
                       : null;
 
-                  return Container(
-                    color: context.colors.bgBase,
-                    decoration: BoxDecoration(
+                  return CompositedTransformTarget(
+                    link: _layerLink,
+                    child: Container(
                       color: context.colors.bgBase,
-                      border: hasVars
-                          ? Border.all(
-                              color:
-                                  context.colors.warning.withValues(alpha: 0.4),
-                              width: 1.0,
-                            )
-                          : null,
-                    ),
-                    child: Builder(
-                      builder: (context) {
-                        Widget editField = TextField(
-                          controller: _ctrl,
-                          maxLines: null,
-                          expands: true,
-                          onChanged: (v) {
-                            ref.read(tabsProvider.notifier).updateRequest(
-                                  widget.tab.id,
-                                  widget.tab.request.copyWith(body: v),
-                                );
-                          },
-                          style: TextStyle(
-                            fontFamily: 'monospace',
-                            fontSize: 13,
-                            color: context.colors.textPrimary,
-                            height: 1.6,
-                          ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(12),
-                            filled: true,
-                            fillColor: context.colors.bgBase,
-                            hintText: '{\n  "key": "value"\n}',
-                          ),
-                        );
-
-                        if (resolvedText != null && resolvedText != text) {
-                          editField = Tooltip(
-                            message: resolvedText,
-                            preferBelow: true,
-                            decoration: BoxDecoration(
-                              color: context.colors.bgElevated,
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(
-                                  color: context.colors.warning
-                                      .withValues(alpha: 0.4)),
-                            ),
-                            textStyle: TextStyle(
-                              fontSize: 12,
-                              color: context.colors.warning,
+                      decoration: BoxDecoration(
+                        color: context.colors.bgBase,
+                        border: hasVars
+                            ? Border.all(
+                                color: context.colors.warning
+                                    .withValues(alpha: 0.4),
+                                width: 1.0,
+                              )
+                            : null,
+                      ),
+                      child: Builder(
+                        builder: (context) {
+                          Widget editField = TextField(
+                            controller: _ctrl,
+                            focusNode: _focus,
+                            maxLines: null,
+                            expands: true,
+                            onChanged: (v) {
+                              ref.read(tabsProvider.notifier).updateRequest(
+                                    widget.tab.id,
+                                    widget.tab.request.copyWith(body: v),
+                                  );
+                            },
+                            style: TextStyle(
                               fontFamily: 'monospace',
+                              fontSize: 13,
+                              color: context.colors.textPrimary,
+                              height: 1.6,
                             ),
-                            child: editField,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              contentPadding: const EdgeInsets.all(12),
+                              filled: true,
+                              fillColor: context.colors.bgBase,
+                              hintText: '{\n  "key": "value"\n}',
+                            ),
                           );
-                        }
 
-                        return editField;
-                      },
+                          if (resolvedText != null && resolvedText != text) {
+                            editField = Tooltip(
+                              message: resolvedText,
+                              preferBelow: true,
+                              decoration: BoxDecoration(
+                                color: context.colors.bgElevated,
+                                borderRadius: BorderRadius.circular(6),
+                                border: Border.all(
+                                    color: context.colors.warning
+                                        .withValues(alpha: 0.4)),
+                              ),
+                              textStyle: TextStyle(
+                                fontSize: 12,
+                                color: context.colors.warning,
+                                fontFamily: 'monospace',
+                              ),
+                              child: editField,
+                            );
+                          }
+
+                          return editField;
+                        },
+                      ),
                     ),
                   );
                 },
@@ -723,7 +861,7 @@ class _AuthField extends StatefulWidget {
 }
 
 class _AuthFieldState extends State<_AuthField> {
-  late TextEditingController _ctrl;
+  late VariableTextEditingController _ctrl;
   OverlayEntry? _overlay;
   final FocusNode _focus = FocusNode();
   final LayerLink _layerLink = LayerLink();
@@ -731,7 +869,7 @@ class _AuthFieldState extends State<_AuthField> {
   @override
   void initState() {
     super.initState();
-    _ctrl = TextEditingController(text: widget.value);
+    _ctrl = VariableTextEditingController(text: widget.value);
     _ctrl.addListener(_onTextChanged);
     _focus.addListener(() {
       if (!_focus.hasFocus) _hideOverlay();
@@ -799,7 +937,8 @@ class _AuthFieldState extends State<_AuthField> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: matches
-                  .map<Widget>((varKey) => InkWell(
+                  .map<Widget>((varKey) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
                         onTap: () {
                           final text = _ctrl.text;
                           final prefix = text.substring(0, openIdx);
@@ -813,31 +952,34 @@ class _AuthFieldState extends State<_AuthField> {
                           widget.onChanged(inserted);
                           _hideOverlay();
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 9),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: '{{',
-                                    style: TextStyle(
-                                        color: context.colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: varKey,
-                                    style: TextStyle(
-                                        color: context.colors.textPrimary,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: '}}',
-                                    style: TextStyle(
-                                        color: context.colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                              ],
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 9),
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: '{{',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: varKey,
+                                      style: TextStyle(
+                                          color: context.colors.textPrimary,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: '}}',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -858,6 +1000,9 @@ class _AuthFieldState extends State<_AuthField> {
 
   @override
   Widget build(BuildContext context) {
+    _ctrl.variableColor = context.colors.warning;
+    _ctrl.defaultColor = context.colors.textPrimary;
+
     final text = _ctrl.text;
     final hasVars = text.contains('{{');
     final resolvedText = (hasVars && widget.resolvedEnvVars != null)
@@ -915,9 +1060,83 @@ class _AuthFieldState extends State<_AuthField> {
 
 // ─── OAuth2 Editor ──────────────────────────────────────────────────────────
 
-class _OAuth2Editor extends ConsumerWidget {
+class _OAuth2Editor extends ConsumerStatefulWidget {
   final RequestTab tab;
   const _OAuth2Editor({required this.tab});
+
+  @override
+  ConsumerState<_OAuth2Editor> createState() => _OAuth2EditorState();
+}
+
+class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
+  late VariableTextEditingController _tokenUrlCtrl;
+  late VariableTextEditingController _clientIdCtrl;
+  late VariableTextEditingController _clientSecretCtrl;
+  late VariableTextEditingController _authUrlCtrl;
+  late VariableTextEditingController _redirectUrlCtrl;
+  late VariableTextEditingController _usernameCtrl;
+  late VariableTextEditingController _passwordCtrl;
+  late VariableTextEditingController _scopeCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    final oauth2 = widget.tab.request.auth.oauth2Config;
+    _tokenUrlCtrl = VariableTextEditingController(text: oauth2.tokenUrl);
+    _clientIdCtrl = VariableTextEditingController(text: oauth2.clientId);
+    _clientSecretCtrl = VariableTextEditingController(text: oauth2.clientSecret);
+    _authUrlCtrl = VariableTextEditingController(text: oauth2.authorizationUrl);
+    _redirectUrlCtrl = VariableTextEditingController(text: oauth2.redirectUrl);
+    _usernameCtrl = VariableTextEditingController(text: oauth2.username);
+    _passwordCtrl = VariableTextEditingController(text: oauth2.password);
+    _scopeCtrl = VariableTextEditingController(text: oauth2.scope);
+  }
+
+  @override
+  void didUpdateWidget(_OAuth2Editor old) {
+    super.didUpdateWidget(old);
+    if (old.tab.id != widget.tab.id) {
+      final oauth2 = widget.tab.request.auth.oauth2Config;
+      _tokenUrlCtrl.text = oauth2.tokenUrl;
+      _clientIdCtrl.text = oauth2.clientId;
+      _clientSecretCtrl.text = oauth2.clientSecret;
+      _authUrlCtrl.text = oauth2.authorizationUrl;
+      _redirectUrlCtrl.text = oauth2.redirectUrl;
+      _usernameCtrl.text = oauth2.username;
+      _passwordCtrl.text = oauth2.password;
+      _scopeCtrl.text = oauth2.scope;
+    }
+  }
+
+  @override
+  void dispose() {
+    _tokenUrlCtrl.dispose();
+    _clientIdCtrl.dispose();
+    _clientSecretCtrl.dispose();
+    _authUrlCtrl.dispose();
+    _redirectUrlCtrl.dispose();
+    _usernameCtrl.dispose();
+    _passwordCtrl.dispose();
+    _scopeCtrl.dispose();
+    super.dispose();
+  }
+
+  void _updateColors() {
+    final colors = context.colors;
+    for (final ctrl in [
+      _tokenUrlCtrl,
+      _clientIdCtrl,
+      _clientSecretCtrl,
+      _authUrlCtrl,
+      _redirectUrlCtrl,
+      _usernameCtrl,
+      _passwordCtrl,
+      _scopeCtrl
+    ]) {
+      ctrl.variableColor = colors.warning;
+      ctrl.defaultColor = colors.textPrimary;
+    }
+  }
 
   String _flowLabel(OAuth2Flow flow) {
     switch (flow) {
@@ -933,8 +1152,9 @@ class _OAuth2Editor extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final req = tab.request;
+  Widget build(BuildContext context) {
+    _updateColors();
+    final req = widget.tab.request;
     final auth = req.auth;
     final oauth2 = auth.oauth2Config;
     final notifier = ref.read(tabsProvider.notifier);
@@ -966,7 +1186,7 @@ class _OAuth2Editor extends ConsumerWidget {
             }).toList(),
             onChanged: (f) => f != null
                 ? notifier.updateRequest(
-                    tab.id,
+                    widget.tab.id,
                     req.copyWith(
                       auth: auth.copyWith(
                         oauth2Config: oauth2.copyWith(flow: f),
@@ -991,9 +1211,9 @@ class _OAuth2Editor extends ConsumerWidget {
               hintText: 'https://oauth.example.com/token',
               isDense: true,
             ),
-            controller: TextEditingController(text: oauth2.tokenUrl),
+            controller: _tokenUrlCtrl,
             onChanged: (v) => notifier.updateRequest(
-              tab.id,
+              widget.tab.id,
               req.copyWith(
                 auth: auth.copyWith(
                   oauth2Config: oauth2.copyWith(tokenUrl: v),
@@ -1016,9 +1236,9 @@ class _OAuth2Editor extends ConsumerWidget {
               border: OutlineInputBorder(),
               isDense: true,
             ),
-            controller: TextEditingController(text: oauth2.clientId),
+            controller: _clientIdCtrl,
             onChanged: (v) => notifier.updateRequest(
-              tab.id,
+              widget.tab.id,
               req.copyWith(
                 auth: auth.copyWith(
                   oauth2Config: oauth2.copyWith(clientId: v),
@@ -1041,10 +1261,10 @@ class _OAuth2Editor extends ConsumerWidget {
               border: OutlineInputBorder(),
               isDense: true,
             ),
-            controller: TextEditingController(text: oauth2.clientSecret),
+            controller: _clientSecretCtrl,
             obscureText: true,
             onChanged: (v) => notifier.updateRequest(
-              tab.id,
+              widget.tab.id,
               req.copyWith(
                 auth: auth.copyWith(
                   oauth2Config: oauth2.copyWith(clientSecret: v),
@@ -1069,9 +1289,9 @@ class _OAuth2Editor extends ConsumerWidget {
                 hintText: 'https://oauth.example.com/authorize',
                 isDense: true,
               ),
-              controller: TextEditingController(text: oauth2.authorizationUrl),
+              controller: _authUrlCtrl,
               onChanged: (v) => notifier.updateRequest(
-                tab.id,
+                widget.tab.id,
                 req.copyWith(
                   auth: auth.copyWith(
                     oauth2Config: oauth2.copyWith(authorizationUrl: v),
@@ -1093,9 +1313,9 @@ class _OAuth2Editor extends ConsumerWidget {
                 hintText: 'http://localhost:8080/callback',
                 isDense: true,
               ),
-              controller: TextEditingController(text: oauth2.redirectUrl),
+              controller: _redirectUrlCtrl,
               onChanged: (v) => notifier.updateRequest(
-                tab.id,
+                widget.tab.id,
                 req.copyWith(
                   auth: auth.copyWith(
                     oauth2Config: oauth2.copyWith(redirectUrl: v),
@@ -1120,9 +1340,9 @@ class _OAuth2Editor extends ConsumerWidget {
                 border: OutlineInputBorder(),
                 isDense: true,
               ),
-              controller: TextEditingController(text: oauth2.username),
+              controller: _usernameCtrl,
               onChanged: (v) => notifier.updateRequest(
-                tab.id,
+                widget.tab.id,
                 req.copyWith(
                   auth: auth.copyWith(
                     oauth2Config: oauth2.copyWith(username: v),
@@ -1143,10 +1363,10 @@ class _OAuth2Editor extends ConsumerWidget {
                 border: OutlineInputBorder(),
                 isDense: true,
               ),
-              controller: TextEditingController(text: oauth2.password),
+              controller: _passwordCtrl,
               obscureText: true,
               onChanged: (v) => notifier.updateRequest(
-                tab.id,
+                widget.tab.id,
                 req.copyWith(
                   auth: auth.copyWith(
                     oauth2Config: oauth2.copyWith(password: v),
@@ -1171,9 +1391,9 @@ class _OAuth2Editor extends ConsumerWidget {
               hintText: 'read write',
               isDense: true,
             ),
-            controller: TextEditingController(text: oauth2.scope),
+            controller: _scopeCtrl,
             onChanged: (v) => notifier.updateRequest(
-              tab.id,
+              widget.tab.id,
               req.copyWith(
                 auth: auth.copyWith(
                   oauth2Config: oauth2.copyWith(scope: v),
@@ -1226,7 +1446,7 @@ class _OAuth2Editor extends ConsumerWidget {
   }
 
   Future<void> _fetchToken(BuildContext context, WidgetRef ref) async {
-    final req = tab.request;
+    final req = widget.tab.request;
     final auth = req.auth;
     final oauth2 = auth.oauth2Config;
     final notifier = ref.read(tabsProvider.notifier);
@@ -1290,10 +1510,10 @@ class _OAuth2Editor extends ConsumerWidget {
             ? DateTime.now().add(Duration(seconds: expiresIn as int))
             : null;
 
-        if (!context.mounted) return;
+        if (!mounted) return;
 
         notifier.updateRequest(
-          tab.id,
+          widget.tab.id,
           req.copyWith(
             auth: auth.copyWith(
               oauth2Config: oauth2.copyWith(
@@ -1306,18 +1526,18 @@ class _OAuth2Editor extends ConsumerWidget {
           ),
         );
 
-        if (!context.mounted) return;
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Token fetched successfully')),
         );
       } else {
-        if (!context.mounted) return;
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Failed to fetch token')),
         );
       }
     } catch (e) {
-      if (!context.mounted) return;
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e')),
       );

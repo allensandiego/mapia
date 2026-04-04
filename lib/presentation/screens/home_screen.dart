@@ -95,32 +95,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         },
         child: Scaffold(
           backgroundColor: context.colors.bgBase,
-          body: Column(
+          body: Row(
             children: [
-              // Top tab bar
-              _TopBar(tabs: tabs, activeTabId: activeTabId),
-              // Main content
+              // Sidebar
+              const SidebarPanel(),
+              // Vertical divider
+              MouseRegion(
+                cursor: SystemMouseCursors.resizeColumn,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onHorizontalDragUpdate: (details) {
+                    final current = ref.read(sidebarWidthProvider);
+                    ref.read(sidebarWidthProvider.notifier).state =
+                        (current + details.delta.dx).clamp(160.0, 600.0);
+                  },
+                  child: Container(
+                    width: 1,
+                    color: context.colors.border,
+                  ),
+                ),
+              ),
+              // Main content column
               Expanded(
-                child: Row(
+                child: Column(
                   children: [
-                    // Sidebar
-                    const SidebarPanel(),
-                    // Vertical divider
-                    MouseRegion(
-                      cursor: SystemMouseCursors.resizeColumn,
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onHorizontalDragUpdate: (details) {
-                          final current = ref.read(sidebarWidthProvider);
-                          ref.read(sidebarWidthProvider.notifier).state =
-                              (current + details.delta.dx).clamp(160.0, 600.0);
-                        },
-                        child: Container(
-                          width: 1,
-                          color: context.colors.border,
-                        ),
-                      ),
-                    ),
+                    // Top tab bar (now only for requests)
+                    _TopBar(tabs: tabs, activeTabId: activeTabId),
                     // Request/response area
                     Expanded(
                       child: tabs.isEmpty
@@ -154,45 +154,6 @@ class _TopBar extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // App logo
-          Container(
-            width: ref.watch(sidebarWidthProvider),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              border: Border(
-                right: BorderSide(color: context.colors.border),
-                bottom: BorderSide(color: context.colors.border),
-              ),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [context.colors.accent, const Color(0xFF7C3AED)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: const Icon(Icons.api_outlined,
-                      size: 14, color: Colors.white),
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  'Mapia',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: context.colors.textPrimary,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ],
-            ),
-          ),
           // Request tabs
           Expanded(
             child: Container(
@@ -341,19 +302,10 @@ class _EmptyState extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
+          Image.asset(
+            'assets/mapia.png',
             width: 72,
             height: 72,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [context.colors.accent, const Color(0xFF7C3AED)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child:
-                const Icon(Icons.api_outlined, size: 36, color: Colors.white),
           ),
           const SizedBox(height: 24),
           Text(
@@ -366,7 +318,7 @@ class _EmptyState extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'A beautiful REST API client',
+            'Yes another REST API client',
             style: TextStyle(fontSize: 14, color: context.colors.textSecondary),
           ),
           const SizedBox(height: 32),

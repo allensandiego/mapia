@@ -11,6 +11,21 @@ import '../../../domain/entities/folder.dart';
 import '../../../domain/entities/api_request.dart';
 import '../../../domain/entities/variable.dart';
 import 'package:uuid/uuid.dart';
+import '../../../core/utils/file_utils.dart';
+
+class _DragData {
+  final String type; // 'request' or 'folder'
+  final String id;
+  final String fromCollectionId;
+  final String? fromFolderId;
+
+  _DragData({
+    required this.type,
+    required this.id,
+    required this.fromCollectionId,
+    this.fromFolderId,
+  });
+}
 
 class CollectionTree extends ConsumerWidget {
   const CollectionTree({super.key});
@@ -39,9 +54,15 @@ class CollectionTree extends ConsumerWidget {
             ),
           );
         }
-        return ListView.builder(
+        return ReorderableListView.builder(
           itemCount: collections.length,
-          itemBuilder: (ctx, i) => _CollectionItem(collection: collections[i]),
+          itemBuilder: (ctx, i) =>
+              _CollectionItem(key: ValueKey(collections[i].id), collection: collections[i]),
+          onReorder: (oldIndex, newIndex) {
+            ref
+                .read(collectionsProvider.notifier)
+                .reorderCollections(oldIndex, newIndex);
+          },
         );
       },
     );
@@ -50,7 +71,7 @@ class CollectionTree extends ConsumerWidget {
 
 class _CollectionItem extends ConsumerStatefulWidget {
   final Collection collection;
-  const _CollectionItem({required this.collection});
+  const _CollectionItem({super.key, required this.collection});
 
   @override
   ConsumerState<_CollectionItem> createState() => _CollectionItemState();
@@ -63,64 +84,114 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
   Widget build(BuildContext context) {
     final col = widget.collection;
     return Column(
+      key: widget.key,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Collection header
-        InkWell(
-          onTap: () => setState(() => _expanded = !_expanded),
-          onSecondaryTap: () => _showContextMenu(context, col),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-            child: Row(
-              children: [
-                Icon(
-                  _expanded
-                      ? Icons.keyboard_arrow_down
-                      : Icons.keyboard_arrow_right,
-                  size: 14,
-                  color: context.colors.textMuted,
+        DragTarget<_DragData>(
+          onWillAcceptWithDetails: (details) {
+            if (details.data.type == 'request') {
+              return details.data.fromFolderId != null ||
+                  details.data.fromCollectionId != col.id;
+            }
+            if (details.data.type == 'folder') {
+              return details.data.fromCollectionId != col.id;
+            }
+            return false;
+          },
+          onAcceptWithDetails: (details) {
+            final data = details.data;
+            if (data.type == 'request') {
+              ref.read(collectionsProvider.notifier).moveRequest(
+                    data.id,
+                    fromCollectionId: data.fromCollectionId,
+                    fromFolderId: data.fromFolderId,
+                    toCollectionId: col.id,
+                    toFolderId: null,
+                  );
+            } else if (data.type == 'folder') {
+              ref.read(collectionsProvider.notifier).moveFolder(
+                    data.id,
+                    fromCollectionId: data.fromCollectionId,
+                    toCollectionId: col.id,
+                  );
+            }
+          },
+          builder: (context, candidateData, rejectedData) {
+            final isHighlighted = candidateData.isNotEmpty;
+            return InkWell(
+              onTap: () => setState(() => _expanded = !_expanded),
+              onSecondaryTap: () => _showContextMenu(context, col),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                decoration: BoxDecoration(
+                  color: isHighlighted
+                      ? context.colors.accent.withValues(alpha: 0.1)
+                      : null,
                 ),
-                const SizedBox(width: 4),
-                Icon(Icons.folder_outlined,
-                    size: 14, color: context.colors.warning),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    col.name,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: context.colors.textPrimary,
+                child: Row(
+                  children: [
+                    Icon(
+                      _expanded
+                          ? Icons.keyboard_arrow_down
+                          : Icons.keyboard_arrow_right,
+                      size: 14,
+                      color: context.colors.textMuted,
                     ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                    const SizedBox(width: 4),
+                    Icon(Icons.folder_outlined,
+                        size: 14, color: context.colors.warning),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        col.name,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: context.colors.textPrimary,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    InkWell(
+                      onTap: () => _addRequest(context, col),
+                      borderRadius: BorderRadius.circular(3),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Icon(Icons.add,
+                            size: 13, color: context.colors.textMuted),
+                      ),
+                    ),
+                  ],
                 ),
-                InkWell(
-                  onTap: () => _addRequest(context, col),
-                  borderRadius: BorderRadius.circular(3),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: Icon(Icons.add,
-                        size: 13, color: context.colors.textMuted),
-                  ),
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
         // Children
         if (_expanded) ...[
           // Root requests
-          ...col.requests.map((r) => _RequestItem(
-                request: r,
-                collectionId: col.id,
-                indent: 24,
-              )),
+          Column(
+            children: col.requests
+                .map((r) => _RequestItem(
+                      key: ValueKey(r.id),
+                      request: r,
+                      collectionId: col.id,
+                      indent: 24,
+                    ))
+                .toList(),
+          ),
           // Folders
-          ...col.folders.map((f) => _FolderItem(
-                folder: f,
-                collectionId: col.id,
-              )),
+          Column(
+            children: col.folders
+                .map((f) => _FolderItem(
+                      key: ValueKey(f.id),
+                      folder: f,
+                      collectionId: col.id,
+                    ))
+                .toList(),
+          ),
         ],
         const Divider(height: 1, indent: 8),
       ],
@@ -203,6 +274,14 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
           ),
           onTap: () => _duplicateCollection(col),
         ),
+        PopupMenuItem(
+          child: const ListTile(
+            dense: true,
+            leading: Icon(Icons.file_download_outlined, size: 16),
+            title: Text('Export'),
+          ),
+          onTap: () => _exportCollection(context, col),
+        ),
         const PopupMenuDivider(),
         PopupMenuItem(
           child: ListTile(
@@ -240,6 +319,25 @@ class _CollectionItemState extends ConsumerState<_CollectionItem> {
     );
   }
 
+  Future<void> _exportCollection(BuildContext context, Collection col) async {
+    try {
+      final json =
+          await ref.read(collectionsProvider.notifier).exportCollection(col.id);
+      await FileUtils.downloadFile('${col.name}.json', json);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Collection exported successfully')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to export: $e')),
+        );
+      }
+    }
+  }
+
   Future<String?> _showRenameDialog(
       BuildContext context, String title, String current) {
     final ctrl = TextEditingController(text: current);
@@ -274,7 +372,7 @@ class _FolderItem extends ConsumerStatefulWidget {
   final Folder folder;
   final String collectionId;
 
-  const _FolderItem({required this.folder, required this.collectionId});
+  const _FolderItem({super.key, required this.folder, required this.collectionId});
 
   @override
   ConsumerState<_FolderItem> createState() => _FolderItemState();
@@ -286,45 +384,141 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: widget.key,
       children: [
-        InkWell(
-          onTap: () => setState(() => _expanded = !_expanded),
-          onSecondaryTap: () => _showContextMenu(context),
-          child: Container(
-            padding:
-                const EdgeInsets.only(left: 24, right: 8, top: 5, bottom: 5),
-            child: Row(
-              children: [
-                Icon(
-                  _expanded
-                      ? Icons.keyboard_arrow_down
-                      : Icons.keyboard_arrow_right,
-                  size: 12,
-                  color: context.colors.textMuted,
+        DragTarget<_DragData>(
+          onWillAcceptWithDetails: (details) {
+            if (details.data.id == widget.folder.id) return false;
+            if (details.data.type == 'request') {
+              return details.data.fromFolderId != widget.folder.id;
+            }
+            if (details.data.type == 'folder') {
+              return details.data.fromCollectionId == widget.collectionId;
+            }
+            return false;
+          },
+          onAcceptWithDetails: (details) {
+            final data = details.data;
+            if (data.type == 'request') {
+              ref.read(collectionsProvider.notifier).moveRequest(
+                    data.id,
+                    fromCollectionId: data.fromCollectionId,
+                    fromFolderId: data.fromFolderId,
+                    toCollectionId: widget.collectionId,
+                    toFolderId: widget.folder.id,
+                  );
+            } else if (data.type == 'folder') {
+              // Reorder folders
+              final cols = ref.read(collectionsProvider).value ?? [];
+              final col =
+                  cols.where((c) => c.id == widget.collectionId).firstOrNull;
+              if (col == null) return;
+              final oldIndex =
+                  col.folders.indexWhere((f) => f.id == data.id);
+              final newIndex =
+                  col.folders.indexWhere((f) => f.id == widget.folder.id);
+              if (oldIndex >= 0 && newIndex >= 0) {
+                ref
+                    .read(collectionsProvider.notifier)
+                    .reorderFolders(widget.collectionId, oldIndex, newIndex);
+              }
+            }
+          },
+          builder: (context, candidateData, rejectedData) {
+            final isHighlighted = candidateData.isNotEmpty;
+            final itemContent = InkWell(
+              onTap: () => setState(() => _expanded = !_expanded),
+              onSecondaryTap: () => _showContextMenu(context),
+              child: Container(
+                padding:
+                    const EdgeInsets.only(left: 24, right: 8, top: 5, bottom: 5),
+                decoration: BoxDecoration(
+                  color: isHighlighted
+                      ? context.colors.accent.withValues(alpha: 0.1)
+                      : null,
                 ),
-                const SizedBox(width: 4),
-                Icon(Icons.folder_outlined,
-                    size: 13, color: context.colors.accent),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    widget.folder.name,
-                    style: TextStyle(
-                        fontSize: 12, color: context.colors.textSecondary),
-                    overflow: TextOverflow.ellipsis,
+                child: Row(
+                  children: [
+                    Icon(
+                      _expanded
+                          ? Icons.keyboard_arrow_down
+                          : Icons.keyboard_arrow_right,
+                      size: 12,
+                      color: context.colors.textMuted,
+                    ),
+                    const SizedBox(width: 4),
+                    Icon(Icons.folder_outlined,
+                        size: 13, color: context.colors.accent),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        widget.folder.name,
+                        style: TextStyle(
+                            fontSize: 12, color: context.colors.textSecondary),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+
+            return Draggable<_DragData>(
+              data: _DragData(
+                type: 'folder',
+                id: widget.folder.id,
+                fromCollectionId: widget.collectionId,
+              ),
+              feedback: Material(
+                color: Colors.transparent,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: context.colors.bgElevated,
+                    borderRadius: BorderRadius.circular(4),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.folder_outlined,
+                          size: 13, color: context.colors.accent),
+                      const SizedBox(width: 6),
+                      Text(
+                        widget.folder.name,
+                        style: TextStyle(
+                            fontSize: 12, color: context.colors.textPrimary),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
+              ),
+              childWhenDragging: Opacity(
+                opacity: 0.4,
+                child: itemContent,
+              ),
+              child: itemContent,
+            );
+          },
         ),
         if (_expanded)
-          ...widget.folder.requests.map((r) => _RequestItem(
-                request: r,
-                collectionId: widget.collectionId,
-                folderId: widget.folder.id,
-                indent: 40,
-              )),
+          Column(
+            children: widget.folder.requests
+                .map((r) => _RequestItem(
+                      key: ValueKey(r.id),
+                      request: r,
+                      collectionId: widget.collectionId,
+                      folderId: widget.folder.id,
+                      indent: 40,
+                    ))
+                .toList(),
+          ),
       ],
     );
   }
@@ -413,6 +607,7 @@ class _RequestItem extends ConsumerWidget {
   final double indent;
 
   const _RequestItem({
+    super.key,
     required this.request,
     required this.collectionId,
     this.folderId,
@@ -424,53 +619,138 @@ class _RequestItem extends ConsumerWidget {
     final activeTab = ref.watch(activeTabProvider);
     final isActive = activeTab?.request.id == request.id;
 
-    return InkWell(
-      onTap: () {
-        final tabsNotifier = ref.read(tabsProvider.notifier);
-        // Check if already open
-        final tabs = ref.read(tabsProvider);
-        final existing =
-            tabs.where((t) => t.request.id == request.id).firstOrNull;
-        if (existing != null) {
-          tabsNotifier.activateTab(existing.id);
-        } else {
-          tabsNotifier.openNewTab(
-            request: request,
-            collectionId: collectionId,
-            folderId: folderId,
-          );
+    final itemContent = Container(
+      padding: EdgeInsets.only(left: indent, right: 8, top: 5, bottom: 5),
+      decoration: BoxDecoration(
+        color: isActive
+            ? context.colors.accent.withValues(alpha: 0.1)
+            : Colors.transparent,
+        border: isActive
+            ? Border(left: BorderSide(color: context.colors.accent, width: 2))
+            : null,
+      ),
+      child: Row(
+        children: [
+          MethodBadge(method: request.method, fontSize: 9),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              request.name,
+              style: TextStyle(
+                fontSize: 12,
+                color: isActive
+                    ? context.colors.textPrimary
+                    : context.colors.textSecondary,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return DragTarget<_DragData>(
+      onWillAcceptWithDetails: (details) =>
+          details.data.type == 'request' && details.data.id != request.id,
+      onAcceptWithDetails: (details) {
+        final data = details.data;
+        if (data.type == 'request') {
+          // Find current index of this item
+          final cols = ref.read(collectionsProvider).value ?? [];
+          final col = cols.where((c) => c.id == collectionId).firstOrNull;
+          if (col == null) return;
+          
+          int? index;
+          if (folderId != null) {
+            final f = col.folders.where((f) => f.id == folderId).firstOrNull;
+            index = f?.requests.indexWhere((r) => r.id == request.id);
+          } else {
+            index = col.requests.indexWhere((r) => r.id == request.id);
+          }
+
+          ref.read(collectionsProvider.notifier).moveRequest(
+                data.id,
+                fromCollectionId: data.fromCollectionId,
+                fromFolderId: data.fromFolderId,
+                toCollectionId: collectionId,
+                toFolderId: folderId,
+                toIndex: index,
+              );
         }
       },
-      onSecondaryTap: () => _showContextMenu(context, ref),
-      child: Container(
-        padding: EdgeInsets.only(left: indent, right: 8, top: 5, bottom: 5),
-        decoration: BoxDecoration(
-          color: isActive
-              ? context.colors.accent.withValues(alpha: 0.1)
-              : Colors.transparent,
-          border: isActive
-              ? Border(left: BorderSide(color: context.colors.accent, width: 2))
-              : null,
-        ),
-        child: Row(
-          children: [
-            MethodBadge(method: request.method, fontSize: 9),
-            const SizedBox(width: 6),
-            Expanded(
-              child: Text(
-                request.name,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: isActive
-                      ? context.colors.textPrimary
-                      : context.colors.textSecondary,
-                ),
-                overflow: TextOverflow.ellipsis,
+      builder: (context, candidateData, rejectedData) {
+        final isHighlighted = candidateData.isNotEmpty;
+        return Draggable<_DragData>(
+          data: _DragData(
+            type: 'request',
+            id: request.id,
+            fromCollectionId: collectionId,
+            fromFolderId: folderId,
+          ),
+          feedback: Material(
+            color: Colors.transparent,
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: context.colors.bgElevated,
+                borderRadius: BorderRadius.circular(4),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  MethodBadge(method: request.method, fontSize: 9),
+                  const SizedBox(width: 6),
+                  Text(
+                    request.name,
+                    style: TextStyle(
+                        fontSize: 12, color: context.colors.textPrimary),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+          childWhenDragging: Opacity(
+            opacity: 0.4,
+            child: itemContent,
+          ),
+          child: InkWell(
+            onTap: () {
+              final tabsNotifier = ref.read(tabsProvider.notifier);
+              // Check if already open
+              final tabs = ref.read(tabsProvider);
+              final existing =
+                  tabs.where((t) => t.request.id == request.id).firstOrNull;
+              if (existing != null) {
+                tabsNotifier.activateTab(existing.id);
+              } else {
+                tabsNotifier.openNewTab(
+                  request: request,
+                  collectionId: collectionId,
+                  folderId: folderId,
+                );
+              }
+            },
+            onSecondaryTap: () => _showContextMenu(context, ref),
+            child: Container(
+              decoration: BoxDecoration(
+                border: isHighlighted
+                    ? Border(
+                        bottom: BorderSide(
+                            color: context.colors.accent, width: 2))
+                    : null,
+              ),
+              child: itemContent,
+            ),
+          ),
+        );
+      },
     );
   }
 

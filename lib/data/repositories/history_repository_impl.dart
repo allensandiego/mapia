@@ -1,24 +1,20 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import '../../core/services/storage_service.dart';
 import '../../domain/entities/history_entry.dart';
 import '../../domain/repositories/history_repository.dart';
 
 class HistoryRepositoryImpl implements HistoryRepository {
-  static const _fileName = 'history.json';
+  static const _storageKey = 'history';
   static const _maxEntries = 200;
+  final StorageService _storage;
 
-  Future<File> _getFile() async {
-    final dir = await getApplicationSupportDirectory();
-    return File('${dir.path}/$_fileName');
-  }
+  HistoryRepositoryImpl(this._storage);
 
   @override
   Future<List<HistoryEntry>> getAll() async {
     try {
-      final file = await _getFile();
-      if (!await file.exists()) return [];
-      final jsonStr = await file.readAsString();
+      final jsonStr = await _storage.load(_storageKey);
+      if (jsonStr == null) return [];
       final List<dynamic> jsonList = jsonDecode(jsonStr) as List;
       return jsonList
           .map((e) => HistoryEntry.fromJson(e as Map<String, dynamic>))
@@ -31,8 +27,8 @@ class HistoryRepositoryImpl implements HistoryRepository {
   }
 
   Future<void> _saveAll(List<HistoryEntry> entries) async {
-    final file = await _getFile();
-    await file.writeAsString(
+    await _storage.save(
+      _storageKey,
       jsonEncode(entries.map((e) => e.toJson()).toList()),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/variable.dart';
 import '../theme/mapia_colors.dart';
 import 'package:uuid/uuid.dart';
+import 'variable_text_editing_controller.dart';
 
 /// Resolves all {{key}} patterns in [text] using [vars], returns null if no
 /// variables present or map is empty.
@@ -184,8 +185,8 @@ class _KVRow extends StatefulWidget {
 }
 
 class _KVRowState extends State<_KVRow> {
-  late TextEditingController _keyCtrl;
-  late TextEditingController _valCtrl;
+  late VariableTextEditingController _keyCtrl;
+  late VariableTextEditingController _valCtrl;
   OverlayEntry? _overlay;
   final FocusNode _valFocus = FocusNode();
   final LayerLink _valLayerLink = LayerLink();
@@ -193,8 +194,8 @@ class _KVRowState extends State<_KVRow> {
   @override
   void initState() {
     super.initState();
-    _keyCtrl = TextEditingController(text: widget.item.key);
-    _valCtrl = TextEditingController(text: widget.item.value);
+    _keyCtrl = VariableTextEditingController(text: widget.item.key);
+    _valCtrl = VariableTextEditingController(text: widget.item.value);
     _valCtrl.addListener(_onValueChanged);
     _valFocus.addListener(() {
       if (!_valFocus.hasFocus) _hideOverlay();
@@ -271,7 +272,8 @@ class _KVRowState extends State<_KVRow> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: matches
-                  .map((varKey) => InkWell(
+                  .map((varKey) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
                         onTap: () {
                           final text = _valCtrl.text;
                           final prefix = text.substring(0, openIdx);
@@ -285,31 +287,34 @@ class _KVRowState extends State<_KVRow> {
                           _notify();
                           _hideOverlay();
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 9),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: '{{',
-                                    style: TextStyle(
-                                        color: context.colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: varKey,
-                                    style: TextStyle(
-                                        color: context.colors.textPrimary,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                                TextSpan(
-                                    text: '}}',
-                                    style: TextStyle(
-                                        color: context.colors.warning,
-                                        fontFamily: 'monospace',
-                                        fontSize: 12)),
-                              ],
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 9),
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: '{{',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: varKey,
+                                      style: TextStyle(
+                                          color: context.colors.textPrimary,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                  TextSpan(
+                                      text: '}}',
+                                      style: TextStyle(
+                                          color: context.colors.warning,
+                                          fontFamily: 'monospace',
+                                          fontSize: 12)),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -330,6 +335,11 @@ class _KVRowState extends State<_KVRow> {
 
   @override
   Widget build(BuildContext context) {
+    _keyCtrl.variableColor = context.colors.warning;
+    _keyCtrl.defaultColor = context.colors.textPrimary;
+    _valCtrl.variableColor = context.colors.warning;
+    _valCtrl.defaultColor = context.colors.textPrimary;
+
     final resolvedValue = _resolveVars(_valCtrl.text, widget.resolvedEnvVars);
     final resolvedKey = _resolveVars(_keyCtrl.text, widget.resolvedEnvVars);
 
