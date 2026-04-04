@@ -103,15 +103,18 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
                   ),
                   child: Row(
                     children: [
-                      Text(
-                        (_tab == _SidebarTab.collections
-                            ? 'COLLECTIONS'
-                            : 'HISTORY'),
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
-                          color: context.colors.textSecondary,
-                          letterSpacing: 0.8,
+                      Flexible(
+                        child: Text(
+                          (_tab == _SidebarTab.collections
+                              ? 'COLLECTIONS'
+                              : 'HISTORY'),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                            color: context.colors.textSecondary,
+                            letterSpacing: 0.8,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const Spacer(),

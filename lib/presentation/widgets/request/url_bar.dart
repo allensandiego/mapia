@@ -337,7 +337,8 @@ class _VarAutocompleteField extends StatefulWidget {
 }
 
 class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
-  OverlayEntry? _overlay;
+  late final ValueNotifier<_AutocompleteMatchData?> _matchData =
+      ValueNotifier(null);
   final FocusNode _focus = FocusNode();
   final LayerLink _layerLink = LayerLink();
 
@@ -355,13 +356,20 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
     widget.controller.removeListener(_onTextChanged);
     _focus.dispose();
     _hideOverlay();
+    _matchData.dispose();
     super.dispose();
   }
 
   void _onTextChanged() {
     final text = widget.controller.text;
-    final pos = widget.controller.selection.baseOffset;
-    if (pos < 0) return;
+    final selection = widget.controller.selection;
+    final pos = selection.baseOffset;
+
+    // Only show if we have a single cursor (no selection)
+    if (pos < 0 || !selection.isCollapsed) {
+      _hideOverlay();
+      return;
+    }
 
     // Find the last {{ before the cursor
     final before = text.substring(0, pos);
@@ -381,92 +389,120 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
     final matches =
         widget.envVars.where((k) => k.toLowerCase().startsWith(query)).toList();
 
-    if (matches.isEmpty) {
-      _hideOverlay();
-      return;
-    }
+    // Even if matches are empty, show "No matches" if we're in a {{ block
     _showOverlay(matches, openIdx, pos, query.length);
   }
 
   void _showOverlay(
       List<String> matches, int openIdx, int cursorPos, int queryLen) {
-    _hideOverlay();
+    if (_overlay == null) {
+      _overlay = _createOverlayEntry();
+      Overlay.of(context).insert(_overlay!);
+    }
+
+    _matchData.value = _AutocompleteMatchData(
+      matches: matches,
+      openIdx: openIdx,
+      cursorPos: cursorPos,
+      queryLen: queryLen,
+    );
+  }
+
+  OverlayEntry? _overlay;
+
+  OverlayEntry _createOverlayEntry() {
     final colors = context.colors;
-    _overlay = OverlayEntry(
-      builder: (_) => Positioned(
-        width: 240,
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          offset: const Offset(0, 50),
-          showWhenUnlinked: false,
-          child: Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(6),
-            color: colors.bgElevated,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              children: matches
-                  .map((varKey) => GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          final text = widget.controller.text;
-                          // Rebuild full text replacing the partial {{query with {{varKey}}
-                          final prefix = text.substring(0, openIdx);
-                          final suffix = text.substring(cursorPos);
-                          final inserted = '$prefix{{$varKey}}$suffix';
-                          widget.controller.value = TextEditingValue(
-                            text: inserted,
-                            selection: TextSelection.collapsed(
-                                offset: openIdx + varKey.length + 4),
-                          );
-                          widget.onChanged(inserted);
-                          _hideOverlay();
-                        },
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 9),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: '{{',
-                                      style: TextStyle(
-                                          color: colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: varKey,
-                                      style: TextStyle(
-                                          color: colors.textPrimary,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: '}}',
-                                      style: TextStyle(
-                                          color: colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
+    return OverlayEntry(
+      builder: (context) {
+        return Positioned(
+          width: 320, // Slightly wider for better readability
+            child: CompositedTransformFollower(
+            link: _layerLink,
+            showWhenUnlinked: false,
+            targetAnchor: Alignment.bottomLeft,
+            followerAnchor: Alignment.topLeft,
+            offset: const Offset(0, 4), // Small gap below URL bar
+            child: Material(
+              elevation: 12,
+              color: colors.bgElevated,
+              shadowColor: Colors.black,
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+                side: BorderSide(color: colors.border),
+              ),
+              child: ValueListenableBuilder<_AutocompleteMatchData?>(
+                valueListenable: _matchData,
+                builder: (context, data, child) {
+                  if (data == null) {
+                    return const SizedBox.shrink();
+                  }
+
+                  if (data.matches.isEmpty) {
+                     return Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                       child: Column(
+                         mainAxisSize: MainAxisSize.min,
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text(
+                             widget.envVars.isEmpty ? 'No environment active' : 'No matches found',
+                             style: TextStyle(color: colors.textPrimary, fontSize: 13, fontWeight: FontWeight.bold),
+                           ),
+                           if (widget.envVars.isEmpty)
+                             Padding(
+                               padding: const EdgeInsets.only(top: 4.0),
+                               child: Text(
+                                 'Activate an environment to see variables',
+                                 style: TextStyle(color: colors.textSecondary, fontSize: 11),
+                               ),
+                             ),
+                         ],
+                       ),
+                     );
+                  }
+
+                  return ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 250),
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      itemCount: data.matches.length,
+                      itemBuilder: (context, index) {
+                        final varKey = data.matches[index];
+                        return _AutocompleteTile(
+                          varKey: varKey,
+                          colors: colors,
+                          onTap: () {
+                            final text = widget.controller.text;
+                            final prefix = text.substring(0, data.openIdx);
+                            final suffix = text.substring(data.cursorPos);
+                            final inserted = '$prefix{{$varKey}}$suffix';
+                            widget.controller.value = TextEditingValue(
+                              text: inserted,
+                              selection: TextSelection.collapsed(
+                                  offset: data.openIdx + varKey.length + 4),
+                            );
+                            widget.onChanged(inserted);
+                            _hideOverlay();
+                          },
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
-    Overlay.of(context).insert(_overlay!);
   }
 
   void _hideOverlay() {
     _overlay?.remove();
     _overlay = null;
+    _matchData.value = null;
   }
 
   @override
@@ -530,6 +566,72 @@ class _VarAutocompleteFieldState extends State<_VarAutocompleteField> {
     return CompositedTransformTarget(
       link: _layerLink,
       child: field,
+    );
+  }
+}
+
+class _AutocompleteMatchData {
+  final List<String> matches;
+  final int openIdx;
+  final int cursorPos;
+  final int queryLen;
+
+  _AutocompleteMatchData({
+    required this.matches,
+    required this.openIdx,
+    required this.cursorPos,
+    required this.queryLen,
+  });
+}
+
+class _AutocompleteTile extends StatelessWidget {
+  final String varKey;
+  final MapiaColors colors;
+  final VoidCallback onTap;
+
+  const _AutocompleteTile({
+    required this.varKey,
+    required this.colors,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+        child: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: '{{',
+                style: TextStyle(
+                  color: colors.warning,
+                  fontFamily: 'monospace',
+                  fontSize: 12,
+                ),
+              ),
+              TextSpan(
+                text: varKey,
+                style: TextStyle(
+                  color: colors.textPrimary,
+                  fontFamily: 'monospace',
+                  fontSize: 12,
+                ),
+              ),
+              TextSpan(
+                text: '}}',
+                style: TextStyle(
+                  color: colors.warning,
+                  fontFamily: 'monospace',
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
