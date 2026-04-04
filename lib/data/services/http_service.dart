@@ -6,6 +6,7 @@ import '../../core/utils/variable_parser.dart';
 import '../../domain/entities/api_request.dart';
 import '../../domain/entities/api_response.dart';
 import '../../domain/entities/variable.dart';
+import '../../core/utils/logger.dart';
 
 class HttpService {
   static final HttpService _instance = HttpService._internal();
@@ -183,7 +184,7 @@ class HttpService {
     // Standard auto-generated headers
     headers['User-Agent'] = 'Mapia/1.0.0';
     headers['Accept'] = '*/*';
-    headers['Accept-Encoding'] = 'gzip, deflate, br';
+    headers['Accept-Encoding'] = 'identity';
     headers['Connection'] = 'keep-alive';
 
     // Extract and set Host from URL
@@ -256,12 +257,12 @@ class HttpService {
 
     final stopwatch = Stopwatch()..start();
     try {
-      final response = await dio.request<String>(
+      final response = await dio.request<List<int>>(
         url,
         options: Options(
           method: request.method.name,
           headers: headers,
-          responseType: ResponseType.plain,
+          responseType: ResponseType.bytes,
         ),
         data: data,
       );
@@ -272,12 +273,34 @@ class HttpService {
         responseHeaders[name] = values.join(', ');
       });
 
-      final body = response.data ?? '';
-      final sizeBytes = body.length;
       final contentType =
           responseHeaders['content-type'] ?? responseHeaders['Content-Type'];
 
-      return ApiResponse(
+      // Robust decoding logic
+      String body;
+      try {
+        final bytes = response.data ?? [];
+        if (bytes.isEmpty) {
+          body = '';
+        } else {
+          // Default to UTF-8, but try to respect Content-Type charset if present
+          Encoding encoding = utf8;
+          if (contentType != null) {
+            if (contentType.toLowerCase().contains('iso-8859-1')) {
+              encoding = latin1;
+            }
+            // Add other common encodings here if needed
+          }
+          body = encoding.decode(bytes);
+        }
+      } catch (e) {
+        // Fallback to latin1 if UTF-8 fails (common for legacy or misconfigured servers)
+        body = latin1.decode(response.data ?? []);
+      }
+
+      final sizeBytes = response.data?.length ?? 0;
+
+      final apiResponse = ApiResponse(
         statusCode: response.statusCode ?? 0,
         statusMessage: response.statusMessage ?? '',
         body: body,
@@ -286,13 +309,28 @@ class HttpService {
         sizeBytes: sizeBytes,
         contentType: contentType,
       );
+
+      // Log the response to a file
+      await ResponseLogger.logResponse(apiResponse);
+
+      return apiResponse;
     } on DioException catch (e) {
       stopwatch.stop();
       final msg = e.message ?? e.type.name;
+
+      String errorBody = '';
+      if (e.response?.data != null) {
+        if (e.response?.data is List<int>) {
+          errorBody = utf8.decode(e.response!.data as List<int>, allowMalformed: true);
+        } else {
+          errorBody = e.response?.data.toString() ?? '';
+        }
+      }
+
       return ApiResponse(
         statusCode: e.response?.statusCode ?? 0,
         statusMessage: msg,
-        body: e.response?.data?.toString() ?? '',
+        body: errorBody,
         headers: const {},
         durationMs: stopwatch.elapsedMilliseconds,
         sizeBytes: 0,

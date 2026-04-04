@@ -83,3 +83,6 @@ migrate_working_dir/
 
 # Symbols
 app.*.symbols
+
+# Logs
+latest_response.json
