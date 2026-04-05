@@ -8,13 +8,13 @@ Mapia is a modern, cross-platform REST API client built with **Flutter**, design
 
 ## 📥 Downloads & Installation
 
-Download the latest version **v1.0.44** of Mapia for your operating system:
+Download the latest version of Mapia for your operating system:
 
 | Platform | Installer / Archive |
 | --- | --- |
-| **🪟 Windows** | [**Download .exe**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-windows-x64.exe) \| [**Download .msix**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-windows-x64.msix) |
-| **🍎 macOS** | [**Download .dmg**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-macos.dmg) |
-| **🐧 Linux** | [**Download .AppImage**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-linux-x86_64.AppImage) \| [**Download .deb**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-linux-amd64.deb) \| [**Download .rpm**](https://github.com/allensandiego/mapia/releases/download/v1.0.44/mapia-linux-x86_64.rpm) |
+| **🪟 Windows** | [**Download .exe**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-windows-x64.exe) \| [**Download .msix**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-windows-x64.msix) |
+| **🍎 macOS** | [**Download .dmg**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-macos.dmg) |
+| **🐧 Linux** | [**Download .AppImage**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-x86_64.AppImage) \| [**Download .deb**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-amd64.deb) \| [**Download .rpm**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-x86_64.rpm) |
 
 For all other versions, visit the **[Latest Releases](https://github.com/allensandiego/mapia/releases)** page on GitHub.
 
