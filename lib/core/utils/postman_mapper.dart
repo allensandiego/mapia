@@ -44,15 +44,15 @@ class PostmanMapper {
       // It's a folder
       final folderId = uuid.v4();
       final List<ApiRequest> folderRequests = [];
-      
+
       // Postman folders can be nested, but Mapia only supports 1 level for now?
       // Actually Collection has List<Folder> and Folder has List<ApiRequest>.
       // If we find nested folders, we'll flatten them or just take the requests.
-      
+
       for (final sub in subItems) {
         _parseSubItem(sub as Map<String, dynamic>, folderRequests, uuid);
       }
-      
+
       parentFolders.add(Folder(
         id: folderId,
         name: name,
@@ -110,7 +110,7 @@ class PostmanMapper {
     // Body
     final bodyData = req['body'] as Map<String, dynamic>?;
     String? rawBody;
-    
+
     if (bodyData != null) {
       final mode = bodyData['mode'] as String?;
       if (mode == 'raw') {
@@ -126,7 +126,7 @@ class PostmanMapper {
       url: urlString,
       headers: headersList,
       body: rawBody ?? '',
-      // Mapia currently uses a simple body string, 
+      // Mapia currently uses a simple body string,
       // but should probably support more complex ones soon.
     );
   }

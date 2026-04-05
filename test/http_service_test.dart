@@ -8,7 +8,8 @@ void main() {
   group('HttpService Decoding & Logging Tests', () {
     final httpService = HttpService();
 
-    test('should correctly decode UTF-8 response and create log file', () async {
+    test('should correctly decode UTF-8 response and create log file',
+        () async {
       const request = ApiRequest(
         id: 'test-id',
         name: 'Test Request',
@@ -20,14 +21,17 @@ void main() {
 
       expect(response.statusCode, 200);
       expect(response.body, contains('"foo":"bar"'));
-      
+
       // Check if log file exists
       final logFile = File('latest_response.json');
       expect(logFile.existsSync(), isTrue);
-      
+
       final logContent = logFile.readAsStringSync();
       expect(logContent, contains('"status": 200'));
-      expect(logContent, contains('"foo": "bar"')); // Logged with indent so space might be back
+      expect(
+          logContent,
+          contains(
+              '"foo": "bar"')); // Logged with indent so space might be back
     });
 
     test('should correctly decode JSON from jsonplaceholder', () async {
@@ -42,7 +46,7 @@ void main() {
 
       expect(response.statusCode, 200);
       expect(response.body, contains('"title": "delectus aut autem"'));
-      
+
       final logFile = File('latest_response.json');
       final logContent = logFile.readAsStringSync();
       expect(logContent, contains('"userId": 1'));

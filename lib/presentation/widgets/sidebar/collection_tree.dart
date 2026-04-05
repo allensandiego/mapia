@@ -56,8 +56,8 @@ class CollectionTree extends ConsumerWidget {
         }
         return ReorderableListView.builder(
           itemCount: collections.length,
-          itemBuilder: (ctx, i) =>
-              _CollectionItem(key: ValueKey(collections[i].id), collection: collections[i]),
+          itemBuilder: (ctx, i) => _CollectionItem(
+              key: ValueKey(collections[i].id), collection: collections[i]),
           onReorder: (oldIndex, newIndex) {
             ref
                 .read(collectionsProvider.notifier)
@@ -372,7 +372,8 @@ class _FolderItem extends ConsumerStatefulWidget {
   final Folder folder;
   final String collectionId;
 
-  const _FolderItem({super.key, required this.folder, required this.collectionId});
+  const _FolderItem(
+      {super.key, required this.folder, required this.collectionId});
 
   @override
   ConsumerState<_FolderItem> createState() => _FolderItemState();
@@ -413,8 +414,7 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
               final col =
                   cols.where((c) => c.id == widget.collectionId).firstOrNull;
               if (col == null) return;
-              final oldIndex =
-                  col.folders.indexWhere((f) => f.id == data.id);
+              final oldIndex = col.folders.indexWhere((f) => f.id == data.id);
               final newIndex =
                   col.folders.indexWhere((f) => f.id == widget.folder.id);
               if (oldIndex >= 0 && newIndex >= 0) {
@@ -430,8 +430,8 @@ class _FolderItemState extends ConsumerState<_FolderItem> {
               onTap: () => setState(() => _expanded = !_expanded),
               onSecondaryTap: () => _showContextMenu(context),
               child: Container(
-                padding:
-                    const EdgeInsets.only(left: 24, right: 8, top: 5, bottom: 5),
+                padding: const EdgeInsets.only(
+                    left: 24, right: 8, top: 5, bottom: 5),
                 decoration: BoxDecoration(
                   color: isHighlighted
                       ? context.colors.accent.withValues(alpha: 0.1)
@@ -659,7 +659,7 @@ class _RequestItem extends ConsumerWidget {
           final cols = ref.read(collectionsProvider).value ?? [];
           final col = cols.where((c) => c.id == collectionId).firstOrNull;
           if (col == null) return;
-          
+
           int? index;
           if (folderId != null) {
             final f = col.folders.where((f) => f.id == folderId).firstOrNull;
@@ -742,8 +742,8 @@ class _RequestItem extends ConsumerWidget {
               decoration: BoxDecoration(
                 border: isHighlighted
                     ? Border(
-                        bottom: BorderSide(
-                            color: context.colors.accent, width: 2))
+                        bottom:
+                            BorderSide(color: context.colors.accent, width: 2))
                     : null,
               ),
               child: itemContent,

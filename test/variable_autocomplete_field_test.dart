@@ -5,7 +5,8 @@ import 'package:mapia/core/widgets/variable_text_editing_controller.dart';
 import 'package:mapia/core/theme/app_theme.dart';
 
 void main() {
-  testWidgets('VariableAutocompleteField shows overlay when typing {{', (WidgetTester tester) async {
+  testWidgets('VariableAutocompleteField shows overlay when typing {{',
+      (WidgetTester tester) async {
     final controller = VariableTextEditingController();
     final envVars = ['BASE_URL', 'API_KEY', 'TOKEN'];
 
@@ -27,13 +28,15 @@ void main() {
     await tester.pump();
 
     // Verify overlay is shown with all matches
-    expect(find.byKey(const Key('variable_autocomplete_overlay')), findsOneWidget);
+    expect(
+        find.byKey(const Key('variable_autocomplete_overlay')), findsOneWidget);
     expect(find.text('{{BASE_URL}}', findRichText: true), findsOneWidget);
     expect(find.text('{{API_KEY}}', findRichText: true), findsOneWidget);
     expect(find.text('{{TOKEN}}', findRichText: true), findsOneWidget);
   });
 
-  testWidgets('VariableAutocompleteField filters matches when typing', (WidgetTester tester) async {
+  testWidgets('VariableAutocompleteField filters matches when typing',
+      (WidgetTester tester) async {
     final controller = VariableTextEditingController();
     final envVars = ['BASE_URL', 'API_KEY', 'TOKEN'];
 
@@ -55,13 +58,15 @@ void main() {
     await tester.pump();
 
     // Verify overlay is shown with only BASE_URL
-    expect(find.byKey(const Key('variable_autocomplete_overlay')), findsOneWidget);
+    expect(
+        find.byKey(const Key('variable_autocomplete_overlay')), findsOneWidget);
     expect(find.text('{{BASE_URL}}', findRichText: true), findsOneWidget);
     expect(find.text('{{API_KEY}}', findRichText: true), findsNothing);
     expect(find.text('{{TOKEN}}', findRichText: true), findsNothing);
   });
 
-  testWidgets('VariableAutocompleteField selects variable on tap', (WidgetTester tester) async {
+  testWidgets('VariableAutocompleteField selects variable on tap',
+      (WidgetTester tester) async {
     final controller = VariableTextEditingController();
     final envVars = ['BASE_URL'];
     String? changedValue;
@@ -91,6 +96,7 @@ void main() {
     // Verify text is updated and overlay is hidden
     expect(controller.text, '{{BASE_URL}}');
     expect(changedValue, '{{BASE_URL}}');
-    expect(find.byKey(const Key('variable_autocomplete_overlay')), findsNothing);
+    expect(
+        find.byKey(const Key('variable_autocomplete_overlay')), findsNothing);
   });
 }

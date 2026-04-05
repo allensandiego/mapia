@@ -452,70 +452,70 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
                       color: context.colors.bgBase,
                       border: hasVars
                           ? Border.all(
-                              color: context.colors.warning
-                                  .withValues(alpha: 0.4),
+                              color:
+                                  context.colors.warning.withValues(alpha: 0.4),
                               width: 1.0,
                             )
                           : null,
                     ),
                     child: Builder(
                       builder: (context) {
-                          Widget editField = VariableAutocompleteField(
-                            controller: _ctrl,
-                            focusNode: _focus,
-                            maxLines: null,
-                            expands: true,
-                            envVars: widget.envVars ?? [],
-                            resolvedEnvVars: widget.resolvedEnvVars,
-                            onChanged: (v) {
-                              ref.read(tabsProvider.notifier).updateRequest(
-                                    widget.tab.id,
-                                    widget.tab.request.copyWith(body: v),
-                                  );
-                            },
-                            style: TextStyle(
+                        Widget editField = VariableAutocompleteField(
+                          controller: _ctrl,
+                          focusNode: _focus,
+                          maxLines: null,
+                          expands: true,
+                          envVars: widget.envVars ?? [],
+                          resolvedEnvVars: widget.resolvedEnvVars,
+                          onChanged: (v) {
+                            ref.read(tabsProvider.notifier).updateRequest(
+                                  widget.tab.id,
+                                  widget.tab.request.copyWith(body: v),
+                                );
+                          },
+                          style: TextStyle(
+                            fontFamily: 'monospace',
+                            fontSize: 13,
+                            color: context.colors.textPrimary,
+                            height: 1.6,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            contentPadding: const EdgeInsets.all(12),
+                            filled: true,
+                            fillColor: context.colors.bgBase,
+                            hintText: '{\n  "key": "value"\n}',
+                          ),
+                        );
+
+                        if (resolvedText != null && resolvedText != text) {
+                          editField = Tooltip(
+                            message: resolvedText,
+                            preferBelow: true,
+                            decoration: BoxDecoration(
+                              color: context.colors.bgElevated,
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                  color: context.colors.warning
+                                      .withValues(alpha: 0.4)),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: 12,
+                              color: context.colors.warning,
                               fontFamily: 'monospace',
-                              fontSize: 13,
-                              color: context.colors.textPrimary,
-                              height: 1.6,
                             ),
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(12),
-                              filled: true,
-                              fillColor: context.colors.bgBase,
-                              hintText: '{\n  "key": "value"\n}',
-                            ),
+                            child: editField,
                           );
+                        }
 
-                          if (resolvedText != null && resolvedText != text) {
-                            editField = Tooltip(
-                              message: resolvedText,
-                              preferBelow: true,
-                              decoration: BoxDecoration(
-                                color: context.colors.bgElevated,
-                                borderRadius: BorderRadius.circular(6),
-                                border: Border.all(
-                                    color: context.colors.warning
-                                        .withValues(alpha: 0.4)),
-                              ),
-                              textStyle: TextStyle(
-                                fontSize: 12,
-                                color: context.colors.warning,
-                                fontFamily: 'monospace',
-                              ),
-                              child: editField,
-                            );
-                          }
-
-                          return editField;
-                        },
-                      ),
-                    );
-                  },
-                ),
+                        return editField;
+                      },
+                    ),
+                  );
+                },
+              ),
               // ── Preview tab: read-only syntax-highlighted view ──────────
               Container(
                 color: const Color(0xFF282C34), // atom-one-dark background
@@ -851,7 +851,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
     final oauth2 = widget.tab.request.auth.oauth2Config;
     _tokenUrlCtrl = VariableTextEditingController(text: oauth2.tokenUrl);
     _clientIdCtrl = VariableTextEditingController(text: oauth2.clientId);
-    _clientSecretCtrl = VariableTextEditingController(text: oauth2.clientSecret);
+    _clientSecretCtrl =
+        VariableTextEditingController(text: oauth2.clientSecret);
     _authUrlCtrl = VariableTextEditingController(text: oauth2.authorizationUrl);
     _redirectUrlCtrl = VariableTextEditingController(text: oauth2.redirectUrl);
     _usernameCtrl = VariableTextEditingController(text: oauth2.username);

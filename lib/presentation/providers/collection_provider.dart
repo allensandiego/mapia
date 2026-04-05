@@ -136,15 +136,17 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
   }
 
   Future<void> importCollection(String jsonStr) async {
-    final Map<String, dynamic> json = jsonDecode(jsonStr) as Map<String, dynamic>;
+    final Map<String, dynamic> json =
+        jsonDecode(jsonStr) as Map<String, dynamic>;
     Collection col;
     if (json.containsKey('info')) {
       // Treat as postman
       col = PostmanMapper.mapPostman(json);
       await ref.read(collectionRepositoryProvider).save(col);
     } else {
-      col =
-          await ref.read(collectionRepositoryProvider).importCollection(jsonStr);
+      col = await ref
+          .read(collectionRepositoryProvider)
+          .importCollection(jsonStr);
     }
     state = AsyncValue.data([...state.value ?? [], col]);
   }
@@ -184,8 +186,8 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
         .reorderFolders(collectionId, folders.map((f) => f.id).toList());
   }
 
-  Future<void> reorderRequests(String collectionId, String? folderId,
-      int oldIndex, int newIndex) async {
+  Future<void> reorderRequests(
+      String collectionId, String? folderId, int oldIndex, int newIndex) async {
     final cols = state.value ?? [];
     final col = cols.where((c) => c.id == collectionId).firstOrNull;
     if (col == null) return;
@@ -219,9 +221,8 @@ class CollectionNotifier extends AsyncNotifier<List<Collection>> {
     state = AsyncValue.data(
       cols.map((c) => c.id == collectionId ? newCol : c).toList(),
     );
-    await ref
-        .read(collectionRepositoryProvider)
-        .reorderRequests(collectionId, folderId, reqs.map((r) => r.id).toList());
+    await ref.read(collectionRepositoryProvider).reorderRequests(
+        collectionId, folderId, reqs.map((r) => r.id).toList());
   }
 
   Future<void> moveRequest(

@@ -276,8 +276,7 @@ class CollectionRepositoryImpl implements CollectionRepository {
     if (fromIdx < 0 || toIdx < 0) return;
 
     final fromCol = all[fromIdx];
-    Folder? folder =
-        fromCol.folders.where((f) => f.id == folderId).firstOrNull;
+    Folder? folder = fromCol.folders.where((f) => f.id == folderId).firstOrNull;
     if (folder == null) return;
 
     // Remove from source
@@ -307,7 +306,8 @@ class CollectionRepositoryImpl implements CollectionRepository {
 
   @override
   Future<Collection> importCollection(String jsonString) async {
-    final Map<String, dynamic> json = jsonDecode(jsonString) as Map<String, dynamic>;
+    final Map<String, dynamic> json =
+        jsonDecode(jsonString) as Map<String, dynamic>;
     final col = Collection.fromJson(json);
     await save(col);
     return col;

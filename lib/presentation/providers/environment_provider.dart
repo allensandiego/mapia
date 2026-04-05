@@ -37,7 +37,8 @@ class EnvironmentNotifier extends AsyncNotifier<List<Environment>> {
   }
 
   Future<Environment> importEnvironment(String json) async {
-    final env = await ref.read(environmentRepositoryProvider).importEnvironment(json);
+    final env =
+        await ref.read(environmentRepositoryProvider).importEnvironment(json);
     state = AsyncValue.data([...state.value ?? [], env]);
     return env;
   }

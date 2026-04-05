@@ -321,7 +321,8 @@ class HttpService {
       String errorBody = '';
       if (e.response?.data != null) {
         if (e.response?.data is List<int>) {
-          errorBody = utf8.decode(e.response!.data as List<int>, allowMalformed: true);
+          errorBody =
+              utf8.decode(e.response!.data as List<int>, allowMalformed: true);
         } else {
           errorBody = e.response?.data.toString() ?? '';
         }

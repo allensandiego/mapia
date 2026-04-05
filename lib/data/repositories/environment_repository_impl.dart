@@ -58,7 +58,8 @@ class EnvironmentRepositoryImpl implements EnvironmentRepository {
 
   @override
   Future<Environment> importEnvironment(String jsonString) async {
-    final Map<String, dynamic> json = jsonDecode(jsonString) as Map<String, dynamic>;
+    final Map<String, dynamic> json =
+        jsonDecode(jsonString) as Map<String, dynamic>;
     final env = Environment.fromJson(json);
     await save(env);
     return env;
