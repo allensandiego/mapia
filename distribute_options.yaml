@@ -12,6 +12,7 @@ releases:
           identity_name: com.allensandiego.mapia
           msix_config:
             install_scope: user
+        artifact_name: "mapia-windows-x64.msix"
       - name: windows-exe
         package:
           platform: windows
@@ -19,6 +20,7 @@ releases:
         config:
           display_name: Mapia
           publisher_display_name: Allensandiego
+        artifact_name: "mapia-windows-x64.exe"
       - name: linux-deb
         package:
           platform: linux
@@ -34,6 +36,7 @@ releases:
           section: x11
           installed_size: 250000
           icon_path: linux/packaging/deb/mapia.png
+        artifact_name: "mapia-linux-amd64.deb"
       - name: linux-rpm
         package:
           platform: linux
@@ -47,6 +50,7 @@ releases:
           license: MIT
           url: https://github.com/allensandiego/mapia
           icon_path: linux/packaging/rpm/mapia.png
+        artifact_name: "mapia-linux-x86_64.rpm"
       - name: linux-appimage
         package:
           platform: linux
@@ -57,6 +61,7 @@ releases:
           categories: "Utility;Network;Development;"
           icon_path: linux/packaging/appimage/mapia.png
           desktop_file_path: linux/packaging/appimage/mapia.desktop
+        artifact_name: "mapia-linux-x86_64.AppImage"
       - name: macos-dmg
         package:
           platform: macos
@@ -64,3 +69,4 @@ releases:
         config:
           display_name: Mapia
           package_name: com.allensandiego.mapia
+        artifact_name: "mapia-macos.dmg"
