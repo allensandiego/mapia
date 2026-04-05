@@ -4,7 +4,6 @@ import '../../providers/tabs_provider.dart';
 import '../../providers/collection_provider.dart';
 import '../../providers/environment_provider.dart';
 import '../../../core/constants/http_constants.dart';
-import '../../../core/utils/variable_parser.dart';
 import '../../providers/ui_provider.dart';
 import '../../../core/theme/mapia_colors.dart';
 import '../../../core/widgets/variable_text_editing_controller.dart';
@@ -141,7 +140,8 @@ class _UrlBarState extends ConsumerState<UrlBar> {
                     onSubmitted: (_) => widget.onSend(),
                     decoration: InputDecoration(
                       hintText: 'https://api.example.com/endpoint',
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 12),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: request.url.contains('{{')
@@ -332,4 +332,3 @@ class _MethodDropdown extends StatelessWidget {
     );
   }
 }
-
