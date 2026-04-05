@@ -6,3 +6,4 @@ Exec=mapia
 Icon=mapia
 Terminal=false
 Categories=Utility;Network;Development;
+StartupWMClass=com.allensandiego.mapia

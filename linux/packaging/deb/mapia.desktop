@@ -7,3 +7,4 @@ Icon=mapia
 Categories=Utility;Network;Development
 Terminal=false
 StartupNotify=true
+StartupWMClass=com.allensandiego.mapia
