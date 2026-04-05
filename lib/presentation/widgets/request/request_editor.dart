@@ -12,6 +12,7 @@ import '../../../core/utils/variable_parser.dart';
 import '../../../domain/entities/api_request.dart';
 import '../../../data/services/http_service.dart';
 import '../../../core/widgets/variable_text_editing_controller.dart';
+import '../../../core/widgets/variable_autocomplete_field.dart';
 
 class RequestEditor extends ConsumerStatefulWidget {
   final RequestTab tab;
@@ -314,19 +315,13 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
     with SingleTickerProviderStateMixin {
   late VariableTextEditingController _ctrl;
   late TabController _tabCtrl;
-  OverlayEntry? _overlay;
   final FocusNode _focus = FocusNode();
-  final LayerLink _layerLink = LayerLink();
 
   @override
   void initState() {
     super.initState();
     _ctrl = VariableTextEditingController(text: widget.tab.request.body);
-    _ctrl.addListener(_onTextChanged);
     _tabCtrl = TabController(length: 2, vsync: this);
-    _focus.addListener(() {
-      if (!_focus.hasFocus) _hideOverlay();
-    });
   }
 
   @override
@@ -339,127 +334,10 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
 
   @override
   void dispose() {
-    _ctrl.removeListener(_onTextChanged);
     _ctrl.dispose();
     _tabCtrl.dispose();
     _focus.dispose();
-    _hideOverlay();
     super.dispose();
-  }
-
-  void _onTextChanged() {
-    if (widget.envVars == null || widget.envVars!.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-
-    final text = _ctrl.text;
-    final pos = _ctrl.selection.baseOffset;
-    if (pos < 0) return;
-
-    final before = text.substring(0, pos);
-    final openIdx = before.lastIndexOf('{{');
-    if (openIdx == -1) {
-      _hideOverlay();
-      return;
-    }
-
-    if (before.substring(openIdx).contains('}}')) {
-      _hideOverlay();
-      return;
-    }
-
-    final query = before.substring(openIdx + 2).toLowerCase();
-    final matches = widget.envVars!
-        .where((k) => k.toLowerCase().startsWith(query))
-        .toList();
-
-    if (matches.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-    _showOverlay(matches, openIdx, pos);
-  }
-
-  void _showOverlay(List<String> matches, int openIdx, int cursorPos) {
-    _hideOverlay();
-    _overlay = OverlayEntry(
-      builder: (_) => Positioned(
-        width: 240,
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          offset: const Offset(0, 50),
-          showWhenUnlinked: false,
-          child: Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(6),
-            color: context.colors.bgElevated,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              children: matches
-                  .map<Widget>((varKey) => GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          final text = _ctrl.text;
-                          final prefix = text.substring(0, openIdx);
-                          final suffix = text.substring(cursorPos);
-                          final inserted = '$prefix{{$varKey}}$suffix';
-                          _ctrl.value = TextEditingValue(
-                            text: inserted,
-                            selection: TextSelection.collapsed(
-                                offset: openIdx + varKey.length + 4),
-                          );
-                          ref.read(tabsProvider.notifier).updateRequest(
-                                widget.tab.id,
-                                widget.tab.request.copyWith(body: inserted),
-                              );
-                          _hideOverlay();
-                        },
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 9),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: '{{',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: varKey,
-                                      style: TextStyle(
-                                          color: context.colors.textPrimary,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: '}}',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
-        ),
-      ),
-    );
-    Overlay.of(context).insert(_overlay!);
-  }
-
-  void _hideOverlay() {
-    _overlay?.remove();
-    _overlay = null;
   }
 
   String get _language {
@@ -568,27 +446,27 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
                       ? VariableParser.resolve(text, widget.resolvedEnvVars!)
                       : null;
 
-                  return CompositedTransformTarget(
-                    link: _layerLink,
-                    child: Container(
+                  return Container(
+                    color: context.colors.bgBase,
+                    decoration: BoxDecoration(
                       color: context.colors.bgBase,
-                      decoration: BoxDecoration(
-                        color: context.colors.bgBase,
-                        border: hasVars
-                            ? Border.all(
-                                color: context.colors.warning
-                                    .withValues(alpha: 0.4),
-                                width: 1.0,
-                              )
-                            : null,
-                      ),
-                      child: Builder(
-                        builder: (context) {
-                          Widget editField = TextField(
+                      border: hasVars
+                          ? Border.all(
+                              color: context.colors.warning
+                                  .withValues(alpha: 0.4),
+                              width: 1.0,
+                            )
+                          : null,
+                    ),
+                    child: Builder(
+                      builder: (context) {
+                          Widget editField = VariableAutocompleteField(
                             controller: _ctrl,
                             focusNode: _focus,
                             maxLines: null,
                             expands: true,
+                            envVars: widget.envVars ?? [],
+                            resolvedEnvVars: widget.resolvedEnvVars,
                             onChanged: (v) {
                               ref.read(tabsProvider.notifier).updateRequest(
                                     widget.tab.id,
@@ -635,10 +513,9 @@ class _RawBodyEditorState extends ConsumerState<_RawBodyEditor>
                           return editField;
                         },
                       ),
-                    ),
-                  );
-                },
-              ),
+                    );
+                  },
+                ),
               // ── Preview tab: read-only syntax-highlighted view ──────────
               Container(
                 color: const Color(0xFF282C34), // atom-one-dark background
@@ -807,7 +684,12 @@ class _AuthEditor extends ConsumerWidget {
                           req.copyWith(auth: auth.copyWith(apiKeyValue: v))),
                     ),
                   ],
-                  if (auth.type == AuthType.oauth2) _OAuth2Editor(tab: tab),
+                  if (auth.type == AuthType.oauth2)
+                    _OAuth2Editor(
+                      tab: tab,
+                      envVars: envVarsList,
+                      resolvedEnvVars: resolvedVars,
+                    ),
                   if (auth.type == AuthType.none)
                     Text('No authentication required.',
                         style: TextStyle(
@@ -862,140 +744,19 @@ class _AuthField extends StatefulWidget {
 
 class _AuthFieldState extends State<_AuthField> {
   late VariableTextEditingController _ctrl;
-  OverlayEntry? _overlay;
   final FocusNode _focus = FocusNode();
-  final LayerLink _layerLink = LayerLink();
 
   @override
   void initState() {
     super.initState();
     _ctrl = VariableTextEditingController(text: widget.value);
-    _ctrl.addListener(_onTextChanged);
-    _focus.addListener(() {
-      if (!_focus.hasFocus) _hideOverlay();
-    });
   }
 
   @override
   void dispose() {
-    _ctrl.removeListener(_onTextChanged);
     _ctrl.dispose();
     _focus.dispose();
-    _hideOverlay();
     super.dispose();
-  }
-
-  void _onTextChanged() {
-    if (widget.envVars == null || widget.envVars!.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-
-    final text = _ctrl.text;
-    final pos = _ctrl.selection.baseOffset;
-    if (pos < 0) return;
-
-    final before = text.substring(0, pos);
-    final openIdx = before.lastIndexOf('{{');
-    if (openIdx == -1) {
-      _hideOverlay();
-      return;
-    }
-
-    if (before.substring(openIdx).contains('}}')) {
-      _hideOverlay();
-      return;
-    }
-
-    final query = before.substring(openIdx + 2).toLowerCase();
-    final matches = widget.envVars!
-        .where((k) => k.toLowerCase().startsWith(query))
-        .toList();
-
-    if (matches.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-    _showOverlay(matches, openIdx, pos);
-  }
-
-  void _showOverlay(List<String> matches, int openIdx, int cursorPos) {
-    _hideOverlay();
-    // colors removed - use AppColors directly
-    _overlay = OverlayEntry(
-      builder: (_) => Positioned(
-        width: 240,
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          offset: const Offset(0, 50),
-          showWhenUnlinked: false,
-          child: Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(6),
-            color: context.colors.bgElevated,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              children: matches
-                  .map<Widget>((varKey) => GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          final text = _ctrl.text;
-                          final prefix = text.substring(0, openIdx);
-                          final suffix = text.substring(cursorPos);
-                          final inserted = '$prefix{{$varKey}}$suffix';
-                          _ctrl.value = TextEditingValue(
-                            text: inserted,
-                            selection: TextSelection.collapsed(
-                                offset: openIdx + varKey.length + 4),
-                          );
-                          widget.onChanged(inserted);
-                          _hideOverlay();
-                        },
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 9),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: '{{',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: varKey,
-                                      style: TextStyle(
-                                          color: context.colors.textPrimary,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: '}}',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
-        ),
-      ),
-    );
-    Overlay.of(context).insert(_overlay!);
-  }
-
-  void _hideOverlay() {
-    _overlay?.remove();
-    _overlay = null;
   }
 
   @override
@@ -1009,10 +770,12 @@ class _AuthFieldState extends State<_AuthField> {
         ? VariableParser.resolve(text, widget.resolvedEnvVars!)
         : null;
 
-    Widget field = TextField(
+    Widget field = VariableAutocompleteField(
       controller: _ctrl,
       focusNode: _focus,
-      obscureText: widget.obscure && !_ctrl.text.startsWith('{{'),
+      obscureText: widget.obscure,
+      envVars: widget.envVars ?? [],
+      resolvedEnvVars: widget.resolvedEnvVars,
       onChanged: widget.onChanged,
       style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
       decoration: InputDecoration(
@@ -1049,10 +812,7 @@ class _AuthFieldState extends State<_AuthField> {
                 fontWeight: FontWeight.bold,
                 fontSize: 14)),
         const SizedBox(height: 8),
-        CompositedTransformTarget(
-          link: _layerLink,
-          child: field,
-        ),
+        field,
       ],
     );
   }
@@ -1062,7 +822,14 @@ class _AuthFieldState extends State<_AuthField> {
 
 class _OAuth2Editor extends ConsumerStatefulWidget {
   final RequestTab tab;
-  const _OAuth2Editor({required this.tab});
+  final List<String> envVars;
+  final Map<String, String> resolvedEnvVars;
+
+  const _OAuth2Editor({
+    required this.tab,
+    required this.envVars,
+    required this.resolvedEnvVars,
+  });
 
   @override
   ConsumerState<_OAuth2Editor> createState() => _OAuth2EditorState();
@@ -1204,7 +971,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                   fontWeight: FontWeight.bold,
                   fontSize: 14)),
           const SizedBox(height: 8),
-          TextField(
+          VariableAutocompleteField(
             style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
@@ -1212,6 +979,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
               isDense: true,
             ),
             controller: _tokenUrlCtrl,
+            envVars: widget.envVars,
+            resolvedEnvVars: widget.resolvedEnvVars,
             onChanged: (v) => notifier.updateRequest(
               widget.tab.id,
               req.copyWith(
@@ -1230,13 +999,15 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                   fontWeight: FontWeight.bold,
                   fontSize: 14)),
           const SizedBox(height: 8),
-          TextField(
+          VariableAutocompleteField(
             style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               isDense: true,
             ),
             controller: _clientIdCtrl,
+            envVars: widget.envVars,
+            resolvedEnvVars: widget.resolvedEnvVars,
             onChanged: (v) => notifier.updateRequest(
               widget.tab.id,
               req.copyWith(
@@ -1255,7 +1026,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                   fontWeight: FontWeight.bold,
                   fontSize: 14)),
           const SizedBox(height: 8),
-          TextField(
+          VariableAutocompleteField(
             style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
@@ -1263,6 +1034,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
             ),
             controller: _clientSecretCtrl,
             obscureText: true,
+            envVars: widget.envVars,
+            resolvedEnvVars: widget.resolvedEnvVars,
             onChanged: (v) => notifier.updateRequest(
               widget.tab.id,
               req.copyWith(
@@ -1282,7 +1055,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                     fontWeight: FontWeight.bold,
                     fontSize: 14)),
             const SizedBox(height: 8),
-            TextField(
+            VariableAutocompleteField(
               style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -1290,6 +1063,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                 isDense: true,
               ),
               controller: _authUrlCtrl,
+              envVars: widget.envVars,
+              resolvedEnvVars: widget.resolvedEnvVars,
               onChanged: (v) => notifier.updateRequest(
                 widget.tab.id,
                 req.copyWith(
@@ -1306,7 +1081,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                     fontWeight: FontWeight.bold,
                     fontSize: 14)),
             const SizedBox(height: 8),
-            TextField(
+            VariableAutocompleteField(
               style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -1314,6 +1089,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                 isDense: true,
               ),
               controller: _redirectUrlCtrl,
+              envVars: widget.envVars,
+              resolvedEnvVars: widget.resolvedEnvVars,
               onChanged: (v) => notifier.updateRequest(
                 widget.tab.id,
                 req.copyWith(
@@ -1334,13 +1111,15 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                     fontWeight: FontWeight.bold,
                     fontSize: 14)),
             const SizedBox(height: 8),
-            TextField(
+            VariableAutocompleteField(
               style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 isDense: true,
               ),
               controller: _usernameCtrl,
+              envVars: widget.envVars,
+              resolvedEnvVars: widget.resolvedEnvVars,
               onChanged: (v) => notifier.updateRequest(
                 widget.tab.id,
                 req.copyWith(
@@ -1357,7 +1136,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                     fontWeight: FontWeight.bold,
                     fontSize: 14)),
             const SizedBox(height: 8),
-            TextField(
+            VariableAutocompleteField(
               style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -1365,6 +1144,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
               ),
               controller: _passwordCtrl,
               obscureText: true,
+              envVars: widget.envVars,
+              resolvedEnvVars: widget.resolvedEnvVars,
               onChanged: (v) => notifier.updateRequest(
                 widget.tab.id,
                 req.copyWith(
@@ -1384,7 +1165,7 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
                   fontWeight: FontWeight.bold,
                   fontSize: 14)),
           const SizedBox(height: 8),
-          TextField(
+          VariableAutocompleteField(
             style: TextStyle(color: context.colors.textPrimary, fontSize: 14),
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
@@ -1392,6 +1173,8 @@ class _OAuth2EditorState extends ConsumerState<_OAuth2Editor> {
               isDense: true,
             ),
             controller: _scopeCtrl,
+            envVars: widget.envVars,
+            resolvedEnvVars: widget.resolvedEnvVars,
             onChanged: (v) => notifier.updateRequest(
               widget.tab.id,
               req.copyWith(

@@ -11,6 +11,7 @@ import '../../../core/theme/mapia_colors.dart';
 import '../../../domain/entities/collection.dart';
 import 'package:uuid/uuid.dart';
 import '../../screens/settings_screen.dart';
+import '../../screens/about_screen.dart';
 
 enum _SidebarTab { collections, history }
 
@@ -83,6 +84,26 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
                     ),
                   ),
                 ),
+                Tooltip(
+                  message: 'About',
+                  child: InkWell(
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (_) => const AboutScreen(),
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                    child: Container(
+                      width: 32,
+                      height: 32,
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      child: Icon(
+                        Icons.info_outline,
+                        size: 18,
+                        color: context.colors.textSecondary,
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 12),
               ],
             ),
@@ -98,8 +119,8 @@ class _SidebarPanelState extends ConsumerState<SidebarPanel> {
                   padding: const EdgeInsets.fromLTRB(14, 0, 12, 0),
                   decoration: BoxDecoration(
                     border: Border(
-                        bottom:
-                            BorderSide(color: context.colors.border, width: 0.5)),
+                        bottom: BorderSide(
+                            color: context.colors.border, width: 0.5)),
                   ),
                   child: Row(
                     children: [

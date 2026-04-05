@@ -10,6 +10,7 @@ class Variable with _$Variable {
     @Default('') String value,
     @Default(true) bool enabled,
     @Default(false) bool isSecret,
+    @Default('') String description,
   }) = _Variable;
 
   factory Variable.fromJson(Map<String, dynamic> json) =>

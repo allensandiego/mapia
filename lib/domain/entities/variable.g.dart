@@ -12,6 +12,7 @@ _$VariableImpl _$$VariableImplFromJson(Map<String, dynamic> json) =>
       value: json['value'] as String? ?? '',
       enabled: json['enabled'] as bool? ?? true,
       isSecret: json['isSecret'] as bool? ?? false,
+      description: json['description'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$VariableImplToJson(_$VariableImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$VariableImplToJson(_$VariableImpl instance) =>
       'value': instance.value,
       'enabled': instance.enabled,
       'isSecret': instance.isSecret,
+      'description': instance.description,
     };

@@ -3,6 +3,7 @@ import '../../domain/entities/variable.dart';
 import '../theme/mapia_colors.dart';
 import 'package:uuid/uuid.dart';
 import 'variable_text_editing_controller.dart';
+import 'variable_autocomplete_field.dart';
 
 /// Resolves all {{key}} patterns in [text] using [vars], returns null if no
 /// variables present or map is empty.
@@ -23,6 +24,7 @@ class KeyValueEditor extends StatefulWidget {
   final String keyHint;
   final String valueHint;
   final bool showSecretToggle;
+  final bool showDescription;
   final List<String>? envVars;
   final Map<String, String>? resolvedEnvVars;
 
@@ -33,6 +35,7 @@ class KeyValueEditor extends StatefulWidget {
     this.keyHint = 'Key',
     this.valueHint = 'Value',
     this.showSecretToggle = false,
+    this.showDescription = true,
     this.envVars,
     this.resolvedEnvVars,
   });
@@ -111,6 +114,17 @@ class _KeyValueEditorState extends State<KeyValueEditor> {
                         color: context.colors.textMuted,
                         letterSpacing: 0.5)),
               ),
+              if (widget.showDescription) ...[
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text('Description',
+                      style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: context.colors.textMuted,
+                          letterSpacing: 0.5)),
+                ),
+              ],
               const SizedBox(width: 32),
             ],
           ),
@@ -125,6 +139,7 @@ class _KeyValueEditorState extends State<KeyValueEditor> {
             keyHint: widget.keyHint,
             valueHint: widget.valueHint,
             showSecretToggle: widget.showSecretToggle,
+            showDescription: widget.showDescription,
             envVars: widget.envVars,
             resolvedEnvVars: widget.resolvedEnvVars,
             onChanged: (v) => _update(i, v),
@@ -163,6 +178,7 @@ class _KVRow extends StatefulWidget {
   final String keyHint;
   final String valueHint;
   final bool showSecretToggle;
+  final bool showDescription;
   final List<String>? envVars;
   final Map<String, String>? resolvedEnvVars;
   final ValueChanged<Variable> onChanged;
@@ -174,6 +190,7 @@ class _KVRow extends StatefulWidget {
     required this.keyHint,
     required this.valueHint,
     required this.showSecretToggle,
+    required this.showDescription,
     required this.onChanged,
     required this.onRemove,
     this.envVars,
@@ -187,28 +204,25 @@ class _KVRow extends StatefulWidget {
 class _KVRowState extends State<_KVRow> {
   late VariableTextEditingController _keyCtrl;
   late VariableTextEditingController _valCtrl;
-  OverlayEntry? _overlay;
+  late TextEditingController _descCtrl;
   final FocusNode _valFocus = FocusNode();
-  final LayerLink _valLayerLink = LayerLink();
 
   @override
   void initState() {
     super.initState();
     _keyCtrl = VariableTextEditingController(text: widget.item.key);
     _valCtrl = VariableTextEditingController(text: widget.item.value);
-    _valCtrl.addListener(_onValueChanged);
-    _valFocus.addListener(() {
-      if (!_valFocus.hasFocus) _hideOverlay();
-    });
+    _descCtrl = TextEditingController(text: widget.item.description);
+    _valCtrl.addListener(() => _notify());
+    _descCtrl.addListener(() => _notify());
   }
 
   @override
   void dispose() {
     _keyCtrl.dispose();
-    _valCtrl.removeListener(_onValueChanged);
     _valCtrl.dispose();
+    _descCtrl.dispose();
     _valFocus.dispose();
-    _hideOverlay();
     super.dispose();
   }
 
@@ -216,121 +230,8 @@ class _KVRowState extends State<_KVRow> {
     widget.onChanged(widget.item.copyWith(
       key: _keyCtrl.text,
       value: _valCtrl.text,
+      description: _descCtrl.text,
     ));
-  }
-
-  void _onValueChanged() {
-    if (widget.envVars == null || widget.envVars!.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-
-    final text = _valCtrl.text;
-    final pos = _valCtrl.selection.baseOffset;
-    if (pos < 0) return;
-
-    // Find the last {{ before the cursor
-    final before = text.substring(0, pos);
-    final openIdx = before.lastIndexOf('{{');
-    if (openIdx == -1) {
-      _hideOverlay();
-      return;
-    }
-
-    // If there's a closing }} between {{ and cursor, don't show
-    if (before.substring(openIdx).contains('}}')) {
-      _hideOverlay();
-      return;
-    }
-
-    final query = before.substring(openIdx + 2).toLowerCase();
-    final matches = widget.envVars!
-        .where((k) => k.toLowerCase().startsWith(query))
-        .toList();
-
-    if (matches.isEmpty) {
-      _hideOverlay();
-      return;
-    }
-    _showOverlay(matches, openIdx, pos, query.length);
-  }
-
-  void _showOverlay(
-      List<String> matches, int openIdx, int cursorPos, int queryLen) {
-    _hideOverlay();
-    _overlay = OverlayEntry(
-      builder: (_) => Positioned(
-        width: 240,
-        child: CompositedTransformFollower(
-          link: _valLayerLink,
-          offset: const Offset(0, 50),
-          showWhenUnlinked: false,
-          child: Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(6),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              children: matches
-                  .map((varKey) => GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          final text = _valCtrl.text;
-                          final prefix = text.substring(0, openIdx);
-                          final suffix = text.substring(cursorPos);
-                          final inserted = '$prefix{{$varKey}}$suffix';
-                          _valCtrl.value = TextEditingValue(
-                            text: inserted,
-                            selection: TextSelection.collapsed(
-                                offset: openIdx + varKey.length + 4),
-                          );
-                          _notify();
-                          _hideOverlay();
-                        },
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 9),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: '{{',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: varKey,
-                                      style: TextStyle(
-                                          color: context.colors.textPrimary,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                  TextSpan(
-                                      text: '}}',
-                                      style: TextStyle(
-                                          color: context.colors.warning,
-                                          fontFamily: 'monospace',
-                                          fontSize: 12)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
-        ),
-      ),
-    );
-    Overlay.of(context).insert(_overlay!);
-  }
-
-  void _hideOverlay() {
-    _overlay?.remove();
-    _overlay = null;
   }
 
   @override
@@ -347,23 +248,22 @@ class _KVRowState extends State<_KVRow> {
     final hasKeyVars = _keyCtrl.text.contains('{{');
 
     // Value field widget — optionally wrapped in a Tooltip showing the resolved value
-    Widget valueField = CompositedTransformTarget(
-      link: _valLayerLink,
-      child: TextField(
-        controller: _valCtrl,
-        focusNode: _valFocus,
-        onChanged: (_) => _notify(),
-        obscureText: widget.item.isSecret && !_valCtrl.text.startsWith('{{'),
-        style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
-        decoration: InputDecoration(
-          hintText: widget.valueHint,
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          filled: false,
-        ),
+    Widget valueField = VariableAutocompleteField(
+      controller: _valCtrl,
+      focusNode: _valFocus,
+      onChanged: (_) => _notify(),
+      obscureText: widget.item.isSecret,
+      envVars: widget.envVars ?? [],
+      resolvedEnvVars: widget.resolvedEnvVars,
+      style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
+      decoration: InputDecoration(
+        hintText: widget.valueHint,
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        filled: false,
       ),
     );
 
@@ -389,8 +289,10 @@ class _KVRowState extends State<_KVRow> {
     }
 
     // Key field — optionally wrapped in a Tooltip
-    Widget keyField = TextField(
+    Widget keyField = VariableAutocompleteField(
       controller: _keyCtrl,
+      envVars: widget.envVars ?? [],
+      resolvedEnvVars: widget.resolvedEnvVars,
       onChanged: (_) => _notify(),
       style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
       decoration: InputDecoration(
@@ -459,6 +361,27 @@ class _KVRowState extends State<_KVRow> {
               Container(width: 1, height: 36, color: context.colors.border),
               // Value field
               Expanded(child: valueField),
+              // Description field
+              if (widget.showDescription) ...[
+                Container(width: 1, height: 36, color: context.colors.border),
+                Expanded(
+                  child: TextField(
+                    controller: _descCtrl,
+                    onChanged: (_) => _notify(),
+                    style: TextStyle(
+                        fontSize: 13, color: context.colors.textSecondary),
+                    decoration: const InputDecoration(
+                      hintText: 'Description',
+                      border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                      filled: false,
+                    ),
+                  ),
+                ),
+              ],
               // Secret toggle
               if (widget.showSecretToggle)
                 IconButton(

@@ -24,6 +24,7 @@ mixin _$Variable {
   String get value => throw _privateConstructorUsedError;
   bool get enabled => throw _privateConstructorUsedError;
   bool get isSecret => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   /// Serializes this Variable to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +41,12 @@ abstract class $VariableCopyWith<$Res> {
   factory $VariableCopyWith(Variable value, $Res Function(Variable) then) =
       _$VariableCopyWithImpl<$Res, Variable>;
   @useResult
-  $Res call({String key, String value, bool enabled, bool isSecret});
+  $Res call(
+      {String key,
+      String value,
+      bool enabled,
+      bool isSecret,
+      String description});
 }
 
 /// @nodoc
@@ -62,6 +68,7 @@ class _$VariableCopyWithImpl<$Res, $Val extends Variable>
     Object? value = null,
     Object? enabled = null,
     Object? isSecret = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -80,6 +87,10 @@ class _$VariableCopyWithImpl<$Res, $Val extends Variable>
           ? _value.isSecret
           : isSecret // ignore: cast_nullable_to_non_nullable
               as bool,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -92,7 +103,12 @@ abstract class _$$VariableImplCopyWith<$Res>
       __$$VariableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String key, String value, bool enabled, bool isSecret});
+  $Res call(
+      {String key,
+      String value,
+      bool enabled,
+      bool isSecret,
+      String description});
 }
 
 /// @nodoc
@@ -112,6 +128,7 @@ class __$$VariableImplCopyWithImpl<$Res>
     Object? value = null,
     Object? enabled = null,
     Object? isSecret = null,
+    Object? description = null,
   }) {
     return _then(_$VariableImpl(
       key: null == key
@@ -130,6 +147,10 @@ class __$$VariableImplCopyWithImpl<$Res>
           ? _value.isSecret
           : isSecret // ignore: cast_nullable_to_non_nullable
               as bool,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -141,7 +162,8 @@ class _$VariableImpl implements _Variable {
       {required this.key,
       this.value = '',
       this.enabled = true,
-      this.isSecret = false});
+      this.isSecret = false,
+      this.description = ''});
 
   factory _$VariableImpl.fromJson(Map<String, dynamic> json) =>
       _$$VariableImplFromJson(json);
@@ -157,10 +179,13 @@ class _$VariableImpl implements _Variable {
   @override
   @JsonKey()
   final bool isSecret;
+  @override
+  @JsonKey()
+  final String description;
 
   @override
   String toString() {
-    return 'Variable(key: $key, value: $value, enabled: $enabled, isSecret: $isSecret)';
+    return 'Variable(key: $key, value: $value, enabled: $enabled, isSecret: $isSecret, description: $description)';
   }
 
   @override
@@ -172,12 +197,15 @@ class _$VariableImpl implements _Variable {
             (identical(other.value, value) || other.value == value) &&
             (identical(other.enabled, enabled) || other.enabled == enabled) &&
             (identical(other.isSecret, isSecret) ||
-                other.isSecret == isSecret));
+                other.isSecret == isSecret) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, key, value, enabled, isSecret);
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, enabled, isSecret, description);
 
   /// Create a copy of Variable
   /// with the given fields replaced by the non-null parameter values.
@@ -200,7 +228,8 @@ abstract class _Variable implements Variable {
       {required final String key,
       final String value,
       final bool enabled,
-      final bool isSecret}) = _$VariableImpl;
+      final bool isSecret,
+      final String description}) = _$VariableImpl;
 
   factory _Variable.fromJson(Map<String, dynamic> json) =
       _$VariableImpl.fromJson;
@@ -213,6 +242,8 @@ abstract class _Variable implements Variable {
   bool get enabled;
   @override
   bool get isSecret;
+  @override
+  String get description;
 
   /// Create a copy of Variable
   /// with the given fields replaced by the non-null parameter values.

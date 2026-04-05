@@ -8,22 +8,31 @@ Mapia is a modern, cross-platform REST API client built with **Flutter**, design
 
 ## 📥 Downloads & Installation
 
-To use Mapia on your desktop, visit the **[Latest Releases](https://github.com/allensandiego/mapia/releases)** page on GitHub and download the package for your operating system.
+Download the latest version of Mapia for your operating system:
+
+| Platform | Installer / Archive |
+| --- | --- |
+| **🪟 Windows** | [**Download .exe**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-windows-x64.exe) \| [**Download .msix**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-windows-x64.msix) |
+| **🍎 macOS** | [**Download .dmg**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-macos.dmg) |
+| **🐧 Linux** | [**Download .AppImage**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-x86_64.AppImage) \| [**Download .deb**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-amd64.deb) \| [**Download .rpm**](https://github.com/allensandiego/mapia/releases/latest/download/mapia-linux-x86_64.rpm) |
+
+For all other versions, visit the **[Latest Releases](https://github.com/allensandiego/mapia/releases)** page on GitHub.
 
 ### 🪟 Windows
-1. Download the `mapia-windows-x64.zip`.
-2. Extract the content to a folder of your choice.
-3. Run `mapia.exe` to launch the application.
+1. Download the `mapia-windows-x64.exe` or `msix`.
+2. For `.exe`, run it to launch the application.
+3. For `.msix`, double-click to install.
 
 ### 🍎 macOS
-1. Download the `Mapia.dmg`.
+1. Download the `mapia-macos.dmg`.
 2. Open the disk image and drag **Mapia.app** to your **Applications** folder.
 3. If prompted by macOS Gatekeeper, you may need to right-click open the app for the first time.
 
 ### 🐧 Linux
-1. Download the `mapia-linux-x64.tar.gz`.
-2. Extract the archive: `tar -xzf mapia-linux-x64.tar.gz`.
-3. Run the executable: `./mapia`.
+1. Download the `.AppImage`, `.deb`, or `.rpm`.
+2. For **AppImage**: `chmod +x mapia-linux-x86_64.AppImage` and run it.
+3. For **DEB**: `sudo dpkg -i mapia-linux-amd64.deb`
+4. For **RPM**: `sudo rpm -i mapia-linux-x86_64.rpm`
 
 ## 🛠️ Tech Stack
 
