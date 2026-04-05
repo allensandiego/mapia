@@ -72,6 +72,18 @@ jobs:
           EOF
           sudo chmod +x /usr/local/bin/appimagetool
           
+          # Ensure icons exist for all packaging configs and at project root
+          for dir in linux/packaging/appimage linux/packaging/deb linux/packaging/rpm; do
+            if [ ! -f "$dir/mapia.png" ]; then
+              echo "Copying icon to $dir/"
+              cp assets/mapia.png "$dir/mapia.png"
+            fi
+            ls -la "$dir/mapia.png"
+          done
+          
+          # Copy icon to project root for flutter_app_packager
+          cp assets/mapia.png ./mapia.png
+          
           # Build and Package
           fastforge release --name release --jobs linux-deb,linux-appimage
           # Build RPM with manual fix
