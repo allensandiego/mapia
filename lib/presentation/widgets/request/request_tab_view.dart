@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/tabs_provider.dart';
 import '../../providers/ui_provider.dart';
+import '../../providers/environment_provider.dart';
 import '../../../core/theme/mapia_colors.dart';
 import 'url_bar.dart';
 import 'request_editor.dart';
@@ -67,11 +68,79 @@ class RequestTabView extends ConsumerWidget {
             width: codeWidth,
             child: Container(
               color: context.colors.bgBase,
-              child: SnippetPanel(request: tab.request),
+              child: Column(
+                children: [
+                  _EnvironmentDropdown(),
+                  const Divider(height: 1),
+                  Expanded(
+                    child: SnippetPanel(request: tab.request),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ],
+    );
+  }
+}
+
+class _EnvironmentDropdown extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final envsAsync = ref.watch(environmentsProvider);
+    final activeId = ref.watch(activeEnvironmentProvider);
+    final colors = context.colors;
+
+    return Container(
+      color: colors.bgSurface,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Row(
+        children: [
+          Icon(Icons.tune_outlined, size: 12, color: colors.textMuted),
+          const SizedBox(width: 4),
+          Text('Env:',
+              style: TextStyle(fontSize: 11, color: colors.textMuted)),
+          const SizedBox(width: 4),
+          Expanded(
+            child: envsAsync.when(
+              loading: () => Text('Loading...',
+                  style: TextStyle(fontSize: 11, color: colors.textMuted)),
+              error: (_, __) => Text('Error',
+                  style: TextStyle(fontSize: 11, color: colors.error)),
+              data: (envs) {
+                final items = [
+                  DropdownMenuItem<String?>(
+                    value: null,
+                    child: Text('None',
+                        style: TextStyle(fontSize: 11, color: colors.textMuted)),
+                  ),
+                  ...envs.map((e) => DropdownMenuItem<String?>(
+                        value: e.id,
+                        child: Text(e.name,
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: colors.textPrimary)),
+                      )),
+                ];
+                return DropdownButton<String?>(
+                  value: activeId,
+                  isExpanded: true,
+                  isDense: true,
+                  underline: const SizedBox(),
+                  dropdownColor: colors.bgElevated,
+                  iconSize: 14,
+                  iconEnabledColor: colors.textMuted,
+                  items: items,
+                  onChanged: (v) {
+                    ref.read(activeEnvironmentProvider.notifier).state = v;
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
