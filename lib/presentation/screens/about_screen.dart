@@ -43,7 +43,7 @@ class AboutScreen extends ConsumerWidget {
                           ),
                         ),
                         Text(
-                          'v1.0.41',
+                          'v1.0.44',
                           style: TextStyle(
                             fontSize: 13,
                             color: colors.textSecondary,
