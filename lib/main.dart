@@ -17,7 +17,6 @@ void main() async {
       center: true,
       title: 'Mapia',
       titleBarStyle: TitleBarStyle.normal,
-      backgroundColor: Colors.transparent,
     );
     await windowManager.waitUntilReadyToShow(windowOptions, () async {
       await windowManager.show();
