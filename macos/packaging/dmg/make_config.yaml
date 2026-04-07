@@ -1,6 +1,6 @@
 display_name: Mapia
 package_name: com.allensandiego.mapia
-version: 1.0.47+1
+version: 1.0.48+1
 app_path: build/macos/Build/Products/Release/mapia.app
 icon_path: macos/packaging/dmg/mapia.png
 contents: []
