@@ -99,8 +99,7 @@ class _EnvironmentDropdown extends ConsumerWidget {
         children: [
           Icon(Icons.tune_outlined, size: 12, color: colors.textMuted),
           const SizedBox(width: 4),
-          Text('Env:',
-              style: TextStyle(fontSize: 11, color: colors.textMuted)),
+          Text('Env:', style: TextStyle(fontSize: 11, color: colors.textMuted)),
           const SizedBox(width: 4),
           Expanded(
             child: envsAsync.when(
@@ -113,14 +112,14 @@ class _EnvironmentDropdown extends ConsumerWidget {
                   DropdownMenuItem<String?>(
                     value: null,
                     child: Text('None',
-                        style: TextStyle(fontSize: 11, color: colors.textMuted)),
+                        style:
+                            TextStyle(fontSize: 11, color: colors.textMuted)),
                   ),
                   ...envs.map((e) => DropdownMenuItem<String?>(
                         value: e.id,
                         child: Text(e.name,
                             style: TextStyle(
-                                fontSize: 11,
-                                color: colors.textPrimary)),
+                                fontSize: 11, color: colors.textPrimary)),
                       )),
                 ];
                 return DropdownButton<String?>(
