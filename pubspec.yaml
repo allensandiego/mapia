@@ -1,6 +1,6 @@
 name: mapia
 description: Yes another REST API client for desktop.
-version: 1.0.49+1
+version: 1.0.50+1
 publish_to: none
 
 environment:
