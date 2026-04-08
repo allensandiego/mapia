@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-08T13:12:51.155Z",
+  "entries": {
+    "memory:memory/2026-04-07.md:1:6": {
+      "key": "memory:memory/2026-04-07.md:1:6",
+      "path": "memory/2026-04-07.md",
+      "startLine": 1,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "## 2026-04-07 - **Issue found:** mapia #10 - \"MacOs packaged file (.dmg) not working\" - bug reported by allensandiego on 2026-04-07T05:05:17Z - **Copilot CLI command:** gh copilot suggest https://github.com/allensandiego/mapia/issues/10 **Note:** The `gh copilot` extension is deprecated. Use `gh copilot-cli` instead if available, or check GitHub's latest CLI tools.",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "totalScore": 2.4327208578586577,
+      "maxScore": 0.49694578647613524,
+      "firstRecalledAt": "2026-04-07T22:09:14.407Z",
+      "lastRecalledAt": "2026-04-08T13:12:51.155Z",
+      "queryHashes": [
+        "bef042002a3c",
+        "2315d1a9b42a",
+        "b985f3e8fc3c",
+        "8d4bf769e77b"
+      ],
+      "recallDays": [
+        "2026-04-07",
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "2026-04-07t05",
+        "copilot-cli",
+        "issue",
+        "found",
+        "mapia",
+        "macos",
+        "packaged",
+        "dmg"
+      ]
+    }
+  }
+}
