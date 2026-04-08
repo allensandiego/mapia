@@ -86,3 +86,6 @@ app.*.symbols
 
 # Logs
 latest_response.json
+
+# Issues for copilot
+.issues
