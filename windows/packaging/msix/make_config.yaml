@@ -1,0 +1,5 @@
+display_name: Mapia
+publisher_display_name: Allensandiego
+identity_name: com.allensandiego.mapia
+msix_config:
+  install_scope: user
