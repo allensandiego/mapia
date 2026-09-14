@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
+
 import 'core/theme/app_theme.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/providers/ui_provider.dart';
@@ -21,10 +22,6 @@ void main() async {
     await windowManager.waitUntilReadyToShow(windowOptions, () async {
       await windowManager.show();
       await windowManager.focus();
-      // Only set icon on Windows/macOS; GTK (Linux) handles it during startup in C++
-      if (defaultTargetPlatform != TargetPlatform.linux) {
-        await windowManager.setIcon('mapia.png');
-      }
     });
   }
 
